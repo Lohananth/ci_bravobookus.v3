@@ -28,33 +28,30 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
   <!-- End Code For Search -->
 
 
-  <meta name="author" content="Sourng Online" />
+<meta name="author" content="Sourng Online" />
 
-<meta name="keywords" content="book bus tickets online in cambodia, bus tickets, buy bus tickets online phnompenh to siemreap, angkor, bus angkorwat temple,cambodia bus travel, bus phnom penh schedule, siemreap transportation, bus tickets, bus in phnompenh" />
-<meta name="description" content="Travelling or planning your trip across Cambodia, Laos, Vietnam and Thailand? Find the best deals on bus, taxi and ferry tickets on BookMeBus.com. Book now!
+<meta name="keywords" content="<?php echo $seo_keywords; ?>" />
+<meta name="description" content="<?php echo $seo_description; ?>
 " />
 
 <meta name="pinterest-rich-pin" content="false" />
 
 <meta property="og:type" content="article" />
 <meta property="og:title" content="<?php echo $title; ?>" />
-<meta property="og:image" content="https://dpv1ddwbqfvsu.cloudfront.net/assets/slides/bookmebus-app-promotion-8d27372730f8f27b0892290851cdcb41.png" />
-<meta property="og:url" content="https://bookmebus.com/en" />
-<meta property="og:description" content="      Travelling or planning your trip across Cambodia, Laos, Vietnam and Thailand?
-      Find the best deals on bus, taxi and ferry tickets on BookMeBus.com. Book now!
+<meta property="og:image" content="<?php echo base_url(); ?><?php echo $seo_image; ?>" />
+<meta property="og:url" content="<?php echo $seo_url; ?>" />
+<meta property="og:description" content="<?php echo $seo_description; ?>
 " />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:creator" content="@bookmebus" />
+<meta name="twitter:creator" content="<?php echo $twitter_creator; ?>" />
 <meta name="twitter:title" content="<?php echo $title; ?>" />
-<meta name="twitter:image:src" content="https://dpv1ddwbqfvsu.cloudfront.net/assets/slides/bookmebus-app-promotion-8d27372730f8f27b0892290851cdcb41.png" />
-<meta name="twitter:url" content="https://bookmebus.com/en" />
-<meta name="twitter:description" content="Travelling or planning your trip across Cambodia, Laos, Vietnam and Thailand?
-      Find the best deals on bus, taxi and ferry tickets on BookMeBus.com. Book now!
+<meta name="twitter:image:src" content="<?php echo base_url(); ?><?php echo $seo_image; ?>" />
+<meta name="twitter:url" content="<?php echo $seo_url; ?>" />
+<meta name="twitter:description" content="<?php echo $seo_description; ?>
 " />
 
 <meta itemprop="name" content="<?php echo $title; ?>" />
-<meta itemprop="description" content="Travelling or planning your trip across Cambodia, Laos, Vietnam and Thailand?
-      Find the best deals on bus, taxi and ferry tickets on BookMeBus.com. Book now!" />
-<meta itemprop="image" content="https://dpv1ddwbqfvsu.cloudfront.net/assets/slides/bookmebus-app-promotion-8d27372730f8f27b0892290851cdcb41.png" />
+<meta itemprop="description" content="<?php echo $seo_description; ?>" />
+<meta itemprop="image" content="<?php echo base_url(); ?><?php echo $seo_image; ?>" />
 

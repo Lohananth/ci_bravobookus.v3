@@ -1,0 +1,5 @@
+[21-Apr-2016 00:52:38 America/New_York] PHP Warning:  mysqli_connect(): (HY000/2002): No such file or directory in /home/vcu/public_html/daily-booking/class/class-database.php on line 17
+[21-Apr-2016 00:52:38 America/New_York] PHP Fatal error:  Call to a member function query() on boolean in /home/vcu/public_html/daily-booking/class/class-database.php on line 21
+[09-May-2016 08:18:20 America/New_York] PHP Warning:  Header may not contain more than a single header, new line detected in /home/vcu/public_html/include/payment-handle/vpc_php_serverhost_do.php on line 160
+[01-Aug-2016 03:05:44 America/New_York] PHP Warning:  Header may not contain more than a single header, new line detected in /home/vcu/public_html/include/payment-handle/vpc_php_serverhost_do.php on line 160
+[02-Nov-2016 08:32:52 UTC] PHP Fatal error:  Call to undefined function Descrypt() in /home/vcuasia/public_html/include/payment-handle/PHP_VPC_3Party_Order_DO.php on line 27

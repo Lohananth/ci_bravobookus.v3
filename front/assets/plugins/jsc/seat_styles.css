@@ -1,0 +1,89 @@
+#selected-seats {
+		    margin: 0;
+		    border: solid 1px #CCC;
+		    padding: 5px;
+		    min-height: 34px;
+		    text-align: center;
+		}
+		#selected-seats li{
+			display: inline-block;
+			background: #5BC0DE;
+			padding: 3px;
+			margin: 2px;
+			line-height: 1;
+			color: #FFF;
+			border-radius: 3px;
+			width: 22px;
+			height: 22px;
+		}
+		#selected-seats li a {
+			color: #FFF;
+		} 
+div.seatCharts-cell {
+	height: 40px;
+	width: 40px;
+	margin: 3px;
+	float: left;
+	text-align: center;
+	outline: none;
+	font-size: 15px;
+	line-height: 35px;
+	color: gainsboro;
+}
+div.seatCharts-seat {
+	background-color: #72CDE8;
+	color: black;
+	cursor: default;
+	text-shadow: 1px 1px 0px #FFF;
+}
+div.seatCharts-seat:focus {
+	border: none;
+}
+div.seatCharts-space {
+	background-color: white;
+}
+div.seatCharts-row {
+	height: 50px;
+}
+div.seatCharts-row:after {
+	clear: both;
+}
+div.seatCharts-seat.selected {
+	background-color: #123F52;
+	cursor: pointer;
+	background: url("../../../images/seat_checked.png");
+}
+div.seatCharts-seat.focused {
+	background-color: #94D8EC;
+	cursor: pointer;
+	background: url("../../../images/seat_hover.png");
+}
+div.seatCharts-seat.available {
+	background-color: #5BC0DE;
+	cursor: pointer;
+	background: url("../../../images/seat_available.png");
+}
+div.seatCharts-seat.unavailable {
+	background-color: #eaeaea;
+	cursor: not-allowed;
+	color: #771F00;
+	background: url("../../../images/seat_disable.png");
+	text-shadow: 1px 1px 0 #E0E0E0;
+}
+ul.seatCharts-legendList {
+	list-style: none;
+}
+li.seatCharts-legendItem {
+	margin-top: 10px;
+	line-height: 3;
+	float: left;
+}
+.front-indicator {
+	width: 180px;
+	margin: 5px 32px 15px 32px;
+	background-color: #eaeaea;
+	color: #adadad;
+	text-align: center;
+	padding: 3px;
+	border-radius: 5px;
+}

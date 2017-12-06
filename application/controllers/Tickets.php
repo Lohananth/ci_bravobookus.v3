@@ -46,9 +46,14 @@ class Tickets extends CI_Controller {
       $data['origin']=$this->m_crud->get_by_sql("SELECT * FROM tbl_contacts");
 
 
+        $data['title']="Welcome to BravoBookus.com | Book bus, boat and private taxi in Cambodia";
+        $data['seo_description']="Travelling or planning your trip across Cambodia, Laos, Vietnam and Thailand? Find the best deals on bus, taxi and ferry tickets on BravoBookus.com. Book now!";
+        $data['seo_image']="front/images/standard_bookmebus-home-page-cover-limited.png";
+        $data['seo_url']="https://bravobookus.com";
+        $data['twitter_creator']="@BravoBookus";
+        $data['seo_keywords']="book bus tickets online in cambodia, bus tickets, buy bus tickets online phnompenh to siemreap, angkor, bus angkorwat temple,cambodia bus travel, bus phnom penh schedule, siemreap transportation, bus tickets, bus in phnompenh";
 
-
-        $this->load->view('front/v_request_ticket',$data);
+        $this->load->view('front/v_template_seats',$data);
 
 
     }

@@ -1,33 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-  <!-- Awsom Fonts -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>front/font-awesome/css/font-awesome.min.css">
- 
- <!-- Slide News -->
-  <link rel=stylesheet href="<?php echo base_url(); ?>front/assets/css/news-style.css">
 
-  <!-- Search Tool Style -->
- <link rel="stylesheet" href="<?php echo base_url(); ?>front/assets/css/css-searching.css">
+<?php include_once('inc/head_script.php'); ?>
 
-<link rel="stylesheet" href="<?php echo base_url(); ?>front/assets/css/search-result.css">
-
-
-
-<!-- Code For Search -->
-  <script src="<?php echo base_url(); ?>front/assets/search/js/jquery.js"></script>   
-    <link href="<?php echo base_url(); ?>front/assets/search/css/jquery-ui.min.css" rel="stylesheet" />   
-    <link href="<?php echo base_url(); ?>front/assets/search/css/styles.css" rel="stylesheet" />
-  <!-- End Code For Search -->
-
- 
 <!-- DateTime -->
 <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
 

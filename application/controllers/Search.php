@@ -60,6 +60,13 @@ class Search extends CI_Controller {
             INNER JOIN hotel_rooms as hr ON h.hotel_id=hr.hotel_id
             GROUP BY h.hotel_id";
     $data['last_minute_deals_data']=$this->m_crud->get_by_sql($sql_deal);
+
+    // $sql_search="SELECT "
+    // $data['result_search']=$this->m_crud->get_by_sql($sql_search);
+
+
+
+
       $data['footer']="inc/v_footer";
       $data['script_footer_home']="inc/v_script_footer_home";
       $data['services']=$this->m_crud->get_by_sql("SELECT * FROM services");
@@ -92,6 +99,17 @@ class Search extends CI_Controller {
             $contacts=substr($contacts, 1);
             $contacts=substr($contacts,0,strlen($contacts)-1);        
             $data['origins']=$contacts;
+
+
+
+
+
+        $data['title']="Welcome to BravoBookus.com | Book bus, boat and private taxi in Cambodia";
+        $data['seo_description']="Travelling or planning your trip across Cambodia, Laos, Vietnam and Thailand? Find the best deals on bus, taxi and ferry tickets on BravoBookus.com. Book now!";
+        $data['seo_image']="front/images/standard_bookmebus-home-page-cover-limited.png";
+        $data['seo_url']="https://bravobookus.com";
+        $data['twitter_creator']="@BravoBookus";
+        $data['seo_keywords']="book bus tickets online in cambodia, bus tickets, buy bus tickets online phnompenh to siemreap, angkor, bus angkorwat temple,cambodia bus travel, bus phnom penh schedule, siemreap transportation, bus tickets, bus in phnompenh";
 
 
 
