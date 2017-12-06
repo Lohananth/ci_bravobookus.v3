@@ -1,0 +1,107 @@
+    @media only screen and (min-width: 320px){
+      .row {
+    /* margin-right: -15px; */
+    /* margin-left: -15px; */
+    }
+      .btn-swap {
+        width: 100%;
+        height: 48px;
+        background: #009901;
+        font-size: 20px;
+        color: white;
+        /*margin-top: 50px;*/
+    }
+    #Buses {
+      background-color:#2874A6; height: 140px;
+      margin-top: 50px;
+    }
+    /* PrivateTaxi */
+     #PrivateTaxi{
+      background-color:#2874A6; height: 140px;
+      margin-top: 50px;
+    }
+    /* Hotels */
+       #Hotels{
+      background-color:#2874A6; height: 140px;
+      margin-top: 50px;
+    }
+
+
+    .route-finder-form select, .route-finder-form input {
+        height: 48px;
+    }
+    .btn-search-control-addon {
+        height: 48px;
+        padding-top: 13px;
+    }
+
+    }
+    
+@media (max-width: 767px){
+  .btn-swap, .btn-find {
+      width: 100%;
+  }
+   #Buses {
+      background-color:#2874A6; height: 150px;
+    }
+    /* PrivateTaxi */
+     #PrivateTaxi {
+      background-color:#2874A6; height: 150px;
+    }
+    /* Hotels */
+    #Hotels {
+      background-color:#2874A6; height: 150px;
+    }
+}
+
+@media (max-width: 990px){
+  .btn-swap, .btn-find {
+    width: 100%;
+}
+ #Buses {
+      background-color:#2874A6; height: 460px;
+    }
+    /* PrivateTaxi */
+     #PrivateTaxi{
+      background-color:#2874A6; height: 460px;
+    }
+    /* Hotels */
+   #Hotels{
+      background-color:#2874A6; height: 460px;
+    }
+
+.route-finder-form .form-control {
+    margin: 10px 0px !important;
+}
+}
+
+body {font-family: "Lato", sans-serif;}
+
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    /*width: 25%;*/
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 10px;
+    text-align: center;
+}
+
+/*#London {background-color:#2874A6; height: 200px;}*/
+#PrivateTaxi{background-color:green; margin-top: 50px;}
+#Hotels {background-color:blue; margin-top: 50px;}
+

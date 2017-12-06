@@ -1,0 +1,209 @@
+ .fa-check-circle{
+    color: #28B463  ;
+   }
+   .tips{
+   	margin-bottom: 10px; 
+   	min-height: 221px;
+   	background-color: #AEB6BF; 
+   	padding: 15px;
+   	color: white;
+
+   	border-top-style: solid;
+   	border-top-color:#2874A6;
+   }
+
+   /* Image Effect for Customer */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    /*width: 100%;*/
+    
+
+    height: 96px;
+    width: 96px;
+  
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/*.partners-list {
+    border: 0px;
+    border-radius: 50%;
+    width: 120px;
+}*/
+/*front_end-4aa9a…75c437bb.css:5
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}*/
+
+img {
+    vertical-align: middle;
+}
+
+img {
+    border: 0;
+}
+
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+
+
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+   /* End Image Effect*/
+
+
+   /* Top Destination Style */
+   * {
+    box-sizing: border-box;
+}
+
+.dest {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.dest img {margin-bottom: -5px}
+
+.dest .content {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    color: #f1f1f1;
+    width: 100%;
+    padding: 10px;
+
+}
+
+/* Chip Image on Menu*/
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    border-radius: 25px;
+    margin-top: 5px;
+    color:white;
+    /*background-color: #f1f1f1;*/
+
+
+  
+}
+
+.chip img {
+    float: left;
+    margin: 0px 13px 0px -25px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+     
+}
+user{
+	/*background-color: green;*/
+	padding: 5px;
+	margin: 0px 13px 0px -15px;
+	/*position: absolute;
+    left: 0px;
+    top: 0px;*/
+
+}
+
+.page-wrapper .page-content .album-cover .desc:before {
+    content: "";
+    display: block;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    position: absolute;
+    top: -10px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.desc{
+	padding-bottom: 10px;
+}
+
+.autocomplete-suggestions {
+    display: none;
+    position: absolute;
+    top: 1 !important;
+    left: 1 !important;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 4px;
+    background-color: #fff;
+    background-clip: padding-box;
+    padding: 5px 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    line-height: 1.42857143;
+    max-height: 254px;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 300px !important;
+    z-index: 111;
+}
