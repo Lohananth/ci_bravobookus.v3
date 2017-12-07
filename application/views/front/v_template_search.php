@@ -418,7 +418,6 @@ function truncateDate(date) {
   });
 
 
-
 // News
 $(document).ready(function(ev){
     $('#custom_carousel').on('slide.bs.carousel', function (evt) {

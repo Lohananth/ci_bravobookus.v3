@@ -11,23 +11,19 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
 <title><?php echo $title; ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="<?php echo base_url(); ?>front/assets/css/bootstrap.min.css">
+  <script src="<?php echo base_url(); ?>front/assets/js/jquery.min.js"></script>
+  <script src="<?php echo base_url(); ?>front/assets/js/bootstrap.min.js"></script>  
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+
   <!-- Awsom Fonts -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>front/font-awesome/css/font-awesome.min.css"> 
 
-
-
-
-
-
-<meta name="author" content="Sourng Online" />
+  <meta name="author" content="Sourng Online" />
 
 <meta name="keywords" content="<?php echo $seo_keywords; ?>" />
-<meta name="description" content="<?php echo $seo_description; ?>
-" />
+<meta name="description" content="<?php echo $seo_description; ?> " />
 
 <meta name="pinterest-rich-pin" content="false" />
 
@@ -61,6 +57,8 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
  <!-- Main Style -->
  <link rel="stylesheet" href="<?php echo base_url(); ?>front/assets/css/main-style.css">
 
+<link href="<?php echo base_url(); ?>front/assets/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="<?php echo base_url(); ?>front/assets/js/bootstrap-toggle.min.js"></script>
 
 </head>
 <body>
