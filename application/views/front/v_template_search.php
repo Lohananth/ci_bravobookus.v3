@@ -3,43 +3,50 @@
 <head>
 
 <?php include_once('inc/head_script.php'); ?>
-
+<link rel="shortcut icon" href="<?php echo base_url() ?>public/img/favicon.ico" type="image/x-icon">
 <!-- DateTime -->
 <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
 
  <!-- Main Style -->
  <link rel="stylesheet" href="<?php echo base_url(); ?>front/assets/css/main-style.css">
 
+<!-- Bus -->
 <script type="text/javascript">
   $(document).ready(function () {
     <?php 
-      echo "contacts=".$origins;
+      echo "directions=".$origins;
     ?>    
   
-   for (var i = 0; i < contacts.length; i++)
+   for (var i = 0; i < directions.length; i++)
     {
-        // contacts[i].value = contacts[i].firstName + " " + contacts[i].lastName + " " + contacts[i].origin;
+        // directions[i].value = directions[i].firstName + " " + directions[i].lastName + " " + directions[i].origin;
     
-        // $img='<img src="'+ contacts[i].imgUrl +'"/>';
-        // if(contacts[i].origin !="Batman"){
-            contacts[i].value = contacts[i].origin ;
+        // $img='<img src="'+ directions[i].imgUrl +'"/>';
+        // if(directions[i].origin !="Batman"){
+            directions[i].value = directions[i].origin  ;
+            $direct_id=directions[i].id ;
         // }
-        // alert(contacts[i].value);
+        // alert($direct_id);
         
-    }
+    }    
       $("#txtBusOrigin").autocomplete({
-        source: contacts,
+        source: directions,
         // minLength: 0,
         minLength: 0,
         focus: function (event, ui) {
-            $("#txtBusOrigin").val(ui.item.origin)  
+            $("#txtBusOrigin").val(ui.item.origin) 
+            
             return false;
         },
         select: function (event, ui) {
             // location.href = ui.item.imgUrl;
             // return false;
+
             
-            $('#txtBusDestination').focus() 
+            $('#txtBusDestination').focus();
+            var id=ui.item.id;            
+             $('#bus_from').val(id);
+            // alert(ui.item.id);
         },
     }).bind('focus', function(){ $(this).autocomplete("search");} )
     .autocomplete("instance")._renderItem = function (ul, item) {
@@ -68,14 +75,15 @@
         $name.appendTo($outerDiv);        
         }     
 
-        $li.appendTo(ul);        
+        $li.appendTo(ul);
+        
         return  $li;
     };
 
 
     // Destinations
     $("#txtBusDestination").autocomplete({
-        source: contacts,
+        source: directions,
         minLength: 0,
         focus: function (event, ui) {
             $("#txtBusDestination").val(ui.item.origin)
@@ -86,6 +94,9 @@
             // location.href = ui.item.imgUrl;
             // return false;
              $('#txtBusDate').focus() //set forcus to Date
+
+              var id=ui.item.id;            
+             $('#bus_to').val(id);
         },
     }).bind('focus', function(){ $(this).autocomplete("search"); } )
     .autocomplete("instance")._renderItem = function (ul, item) {
@@ -109,7 +120,8 @@
         $name = $("<div>");
         $name.addClass("nameDiv");
         // $name.append(item.firstName + " " + item.lastName + "<br/><span style='font-style:italic'>" + item.origin + "</span>");
-        $name.append(item.origin + "<br><span style='color:green;font-style:italic; font-size:12px; padding-top:30xp;'>" + item.country + "</span>");        
+        $name.append(item.origin + "<br><span style='color:green;font-style:italic; font-size:12px; padding-top:30xp;'>" + item.country + "</span>");
+        
         $name.appendTo($outerDiv);
         }
         
@@ -117,8 +129,125 @@
         return $li;
     };    
 })
-
 </script>
+<!-- // Bus -->
+<!-- Private Taxies -->
+<script type="text/javascript">
+  $(document).ready(function () {
+    <?php 
+      echo "directions=".$origins;
+    ?>    
+  
+   for (var i = 0; i < directions.length; i++)
+    {
+        // directions[i].value = directions[i].firstName + " " + directions[i].lastName + " " + directions[i].origin;
+    
+        // $img='<img src="'+ directions[i].imgUrl +'"/>';
+        // if(directions[i].origin !="Batman"){
+            directions[i].value = directions[i].origin ;
+            // directions[i].value=directions[i].id;
+        // }
+        // alert(directions[i].value);
+        
+    }    
+      $("#txtPrivateTaxiOrigin").autocomplete({
+        source: directions,
+        // minLength: 0,
+        minLength: 0,
+        focus: function (event, ui) {
+            $("#txtPrivateTaxiOrigin").val(ui.item.origin) 
+            // $("#bus_from").val(ui.item.id)
+
+            return false;
+        },
+        select: function (event, ui) {
+            // location.href = ui.item.imgUrl;
+            // return false;
+            
+            $('#txtPrivateTaxiDestination').focus() 
+        },
+    }).bind('focus', function(){ $(this).autocomplete("search");} )
+    .autocomplete("instance")._renderItem = function (ul, item) {
+        var $li = $("<li>");
+
+        var BusDestination=$('#txtPrivateTaxiDestination').val(); //Get Value from Destination
+        if(item.origin !=BusDestination){    // Selected Item destination not show          
+        $li.addClass("searchItem");
+
+        $outerDiv = $("<div>");
+        $outerDiv.appendTo($li);
+
+        // $imageDiv = $("<div>");
+        // $imageDiv.addClass("contactImageDiv");
+        // $imageDiv.appendTo($outerDiv);
+
+        // $img = $("<img>");
+        // $img.addClass("contactImage");
+        // $img.attr("src", item.imgUrl);
+        // $img.appendTo($imageDiv);
+        
+        $name = $("<div>");
+        $name.addClass("nameDiv");
+        // $name.append(item.firstName + " " + item.lastName + "<br/><span style='font-style:italic'>" + item.origin + "</span>");
+        $name.append(item.origin + "<br><span class='fa fa-map-marker' style='color:green;font-style:italic; font-size:12px; padding-top:30xp;'>"+ " " + item.country + "</span>");
+        $name.appendTo($outerDiv);        
+        }     
+
+        $li.appendTo(ul);
+        
+        return  $li;
+    };
+
+
+    // Destinations
+    $("#txtPrivateTaxiDestination").autocomplete({
+        source: directions,
+        minLength: 0,
+        focus: function (event, ui) {
+            $("#txtPrivateTaxiDestination").val(ui.item.origin)
+            $("#bus_to").val(ui.item.id)
+
+            return false;
+        },
+        select: function (event, ui) {
+            // location.href = ui.item.imgUrl;
+            // return false;
+             $('#txtPrivateTaxiDate').focus() //set forcus to Date
+        },
+    }).bind('focus', function(){ $(this).autocomplete("search"); } )
+    .autocomplete("instance")._renderItem = function (ul, item) {
+        var $li = $("<li>");
+        var BusOrigin=$('#txtPrivateTaxiOrigin').val(); //Get Value from Destination
+        if(item.origin !=BusOrigin){    // Selected Item destination not show 
+            $li.addClass("searchItem");
+
+        $outerDiv = $("<div>");
+        $outerDiv.appendTo($li);
+
+        // $imageDiv = $("<div>");
+        // $imageDiv.addClass("contactImageDiv");
+        // $imageDiv.appendTo($outerDiv);
+
+        // $img = $("<img>");
+        // $img.addClass("contactImage");
+        // $img.attr("src", item.imgUrl);
+        // $img.appendTo($imageDiv);
+
+        $name = $("<div>");
+        $name.addClass("nameDiv");
+        // $name.append(item.firstName + " " + item.lastName + "<br/><span style='font-style:italic'>" + item.origin + "</span>");
+        $name.append(item.origin + "<br><span style='color:green;font-style:italic; font-size:12px; padding-top:30xp;'>" + item.country + "</span>");
+        
+        $name.appendTo($outerDiv);
+        }
+        
+        $li.appendTo(ul);
+        return $li;
+    };    
+})
+</script>
+<!-- // Private taxies -->
+
 
  
 </head>
@@ -374,7 +503,7 @@ function showSlides(n) {
     var date_input=$('input[name="date"]'); //our date input has the name "date"
     var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
     date_input.datepicker({
-      format: 'dd/mm/yyyy',
+      format: 'yyyy-mm-dd',
       container: container,
       todayHighlight: true,
       autoclose: true,
@@ -385,7 +514,7 @@ function showSlides(n) {
     var date_input=$('input[name="txtBusDate"]'); //our date input has the name "date"
     var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
     date_input.datepicker({
-      format: 'dd/mm/yyyy',
+      format: 'yyyy-mm-dd',
       container: container,
       todayHighlight: true,
       autoclose: true,
@@ -409,22 +538,6 @@ function truncateDate(date) {
 
   
 <script>
-
-// Carousel Auto-Cycle
-  $(document).ready(function() {
-    $('.carousel').carousel({
-      interval: 6000
-    })
-  });
-
-
-// News
-$(document).ready(function(ev){
-    $('#custom_carousel').on('slide.bs.carousel', function (evt) {
-      $('#custom_carousel .controls li.active').removeClass('active');
-      $('#custom_carousel .controls li:eq('+$(evt.relatedTarget).index()+')').addClass('active');
-    })
-});
 
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 

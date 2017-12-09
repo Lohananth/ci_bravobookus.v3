@@ -3,7 +3,7 @@
 <head>
 
 <?php include_once('inc/head_script.php'); ?>
-
+<link rel="shortcut icon" href="<?php echo base_url() ?>public/img/favicon.ico" type="image/x-icon">
 <!-- DateTime -->
 <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
 
@@ -13,33 +13,39 @@
 <script type="text/javascript">
   $(document).ready(function () {
     <?php 
-      echo "contacts=".$origins;
+      echo "directions=".$origins;
     ?>    
   
-   for (var i = 0; i < contacts.length; i++)
+   for (var i = 0; i < directions.length; i++)
     {
-        // contacts[i].value = contacts[i].firstName + " " + contacts[i].lastName + " " + contacts[i].origin;
+        // directions[i].value = directions[i].firstName + " " + directions[i].lastName + " " + directions[i].origin;
     
-        // $img='<img src="'+ contacts[i].imgUrl +'"/>';
-        // if(contacts[i].origin !="Batman"){
-            contacts[i].value = contacts[i].origin ;
+        // $img='<img src="'+ directions[i].imgUrl +'"/>';
+        // if(directions[i].origin !="Batman"){
+            directions[i].value = directions[i].origin  ;
+            $direct_id=directions[i].id ;
         // }
-        // alert(contacts[i].value);
+        // alert($direct_id);
         
     }    
       $("#txtBusOrigin").autocomplete({
-        source: contacts,
+        source: directions,
         // minLength: 0,
         minLength: 0,
         focus: function (event, ui) {
-            $("#txtBusOrigin").val(ui.item.origin)  
+            $("#txtBusOrigin").val(ui.item.origin) 
+            
             return false;
         },
         select: function (event, ui) {
             // location.href = ui.item.imgUrl;
             // return false;
+
             
-            $('#txtBusDestination').focus() 
+            $('#txtBusDestination').focus();
+            var id=ui.item.id;            
+             $('#bus_from').val(id);
+            // alert(ui.item.id);
         },
     }).bind('focus', function(){ $(this).autocomplete("search");} )
     .autocomplete("instance")._renderItem = function (ul, item) {
@@ -76,7 +82,7 @@
 
     // Destinations
     $("#txtBusDestination").autocomplete({
-        source: contacts,
+        source: directions,
         minLength: 0,
         focus: function (event, ui) {
             $("#txtBusDestination").val(ui.item.origin)
@@ -87,6 +93,9 @@
             // location.href = ui.item.imgUrl;
             // return false;
              $('#txtBusDate').focus() //set forcus to Date
+
+              var id=ui.item.id;            
+             $('#bus_to').val(id);
         },
     }).bind('focus', function(){ $(this).autocomplete("search"); } )
     .autocomplete("instance")._renderItem = function (ul, item) {
@@ -125,26 +134,29 @@
 <script type="text/javascript">
   $(document).ready(function () {
     <?php 
-      echo "contacts=".$origins;
+      echo "directions=".$origins;
     ?>    
   
-   for (var i = 0; i < contacts.length; i++)
+   for (var i = 0; i < directions.length; i++)
     {
-        // contacts[i].value = contacts[i].firstName + " " + contacts[i].lastName + " " + contacts[i].origin;
+        // directions[i].value = directions[i].firstName + " " + directions[i].lastName + " " + directions[i].origin;
     
-        // $img='<img src="'+ contacts[i].imgUrl +'"/>';
-        // if(contacts[i].origin !="Batman"){
-            contacts[i].value = contacts[i].origin ;
+        // $img='<img src="'+ directions[i].imgUrl +'"/>';
+        // if(directions[i].origin !="Batman"){
+            directions[i].value = directions[i].origin ;
+            // directions[i].value=directions[i].id;
         // }
-        // alert(contacts[i].value);
+        // alert(directions[i].value);
         
     }    
       $("#txtPrivateTaxiOrigin").autocomplete({
-        source: contacts,
+        source: directions,
         // minLength: 0,
         minLength: 0,
         focus: function (event, ui) {
-            $("#txtPrivateTaxiOrigin").val(ui.item.origin)  
+            $("#txtPrivateTaxiOrigin").val(ui.item.origin) 
+            // $("#bus_from").val(ui.item.id)
+
             return false;
         },
         select: function (event, ui) {
@@ -188,10 +200,11 @@
 
     // Destinations
     $("#txtPrivateTaxiDestination").autocomplete({
-        source: contacts,
+        source: directions,
         minLength: 0,
         focus: function (event, ui) {
             $("#txtPrivateTaxiDestination").val(ui.item.origin)
+            $("#bus_to").val(ui.item.id)
 
             return false;
         },
@@ -513,7 +526,8 @@ function showSlides(n) {
     var date_input=$('input[name="date"]'); //our date input has the name "date"
     var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
     date_input.datepicker({
-      format: 'dd/mm/yyyy',
+      // format: 'dd/mm/yyyy',
+      format: 'yyyy-mm-dd',
       container: container,
       todayHighlight: true,
       autoclose: true,
@@ -523,8 +537,10 @@ function showSlides(n) {
     $(document).ready(function(){
     var date_input=$('input[name="txtBusDate"]'); //our date input has the name "date"
     var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+
+
     date_input.datepicker({
-      format: 'dd/mm/yyyy',
+      format: 'yyyy-mm-dd',
       container: container,
       todayHighlight: true,
       autoclose: true,
@@ -532,10 +548,16 @@ function showSlides(n) {
     })
 
     $('#date').datepicker('setStartDate', truncateDate(new Date())); // <-- SO DOES THIS
+
+
   });
+
+   
+
     // Icon click
     $('#btnBusShowCalendar').on('click',function(){ 
-      $('#txtBusDate').focus()    
+      $('#txtBusDate').focus()  
+       
     });
 
 
@@ -544,7 +566,7 @@ function showSlides(n) {
     var date_input_PrivateTaxiDate=$('input[name="txtPrivateTaxiDate"]'); //our date input has the name "date"
     var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
     date_input_PrivateTaxiDate.datepicker({
-      format: 'dd/mm/yyyy',
+      format: 'yyyy-mm-dd',
       container: container,
       todayHighlight: true,
       autoclose: true,
@@ -552,7 +574,7 @@ function showSlides(n) {
     })
 
     $('#txtPrivateTaxiDate').datepicker({
-      format: "dd/mm/yyyy"
+      format: "yyyy-mm-dd"
     }).on('change', function(){
         $('.datepicker').hide();
     });

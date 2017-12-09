@@ -8,6 +8,8 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
 }
 
  ?>
+ <link rel="shortcut icon" href="<?php echo base_url() ?>public/img/favicon.ico" type="image/x-icon">
+ 
 <title><?php echo $title; ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

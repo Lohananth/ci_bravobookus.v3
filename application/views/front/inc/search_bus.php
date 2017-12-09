@@ -28,7 +28,14 @@
 </div>
 
 <div class="col-md-12">
-      <form class="route-finder-form" action="<?php echo site_url(); ?>search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+      <form class="route-finder-form" action="<?php echo site_url(); ?>search" accept-charset="UTF-8" method="get">
+        <!-- <input name="utf8" type="hidden" value="✓"> -->
+        <input name="utf8" type="hidden" value="✓">
+        <input type="hidden" name="from" value="<?php echo $from; ?>" id="bus_from">
+        <input type="hidden" name="to" value="<?php echo $to; ?>" id="bus_to">
+        <!-- <input type="hidden" name="departure" id="bus_on_date"> -->
+        <input type="hidden" name="type" id="type" value="VehicleTypeBus">
+
         <div class="row">
           <div class="col-md-3 col-sm-12 subject">
             <div class="input-group origin-box">
@@ -54,7 +61,7 @@
             </div>
           </div>
           <div class="col-md-3 col-sm-12">
-          	<?php $now_day=date("d/m/Y"); ?>
+          	<?php $now_day=date("Y-m-d"); ?>
             <div class="input-group date-box">
               <input id="txtBusDate" name="txtBusDate" value="<?php echo $book_date; ?>" class="form-control search-control pull-left" type="text"  placeholder="<?php echo $now_day; ?>" readonly="">
               <span class="input-group-btn">
@@ -71,14 +78,14 @@
         </div>
 </form>    
 
-<form class="hidden" id="bus-ticket-search-hidden" action="<?php echo site_url(); ?>search" accept-charset="UTF-8" method="get">
+<!-- <form class="hidden" id="bus-ticket-search-hidden" action="#" accept-charset="UTF-8" method="get">
         <input name="utf8" type="hidden" value="✓">
         <input type="hidden" name="from" id="bus_from">
         <input type="hidden" name="to" id="bus_to">
         <input type="hidden" name="on_date" id="bus_on_date">
         <input type="hidden" name="type" id="type" value="VehicleTypeBus">
         
-</form>  
+</form>  --> 
 
 </div>
 </section>
