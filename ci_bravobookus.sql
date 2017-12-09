@@ -6891,9 +6891,6 @@ INSERT INTO `user_groups` (`id_group`, `level`, `group_name`, `status`, `descrip
 --
 -- Stand-in structure for view `vs_views`
 --
-CREATE TABLE `vs_views` (
-);
-
 -- --------------------------------------------------------
 
 --
@@ -7002,7 +6999,7 @@ CREATE TABLE `v_ticket` (
 --
 DROP TABLE IF EXISTS `vs_views`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vs_views`  AS  select `tbl_vehicle_schedule`.`id` AS `id`,`tbl_vehicle_schedule`.`local_price` AS `local_price`,`tbl_vehicle_schedule`.`foreigner_price` AS `foreigner_price`,`tbl_vehicle_schedule`.`travel_duration` AS `travel_duration`,`tbl_vehicle_schedule`.`status` AS `status`,`tbl_vehicle`.`vehicle_name` AS `vehicle_name`,`tbl_origin`.`origin` AS `origin`,`tbl_origin1`.`origin` AS `destination`,`tbl_departure_time`.`departure_time` AS `departure_time1`,`tbl_company`.`company_name` AS `company_name`,`tbl_vehicle`.`company_id` AS `company_id` from (((((`tbl_vehicle_schedule` join `tbl_vehicle` on((`tbl_vehicle_schedule`.`v_id` = `tbl_vehicle`.`id`))) join `tbl_origin` on((`tbl_vehicle_schedule`.`origin` = `tbl_origin`.`id`))) join `tbl_origin` `tbl_origin1` on((`tbl_vehicle_schedule`.`destination` = `tbl_origin1`.`id`))) join `tbl_departure_time` on((`tbl_vehicle_schedule`.`departure_time` = `tbl_departure_time`.`id`))) join `tbl_company` on((`tbl_company`.`id` = `tbl_vehicle`.`company_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vs_views`  AS  select `tbl_vehicle_schedule`.`id` AS `id`,`tbl_vehicle_schedule`.`local_price` AS `local_price`,`tbl_vehicle_schedule`.`foreigner_price` AS `foreigner_price`,`tbl_vehicle_schedule`.`travel_duration` AS `travel_duration`,`tbl_vehicle_schedule`.`status` AS `status`,`tbl_vehicle`.`vehicle_name` AS `vehicle_name`,`tbl_origin`.`origin` AS `origin`,`tbl_origin1`.`origin` AS `destination`,`tbl_departure_time`.`departure_time` AS `departure_time1`,`tbl_company`.`company_name` AS `company_name`,`tbl_vehicle`.`company_id` AS `company_id` from (((((`tbl_vehicle_schedule` join `tbl_vehicle` on((`tbl_vehicle_schedule`.`v_id` = `tbl_vehicle`.`v_id`))) join `tbl_origin` on((`tbl_vehicle_schedule`.`origin` = `tbl_origin`.`id`))) join `tbl_origin` `tbl_origin1` on((`tbl_vehicle_schedule`.`destination` = `tbl_origin1`.`id`))) join `tbl_departure_time` on((`tbl_vehicle_schedule`.`departure_time` = `tbl_departure_time`.`id`))) join `tbl_company` on((`tbl_company`.`id` = `tbl_vehicle`.`company_id`))) ;
 
 -- --------------------------------------------------------
 
