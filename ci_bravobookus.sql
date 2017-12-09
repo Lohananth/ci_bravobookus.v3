@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2017 at 07:39 AM
+-- Generation Time: Dec 09, 2017 at 07:34 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -4474,7 +4474,7 @@ INSERT INTO `tbl_company` (`id`, `company_id`, `User_ID`, `company_name`, `phone
 (15, 15, 0, 'Cambo Express', '(+855)70877727/078877727', 'info@i1booking.com', 'No. 2, St. 230 Corner St. 215 (At Sokimix Station In Kampot Express Office), Phnom Penh City, Kingdom of Cambodia.', 'Cambo Express', 'https://i1booking.com/bus-comid-19/', 'CAMBO Express is a small but unique van company since it provides transportation from Phnom Penh to Kampong Cham, which is a destination that only few companies does. Cambo Express offers 2 times departure daily to Kampong Cham from Phnom Penh.', 'Passengers should be at the terminal 15 minutes before departure. Tickets are VOID if passengers do not arrive on time. Children over 5 years of age require tickets. Passengers availing Pick Up services should be ready at the hotel or guesthouse''s lobby an hour before departure. Passengers MUST present printed Online Tickets for inspection at the terminal prior to boarding. Smoking inside the bus is prohibited. Pets, weapons, illegal products and substances, and hazardous materials are not allowed on the bus. Strong smelling food items (i.e., durian, prohok) are not allowed on board the bus.', 'Purchased tickets are NOT refundable. However, it can be rescheduled. For ticket rescheduling, passengers must inform I1Booking by email at info@i1booking.com at least 48 hours before the departure time.', 'profile_cambo-express-compressor.png', '								<iframe src="https://www.google.com/maps/d/embed?mid=1XR0SOhYQxugXuR2dnVQ9GE4Wqyc" width="100%" height="480"></iframe>							', 1, 14, NULL, NULL, '2'),
 (16, 16, 13, 'VGS Express', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'VGS Express.jpg', NULL, 1, 22, NULL, NULL, '3'),
 (17, 17, 15, 'Capitol Express', '+85570999666', 'i1bookbus@gmail.com', NULL, NULL, 'www.i1booking.com', NULL, NULL, NULL, 'capitol_bus_logo.jpg', NULL, 1, 23, NULL, NULL, '4'),
-(18, 18, 13, 'AVT Express', '+855 70 87 77 27', 'info@i1booking.com', '579 Hup Quan Street\r\nMondul 1 Village, Sangkat\r\nSvaydangkum - Phsar Kandal - Kandal Village \r\nSiem Reap - Cambodia.', 'AVT Express', 'http://www.i1booking.com/bus-comid-23.html', '<p>AVT - ASIA VAN TRANSFER Co.Ltd</p>\r\n\r\n<p>AVT is a transport company based in Siem Reap Cambodia. We connect Siem Reap (Cambodia) and Don Det (4000 islands, Laos) in a shorter time, safer, comfortable and easy way. We use the new road of 350 km, which has just been finished, brand new, new asfalt, and saving more than 10 hours of trip than going by the &quot;old route&quot; which is almost 800km .We provide you with an excellent service, we use 12 passenger van vehicle, high quality staff, professional drivers, wi-fi service on the places we stop (agency in siem reap, riverside stung treng, border) air conditioner, water, Free pick up service from Guesthouse, and we will try to make it for you the best van trip you have ever had.</p>', '<p>Siem Reap - Angkor Wat - Cambodia - Don Det - 4000 Islands - Lao Pdr . We connect Siem Reap and 4000 Islands, Don Det in just 7 hours, we use minibus or minivan of 12 passengers, we offer a proffesional service, and using our route you can also go to Preah Vihear, Stung Treng, Banloung, Kratie. AVT - Asia Van Transfer, the best way to travel from Siem Reap, Cambodia, to Preah Vihear city, Stung Treng, Border of Laos and 4000 islands.</p>', NULL, 'bandera.png', '<p><iframe height="480" src="https://www.google.com/maps/d/embed?mid=1-n3f_QBe-OCSrBh8wGLzXnHo_wo" width="100%"></iframe></p>', 1, 24, NULL, NULL, '4'),
+(18, 18, 13, 'AVT Express', '+855 70 87 77 27', 'info@i1booking.com', '579 Hup Quan Street\r\nMondul 1 Village, Sangkat\r\nSvaydangkum - Phsar Kandal - Kandal Village \r\nSiem Reap - Cambodia.', 'AVT Express', 'http://www.i1booking.com/bus-comid-23.html', '<p>AVT - ASIA VAN TRANSFER Co.Ltd</p>\r\n\r\n<p>AVT is a transport company based in Siem Reap Cambodia. We connect Siem Reap (Cambodia) and Don Det (4000 islands, Laos) in a shorter time, safer, comfortable and easy way. We use the new road of 350 km, which has just been finished, brand new, new asfalt, and saving more than 10 hours of trip than going by the &quot;old route&quot; which is almost 800km .We provide you with an excellent service, we use 12 passenger van vehicle, high quality staff, professional drivers, wi-fi service on the places we stop (agency in siem reap, riverside stung treng, border) air conditioner, water, Free pick up service from Guesthouse, and we will try to make it for you the best van trip you have ever had.</p>', '<p>Siem Reap - Angkor Wat - Cambodia - Don Det - 4000 Islands - Lao Pdr . We connect Siem Reap and 4000 Islands, Don Det in just 7 hours, we use minibus or minivan of 12 passengers, we offer a proffesional service, and using our route you can also go to Preah Vihear, Stung Treng, Banloung, Kratie. AVT - Asia Van Transfer, the best way to travel from Siem Reap, Cambodia, to Preah Vihear city, Stung Treng, Border of Laos and 4000 islands.</p>', NULL, 'large_vet-express.png', '<p><iframe height="480" src="https://www.google.com/maps/d/embed?mid=1-n3f_QBe-OCSrBh8wGLzXnHo_wo" width="100%"></iframe></p>', 1, 24, NULL, NULL, '4'),
 (19, 19, 0, 'PRIVATE TAXI', '+85570877727/+85511877727', 'info@i1booking.com', 'Siem reap ', 'i1booking.com', 'www.i1booking.com', 'Taxi type : Lexus RX300, Hight Lander2004, Toyota Camary2003', 'Costmers have to pay at Tourist Association $3 for 1pax,   Toyota Camry 4 seats + safety Belts', 'Purchases tickets are non-refundable but reschedulable. - For reschedule, passenger must inform to us 5 working hours before the bus departures.', 'taxi-service.jpg', '															', 1, 25, NULL, NULL, '4'),
 (20, 20, 0, 'Hang Tep Express', '+85570877727/+85511877727', 'info@i1booking.com', '<p>Street 7Makara&ccedil;,Watbo Village,Sala Komreuk commone, Siem reap City</p>', 'Hang tep', 'www.i1booking.com', '<p>Even if it is a government-operated company, you still may face a usual visa scam when you are brought to a &lsquo;visa agency&rsquo; and are forced to obtain your visa to Cambodia there &ndash; obviously at a higher rate. The official visa fee for a tourist visa is USD30 &ndash; that is the amount which you pay while obtaining your visa on arrival at the border (though at land borders you will be inevitably asked to pay some THB100-200 extra for &lsquo;speeding the process up&rsquo; &ndash; it is not actually necessary to do so). Have one passport-sized photo to attach to your application.<br />\r\nIf you want to avoid these annoying situation at the travel agency or at the border, apply for your Cambodian visa online through the official web-site of Ministry of Foreign Affaires and International Cooperation of Kingdom of Cambodia. The e-visa costs USD30 plus USD7 for processing your application. It is accepted at the major international borders of Cambodia, including Pnom Penh International Airport, Siem Reap International Airport, Poipet (Banteay Meanchey), Cham Yeam (Koh Kong) and Bavet (Svay Reing).<br />\r\nMost probably you will spend about an hour at the &lsquo;tour agency&rsquo; as the majority of the passengers of the international bus usually seem unaware of this scam or just choose to pay more. It is absolutely useless to argue, so be patient.</p>', '<div class="tab-pane fade active in" id="notice-section">\r\n<div class="row">\r\n<div class="col-xs-12">\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Seat # A1 is known to be narrow, small, and not much leg room.</li>\r\n	<li>Passengers should be at the terminal 15 minutes before departure.</li>\r\n	<li>Tickets are VOID if passengers do not arrive on time.</li>\r\n	<li>Children over 5 years of age require tickets.</li>\r\n	<li>Passengers availing Pick Up services should be ready at the hotel or guesthouse''s lobby an hour before departure.</li>\r\n	<li>Passengers MUST present printed Online Tickets for inspection at the terminal prior to boarding.</li>\r\n	<li>Smoking inside the bus is prohibited.</li>\r\n	<li>Pets, weapons, illegal products and substances, and hazardous materials are not allowed on the bus.</li>\r\n	<li>Strong smelling food items (i.e., durian, prohok) are not allowed on board the bus.</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n</div>\r\n</div>\r\n</div>', '<div class="tab-pane fade active in" id="cancellation-section">\r\n<div class="row">\r\n<div class="col-xs-12">\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Purchased tickets are NOT refundable. However, it can be rescheduled.</li>\r\n	<li>For ticket rescheduling, passengers must inform I1Booking by email at info@i1booking.com at least 48 hours before the departure time.</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n</div>\r\n</div>\r\n</div>', 'Hang-Tep-Express.jpg', NULL, 1, 0, 'Change Bus at border', '<div class="tab-pane fade active in" id="cancellation-section">\r\n<div class="row">\r\n<div class="col-xs-12">&nbsp;\r\n<p>&nbsp;</p>\r\n</div>\r\n</div>\r\n</div>', '3'),
 (21, 21, 0, 'Olympic Express', '+855 16 266 011 / +855 76 8700 070 / +855 88 787 15 15 / +855 92 86 87 82', 'info@i1booking.com', '<p>No. 70, Preah Monireth Blvd., East of Visalsok Hospital 200m</p>', NULL, NULL, NULL, NULL, NULL, '11115646_358420764362756_5416676974470505129_n.jpg', NULL, 1, 1, NULL, NULL, '4'),
@@ -5946,61 +5946,63 @@ CREATE TABLE `tbl_vehicle` (
   `inspectors` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `amenities` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `status` int(11) DEFAULT NULL,
-  `seats` int(11) DEFAULT NULL
+  `seats` int(11) DEFAULT NULL,
+  `feature_image` varchar(250) COLLATE utf8_unicode_ci DEFAULT 'default.jpg',
+  `gallery_image` varchar(250) COLLATE utf8_unicode_ci DEFAULT 'default'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_vehicle`
 --
 
-INSERT INTO `tbl_vehicle` (`v_id`, `company_id`, `code`, `vehicle_name`, `vehicle_type`, `drivers`, `inspectors`, `amenities`, `status`, `seats`) VALUES
-(18, 1, 'BUS002', 'Nattakan', 12, '10', '4', '<li><i class="im im-wi-fi"></i><span class="booking-item-feature-title">Wi-Fi Internet</span> </li> ', 1, 1),
-(19, 1, 'BUS03', 'BUS03', 13, '9', '4', '11,10,8,6,4,9,12,7,5,3,2', 1, NULL),
-(20, 14, 'VAN01', 'VAN01', 4, '9', '4', '1', 1, NULL),
-(21, 6, 'UL01', 'Mini bus Giant', 23, '9', '4', '11,8,6,12,7,2,1', 1, NULL),
-(22, 6, 'Night Bus 01', 'Night Bus 30', 11, '10', '4', '11,8,6,12,5,2,1', 1, NULL),
-(23, 13, 'BUS42', 'BUS 42', 7, '11', '4', '1,2', 1, NULL),
-(24, 2, 'VET01', 'Sleeping', 11, '', '', '2,5', 1, NULL),
-(25, 2, 'VET02', 'Luxury Bus', 5, '', '', '1,2,5', 1, NULL),
-(26, 2, 'VET03', 'VIP VAN', 9, '', '', '1,2', 1, NULL),
-(27, 2, 'VET04', 'Hotel Bus', 10, '11', '4', '2,5', 1, NULL),
-(28, 4, 'VAN', 'VAN', 9, '', '', '1,2', 1, NULL),
-(29, 14, 'BUS42', 'BUS 42', 7, '11', '4', '2,1', 1, NULL),
-(30, 2, 'VAN', 'VAN', 4, '9', '4', '11,8,6,2', 1, NULL),
-(31, 12, 'VAN', 'VAN', 9, '13', '4', '1,2', 1, NULL),
-(32, 12, 'Night Bus', 'Night Bus', 6, '12', '4', '2', 1, NULL),
-(37, 10, '001', 'Meyhong', 1, '13', '', '1,2,5,6', 1, NULL),
-(38, 10, '002', 'Meyhong', 9, '13', '', '1,2', 1, NULL),
-(39, 16, '77777', 'Meanchey Express', 9, '11', '', '1,2', 1, NULL),
-(40, 18, '555', 'Cambodia Post', 9, '11', '', '1,2', 1, NULL),
-(42, 11, '0006', 'SAPACO', 1, '9', '', '1,2,6', 1, NULL),
-(43, 8, '000089', 'Kumho Samco', 7, '9', '', '1,2,6', 1, NULL),
-(45, 21, '8888', 'VGS EXPRESS', 9, '9', '4', '1,2,6', 1, NULL),
-(46, 1, '8888', 'Private VIP Taxi', 12, '', '', '2', 1, NULL),
-(50, 2, '1111', 'Bus', 7, '11', '4', '11', 1, NULL),
-(51, 3, '2222', 'VAN', 24, '9', '4', '11', 1, NULL),
-(52, 4, '3333', 'VIP Van', 24, '9', '4', '11,2', 1, NULL),
-(53, 5, '9999', 'BUS', 7, '9', '', '11', 1, NULL),
-(54, 6, '8888', 'VAN', 24, '9', '4', '11', 1, 15),
-(57, 15, '999222', 'Direct bus', 13, '', '', '2', 1, NULL),
-(60, 2, 'VET05', '28 Sofa Bus', 8, '9', '4', '1,5', 1, NULL),
-(61, 2, 'VET06', 'VIP Mini Bus', 8, '9', '4', '1,2', 1, NULL),
-(62, 2, 'VET09', 'Mini van', 14, 'A', 'A', '2', 1, NULL),
-(63, 2, 'VET07', 'Mini Van Transite', 15, 'A', 'A', '2', 1, NULL),
-(67, 7, 'Green Eagle Express', 'VAN', 9, 'A', 'A', '3,1', 1, NULL),
-(69, 2, 'STT01', 'Normal Bus', 1, '', '', '1', 1, NULL),
-(72, 7, 'STT02', 'VIP Van', 4, '', '', '1,6', 1, NULL),
-(73, 23, '988888', 'AVT-ASIA', 9, '10', '4', '2', 1, NULL),
-(74, 8, 'BUBA001', 'Sleeping Bus', 16, 'driver', 'Inspectors', '5,2', 1, NULL),
-(75, 9, 'BUBA002', 'Hotel Bus', 18, 'driver', 'Inspectors', '5,2', 1, NULL),
-(76, 11, 'BUBA003', 'Sleeping Bus', 17, 'driver', 'Inspectors', '5,2', 1, NULL),
-(77, 12, 'BUBA004', 'Hotel Bus', 19, 'driver', 'Inspectors', '5,2', 1, NULL),
-(78, 2, 'BUBA005', 'Hotel Bus', 20, 'driver', 'Inspectors', '5,2', 1, NULL),
-(79, 13, 'BUVA001', 'Speed Boat (Go and Back)', 21, '9', '4', '2', 1, NULL),
-(80, 2, 'Tss', 'Hotel bus and Sleeping Bus', 1, '', '', '6', 0, NULL),
-(81, 6, 'Giant Daytime', 'Bus 42 Seats', 7, '10', '4', '11,8,6,12,7,5,3,2,1', 1, NULL),
-(82, 9, '1', 'Bus 42 Seats', 7, '11', '4', '11,8,6,12,5,3,2,1', 1, NULL),
-(83, 9, '2', 'VIP VAN 11 Seats', 26, '10', '4', '11,8,6,12,2,1', NULL, NULL);
+INSERT INTO `tbl_vehicle` (`v_id`, `company_id`, `code`, `vehicle_name`, `vehicle_type`, `drivers`, `inspectors`, `amenities`, `status`, `seats`, `feature_image`, `gallery_image`) VALUES
+(18, 1, 'BUS002', 'Nattakan', 12, '10', '4', '<li><i class="im im-wi-fi"></i><span class="booking-item-feature-title">Wi-Fi Internet</span> </li> ', 1, 1, 'default.jpg', 'default'),
+(19, 1, 'BUS03', 'BUS03', 13, '9', '4', '11,10,8,6,4,9,12,7,5,3,2', 1, NULL, 'default.jpg', 'default'),
+(20, 14, 'VAN01', 'VAN01', 4, '9', '4', '1', 1, NULL, 'default.jpg', 'default'),
+(21, 6, 'UL01', 'Mini bus Giant', 23, '9', '4', '11,8,6,12,7,2,1', 1, NULL, 'default.jpg', 'default'),
+(22, 6, 'Night Bus 01', 'Night Bus 30', 11, '10', '4', '11,8,6,12,5,2,1', 1, NULL, 'default.jpg', 'default'),
+(23, 13, 'BUS42', 'BUS 42', 7, '11', '4', '1,2', 1, NULL, 'default.jpg', 'default'),
+(24, 2, 'VET01', 'Sleeping', 11, '', '', '2,5', 1, NULL, 'default.jpg', 'default'),
+(25, 2, 'VET02', 'Luxury Bus', 5, '', '', '1,2,5', 1, NULL, 'default.jpg', 'default'),
+(26, 2, 'VET03', 'VIP VAN', 9, '', '', '1,2', 1, NULL, 'default.jpg', 'default'),
+(27, 2, 'VET04', 'Hotel Bus', 10, '11', '4', '2,5', 1, NULL, 'default.jpg', 'default'),
+(28, 4, 'VAN', 'VAN', 9, '', '', '1,2', 1, NULL, 'default.jpg', 'default'),
+(29, 14, 'BUS42', 'BUS 42', 7, '11', '4', '2,1', 1, NULL, 'default.jpg', 'default'),
+(30, 2, 'VAN', 'VAN', 4, '9', '4', '11,8,6,2', 1, NULL, 'default.jpg', 'default'),
+(31, 12, 'VAN', 'VAN', 9, '13', '4', '1,2', 1, NULL, 'default.jpg', 'default'),
+(32, 12, 'Night Bus', 'Night Bus', 6, '12', '4', '2', 1, NULL, 'default.jpg', 'default'),
+(37, 10, '001', 'Meyhong', 1, '13', '', '1,2,5,6', 1, NULL, 'default.jpg', 'default'),
+(38, 10, '002', 'Meyhong', 9, '13', '', '1,2', 1, NULL, 'default.jpg', 'default'),
+(39, 16, '77777', 'Meanchey Express', 9, '11', '', '1,2', 1, NULL, 'default.jpg', 'default'),
+(40, 18, '555', 'Cambodia Post', 9, '11', '', '1,2', 1, NULL, 'default.jpg', 'default'),
+(42, 11, '0006', 'SAPACO', 1, '9', '', '1,2,6', 1, NULL, 'default.jpg', 'default'),
+(43, 8, '000089', 'Kumho Samco', 7, '9', '', '1,2,6', 1, NULL, 'default.jpg', 'default'),
+(45, 21, '8888', 'VGS EXPRESS', 9, '9', '4', '1,2,6', 1, NULL, 'default.jpg', 'default'),
+(46, 1, '8888', 'Private VIP Taxi', 12, '', '', '2', 1, NULL, 'default.jpg', 'default'),
+(50, 2, '1111', 'Bus', 7, '11', '4', '11', 1, NULL, 'default.jpg', 'default'),
+(51, 3, '2222', 'VAN', 24, '9', '4', '11', 1, NULL, 'default.jpg', 'default'),
+(52, 4, '3333', 'VIP Van', 24, '9', '4', '11,2', 1, NULL, 'default.jpg', 'default'),
+(53, 5, '9999', 'BUS', 7, '9', '', '11', 1, NULL, 'default.jpg', 'default'),
+(54, 6, '8888', 'VAN', 24, '9', '4', '11', 1, 15, 'default.jpg', 'default'),
+(57, 15, '999222', 'Direct bus', 13, '', '', '2', 1, NULL, 'default.jpg', 'default'),
+(60, 2, 'VET05', '28 Sofa Bus', 8, '9', '4', '1,5', 1, NULL, 'default.jpg', 'default'),
+(61, 2, 'VET06', 'VIP Mini Bus', 8, '9', '4', '1,2', 1, NULL, 'default.jpg', 'default'),
+(62, 2, 'VET09', 'Mini van', 14, 'A', 'A', '2', 1, NULL, 'default.jpg', 'default'),
+(63, 2, 'VET07', 'Mini Van Transite', 15, 'A', 'A', '2', 1, NULL, 'default.jpg', 'default'),
+(67, 7, 'Green Eagle Express', 'VAN', 9, 'A', 'A', '3,1', 1, NULL, 'default.jpg', 'default'),
+(69, 2, 'STT01', 'Normal Bus', 1, '', '', '1', 1, NULL, 'default.jpg', 'default'),
+(72, 7, 'STT02', 'VIP Van', 4, '', '', '1,6', 1, NULL, 'default.jpg', 'default'),
+(73, 23, '988888', 'AVT-ASIA', 9, '10', '4', '2', 1, NULL, 'default.jpg', 'default'),
+(74, 8, 'BUBA001', 'Sleeping Bus', 16, 'driver', 'Inspectors', '5,2', 1, NULL, 'default.jpg', 'default'),
+(75, 9, 'BUBA002', 'Hotel Bus', 18, 'driver', 'Inspectors', '5,2', 1, NULL, 'default.jpg', 'default'),
+(76, 11, 'BUBA003', 'Sleeping Bus', 17, 'driver', 'Inspectors', '5,2', 1, NULL, 'default.jpg', 'default'),
+(77, 12, 'BUBA004', 'Hotel Bus', 19, 'driver', 'Inspectors', '5,2', 1, NULL, 'default.jpg', 'default'),
+(78, 2, 'BUBA005', 'Hotel Bus', 20, 'driver', 'Inspectors', '5,2', 1, NULL, 'default.jpg', 'default'),
+(79, 13, 'BUVA001', 'Speed Boat (Go and Back)', 21, '9', '4', '2', 1, NULL, 'default.jpg', 'default'),
+(80, 2, 'Tss', 'Hotel bus and Sleeping Bus', 1, '', '', '6', 0, NULL, 'default.jpg', 'default'),
+(81, 6, 'Giant Daytime', 'Bus 42 Seats', 7, '10', '4', '11,8,6,12,7,5,3,2,1', 1, NULL, 'default.jpg', 'default'),
+(82, 9, '1', 'Bus 42 Seats', 7, '11', '4', '11,8,6,12,5,3,2,1', 1, NULL, 'default.jpg', 'default'),
+(83, 9, '2', 'VIP VAN 11 Seats', 26, '10', '4', '11,8,6,12,2,1', NULL, NULL, 'default.jpg', 'default');
 
 -- --------------------------------------------------------
 
@@ -6489,11 +6491,11 @@ INSERT INTO `tbl_vehicle_schedule` (`id`, `origin`, `destination`, `v_id`, `loca
 (613, 1, 2, 40, '10.00', '10.00', 44, 5, NULL),
 (614, 1, 20, 40, '8.00', '8.00', 25, 4, NULL),
 (615, 1, 20, 40, '8.00', '8.00', 37, 4, NULL),
-(616, 1, 2, 82, '10.00', '13.00', 25, 6, NULL),
-(617, 1, 2, 82, '10.00', '13.00', 26, 6, 1),
+(616, 1, 2, 21, '10.00', '13.00', 25, 6, NULL),
+(617, 1, 2, 20, '10.00', '13.00', 26, 6, 1),
 (618, 1, 2, 82, '10.00', '13.00', 28, 6, 1),
-(619, 1, 2, 82, '10.00', '13.00', 22, 6, 1),
-(620, 1, 4, 82, '20.00', '22.00', 25, 11, 1),
+(619, 1, 2, 18, '10.00', '13.00', 22, 6, 1),
+(620, 1, 4, 19, '20.00', '22.00', 25, 11, 1),
 (621, 2, 1, 82, '10.00', '13.00', 25, 6, 1),
 (622, 2, 1, 82, '10.00', '13.00', 26, 6, 1),
 (623, 2, 1, 82, '10.00', '13.00', 16, 6, 1),
@@ -6672,7 +6674,8 @@ INSERT INTO `test_add` (`id`, `field1`, `field2`, `field3`, `field4`) VALUES
 (17, 'AK', '<li><i class="im im-wi-fi"></i><span class="booking-item-feature-title">Wi-Fi Internet</span> </li>\r\n <li><i class="im im-parking"></i><span class="booking-item-feature-title">Parking</span>   </li>\r\n  <li><i class="im im-plane"></i><span class="booking-item-feature-title">Airport Transport</span> </li>\r\n <li><i class="im im-bus"></i><span class="booking-item-feature-title">Shuttle Bus Service</span> </li>\r\n                        <li><i class="im im-fitness"></i><span class="booking-item-feature-title">Fitness Center</span>\r\n                        </li>\r\n                        <li><i class="im im-pool"></i><span class="booking-item-feature-title">Pool</span>\r\n                        </li>\r\n                        <li><i class="im im-spa"></i><span class="booking-item-feature-title">SPA</span>\r\n                        </li>\r\n                        <li><i class="im im-restaurant"></i><span class="booking-item-feature-title">Restaurant</span>\r\n                        </li>\r\n                        <li><i class="im im-wheel-chair"></i><span class="booking-item-feature-title">Wheelchair Access</span>\r\n                        </li>\r\n                        <li><i class="im im-business-person"></i><span class="booking-item-feature-title">Business Center</span>\r\n                        </li>\r\n                        <li><i class="im im-children"></i><span class="booking-item-feature-title">Children Activites</span>\r\n                        </li>\r\n                        <li><i class="im im-casino"></i><span class="booking-item-feature-title">Casino & Gambling</span>\r\n                        </li>\r\n                        <li><i class="im im-bar"></i><span class="booking-item-feature-title">Bar/Lounge</span>\r\n                        </li>', 'AK', NULL),
 (18, 'AK', '<li><i class="im im-wi-fi"></i><span class="booking-item-feature-title">Wi-Fi Internet</span> </li>\r\n <li><i class="im im-plane"></i><span class="booking-item-feature-title">Airport Transport</span> </li> <li><i class="im im-bus"></i><span class="booking-item-feature-title">Shuttle Bus Service</span> </li>', 'AK', NULL),
 (19, NULL, ' <li><i class="im im-parking"></i><span class="booking-item-feature-title">Parking</span>   </li> <li><i class="im im-restaurant"></i><span class="booking-item-feature-title">Restaurant</span></li><li><i class="im im-spa"></i><span class="booking-item-feature-title">SPA</span></li><li><i class="im im-wheel-chair"></i><span class="booking-item-feature-title">Wheelchair Access</span></li>', NULL, NULL),
-(20, NULL, '<li><i class="im im-wi-fi"></i><span class="booking-item-feature-title">Wi-Fi Internet</span> </li> <li><i class="im im-bus"></i><span class="booking-item-feature-title">Shuttle Bus Service</span> </li><li><i class="im im-pool"></i><span class="booking-item-feature-title">Pool</span> </li>', NULL, NULL);
+(20, NULL, '<li><i class="im im-wi-fi"></i><span class="booking-item-feature-title">Wi-Fi Internet</span> </li> <li><i class="im im-bus"></i><span class="booking-item-feature-title">Shuttle Bus Service</span> </li><li><i class="im im-pool"></i><span class="booking-item-feature-title">Pool</span> </li>', NULL, NULL),
+(21, NULL, ' <li><i class="im im-parking"></i><span class="booking-item-feature-title">Parking</span>   </li> <li><i class="im im-bus"></i><span class="booking-item-feature-title">Shuttle Bus Service</span> </li> <li><i class="im im-restaurant"></i><span class="booking-item-feature-title">Restaurant</span></li>', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -7548,7 +7551,7 @@ ALTER TABLE `tbl_wing_tran`
 -- AUTO_INCREMENT for table `test_add`
 --
 ALTER TABLE `test_add`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `users`
 --
