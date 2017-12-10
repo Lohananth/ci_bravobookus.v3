@@ -68,25 +68,32 @@
 									<li class="nav-parent">
 										<a>
 											<i class="fa fa-taxi" aria-hidden="true"></i>
-											<span>Manage Vechicles</span>
+											<span>Manage Vehicles</span>
 										</a>
-										<ul class="nav nav-children">	
-											<li>
-												<a href="<?php echo site_url(); ?>vechicle-add.html" data-toggle="modal" data-target="#myVechicleAdd">
+										<ul class="nav nav-children">
+										<li>
+												<a href="<?php echo site_url(); ?>vehicles.html">
 													
 													<i class="fa fa-plus-circle" aria-hidden="true"></i> 
-													 Add Vechicles
+													 Vehicles
+												</a>
+											</li>	
+											<li>
+												<a href="<?php echo site_url(); ?>vehicle-add.html" data-toggle="modal" data-target="#myVechicleAdd">
+													
+													<i class="fa fa-plus-circle" aria-hidden="true"></i> 
+													 Add Vehicles
 												</a>
 											</li>								
 											<li>
-												<a href="<?php echo site_url(); ?>list-vechicles.html">
-													<i class="fa fa-list" aria-hidden="true"></i> Vechicles List
+												<a href="<?php echo site_url(); ?>list-vehicles.html">
+													<i class="fa fa-list" aria-hidden="true"></i> Vehicles List
 												</a>
 											</li>
 
 											<li>
 												<a href="<?php echo site_url(); ?>vechicle-blocked.html">
-													<i class="fa fa-ban" aria-hidden="true"></i>  Vechicles Blocked
+													<i class="fa fa-ban" aria-hidden="true"></i>  Vehicles Blocked
 												</a>
 											</li>
 																					

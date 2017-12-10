@@ -26,7 +26,7 @@
 					<h2 class="panel-title">Add New Vechicle</h2>
 				</header>
 				<div class="panel-body">
-					<form class="form-horizontal form-bordered" action="<?php echo site_url(); ?>Admin_dashboard/new_hotel/create" method="post">
+					<form class="form-horizontal" action="<?php echo site_url(); ?>Admin_dashboard/new_hotel/create" method="post">
 						<div class="form-group">
 							<label class="col-md-3 control-label">Company Name</label>
 							<div class="col-md-6">

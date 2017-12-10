@@ -61,25 +61,24 @@ $route['profile.html'] = 'admin/Admin_dashboard/profile';
 $route['invoice-print.html'] = 'admin/Admin_dashboard/invoice_print';
 
 
-// Hotels Management
-
-$route['list-hotels.html'] = 'Admin_dashboard/list_hotels';
-$route['add-hotels.html'] = 'Admin_dashboard/add_hotels';
-$route['remove-hotels.html'] = 'Admin_dashboard/removed_hotels';
-$route['blocked-hotels.html'] = 'Admin_dashboard/blocked_hotels';
 
 
 // Vechicles Management
 // list_vechicles
-$route['list-vechicles.html'] = 'admin/Admin_dashboard/list_vechicles';
-// list_vechicles_blocked
-$route['vechicle-blocked.html'] = 'admin/Admin_dashboard/list_vechicles_blocked';
+$route['vehicles.html'] = 'admin/vehicles/vehicles';
 
+$route['list-vehicles.html'] = 'admin/vehicles/vehicles/list_vehicles';
+
+// list_vechicles_blocked
+$route['vehicle-blocked.html'] = 'admin/vehicles/vehicles/list_vechicles_blocked';
+$route['vehicle-report.html']='admin/vehicles/vehicles/vehicle_report';
 //show_vechicles
 
 // $route['list-vechicles.html'] = 'admin/Admin_dashboard/show_vechicles';
 
-$route['add-vechicles.html'] = 'admin/Admin_dashboard/add_vechicle';
+$route['add-vehicles.html'] = 'admin/vehicles/vehicles/add';
+$route['edit-vehicles.html'] = 'admin/vehicles/vehicles/edit';
+$route['view-vehicles.html'] = 'admin/vehicles/vehicles/view';
 
 
 // Logout

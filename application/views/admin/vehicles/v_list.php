@@ -52,7 +52,8 @@
 			<table class="table table-bordered table-striped mb-none" id="datatable-tabletools" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">
 				<thead>
 					<tr>
-						<th>#No</th>
+						<th style="width: 50px;">#No</th>
+						<th style="width: 50px;">Logo</th>
 						<th>Comapny Name</th>
 						<th>Vechicle CODE</th>
 						<th>Vechicle Name</th>
@@ -67,18 +68,20 @@
 					foreach ($vechicles_list as $vch) {
 						?>
 						<tr class="gradeA">
-						<td width="23%"><?php echo $i; ?></td>
-						<td width="25%"><?php echo $vch['company_name']; ?></td>
+						<td><?php echo $i; ?></td>
+						<td ><a data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>#"><img style="width: 50px;" src="<?php echo base_url(); ?>uploads/vechicle/<?php echo $vch['logo']; ?>" alt="<?php echo $vch['company_name']; ?>"></a></td>
+						<td ><?php echo $vch['company_name']; ?></td>
 						<td><?php echo $vch['code']; ?></td>
 						<td><?php echo $vch['vehicle_name']; ?></td>
 						<td class="center hidden-phone"><?php echo $vch['drivers']; ?></td>
 						<td class="center hidden-phone">
-							<a title="Edit <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-primary" role="button">
+							<a data-toggle="tooltip" title="Edit <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>edit-vehicles.html/<?php echo $vch['v_id']; ?>" class="btn btn-primary" role="button">
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 
-							<a data-toggle="modal" data-target="#myVechicleView<?php echo $vch['v_id']; ?>" title="View <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-success" role="button">
+							<a <?php echo $vch['v_id']; ?>" data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>view-vehicles.html/<?php echo $vch['v_id']; ?>" class="btn btn-success" role="button">
 							<i class="fa fa-eye" aria-hidden="true"></i></a>
-							<a title="Block <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-warning" role="button">
+
+							<a data-toggle="tooltip" title="Block <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-warning" role="button">
 							<i class="fa fa-ban"></i></a>
 
 						</td>
