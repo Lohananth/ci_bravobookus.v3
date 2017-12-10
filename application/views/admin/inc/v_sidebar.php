@@ -28,15 +28,15 @@
 										</a>
 										<ul class="nav nav-children">	
 											<li>
-												<a href="<?php echo site_url(); ?>vechicle-add.html" data-toggle="modal" data-target="#myVechicleAdd">
+												<a  href="<?php echo site_url(); ?>vechicle-add.html" data-toggle="modal" data-target="#myVechicleAdd">
 													
-													<i class="fa fa-plus-circle" aria-hidden="true"></i> 
+													<i class="fa fa-plus-circle " aria-hidden="true"></i> 
 													 Add Booking
 												</a>
 											</li>								
 											<li>
 												<a href="<?php echo site_url(); ?>booking.html">
-													<i class="fa fa-list" aria-hidden="true"></i> Recent Booking
+													<i class="fa fa-list " aria-hidden="true"></i> Recent Booking
 												</a>
 											</li>
 											<li>

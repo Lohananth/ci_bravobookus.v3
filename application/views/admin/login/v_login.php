@@ -1,7 +1,7 @@
 <section class="body-sign">
-			<div class="center-sign">
+			<div class="center-sign"
 				<a href="/" class="logo pull-left">
-					<img src="<?php echo base_url();?>public/admin/assets/images/logo.png" height="54" alt="Porto Admin" />
+					<img style="width: 70%; margin-bottom: -100px;" src="<?php echo base_url(); ?>public/img/<?php echo $settings[0]['logo']; ?>" alt="Bravo Bookus Admin" />
 				</a>
 
 				<div class="panel panel-sign">
