@@ -133,7 +133,7 @@ foreach ($vehicles as $rows) {
               <span>
                 <img width="15px" height="20px" src="https://dpv1ddwbqfvsu.cloudfront.net/assets/seats/seat_available_sample-b34a2b821f6957ef8ed3dfefacd4abc9.png" alt="Seat available sample">
               </span>
-              <span class="title-seat-avaible" style="background-color: #ff9800; padding:5px; border-radius: 50%;">35 </span>
+              <span class="title-seat-avaible" style="background-color: #ff9800; padding:5px; border-radius: 50%;"><?php echo $rows['available_seats'] ?> </span>
               <span class="label-seat-avaible" style="background-color: #4CAF50;padding:4px; border-radius: 30px;color:white;"> Seats available</span>
             </div>
           </div>
@@ -144,8 +144,14 @@ foreach ($vehicles as $rows) {
             <div class="hidden-xs hidden-sm mb-10" style=" border-left-style: solid;   border-left-width: 3px; border-left-color:#2196F3; padding-left:5px; background-color:#e68a00; color:white; width: 80px; border-top-right-radius: 10px;border-bottom-right-radius: 10px; "> Amenities</div>
             <div class="row">
               <div class="col-md-12 col-sm-6 col-xs-7 layout-amenity">
-                  <span class="amenity amenity-water" title="water"></span>
-                  <span class="amenity amenity-insurance" title="Insurance"></span>
+                <?php $bus_amenities = explode(",", $rows['amenities']) ?>
+                <?php foreach($amenities as $amenity): ?>
+                  <?php for($i=0; $i<count($bus_amenities); $i++): ?>
+                    <?php if($amenity['id']==$bus_amenities[$i]): ?>
+                      <span class="amenity amenity-<?php echo mb_strtolower($amenity['amenity']) ?>" title="<?php echo $amenity['amenity'] ?>"></span>
+                    <?php endif ?>
+                  <?php endfor ?>
+                <?php endforeach ?>
               </div>
               <div class="col-sm-6 col-xs-5 title-seat-left hidden-lg hidden-md">
                 <div class="hidden-lg hidden-md seat-hidden" style="background-color: #ff9800; padding:5px; border-radius: 5px;">35 Seats Left</div>

@@ -109,27 +109,51 @@ class Search extends CI_Controller {
         $data['twitter_creator']="@BravoBookus";
         $data['seo_keywords']="book bus tickets online in cambodia, bus tickets, buy bus tickets online phnompenh to siemreap, angkor, bus angkorwat temple,cambodia bus travel, bus phnom penh schedule, siemreap transportation, bus tickets, bus in phnompenh";
 
-$data['vehicles'] =$this->m_crud->get_by_sql("SELECT 
-        vs.*, vt.vehicle_type, vt.vt_id AS vtid,v.v_id as vid, v.drivers, v.inspectors, v.amenities, v.seats, v.`status` AS v_status,v.feature_image, dt.departure_time AS time, dt.id AS tid, c.company_name,c.Rank, c.logo, c.id AS cid
-        FROM 
-        tbl_vehicle_schedule AS vs
-        INNER JOIN
-        tbl_departure_time AS dt
-        ON vs.departure_time = dt.id
-        INNER JOIN
-        tbl_vehicle AS v
-        ON vs.v_id = v.v_id
-        INNER JOIN
-        tbl_vehicle_type AS vt
-        ON v.vehicle_type = vt.vt_id
-        INNER JOIN
-        tbl_company AS c
-        ON v.company_id = c.id
-        WHERE 
-        vs.origin=$from AND vs.destination=$to
+        //get all buses by origin and destination
+        $data['vehicles'] =$this->m_crud->get_by_sql("
+            SELECT
+                vs.*,
+                vt.vehicle_type,
+                vt.vt_id AS vtid,
+                vt.seats,
+                v.v_id AS vid,
+                v.drivers,
+                v.inspectors,
+                v.amenities,
+                v.`status` AS v_status,
+                v.feature_image,
+                dt.departure_time AS time,
+                dt.id AS tid,
+                c.company_name,
+                c.Rank,
+                c.logo,
+                c.id AS cid,
+                (
+                vt.seats - IFNULL(
+            (SELECT
+                SUM( LENGTH( seat_number ) - LENGTH( REPLACE ( seat_number, ',', '' ) ) + 1 ) AS seats_booked 
+            FROM
+                tbl_ticket 
+            WHERE
+                vs_id = vs.id 
+                AND departure_date = $book_date
+                ), 0 )
+                ) AS available_seats 
+            FROM
+                tbl_vehicle_schedule AS vs
+                INNER JOIN tbl_departure_time AS dt ON vs.departure_time = dt.id
+                INNER JOIN tbl_vehicle AS v ON vs.v_id = v.v_id
+                INNER JOIN tbl_vehicle_type AS vt ON v.vehicle_type = vt.vt_id
+                INNER JOIN tbl_company AS c ON v.company_id = c.id 
+            WHERE
+                vs.origin = $from 
+                AND vs.destination = $to
         ");
 
-       // $data['vehicles']="Hellow Vechicles";
+        // $data['vehicles']="Hellow Vechicles";
+        
+        //Get Amenities
+        $data['amenities'] = $this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
 
         $data['currencies']='USD';
 
