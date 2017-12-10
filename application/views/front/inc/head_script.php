@@ -7,7 +7,7 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
 <title><?php echo $title; ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="shortcut icon" href="<?php echo base_url() ?>public/img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="<?php echo base_url(); ?>front/assets/css/bootstrap.min.css">
   <script src="<?php echo base_url(); ?>front/assets/js/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>front/assets/js/bootstrap.min.js"></script>  

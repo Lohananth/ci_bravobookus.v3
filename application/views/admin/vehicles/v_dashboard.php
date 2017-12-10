@@ -30,7 +30,7 @@
 												<div class="widget-summary-col widget-summary-col-icon">
 													<a href="<?php echo site_url(); ?>add-vehicles.html">
 													<div class="summary-icon bg-primary">
-														<i class="fa fa-life-ring"></i>
+														<i class="fa fa-plus"></i>
 													</div>
 												</a>
 												</div>
@@ -61,14 +61,14 @@
 											<div class="widget-summary">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-secondary">
-														<i class="fa fa-usd"></i>
+														<i class="fa fa-th-list"></i>
 													</div>
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
 														<h4 class="title">List Vehicles</h4>
 														<div class="info">
-															<strong class="amount">3000 Vehicles</strong>
+															<strong class="amount">3000 </strong><span class="text-primary">(Vehicles)</span>
 														</div>
 													</div>
 													<div class="summary-footer">
@@ -88,14 +88,14 @@
 											<div class="widget-summary">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-tertiary">
-														<i class="fa fa-shopping-cart"></i>
+														<i class="fa fa-car"></i>
 													</div>
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
 														<h4 class="title">Vehicles Type</h4>
 														<div class="info">
-															<strong class="amount">38</strong>
+															<strong class="amount">38</strong><span class="text-primary">(Vehicles)</span>
 														</div>
 													</div>
 													<div class="summary-footer">
@@ -114,21 +114,47 @@
 										<div class="panel-body">
 											<div class="widget-summary">
 												<div class="widget-summary-col widget-summary-col-icon">
-													<div class="summary-icon bg-quartenary">
-														<i class="fa fa-user"></i>
+													<div class="summary-icon bg-tertiary">
+														<i class="fa fa-car"></i>
 													</div>
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
-														<h4 class="title">Vehicle Schedules</h4>
+														<h4 class="title">Add Vehicle Type</h4>
 														<div class="info">
-															<strong class="amount">3765</strong>
+															<strong class="amount">12 </strong><span class="text-primary">(Vehicles)</span>
 														</div>
 													</div>
 													<div class="summary-footer">
 														<a class="btn btn-info" href="<?php echo site_url(); ?>add-vehicles.html">
 
-														Show</a>
+														Add now..</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>
+								</div>
+								<div class="col-md-6 col-lg-4 col-xl-4">
+									<section class="panel panel-featured-left panel-featured-quartenary">
+										<div class="panel-body">
+											<div class="widget-summary">
+												<div class="widget-summary-col widget-summary-col-icon">
+													<div class="summary-icon bg-tertiary">
+														<i class="fa fa-car"></i>
+													</div>
+												</div>
+												<div class="widget-summary-col">
+													<div class="summary">
+														<h4 class="title">Block Vehicle Type </h4>
+														<div class="info">
+															<strong class="amount">3765</strong><span class="text-primary">(Vehicles)</span>
+														</div>
+													</div>
+													<div class="summary-footer">
+														<a class="btn btn-danger" href="<?php echo site_url(); ?>add-vehicles.html">
+														Block Now</a>
+
 													</div>
 												</div>
 											</div>
@@ -142,14 +168,14 @@
 											<div class="widget-summary">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-quartenary">
-														<i class="fa fa-user"></i>
+														<i class="fa fa-calendar"></i>
 													</div>
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
-														<h4 class="title">Vehicle Schedules</h4>
+														<h4 class="title">Manage Schedules</h4>
 														<div class="info">
-															<strong class="amount">3765</strong>
+															<strong class="amount">3765 </strong><span class="text-primary">(Vehicles)</span>
 														</div>
 													</div>
 													<div class="summary-footer">
@@ -169,19 +195,19 @@
 											<div class="widget-summary">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-quartenary">
-														<i class="fa fa-user"></i>
+														<i class="fa fa-calendar"></i>
 													</div>
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
-														<h4 class="title">Vehicle Schedules</h4>
+														<h4 class="title">Add Schedules</h4>
 														<div class="info">
-															<strong class="amount">3765</strong>
+															<strong class="amount">3765 </strong><span class="text-primary">(Vehicles)</span>
 														</div>
 													</div>
 													<div class="summary-footer">
 														<a class="btn btn-info" href="<?php echo site_url(); ?>add-vehicles.html">
-														Show</a>
+														Add Now..</a>
 													</div>
 												</div>
 											</div>
@@ -195,20 +221,20 @@
 											<div class="widget-summary">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-quartenary">
-														<i class="fa fa-user"></i>
+														<i class="fa fa-calendar"></i>
 													</div>
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
-														<h4 class="title">Vehicle Schedules</h4>
+														<h4 class="title">Block Schedules</h4>
 														<div class="info">
 															<strong class="amount">3765</strong>
 														</div>
 													</div>
 													<div class="summary-footer">
-														<a class="btn btn-info" href="<?php echo site_url(); ?>add-vehicles.html">
+														<a class="btn btn-danger" href="<?php echo site_url(); ?>add-vehicles.html">
 
-														Show</a>
+														Block Now..</a>
 													</div>
 												</div>
 											</div>
@@ -216,32 +242,7 @@
 									</section>
 								</div>
 								
-								<div class="col-md-6 col-lg-4 col-xl-4">
-									<section class="panel panel-featured-left panel-featured-quartenary">
-										<div class="panel-body">
-											<div class="widget-summary">
-												<div class="widget-summary-col widget-summary-col-icon">
-													<div class="summary-icon bg-quartenary">
-														<i class="fa fa-user"></i>
-													</div>
-												</div>
-												<div class="widget-summary-col">
-													<div class="summary">
-														<h4 class="title">Vehicle Schedules</h4>
-														<div class="info">
-															<strong class="amount">3765</strong>
-														</div>
-													</div>
-													<div class="summary-footer">
-														<a class="btn btn-info" href="<?php echo site_url(); ?>add-vehicles.html">
-														Show</a>
-
-													</div>
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
+								
 
 
 							</div>

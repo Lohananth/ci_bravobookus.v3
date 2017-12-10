@@ -2,9 +2,10 @@
 <html class="fixed">
 	<head>
 		<!-- Basic -->
+		<link rel="shortcut icon" href="<?php echo base_url() ?>public/img/favicon.ico" type="image/x-icon">
 		<meta charset="UTF-8">
-		<meta name="keywords" content="HTML5 Admin Template" />
-		<meta name="description" content="Porto Admin - Responsive HTML5 Template">
+		<meta name="keywords" content="BravoBookUs Admin" />
+		<meta name="description" content="BravoBookUs Admin">
 		<meta name="author" content="okler.net">	
 		 <base href="<?php echo base_url(); ?>public/admin/">
 		<?php 

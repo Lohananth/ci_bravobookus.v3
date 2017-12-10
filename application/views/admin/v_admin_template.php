@@ -5,13 +5,13 @@
 <!doctype html>
 <html class="fixed">
 	<head>
-
+<link rel="shortcut icon" href="<?php echo base_url() ?>public/img/favicon.ico" type="image/x-icon">
 		<!-- Basic -->
 		<meta charset="UTF-8">
 		<title>Bravobookus Admin</title>
 		<meta name="keywords" content="Bravobookus Admin" />
 		<meta name="description" content="Bravobookus Admin">
-		<meta name="author" content="okler.net">
+		<meta name="author" content="SourngOnline">
 
  		<base href="<?php echo base_url(); ?>public/admin/">
 

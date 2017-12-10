@@ -22,6 +22,8 @@ class Vehicles extends CI_Controller {
     $data=array();
       
      $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
+     // Count Vehicles
+     $data['vehicles_count']=$this->m_crud->get_by_sql("SELECT count(v_id) as vehicles_count FROM tbl_vehicle");
 
       $uid=$this->session->userdata('uid');
       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");  
@@ -118,9 +120,15 @@ class Vehicles extends CI_Controller {
       $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");    
      
      if($gro_id ==1){
-       $sql_vechicles_com="SELECT p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id WHERE v.status=1";
+       $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
+         INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+       WHERE v.status=1";
      }else{
-       $sql_vechicles_com="SELECT v.status,p.company_id,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id INNER JOIN users as u ON p.company_id=u.company_id ORDER BY v.company_id";
+       $sql_vechicles_com="SELECT v.status,p.company_id,dr.driver_name,dr.phone,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p 
+       INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id 
+       INNER JOIN users as u ON p.company_id=u.company_id 
+       INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+       ORDER BY v.company_id";
      }
       $data['vechicles_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
 
@@ -130,7 +138,7 @@ class Vehicles extends CI_Controller {
          // echo "Admin Dashboard";
   }
   // Blocked Vechicles
-  public function list_vechicles_blocked(){      
+  public function list_vehicles_blocked(){      
       $data=array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $uid=$this->session->userdata('uid');
@@ -154,10 +162,23 @@ class Vehicles extends CI_Controller {
 
       $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");    
       
-      $sql_vechicles_com="SELECT v.status,p.company_id,p.company_name,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id INNER JOIN users as u ON p.company_id=u.company_id WHERE v.status=0";
+     if($gro_id ==1){
+       $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
+         INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+       WHERE v.status=0";
+     }else{
+       $sql_vechicles_com="SELECT v.status,p.company_id,dr.driver_name,dr.phone,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p 
+       INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id 
+       INNER JOIN users as u ON p.company_id=u.company_id 
+       INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+       ORDER BY v.company_id
+       WHERE v.status=0
+       ";
+     }
+
       $data['vechicles_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
 
-      $data['main_content']='admin/vechicles/v_list';
+      $data['main_content']='admin/vehicles/v_list';
           //load the view
       $this->load->view('admin/v_admin_template', $data);
          // echo "Admin Dashboard";

@@ -73,7 +73,7 @@
 						<td ><?php echo $vch['company_name']; ?></td>
 						<td><?php echo $vch['code']; ?></td>
 						<td><?php echo $vch['vehicle_name']; ?></td>
-						<td class="center hidden-phone"><?php echo $vch['drivers']; ?></td>
+						<td class="center hidden-phone" data-toggle="tooltip" title="Phone : <?php echo $vch['phone']; ?>"><?php echo $vch['driver_name']; ?></td>
 						<td class="center hidden-phone">
 							<a data-toggle="tooltip" title="Edit <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>edit-vehicles.html/<?php echo $vch['v_id']; ?>" class="btn btn-primary" role="button">
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

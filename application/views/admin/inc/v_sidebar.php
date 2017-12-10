@@ -74,7 +74,7 @@
 										<li>
 												<a href="<?php echo site_url(); ?>vehicles.html">
 													
-													<i class="fa fa-plus-circle" aria-hidden="true"></i> 
+													<i class="fa fa-car" aria-hidden="true"></i> 
 													 Vehicles
 												</a>
 											</li>	
@@ -92,7 +92,7 @@
 											</li>
 
 											<li>
-												<a href="<?php echo site_url(); ?>vechicle-blocked.html">
+												<a href="<?php echo site_url(); ?>vehicle-blocked.html">
 													<i class="fa fa-ban" aria-hidden="true"></i>  Vehicles Blocked
 												</a>
 											</li>
@@ -117,19 +117,19 @@
 											<span>Profile Setting</span>
 										</a>
 									</li>
-									<li>
-										<a href="<?php echo site_url(); ?>list-hotels.html">						
+									<!-- <li>
+										<a href="#list-hotels.html">						
 											<i class="fa fa-h-square" aria-hidden="true"></i>
 											<span>List Hotels</span>
 										</a>
-									</li>
+									</li> -->
 
 									
 
 
 
 
-
+<!-- 
 									<li class="nav-parent">
 										<a>
 											<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -211,7 +211,7 @@
 											</li>
 										</ul>
 									</li>
-
+ -->
 
 									<!-- <li class="nav-parent">
 										<a>

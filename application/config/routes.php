@@ -70,7 +70,7 @@ $route['vehicles.html'] = 'admin/vehicles/vehicles';
 $route['list-vehicles.html'] = 'admin/vehicles/vehicles/list_vehicles';
 
 // list_vechicles_blocked
-$route['vehicle-blocked.html'] = 'admin/vehicles/vehicles/list_vechicles_blocked';
+$route['vehicle-blocked.html'] = 'admin/vehicles/vehicles/list_vehicles_blocked';
 $route['vehicle-report.html']='admin/vehicles/vehicles/vehicle_report';
 //show_vechicles
 
