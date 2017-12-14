@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Vehicles extends CI_Controller {
+class Schedules extends CI_Controller {
     
   function __construct() {
       parent::__construct();
@@ -43,62 +43,9 @@ class Vehicles extends CI_Controller {
       //load the view
       $this->load->view('admin/v_admin_template', $data);
   }
-  // Booking Bus
-  public function booking($param1='',$param2=''){      
-      $data=array();
-      $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-      $uid=$this->session->userdata('uid');
-      $gro_id=$this->session->userdata('gro_id');
-      $company_id=$this->session->userdata('company_id');
-      $data['company_id']=$company_id;
-      $data['uid']=$uid;
-      $data['gro_id']=$gro_id;
-      $data['currency_name']="$";
-      $today = date("Y-m-d"); 
-      $data['today']=$today;
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-      // v_ticket
-   
-      if($gro_id==1){
-        if($param1 !=''){
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
-        }else{
-
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-        }       
-
-      }else{       
-        if($param1 !=''){
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
-        }else{
-
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-
-            // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket where c_id=$company_id AND status='".$param1."'");
-        }  
-
-      }
-    
-// $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-      
-
-      $data['form_title']=$this->replaceAll($this->uri->segment(1));
-      $data['panel_title']='All Bookings';
-      $data['head']='admin/head/v_head_table';
-      $data['footer']='admin/footer/v_footer_table';
-      $data['sidebar']='admin/inc/v_sidebar';
-      $data['sidebar_right']='admin/inc/v_sidebar_right';
-      $data['header']='admin/inc/v_header';
-          // $data['main_content']='admin/booking/v_booking';
-      $data['main_content']='admin/booking/v_list';
-          //load the view
-      $this->load->view('admin/v_admin_template', $data);    
-          //echo "Admin Dashboard";
-  }
-
   
   // Manage Vechicles
-  public function list_vehicles(){      
+  public function list_schedules(){      
       $data=array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $uid=$this->session->userdata('uid');
@@ -136,13 +83,13 @@ class Vehicles extends CI_Controller {
      }
       $data['vechicles_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
 
-      $data['main_content']='admin/vehicles/v_list';
+      $data['main_content']='admin/schedules/v_list';
           //load the view
       $this->load->view('admin/v_admin_template', $data);
          // echo "Admin Dashboard";
   }
-  // Blocked Vechicles
-  public function list_vehicles_blocked(){      
+  // Blocked schedules
+  public function list_schedules_blocked(){      
       $data=array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $uid=$this->session->userdata('uid');
@@ -181,8 +128,7 @@ class Vehicles extends CI_Controller {
      }
 
       $data['vechicles_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
-
-      $data['main_content']='admin/vehicles/v_list';
+      $data['main_content']='admin/schedules/v_list';
           //load the view
       $this->load->view('admin/v_admin_template', $data);
          // echo "Admin Dashboard";
@@ -214,7 +160,7 @@ class Vehicles extends CI_Controller {
 
 
      // $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
-      $data['main_content']='admin/vehicles/v_add';
+      $data['main_content']='admin/schedules/v_add';
       //load the view
       $this->load->view('admin/v_admin_template', $data);
       // echo "Admin Dashboard";
@@ -242,18 +188,12 @@ class Vehicles extends CI_Controller {
       $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
     
       $vSQL="SELECT v.*,c.company_name
-
             FROM tbl_vehicle as v INNER JOIN tbl_company as c
-
             WHERE v.v_id=$id";
       $data['tbl_vehicle']=$this->m_crud->get_by_sql( $vSQL);
 
-
-
-
-
       $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
-      $data['main_content']='admin/vehicles/v_edit';
+      $data['main_content']='admin/schedules/v_edit';
       //load the view
       $this->load->view('admin/v_admin_template', $data);
       // echo "Admin Dashboard";
@@ -281,7 +221,7 @@ class Vehicles extends CI_Controller {
       $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
 
       $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
-      $data['main_content']='admin/vehicles/v_add';
+      $data['main_content']='admin/schedules/v_add';
       //load the view
       $this->load->view('admin/v_admin_template', $data);
       // echo "Admin Dashboard";
@@ -377,7 +317,7 @@ public function invoice_print($id=''){
            // $this->db->insert('tbl_vehicle', $data);
 
             // $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-           redirect(base_url() . 'add-vehicles.html', 'refresh');
+           redirect(base_url() . 'add-schedules.html', 'refresh');
             // redirect('add-vehicles.html');
         }
 

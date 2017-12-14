@@ -79,8 +79,7 @@
 												</a>
 											</li>	
 											<li>
-												<a href="<?php echo site_url(); ?>vehicle-add.html" data-toggle="modal" data-target="#myVechicleAdd">
-													
+												<a href="<?php echo site_url(); ?>add-vehicles.html">								
 													<i class="fa fa-plus-circle" aria-hidden="true"></i> 
 													 Add Vehicles
 												</a>
