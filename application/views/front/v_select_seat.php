@@ -6,40 +6,40 @@
 		</ol>
 		<div class="row">
 			<div class="col-md-8">
-				<form action="/include/busbooking-handle.php" id="booking_seat_form" class="form-horizontal booking-seat fv-form fv-form-bootstrap" method="post" novalidate="novalidate"><button type="submit" class="fv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button> 
+				<form action="/include/busbooking-handle.php" id="booking_seat_form" class="form-horizontal booking-seat" method="post"> 
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">1. Seat Selection</h3>
 						</div>
 						<div class="panel-body">
-							<input type="hidden" name="vsid" id="vsid" value="559">
-							<input type="hidden" name="c_id" id="c_id" value="28">
-							<input type="hidden" name="departure_date" id="dep" value="2017-12-07">
-							<input type="hidden" name="origin" id="origin" value="Siem Reap">
-							<input type="hidden" name="destination" id="destination" value="Phnom Penh">
-							<input type="hidden" name="operator" id="operator" value="STT Express">
-							<input type="hidden" name="departure_time" id="departure_time" value="12:00 AM">
-							<input type="hidden" name="v_type" id="v_type" value="Bus-36">
-							<input type="hidden" name="local_price" id="local_price" value="7.00">
+							<input type="hidden" name="vsid" id="vsid" value="" />
+							<input type="hidden" name="c_id" id="c_id" value="" />
+							<input type="hidden" name="departure_date" id="dep" value="" />
+							<input type="hidden" name="origin" id="origin" value="" />
+							<input type="hidden" name="destination" id="destination" value="" />
+							<input type="hidden" name="operator" id="operator" value="" />
+							<input type="hidden" name="departure_time" id="departure_time" value="" />
+							<input type="hidden" name="v_type" id="v_type" value="" />
+							<input type="hidden" name="local_price" id="local_price" value="" />
 							<div class="row">
 								<div class="col-md-8">
 									<div class="table-responsive">
-										<h5></h5>
+										<h5><?php if(isset($_GET['msg'])){ echo "Sorry these seats have been booking. Please choose other seats."; }?></h5>
 										<div class="front-indicator">Front</div>
-										<div id="seat-map" class="seatCharts-container" tabindex="0" aria-activedescendant="D6"><div class="seatCharts-row"><div class="seatCharts-cell seatCharts-space">1</div><div id="A1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">A1</div><div id="B1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">B1</div><div class="seatCharts-cell seatCharts-space"></div><div id="C1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">C1</div><div id="D1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">D1</div></div><div class="seatCharts-row"><div class="seatCharts-cell seatCharts-space">2</div><div id="A2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">A2</div><div id="B2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">B2</div><div class="seatCharts-cell seatCharts-space"></div><div id="C2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">C2</div><div id="D2" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">D2</div></div><div class="seatCharts-row"><div class="seatCharts-cell seatCharts-space">3</div><div id="A3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">A3</div><div id="B3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">B3</div><div class="seatCharts-cell seatCharts-space"></div><div id="C3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">C3</div><div id="D3" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">D3</div></div><div class="seatCharts-row"><div class="seatCharts-cell seatCharts-space">4</div><div id="A4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">A4</div><div id="B4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">B4</div><div class="seatCharts-cell seatCharts-space"></div><div id="C4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">C4</div><div id="D4" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">D4</div></div><div class="seatCharts-row"><div class="seatCharts-cell seatCharts-space">5</div><div id="A5" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">A5</div><div id="B5" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">B5</div><div class="seatCharts-cell seatCharts-space"></div><div id="C5" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">C5</div><div id="D5" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">D5</div></div><div class="seatCharts-row"><div class="seatCharts-cell seatCharts-space">6</div><div id="A6" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">A6</div><div id="B6" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">B6</div><div class="seatCharts-cell seatCharts-space"></div><div id="C6" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">C6</div><div id="D6" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">D6</div></div><div class="seatCharts-row"><div class="seatCharts-cell seatCharts-space">7</div><div id="A7" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">A7</div><div id="B7" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">B7</div><div class="seatCharts-cell seatCharts-space"></div><div id="C7" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">C7</div><div id="D7" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">D7</div></div><div class="seatCharts-row"><div class="seatCharts-cell seatCharts-space">8</div><div id="A8" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">A8</div><div id="B8" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">B8</div><div class="seatCharts-cell seatCharts-space"></div><div id="C8" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">C8</div><div id="D8" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">D8</div></div><div class="seatCharts-row"><div class="seatCharts-cell seatCharts-space">9</div><div id="A9" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">A9</div><div id="B9" role="checkbox" aria-checked="true" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell selected">B9</div><div class="seatCharts-cell seatCharts-space"></div><div id="C9" role="checkbox" aria-checked="true" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell selected">C9</div><div id="D9" role="checkbox" aria-checked="true" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell selected">D9</div></div></div>
-										<div id="legend" class="seatCharts-legend"><ul class="seatCharts-legendList"><li class="seatCharts-legendItem"><div class="seatCharts-seat seatCharts-cell available"></div><span class="seatCharts-legendDescription">Available</span></li><li class="seatCharts-legendItem"><div class="seatCharts-seat seatCharts-cell selected"></div><span class="seatCharts-legendDescription">Selected</span></li><li class="seatCharts-legendItem"><div class="seatCharts-seat seatCharts-cell unavailable"></div><span class="seatCharts-legendDescription">Already Booked</span></li></ul></div>
+										<div id="seat-map"></div>
+										<div id="legend"></div>
 									</div>
 								</div>
 								<div class="col-md-4">
-									<div class="form-group has-feedback">
+									<div class="form-group">
 										<label for="txtSelectedSeat">Selected Seat(s)</label>
-										<ul id="selected-seats"><li id="cart-item-B9"><a href="#remove" class="cancel-cart-item">B9</a></li><li id="cart-item-C9"><a href="#remove" class="cancel-cart-item">C9</a></li><li id="cart-item-D9"><a href="#remove" class="cancel-cart-item">D9</a></li></ul>
-										<input type="text" id="booking_seat_array" name="booking_seat_array" value="" hidden="hidden" required="" data-fv-field="booking_seat_array"><i class="form-control-feedback" data-fv-icon-for="booking_seat_array" style="display: none;"></i>
-									<small class="help-block" data-fv-validator="notEmpty" data-fv-for="booking_seat_array" data-fv-result="NOT_VALIDATED" style="display: none;">Please select seat</small></div>
-									<div class="form-group has-feedback">
+										<ul id="selected-seats"></ul>
+										<input type="text" id="booking_seat_array" name="booking_seat_array" value="" hidden="hidden" required>
+									</div>
+									<div class="form-group">
 										<label for="txtTotalSeats">Total No. of Seats</label>
-										<input id="counter" type="text" name="txtTotalSeats" class="form-control" readonly="true" value="0" data-fv-field="txtTotalSeats"><i class="form-control-feedback" data-fv-icon-for="txtTotalSeats" style="display: none;"></i>
-									<small class="help-block" data-fv-validator="greaterThan" data-fv-for="txtTotalSeats" data-fv-result="NOT_VALIDATED" style="display: none;">Please Select at least 1 seat.</small></div>
+										<input id="counter" type="text" name="txtTotalSeats" class="form-control" readonly="true" value="0">
+									</div>
 									<div class="form-group">
 										<label for="txtTotalPrice">Promotion Code:</label>
 										<div class="input-group">
@@ -55,7 +55,6 @@
 								</div>
 							</div>
 						</div>
-						
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h3 class="panel-title">2. Passenger Details</h3>
@@ -106,7 +105,7 @@
 									<label for="phoneNumber" class="col-sm-3 control-label">Contact Number:  <span class="text-danger">*</span></label>
 									<div class="col-sm-9">
 										<input type="tel" class="form-control" id="phoneNumber" required name="phoneNumber" value="" />
-										<input type="hidden" id="output_phone" name="output_phone" value="Null value">
+										<input type="hidden" id="output_phone" name="output_phone" value="Booking from">
 									</div>
 									<div class="col-sm-5" style="display: none">
 										<select class="form-control" name="country"  id="address-country" readonly disabled=""></select>  
@@ -151,10 +150,6 @@
 						</div>
 					</form> 
 				</div>
-
-
-
-
 				<div class="col-md-4">
 					<div class="well well-sm text-center">
 						<strong class="panel-title">Trip Summary</strong>
@@ -162,32 +157,33 @@
 					<table class="table">
 						<tbody><tr>
 							<td>Direction</td>
-							<td><a href="https://vcu.asia/find-booking.php?origin=1&amp;destination=2&amp;departure=2017-12-07&amp;btnSubmit=Find+Ticket"><span id="direction" class="important big">Siem Reap ➜ Phnom Penh</span></a></td>
+							<td><a href="https://vcu.asia/find-booking.php?origin=<?php echo $vehicle_schedule_data->oid ?>&destination=<?php echo $vehicle_schedule_data->did ?>&departure=<?php echo date("Y-m-d", time() + 86400); ?>&btnSubmit=Find+Ticket"><span id="direction" class="important big"><?php echo $vehicle_schedule_data->origin ?> &#10140; <?php echo $vehicle_schedule_data->destination ?></span></a></td>
 						</tr>
 						<tr>
 							<td>Departure</td>
-							<td><span id="departure" class="important big"> 📅 2017-12-07 🕐 12:00 AM</span></td>
+							<td><span id="departure" class="important big"> &#128197; <?php echo $_GET['on_date'] ?> &#128336; <?php echo $vehicle_schedule_data->departure_time ?></span></td>
 						</tr>
 						<tr>
 							<td>Operator</td>
-							<td><a href="https://vcu.asia/bus.php?comid=28"><span id="operator" class="important big">STT Express</span></a></td>
+							<td><a href="https://vcu.asia/bus.php?comid=<?php echo $vehicle_schedule_data->cid ?>"><span id="operator" class="important big"><?php echo $vehicle_schedule_data->company_name  ?></span></a></td>
 						</tr>
 						<tr>
 							<td>Type</td>
-							<td><span id="bus_type" class="important big">Bus-36</span></td>
+							<td><span id="bus_type" class="important big"><?php echo $vehicle_schedule_data->vehicle_type ?></span></td>
 						</tr>
 						<tr>
 							<td>Passenger</td>
-							<td>👳 <label class="important big" id="lblPassenger">3</label></td>
+							<td>&#128115; <label class="important big" id="lblPassenger">0</label></td>
 						</tr>
 						<tr>
 							<td>Unit Price</td>
-							<td><label id="unit_price" class="important big">$ 7.00</label></td>
+							<td><label id="unit_price" class="important big">$ <?php echo $vehicle_schedule_data->foreigner_price ?></label></td>
 						</tr>
 						<tr>
 							<td>Sub Total</td>
 							<td>
-								<label class="important big" id="subtotal">$ 21.00</label>
+								<label class="important big" id="subtotal">$ 0.00
+								</label>
 							</td>
 						</tr>
 						<tr>
@@ -197,27 +193,30 @@
 						</tr>
 						<tr>
 							<td>Total</td>
-							<td><label class="important big" id="lblTotalPrice">$ 21.00</label></td>
+							<td><label class="important big" id="lblTotalPrice">$ 0.00</label></td>
 						</tr>
 					</tbody>
 				</table>
 				<hr>
 				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class=""><a href="#boarding-point" aria-controls="boarding-point" role="tab" data-toggle="tab" aria-expanded="false">Boarding Point</a></li>
-					<li role="presentation" class=""><a href="#drop-off-point" aria-controls="drop-off-point" role="tab" data-toggle="tab" aria-expanded="false">Drop Off Point</a></li>
-					<li role="presentation" class="active"><a href="#operator-info" aria-controls="operator-info" role="tab" data-toggle="tab" aria-expanded="true">Operator Info</a></li>
+					<li role="presentation" class="active"><a href="#boarding-point" aria-controls="boarding-point" role="tab" data-toggle="tab">Boarding Point</a></li>
+					<li role="presentation"><a href="#drop-off-point" aria-controls="drop-off-point" role="tab" data-toggle="tab">Drop Off Point</a></li>
+					<li role="presentation"><a href="#operator-info" aria-controls="operator-info" role="tab" data-toggle="tab">Operator Info</a></li>
 
 				</ul>
 				<div class="tab-content">
 					
 					
-					<div role="tabpanel" class="tab-pane" id="boarding-point">
-						
+					<div role="tabpanel" class="tab-pane active" id="boarding-point">
+						<?php echo $vehicle_schedule_data->boarding_point ?>
+
 					</div>
 					<div role="tabpanel" class="tab-pane" id="drop-off-point">
-											</div>
-					<div role="tabpanel" class="tab-pane active" id="operator-info">
-											
+						<?php echo $vehicle_schedule_data->drop_off ?>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="operator-info">
+						<?php echo $vehicle_schedule_data->destination ?>
+					
 					</div>
 					
 				</div>
@@ -225,3 +224,347 @@
 			</div>
 		</div>
 	</div>
+<script src="<?php echo base_url(); ?>front/assets/plugins/jsc/jquery.seat-charts.js"></script>
+<script src="<?php echo base_url(); ?>front/assets/js/formValidation.min.js"></script>
+<script src="<?php echo base_url(); ?>front/assets/intl-tel-input/build/js/intlTelInput.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      function generateCaptcha() {
+        $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+      }
+      generateCaptcha();
+      $('#booking_seat_form')
+      .find('[name="phoneNumber"]');
+      var countryData = $.fn.intlTelInput.getCountryData(),
+      telInput = $("#phoneNumber"),
+      addressDropdown = $("#address-country");
+      country_txt = $("#country_txt");
+
+      telInput.intlTelInput({
+        utilsScript: '<?php echo base_url(); ?>front/assets/intl-tel-input/build/js/utils.js',
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+          $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+            var countryCode = (resp && resp.country) ? resp.country : "";
+            callback(countryCode);
+          });
+        },
+      });
+      telInput.on("keyup change", function() {
+        var intlNumber = telInput.intlTelInput("getNumber");
+        var output = $("#output_phone");
+        if (intlNumber) {
+          output.val(intlNumber);
+        } else {
+          output.val("Null value");
+        }
+      });
+
+      $.each(countryData, function(i, country) {
+        addressDropdown.append($("<option></option>").attr("value", country.iso2).text(country.name));
+      });
+
+      var initialCountry = telInput.intlTelInput("getSelectedCountryData").iso2;
+      addressDropdown.val(initialCountry);
+
+      telInput.on("countrychange", function(e, countryData) {
+        addressDropdown.val(countryData.iso2);
+        country_txt.val(countryData.name);
+      });
+
+      addressDropdown.change(function() {
+        telInput.intlTelInput("setCountry", $(this).val());
+      });
+      $('#booking_seat_form')
+      .on('init.field.fv', function(e, data) {
+        var $parent = data.element.parents('.form-group'),
+        $icon   = $parent.find('.form-control-feedback[data-fv-icon-for="' + data.field + '"]');
+        $icon.on('click.clearing', function() {
+          if ($icon.hasClass('glyphicon-remove')) {
+            data.fv.resetField(data.element);
+          }
+        });
+      })
+      .formValidation({
+        framework: 'bootstrap',
+        icon: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+        },
+        err: {
+          container: 'tooltip'
+        },
+        fields: {
+          txtTotalSeats: {
+            validators: {
+              greaterThan: {
+                value: 1,
+                message: 'Please Select at least 1 seat.'
+              }
+            }
+          },
+          nationality: {
+            validators: {
+              notEmpty: {
+                message: 'Nationality is required'
+              }
+            }
+          },
+          title: {
+            validators: {
+              notEmpty: {
+                message: 'Title is required'
+              }
+            }
+          },
+          f_name: {
+            validators: {
+              notEmpty: {
+                message: 'The Full name is required'
+              }
+            }
+          },
+          booking_seat_array: {
+            validators: {
+              notEmpty: {
+                message: 'Please select seat'
+              }
+            }
+          },
+          phoneNumber: {
+            validators: {
+              callback: {
+                message: 'The phone number is not valid',
+                callback: function(value, validator, $field) {
+                  return value === '' || $field.intlTelInput('isValidNumber');
+                }
+              }
+            }
+          },
+          email: {
+            verbose: false,
+            validators: {
+              notEmpty: {
+                message: 'The email address is required and can\'t be empty'
+              },
+              emailAddress: {
+                message: 'The input is not a valid email address'
+              },
+              stringLength: {
+                max: 512,
+                message: 'Cannot exceed 512 characters'
+              },
+              remote: {
+                type: 'GET',
+                url: 'https://api.mailgun.net/v2/address/validate?callback=?',
+                crossDomain: true,
+                name: 'address',
+                data: {
+                  api_key: 'pubkey-83a6-sl6j2m3daneyobi87b3-ksx3q29'
+                },
+                dataType: 'jsonp',
+                validKey: 'is_valid',
+                message: 'The email is not valid'
+              }
+            }
+          }
+        }
+      })
+      .on('click', '.country-list', function() {
+        $('#booking_seat_form').formValidation('revalidateField', 'phoneNumber');
+      }) 
+      .on('err.form.fv', function(e) {
+        generateCaptcha();
+      })
+      .on('success.field.fv', function(e, data) {
+        $( "#booking_form #address-country option:selected" ).text();
+        if (data.field === 'startDate' && !data.fv.isValidField('endDate')) {
+          data.fv.revalidateField('endDate');
+        }
+        if (data.field === 'endDate' && !data.fv.isValidField('startDate')) {
+          data.fv.revalidateField('startDate');
+        }
+      });
+      $('#button_reset').on('click', function() {
+        $('#booking_seat_form').formValidation('resetForm', true);
+      });
+    });
+$('#sub_seat_booking').click(function(){
+  if($("#counter").val() <= '0'){
+    Command: toastr["error"]("Please Select at least 1 seat.", "Seat Error!");
+    $('html, body').animate({ scrollTop: $(".panel-heading").offset().top}, 500);
+  }
+  else if( !$('#nationality').val() ){
+    Command: toastr["error"]("Please chose nationality", "Nationality Empty !");
+    $('html, body').animate({ scrollTop: $("#nationality").offset().top}, 500);
+  }
+  else if( !$('#title').val() ){
+    Command: toastr["error"]("Please chose title", "Title Empty !");
+    $('html, body').animate({ scrollTop: $("#title").offset().top}, 500);
+  }
+  else if( !$('#f_name').val() ){
+    Command: toastr["error"]("Please fill your full name.", "Name Empty !");
+    $('html, body').animate({ scrollTop: $("#f_name").offset().top}, 500);
+  }
+  else if( !$('#phoneNumber').val() ){
+    Command: toastr["error"]("Please give us your phone number.", "Phone Empty !");
+    $('html, body').animate({ scrollTop: $("#phoneNumber").offset().top}, 500);
+  }
+  toastr.options = {"closeButton": true, "debug": false, "newestOnTop": false, "progressBar": true, "positionClass": "toast-top-right", "preventDuplicates": false, "onclick": null, "showDuration": "300", "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"}
+});
+</script>
+
+<script>
+  var firstseat = 1;
+  var firstseatid = 1;
+  $(document).ready(function() {
+  	var book_price;
+		if( !$('#nationality').val()) { 
+			 book_price = <?php echo $vehicle_schedule_data->foreigner_price ?>;
+		};
+		$('#nationality').on('change', function() {
+		  	if( this.value == "Cambodian" ) {
+				book_price = <?php echo $vehicle_schedule_data->local_price ?>;
+				$("#local_price").val(<?php echo $vehicle_schedule_data->local_price ?>);
+				$("#unit_price").text('$ <?php echo $vehicle_schedule_data->local_price ?>');
+				$('#subtotal').text("$ " + (sc.find('selected').length * book_price).toFixed(2));
+				$('#lblTotalPrice').text("$ " + (sc.find('selected').length * book_price).toFixed(2));
+			} else {
+				book_price = <?php echo $vehicle_schedule_data->foreigner_price ?>;
+				$("#local_price").val(<?php echo $vehicle_schedule_data->foreigner_price ?>);
+				$("#unit_price").text('$ <?php echo $vehicle_schedule_data->foreigner_price ?>');
+				$('#subtotal').text("$ " + (sc.find('selected').length* book_price).toFixed(2));
+				$('#lblTotalPrice').text("$ " + (sc.find('selected').length* book_price).toFixed(2));	
+			}
+		});
+    var $cart = $('#selected-seats'),
+    $counter = $('#counter'),
+    $subtotal = $('#subtotal'),
+    $total = $('#lblTotalPrice'),
+    
+    sc = $('#seat-map').seatCharts({
+      map: [
+      <?php echo $vehicle_schedule_data->seats_map ?>
+      ],
+      naming :{
+        columns: [ <?php echo $vehicle_schedule_data->columns ?> ],
+        top : false,
+        getId  : function(character, row, column) {
+          return column+row;
+        },
+        getLabel : function (character, row, column) {
+          return column+row;
+        }
+      },
+      legend : {
+        node : $('#legend'),
+        items : [
+        [ 'a', 'available',   'Available' ],
+        [ 's', 'selected',   'Selected'],
+        [ 'u', 'unavailable', 'Already Booked']
+        ]         
+      },
+      	click: function () {
+			if (this.status() == 'selected') {
+				$counter.val(sc.find('selected').length-1);
+				$subtotal.text("$ " + (recalculateTotal(sc)- book_price ).toFixed(2));
+				$total.text("$ " + (recalculateTotal(sc)- book_price ).toFixed(2));
+				$('#cart-item-'+this.settings.id).remove();
+				$('#lblPassenger').text(sc.find('selected').length-1);
+				return 'available';
+			} else if (this.status() == 'available') {
+				$('<li><a href="#remove" class="cancel-cart-item">'+this.settings.label+'</a></li>')
+				.attr('id', 'cart-item-'+this.settings.id)
+				.data('seatId', this.settings.id)
+				.appendTo($cart);
+				$counter.val(sc.find('selected').length+1);
+				$('#lblPassenger').text(sc.find('selected').length+1);
+				$subtotal.text("$ " + (recalculateTotal(sc)+ book_price).toFixed(2));
+				$total.text("$ " + (recalculateTotal(sc)+ book_price).toFixed(2));
+				return 'selected';
+			} else if (this.status() == 'unavailable') {
+				return 'unavailable';
+			} else {
+				return this.style();
+			}
+		},
+
+    });
+    
+    $('#selected-seats').on('click', '.cancel-cart-item', function () {
+      sc.get($(this).parents('li:first').data('seatId')).click();
+    });
+    sc.get([<?php foreach($seats_booked as $row): echo "'".$row['seat_number']."',"; endforeach ?>]).status('unavailable');
+
+    function recalculateTotal(sc) {
+      var total = 0;
+      sc.find('selected').each(function () {
+        total += book_price;
+      });
+      return total;
+    }
+  });
+
+</script>
+
+<script>
+  function save_booking(){
+    var fullname = document.getElementById("f_name").value;
+    var title = document.getElementById("title").value;
+    var email = document.getElementById("email").value;
+    var mobile = document.getElementById("output_phone").value;
+    var vsid = document.getElementById("vsid").value;
+    var dep = document.getElementById("dep").value;
+    var nationality = document.getElementById("nationality").value;
+    var count = $("div[aria-checked^='true']").length;
+    var arr = $("div[aria-checked^='true']");
+    var seats = [];
+    for(i=0; i<count; i++){
+      seats.push(arr.eq(i).text());
+    }
+    var dataString = 'fullname='+fullname + '&title='+title + '&seats='+seats + '&email='+email +'&mobile='+mobile + '&vsid='+vsid + '&dep='+dep + '&nationality='+nationality;
+    $.ajax({
+      type: "POST",
+      url: "save_booking.php",
+      data: dataString,
+      cache: false,
+      success: function(result){
+        alert('Thanks you for using our services!\nPlease check your email for verify.');
+        location.reload();
+      }
+    });
+    return false;
+  }
+</script>
+
+<script type="text/javascript">
+  $("#sub_seat_booking").click(function(event) {
+    var phrases = [];
+    $('#selected-seats').each(function(){
+      var phrase = '';
+      $(this).find('li > a').each(function(){
+        var current = $(this);
+        if(current.children().size() > 0) {return true;}
+        phrase += $(this).text()+",";
+      });
+      phrases.push(phrase);
+    });
+    $("#booking_seat_array").val(phrases);
+  });
+  $(function() {
+    $('#toggle-event').change(function() {
+      $('.pickup_form').slideToggle(300);
+    })
+  });
+  $(function() {
+    $("[name=how_to_contact]").click(function(){
+      $('.fieldhidden').hide();
+      $("#fieldhidden-"+$(this).val()).slideToggle(300);;
+    });
+  });
+</script>

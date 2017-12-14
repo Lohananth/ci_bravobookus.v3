@@ -53,6 +53,49 @@ class Tickets extends CI_Controller {
         $data['twitter_creator']="@BravoBookus";
         $data['seo_keywords']="book bus tickets online in cambodia, bus tickets, buy bus tickets online phnompenh to siemreap, angkor, bus angkorwat temple,cambodia bus travel, bus phnom penh schedule, siemreap transportation, bus tickets, bus in phnompenh";
 
+        $vehicle_schedule = $_GET['route_schedule_vehicle_id'];
+        $data['vehicle_schedule_data'] = $this->db->query("
+          SELECT
+            vt.seats_map,
+            vt.`columns`,
+            vt.vehicle_type,
+            c.company_name,
+            c.description,
+            c.id,
+            o.origin AS origin,
+            d.origin AS destination,
+            o.id AS oid,
+            d.id AS did,
+            c.id AS cid,
+            t.departure_time,
+            vs.local_price,
+            vs.foreigner_price,
+            ( SELECT map FROM tbl_branch WHERE company_id = c.id AND location = o.id ) AS boarding_point,
+            ( SELECT map FROM tbl_branch WHERE company_id = c.id AND location = d.id ) AS drop_off 
+          FROM
+            tbl_vehicle AS v
+            INNER JOIN tbl_vehicle_type AS vt ON v.vehicle_type = vt.vt_id
+            INNER JOIN tbl_company AS c ON v.company_id = c.id
+            INNER JOIN tbl_vehicle_schedule AS vs ON v.v_id = vs.v_id
+            INNER JOIN tbl_origin AS o ON vs.origin = o.id
+            INNER JOIN tbl_origin AS d ON vs.destination = d.id
+            INNER JOIN tbl_departure_time AS t ON vs.departure_time = t.id 
+          WHERE
+            vs.id = $vehicle_schedule
+            LIMIT 1
+        ")->row();
+
+        $departure_date = $_GET['on_date'];
+        $data['seats_booked'] = $this->m_crud->get_by_sql("
+          SELECT
+            * 
+          FROM
+            tbl_ticket 
+          WHERE
+            vs_id = $vehicle_schedule
+            AND departure_date = '$departure_date'
+        "); 
+
         $this->load->view('front/v_template_seats',$data);
 
 

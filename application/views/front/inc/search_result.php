@@ -171,8 +171,8 @@ foreach ($vehicles as $rows) {
               </h5>
 
               <!-- If departure is over -->
-                <a style="width: 75%; border-radius: 0px;padding:7px;" class="btn btn-book-search trackrable" data-trackr-action="book-now" data-trackr-props="{&quot;operator_name&quot;:&quot;Seila Angkor Express&quot;,&quot;vehicle_type_name&quot;:&quot;VVIP Night Bus&quot;,&quot;id&quot;:2281,&quot;departure_time&quot;:&quot;11:00 PM&quot;,&quot;origin&quot;:&quot;Phnom Penh&quot;,&quot;destination&quot;:&quot;Siem Reap&quot;,&quot;on_date&quot;:&quot;23-11-2017}" href="<?php echo site_url();?>tickets?on_date=23-11-2017&amp;route_schedule_vehicle_id=2281">Book Now</a>
-                <a style="padding:3px;" class="btn btn-info js-tripInfo col-xs-3 modal5ms nopadding-x trip-info" data-href="/en/travel/siem-reap/bangkok/143669-9481-4055?date=2017-12-15&amp;_preview=true&amp;people=1" data-modal-title="Siem Reap Transport Co → Morchit, Bangkok" data-event="info" data-action="click">
+                <a style="width: 75%; border-radius: 0px;padding:7px;" class="btn btn-book-search trackrable" data-trackr-action="book-now" data-trackr-props="" href="<?php echo site_url();?>tickets?on_date=<?php echo $book_date ?>&amp;route_schedule_vehicle_id=<?php echo $rows['id'] ?>">Book Now</a>
+                <a style="padding:3px;" class="btn btn-info js-tripInfo col-xs-3 modal5ms nopadding-x trip-info" data-href="" data-modal-title="" data-event="info" data-action="click">
       <i class="fa fa-info-circle fa-2x"></i>
     </a>
 
