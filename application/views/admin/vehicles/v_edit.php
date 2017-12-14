@@ -28,12 +28,12 @@
 						<a href="#" class="fa fa-times"></a>
 					</div>
 
-					<h2 class="panel-title"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Vehicle</h2>
+					<h2 class="panel-title"><i class="fa fa-edit" aria-hidden="true"></i> Edit <?php echo $tbl_vehicle[0]['vehicle_name']; ?></h2>
 				</div>
 			</div>
 
 			<!-- <form action="v_edit_submit" method="get" accept-charset="utf-8"> -->
-			<form  action="<?php echo site_url(); ?>admin/vehicles/vehicles/save/create" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
+			<form  action="<?php echo site_url(); ?>Admin_dashboard/new_hotel/create" method="post" accept-charset="utf-8">
 			<div class="panel-body">
 
 				<div class="row">	
@@ -64,7 +64,7 @@
 					</div>
 
 					<div class="col-md-3 form-group">
-								<input type="text" name="code" placeholder="PP-2A-0004" class="form-control" required="required">
+								<input type="text" placeholder="PP-2A-0004" class="form-control">
 					</div>
 					<!-- Vehicle Name -->
 
@@ -72,7 +72,7 @@
 						Vehicle Name <span>(*)</span>
 					</div>
 					<div class="col-md-5 form-group">
-						<input type="text" name="vehicle_name" id="vehicle_name" class="form-control" placeholder="Vehicle Name" value="" required="required">
+						<input type="text" name="vc_name" id="vc_name" class="form-control" placeholder="Vehicle Name" value="" required="required">
 					</div>
 
 					<!-- Vehicle Type -->
@@ -80,24 +80,24 @@
 						Vehicle Type <span>(*)</span>
 					</div>
 					<div class="col-md-3 form-group">
-						<select data-plugin-selectTwo class="form-control populate" name="vehicle_type" required="required">
+						<select data-plugin-selectTwo class="form-control populate" name="vc_type" >
 									<optgroup label="Select one Company">
 									<?php 
 									foreach ($vehicle_type as $vc_type) {
 									?>
-									<option value='<?php echo $vc_type['vt_id']; ?>'><?php echo $vc_type['vehicle_type']; ?></option>
+									<option value='<?php echo $vc_type['id']; ?>'><?php echo $vc_type['vehicle_type']; ?></option>
 									<?php
 									}
 									?>	
 									</optgroup>
-						</select>
+								</select>
 					</div>
 					<!-- Driver Name -->
 					<div class="col-md-2 form-group">
 						Driver Name <span>(*)</span>
 					</div>
 					<div class="col-md-3 form-group">
-						<select data-plugin-selectTwo class="form-control populate" name="drivers" required="required" >
+						<select data-plugin-selectTwo class="form-control populate" name="driver_name" >
 									<optgroup label="Select one Company">
 									<?php 
 									foreach ($driver_names as $driver_name) {
@@ -114,7 +114,7 @@
 						Amenities <span>(*)</span>
 					</div>
 					<div class="col-md-5 form-group">
-						<select multiple data-plugin-selectTwo class="form-control populate" multiple="multiple" name="amenities[]" placeholder="Click here to select" required="required">
+						<select multiple data-plugin-selectTwo class="form-control populate" multiple="multiple" name="amenities[]" placeholder="Click here to select">
 									<optgroup label="Select Facilities">
 										<?php 
 										foreach ($amenities as $facil) {
@@ -133,12 +133,12 @@
 					</div>
 
 					<div class="col-md-5 form-group">
-						<select data-plugin-selectTwo class="form-control populate placeholder" data-plugin-options='{ "placeholder": "Select a State", "allowClear": true }' name="seats"  required="required">
+						<select data-plugin-selectTwo class="form-control populate placeholder" data-plugin-options='{ "placeholder": "Select a State", "allowClear": true }' name="seat_type" >
 									<optgroup label="Select one Company">
 									<?php 
 									foreach ($seattypes as $seattype) {
 									?>
-									<option value='<?php echo $seattype['seat_type_id']; ?>'><?php echo $seattype['seat_type']; ?></option>
+									<option value='<?php echo $seattype['id']; ?>'><?php echo $seattype['seat_type']; ?></option>
 									<?php
 									}
 									?>	
@@ -151,31 +151,32 @@
 					</div>
 
 					<div class="col-md-3 form-group" style="padding-top: 0px; margin-top:-10px;">
-						<input  type="checkbox" name="status" id="status" data-toggle="toggle" data-on="Active" data-off="DisActive" data-onstyle="success" data-offstyle="danger" checked />
+						<input  type="checkbox" name="gender" id="gender" data-toggle="toggle" data-on="Active" data-off="DisActive" data-onstyle="success" data-offstyle="danger" checked />
 									    </div>
-						 <input type="hidden" name="status_hide" id="status_hide" value="0" />
+									    <input type="hidden" name="hidden_gender" id="hidden_gender" value="0" />
 					</div>
-					<!-- Inspector -->
 					<div class="col-md-2 form-group">
-						Inspector <span>(*)</span>
+						Feature Image
 					</div>
-
-					<div class="col-md-5 form-group">
-						<select data-plugin-selectTwo class="form-control populate placeholder" data-plugin-options='{ "placeholder": "Select a inspector", "allowClear": true }' name="inspectors" required="required">
-									<optgroup label="Select one Inspector">
-									<option value='0'>None</option>
-									<?php 
-									foreach ($tbl_inspector as $rows) {
-									?>
-									<option value='<?php echo $rows['id']; ?>'><?php echo $rows['inspector_name']; ?></option>
-									<?php
-									}
-									?>	
-									</optgroup>
-								</select>
+					<div class="col-md-5 form-group">					
+												
+						<!-- <div class="col-md-6"> -->
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="input-append">
+									<div class="uneditable-input">
+										<i class="fa fa-file fileupload-exists"></i>
+										<span class="fileupload-preview"></span>
+									</div>
+									<span class="btn btn-default btn-file">
+										<span class="fileupload-exists">Change</span>
+										<span class="fileupload-new">Select file</span>
+										<input type="file" />
+									</span>
+									<a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+								</div>
+							<!-- </div> -->
+							</div>										
 					</div>
-
-					<!-- Image Gallery -->
 					<div class="col-md-2 form-group">
 						Galleries Image
 					</div>
@@ -188,9 +189,17 @@
 						<button type="submit" name="btnSave" class="btn btn-success pull-right" value="Save"><span class="fa fa-save"></span> Save</button> 
 
 						<a class="btn btn-danger pull-right" style="margin-right: 15px;" href="<?php echo site_url(); ?>list-vehicles.html"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
-					</div>	
+					</div>
+						
+
 												
 					</form>
+
+					
+
+					
+
+
 				</div>
 			</div>
 

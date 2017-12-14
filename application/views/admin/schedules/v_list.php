@@ -8,18 +8,18 @@
 					</a>
 				</li>								
 				<div class="btn btn-default" style="margin-right:10px; border-radius: 0px;">
-					<a href="<?php  $this->uri->segment(1); ?><?php echo site_url(); ?>add-vehicles.html"> 
+					<a href="<?php  $this->uri->segment(1); ?><?php echo site_url(); ?>add-schedules.html"> 
 						<i class="fa fa-plus"></i>
 						Add
 					</a>
 				</div>
-				<div class="btn btn-danger" style="margin-right:10px;border-radius: 0px;">
-					<a href="<?php echo site_url(); ?>removed-hotels.html"> 
-						<i class="fa fa-trash-o" aria-hidden="true"></i>
-						Removed
+				<div class="btn btn-success" style="margin-right:10px;border-radius: 0px;">
+					<a href="<?php echo site_url(); ?>list-schedules.html"> 
+						<i class="fa fa-list" aria-hidden="true"></i>
+						List
 					</a>
 				</div>
-				<div class="btn btn-success" style="border-radius: 0px;"> <a href="<?php echo site_url(); ?>vehicle-blocked.html"> 
+				<div class="btn btn-danger" style="border-radius: 0px;"> <a href="<?php echo site_url(); ?>schedules-blocked.html"> 
 						<i class="fa fa-ban"></i>
 						Blocked
 					</a>

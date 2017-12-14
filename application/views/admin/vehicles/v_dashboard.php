@@ -179,7 +179,7 @@
 														</div>
 													</div>
 													<div class="summary-footer">
-														<a class="btn btn-info" href="<?php echo site_url(); ?>add-vehicles.html">
+														<a class="btn btn-info" href="<?php echo site_url(); ?>list-schedules.html">
 
 														Show</a>
 													</div>
@@ -206,7 +206,7 @@
 														</div>
 													</div>
 													<div class="summary-footer">
-														<a class="btn btn-info" href="<?php echo site_url(); ?>add-vehicles.html">
+														<a class="btn btn-info" href="<?php echo site_url(); ?>add-schedules.html">
 														Add Now..</a>
 													</div>
 												</div>
@@ -232,9 +232,9 @@
 														</div>
 													</div>
 													<div class="summary-footer">
-														<a class="btn btn-danger" href="<?php echo site_url(); ?>add-vehicles.html">
+														<a class="btn btn-danger" href="<?php echo site_url(); ?>list-blocked.html">
 
-														Block Now..</a>
+														See Blocked Now..</a>
 													</div>
 												</div>
 											</div>

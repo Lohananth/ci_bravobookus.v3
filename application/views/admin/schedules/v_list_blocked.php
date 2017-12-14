@@ -1,25 +1,25 @@
 <section role="main" class="content-body" style="margin-top: -30px;">
 	<header class="page-header">
 		<h2><i class="fa fa-home"></i> Advanced <?php echo $form_title;  ?></h2>
-		<div class="right-wrapper pull-left">
+	<div class="right-wrapper pull-left">
 			<ol class="breadcrumbs">
 				<li>
 					<a href="<?php echo site_url(); ?>dashboard.html">								
 					</a>
 				</li>								
 				<div class="btn btn-default" style="margin-right:10px; border-radius: 0px;">
-					<a href="<?php  $this->uri->segment(1); ?><?php echo site_url(); ?>add-vehicles.html"> 
+					<a href="<?php  $this->uri->segment(1); ?><?php echo site_url(); ?>add-schedules.html"> 
 						<i class="fa fa-plus"></i>
 						Add
 					</a>
 				</div>
-				<div class="btn btn-danger" style="margin-right:10px;border-radius: 0px;">
-					<a href="<?php echo site_url(); ?>removed-hotels.html"> 
-						<i class="fa fa-trash-o" aria-hidden="true"></i>
-						Removed
+				<div class="btn btn-success" style="margin-right:10px;border-radius: 0px;">
+					<a href="<?php echo site_url(); ?>list-schedules.html"> 
+						<i class="fa fa-list" aria-hidden="true"></i>
+						List
 					</a>
 				</div>
-				<div class="btn btn-success" style="border-radius: 0px;"> <a href="<?php echo site_url(); ?>vehicle-blocked.html"> 
+				<div class="btn btn-danger" style="border-radius: 0px;"> <a href="<?php echo site_url(); ?>schedules-blocked.html"> 
 						<i class="fa fa-ban"></i>
 						Blocked
 					</a>
@@ -52,8 +52,7 @@
 			<table class="table table-bordered table-striped mb-none" id="datatable-tabletools" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">
 				<thead>
 					<tr>
-						<th style="width: 50px;">#No</th>
-						<th style="width: 50px;">Logo</th>
+						<th>#No</th>
 						<th>Comapny Name</th>
 						<th>Vechicle CODE</th>
 						<th>Vechicle Name</th>
@@ -69,19 +68,17 @@
 						?>
 						<tr class="gradeA">
 						<td><?php echo $i; ?></td>
-						<td ><a data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>#"><img style="width: 50px;" src="<?php echo base_url(); ?>uploads/vechicle/<?php echo $vch['logo']; ?>" alt="<?php echo $vch['company_name']; ?>"></a></td>
-						<td ><?php echo $vch['company_name']; ?></td>
+						<td><?php echo $vch['company_name']; ?></td>
 						<td><?php echo $vch['code']; ?></td>
 						<td><?php echo $vch['vehicle_name']; ?></td>
-						<td class="center hidden-phone" data-toggle="tooltip" title="Phone : <?php echo $vch['phone']; ?>"><?php echo $vch['driver_name']; ?></td>
+						<td class="center hidden-phone"><?php echo $vch['drivers']; ?></td>
 						<td class="center hidden-phone">
-							<a data-toggle="tooltip" title="Edit <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>edit-vehicles.html/<?php echo $vch['v_id']; ?>" class="btn btn-primary" role="button">
+							<a title="Edit <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-primary" role="button">
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 
-							<a <?php echo $vch['v_id']; ?>" data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>view-vehicles.html/<?php echo $vch['v_id']; ?>" class="btn btn-success" role="button">
-							<i class="fa fa-eye" aria-hidden="true"></i></a>
-
-							<a data-toggle="tooltip" title="Block <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-warning" role="button">
+							<a title="Delete <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-danger" role="button">
+							<i class="fa fa-trash-o" aria-hidden="true"></i></a>
+							<a title="Block <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-warning" role="button">
 							<i class="fa fa-ban"></i></a>
 
 						</td>
@@ -173,12 +170,12 @@
 			<div class="form-group">
 				<label class="col-md-3 control-label">Choose Amennities</label>
 				<div class="col-md-6">
-					<select multiple data-plugin-selectTwo class="form-control populate" multiple="multiple" name="amenities[]">
+					<select multiple data-plugin-selectTwo class="form-control populate" multiple="multiple" name="facilities[]">
 						<optgroup label="Select Facilities">
 							<?php 
-							foreach ($amenities as $facil) {
+							foreach ($facilities as $facil) {
 								?>
-								<option value='<?php echo $facil['id']; ?>'><?php echo $facil['amenity']; ?></option>
+								<option value='<?php echo $facil['facil_icon']; ?>'><?php echo $facil['facil_name']; ?></option>
 								<?php
 							}
 
@@ -224,95 +221,5 @@
   </div>
 </div>
 
-
-<!-- Modal Views-->
-<?php
-foreach ($vechicles_list as $vch) {
-						?>
-<div class="modal fade" id="myVechicleView<?php echo $vch['v_id']; ?>" role="dialog">
-	<div class="modal-dialog modal-lg">
-	  <div class="modal-content">
-		    <div class="modal-header">
-		      <button type="button" class="close" data-dismiss="modal">&times;</button>
-		      <h4 class="modal-title">Detail Vechicle of <?php echo $vch['company_name']; ?></h4>
-			    </div>
-			    <div class="modal-body">		
-					<table>			
-						<thead>
-							<tr>
-								<th width="35%"> Company Detail</th>
-								<th width="35%"> Vechicle Detail</th>
-								<th width="30%"> Map</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><?php echo $vch['company_name']; ?></td>
-								<td><?php echo $vch['company_name']; ?></td>
-								<td><?php echo $vch['company_name']; ?></td>
-							</tr>
-						</tbody>
-					</table>
-			    </div>
-			    <div class="modal-footer">
-			</div>  
-
-
-<!-- <button class="tablink" onclick="openCity('London', this, 'red')" id="defaultOpen">Company</button>
-<button class="tablink" onclick="openCity('Paris', this, 'green')">Vechicle</button>
-<button class="tablink" onclick="openCity('Tokyo', this, 'blue')">Amenities</button>
-<button class="tablink" onclick="openCity('Oslo', this, 'orange')">Location</button>
-<div id="London" class="tabcontent">
-  <h3>London</h3>
-  <p>London is the capital city of England.</p>
-</div>
-
-<div id="Paris" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
-</div>
-
-<div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
-</div>
-
-<div id="Oslo" class="tabcontent">
-  <h3>Oslo</h3>
-  <p>Oslo is the capital of Norway.</p>
-</div> -->
-
-
-
-<!-- <script>
-function openCity(cityName,elmnt,color) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "";
-    }
-    document.getElementById(cityName).style.display = "block";
-    elmnt.style.backgroundColor = color;
-
-}
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script> -->
-
-
-
-		</div>
-    </div>
-</div>
-
-
-
-
-
-<?php } ?>
 
 </div>

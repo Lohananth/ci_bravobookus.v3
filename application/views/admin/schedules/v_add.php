@@ -28,7 +28,7 @@
 						<a href="#" class="fa fa-times"></a>
 					</div>
 
-					<h2 class="panel-title"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Vehicle</h2>
+					<h2 class="panel-title"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Schedule</h2>
 				</div>
 			</div>
 
@@ -187,7 +187,7 @@
 					<div class="col-md-12 form-group">
 						<button type="submit" name="btnSave" class="btn btn-success pull-right" value="Save"><span class="fa fa-save"></span> Save</button> 
 
-						<a class="btn btn-danger pull-right" style="margin-right: 15px;" href="<?php echo site_url(); ?>list-vehicles.html"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
+						<a class="btn btn-danger pull-right" style="margin-right: 15px;" href="<?php echo site_url(); ?>list-schedules.html"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
 					</div>	
 												
 					</form>
