@@ -31,21 +31,11 @@
 
 		<script type="text/javaScript">
 			$(document).ready(function(){				
-				 // $('#gender').bootstrapToggle({
-				 //  on: 'Active',
-				 //  off: 'DisActive',
-				 //  onstyle: 'success',
-				 //  offstyle: 'danger'
-				 // });
-
-				 $('#gender').change(function(){
-				  if($(this).prop('checked'))
-				  {
-				   $('#hidden_gender').val('0');
-				  }
-				  else
-				  {
-				   $('#hidden_gender').val('1');
+				 $('#status').change(function(){
+				  if($(this).prop('checked')){
+				   $('#status_hide').val('1');
+				  }else{
+				   $('#status_hide').val('0');
 				  }
 				 });				 
 			});

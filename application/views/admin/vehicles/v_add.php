@@ -152,9 +152,8 @@
 
 					<div class="col-md-3 form-group" style="padding-top: 0px; margin-top:-10px;">
 						<input  type="checkbox" name="status" id="status" data-toggle="toggle" data-on="Active" data-off="DisActive" data-onstyle="success" data-offstyle="danger" checked />
-									    </div>
-						 <input type="hidden" name="status_hide" id="status_hide" value="0" />
 					</div>
+						 <input type="hidden" name="status_hide" id="status_hide" value="1" />
 					<!-- Inspector -->
 					<div class="col-md-2 form-group">
 						Inspector <span>(*)</span>

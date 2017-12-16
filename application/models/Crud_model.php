@@ -82,7 +82,7 @@ class Crud_model extends CI_Model
 
 	public function update_category_query($id,$data)
 	{
-				$this->db->where('cate_id',$id);
+		$this->db->where('cate_id',$id);
 		return  $this->db->update('categories',$data);
 	}
 

@@ -18,26 +18,18 @@ class Vehicles extends CI_Controller {
       date_default_timezone_set('Asia/Phnom_Penh');
   }
   
-  public function index(){
-    
-    $data=array();
-      
+  public function index(){    
+    $data=array();      
      $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
      // Count Vehicles
      $data['vehicles_count']=$this->m_crud->get_by_sql("SELECT count(v_id) as vehicles_count FROM tbl_vehicle");
-
       $uid=$this->session->userdata('uid');
       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");  
-
-
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
-
       $data['head']='admin/inc/v_dashboard_head';
       $data['footer']='admin/inc/v_dashboard_footer';
       $data['sidebar']='admin/inc/v_sidebar';
-        $data['sidebar_right']='admin/inc/v_sidebar_right';
-      
-
+      $data['sidebar_right']='admin/inc/v_sidebar_right';
       $data['header']='admin/inc/v_header';
       $data['main_content']='admin/vehicles/v_dashboard';
       //load the view
@@ -80,8 +72,6 @@ class Vehicles extends CI_Controller {
       }
     
 // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-      
-
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
       $data['panel_title']='All Bookings';
       $data['head']='admin/head/v_head_table';
@@ -103,7 +93,6 @@ class Vehicles extends CI_Controller {
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $uid=$this->session->userdata('uid');
       $gro_id=$this->session->userdata('gro_id');
-
       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
       $data['panel_title']=$this->uri->segment(1);
@@ -188,8 +177,7 @@ class Vehicles extends CI_Controller {
          // echo "Admin Dashboard";
   }
   
-  public function add(){
-      
+  public function add(){      
       $data=array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));      
@@ -242,16 +230,10 @@ class Vehicles extends CI_Controller {
       $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
     
       $vSQL="SELECT v.*,c.company_name
-
             FROM tbl_vehicle as v INNER JOIN tbl_company as c
-
             WHERE v.v_id=$id";
       $data['tbl_vehicle']=$this->m_crud->get_by_sql( $vSQL);
-
-
-
-
-
+      print_r($data['tbl_vehicle']);exit();
       $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
       $data['main_content']='admin/vehicles/v_edit';
       //load the view
@@ -259,8 +241,7 @@ class Vehicles extends CI_Controller {
       // echo "Admin Dashboard";
   }
 
-  public function view($id=''){
-      
+  public function view($id=''){      
       $data=array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));      
@@ -279,7 +260,6 @@ class Vehicles extends CI_Controller {
       $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
       // tbl_amenity
       $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
-
       $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
       $data['main_content']='admin/vehicles/v_add';
       //load the view

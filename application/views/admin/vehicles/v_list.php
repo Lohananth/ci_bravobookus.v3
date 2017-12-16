@@ -77,7 +77,6 @@
 						<td class="center hidden-phone">
 							<a data-toggle="tooltip" title="Edit <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>edit-vehicles.html/<?php echo $vch['v_id']; ?>" class="btn btn-primary" role="button">
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-
 							<a <?php echo $vch['v_id']; ?>" data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>view-vehicles.html/<?php echo $vch['v_id']; ?>" class="btn btn-success" role="button">
 							<i class="fa fa-eye" aria-hidden="true"></i></a>
 
