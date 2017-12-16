@@ -14,8 +14,8 @@
 					</a>
 				</div>
 				<div class="btn btn-danger" style="margin-right:10px;border-radius: 0px;">
-					<a href="<?php echo site_url(); ?>removed-hotels.html"> 
-						<i class="fa fa-trash-o" aria-hidden="true"></i>
+					<a href="<?php echo site_url(); ?>list-vehicles.html"> 
+						<i class="fa fa-list" aria-hidden="true"></i>
 						Removed
 					</a>
 				</div>

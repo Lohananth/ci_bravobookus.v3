@@ -48,13 +48,7 @@ class Schedules extends CI_Controller {
     $data['sidebar']='admin/inc/v_sidebar';
     $data['sidebar_right']='admin/inc/v_sidebar_right';
     $data['header']='admin/inc/v_header';    
-    // if($gro_id ==1){
-    //    $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
-    //      INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
-    //    WHERE v.status=1";
-    // }else{
-    //    $sql_vechicles_com="select `vs`.`id` AS `id`,`ori`.`origin` AS `origin`,`ori1`.`origin` AS `destination`,`vh`.`vehicle_name` AS `vehicle_name`,`dpt`.`departure_time` AS `departure_time`,`vs`.`travel_duration` AS `travel_duration`,`vs`.`local_price` AS `local_price`,`vs`.`foreigner_price` AS `foreigner_price` from ((((`tbl_vehicle_schedule` `vs` join `tbl_origin` `ori` on((`ori`.`id` = `vs`.`origin`))) join `tbl_origin` `ori1` on((`ori1`.`id` = `vs`.`destination`))) join `tbl_vehicle` `vh` on((`vh`.`v_id` = `vs`.`v_id`))) join `tbl_departure_time` `dpt` on((`dpt`.`id` = `vs`.`departure_time`))) where (`vs`.`status` = 1)";
-    // }
+    
       $sql_vechicles_com="select `vs`.`id` AS `id`,`ori`.`origin` AS `origin`,`ori1`.`origin` AS `destination`,`vh`.`vehicle_name` AS `vehicle_name`,`dpt`.`departure_time` AS `departure_time`,`vs`.`travel_duration` AS `travel_duration`,`vs`.`local_price` AS `local_price`,`vs`.`foreigner_price` AS `foreigner_price` from ((((`tbl_vehicle_schedule` `vs` join `tbl_origin` `ori` on((`ori`.`id` = `vs`.`origin`))) join `tbl_origin` `ori1` on((`ori1`.`id` = `vs`.`destination`))) join `tbl_vehicle` `vh` on((`vh`.`v_id` = `vs`.`v_id`))) join `tbl_departure_time` `dpt` on((`dpt`.`id` = `vs`.`departure_time`)))";
       $data['vschedule_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
       $data['main_content']='admin/schedules/v_list';
@@ -81,7 +75,7 @@ class Schedules extends CI_Controller {
       $data['driver_names']=$this->m_crud->get_by_sql("SELECT * FROM tbl_driver");
       $data['seattypes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_seat_type");
       $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
-      $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
+      // $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
      if($gro_id ==1){
        $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
          INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
@@ -95,7 +89,7 @@ class Schedules extends CI_Controller {
        WHERE v.status=0
        ";
      }
-      $data['vechicles_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
+      $data['vschedule_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
       $data['main_content']='admin/schedules/v_list';
           //load the view
       $this->load->view('admin/v_admin_template', $data);
@@ -138,7 +132,7 @@ class Schedules extends CI_Controller {
       $data['origins']=$this->m_crud->get_by_sql("SELECT * FROM tbl_origin");
       $data['vehicles']=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle");
       $data['dptimes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_departure_time");    
-      $vSQL = "SELECT * FROM v_vehicle_schedules WHERE id=$id";
+      $vSQL = "SELECT vs.*, v.vehicle_name FROM tbl_vehicle_schedule AS vs INNER JOIN tbl_vehicle as v ON v.v_id=vs.v_id WHERE id=$id";
       $data['data_vehicles']=$this->m_crud->get_by_sql($vSQL);
       $data['main_content']='admin/schedules/v_edit';
       //load the view
@@ -165,7 +159,7 @@ class Schedules extends CI_Controller {
       $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
       // tbl_amenity
       $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
-      $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
+      // $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
       $data['main_content']='admin/schedules/v_add';
       //load the view
       $this->load->view('admin/v_admin_template', $data);

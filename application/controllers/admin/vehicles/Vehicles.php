@@ -110,7 +110,7 @@ class Vehicles extends CI_Controller {
       // tbl_amenity
       $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
 
-      $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");    
+         
      
      if($gro_id ==1){
        $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
@@ -153,7 +153,7 @@ class Vehicles extends CI_Controller {
       
 
 
-      $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");    
+          
       
      if($gro_id ==1){
        $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
@@ -201,7 +201,7 @@ class Vehicles extends CI_Controller {
 
 
 
-     // $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
+ 
       $data['main_content']='admin/vehicles/v_add';
       //load the view
       $this->load->view('admin/v_admin_template', $data);
@@ -234,7 +234,7 @@ class Vehicles extends CI_Controller {
             WHERE v.v_id=$id";
       $data['tbl_vehicle']=$this->m_crud->get_by_sql( $vSQL);
       print_r($data['tbl_vehicle']);exit();
-      $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
+      
       $data['main_content']='admin/vehicles/v_edit';
       //load the view
       $this->load->view('admin/v_admin_template', $data);
@@ -260,7 +260,7 @@ class Vehicles extends CI_Controller {
       $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
       // tbl_amenity
       $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
-      $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
+   
       $data['main_content']='admin/vehicles/v_add';
       //load the view
       $this->load->view('admin/v_admin_template', $data);
