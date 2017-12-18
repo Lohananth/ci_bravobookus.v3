@@ -49,29 +49,22 @@ class Vehicles extends CI_Controller {
       $today = date("Y-m-d"); 
       $data['today']=$today;
       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-      // v_ticket
-   
+      // v_ticket   
       if($gro_id==1){
         if($param1 !=''){
            $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
         }else{
-
            $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-        }       
-
+        }
       }else{       
         if($param1 !=''){
            $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
         }else{
-
            $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-
             // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket where c_id=$company_id AND status='".$param1."'");
         }  
-
-      }
-    
-// $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
+      }    
+      // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
       $data['panel_title']='All Bookings';
       $data['head']='admin/head/v_head_table';

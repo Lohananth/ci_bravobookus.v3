@@ -19,7 +19,7 @@
 						List
 					</a>
 				</div>
-				<div class="btn btn-danger" style="border-radius: 0px;"> <a href="<?php echo site_url(); ?>schedules-blocked.html"> 
+				<div class="btn btn-danger" style="border-radius: 0px;"> <a href="<?php echo site_url(); ?>list-schedules-blocked.html"> 
 						<i class="fa fa-ban"></i>
 						Blocked
 					</a>
@@ -49,26 +49,26 @@
 			<h2 class="panel-title"><i class="fa fa-home"></i> <?php echo $form_title;  ?></h2>
 		</header>
 		<div class="panel-body">
-			<table class="table table-bordered table-striped mb-none" id="datatable-tabletools" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">
+			<table class="table table-bordered table-striped mb-none" id="datatable-tabletools" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">				
 				<thead>
 					<tr>
-						<th style="width: 3%;">#No</th>
-						<th style="width: 13%;">Origin</th>
-						<th style="width: 13%;">Destination</th>
-						<th style="width: 13%;">Vechicle Name</th>
-						<th style="width: 13%;">Departure Time</th>
-						<th style="width: 9%;">Duration</th>
-						<th style="width: 9%;">Local Price</th>
-						<th style="width: 9%;">Foreign Price</th>
-						<th style="width: 15%;">Actions</th>
+						<th style="width: 5%;">#No</th>
+						<th style="width: 10%;">Origin</th>
+						<th style="width: 10%;">Destination</th>
+						<th style="width: 10%;">Vechicle Name</th>
+						<th style="width: 10%;">Departure Time</th>
+						<th style="width: 10%;">Duration</th>
+						<th style="width: 10%;">Local Price</th>
+						<th style="width: 10%;">Foreign Price</th>
+						<th style="width: 20%;">Actions</th>
 					</tr>
 				</thead>
-				<tbody>										
+				<tbody>									
 					<?php 
 					$i=1;
 					foreach ($vschedule_list as $vch) {
 					?>
-						<tr class="gradeA">
+						<tr class="gradeA" id="row-id-<?php echo $vch['id']; ?>">
 						<td><?php echo $i; ?></td>
 						<td ><?php echo $vch['origin']; ?></td>
 						<td ><?php echo $vch['destination']; ?></td>
@@ -83,9 +83,10 @@
 							<a <?php echo $vch['id']; ?>" data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>view-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-success btn-sm" role="button">
 							<i class="fa fa-eye" aria-hidden="true"></i>
 							</a>
-							<a data-toggle="tooltip" title="Block <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>blocked-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-warning btn-sm" role="button">
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $vch['id']; ?>" title="Block <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>blocked-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-warning btn-sm btn_blocked" role="button">
 							<i class="fa fa-ban"></i></a>
 						</td>
+						<input type="hidden" name="vs_id" value="<?php echo $vschedule_list[0]['id']  ?>">	
 					</tr>
 						<?php
 						$i++;
@@ -97,4 +98,25 @@
 	</section>						
 			<!-- end: page -->
 </section>
+</div>
+<!-- Modal Delete Category -->
+<div id="myModalBlock" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">Blocked Schedule</h2>
+      </div>
+      <div class="modal-body">
+      		<form id="frm-block-schedule">
+			</form>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-info" id="btn-blocked">Yes</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+      </div>
+    </div>
+
+  </div>
 </div>

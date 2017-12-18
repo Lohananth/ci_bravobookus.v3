@@ -8,14 +8,13 @@ class Crud_model extends CI_Model
         // Call the Model constructor
         parent::__construct();        
     }   
-    public function get_setting()
-	{
+
+    public function get_setting(){
 		$query = $this->db->get('settings');
 		return $query->result();
 	}
 
-	function get_by_sql($sql, $option=false)
-	{
+	function get_by_sql($sql, $option=false){
 		$query	= $this->db->query($sql);
 		
 		if($option == 'trace')
@@ -30,49 +29,29 @@ class Crud_model extends CI_Model
 		}
 	}
 
-
-	public function create_category_query($data)
-	{
+	public function create_category_query($data){
 		$this->db->insert('categories',$data);
 		return $insert_id = $this->db->insert_id();
 	}
 
-	public function get_category_query()
-	{
+	public function get_category_query(){
 		$query = $this->db->get('hotels');
 		return $query->result();
 	}
 
-	public function search($search)
-	{
+	public function search($search){
 		$limit = 10; $offset = 0;
 		$search = str_replace(' ', '%20', trim($search));
-		
-		//$search = preg_replace(' ', '%20', $search);
-
-	    // if (preg_match('/\s/', $search) > 0) {
-	    //     $search = array_map('trim', array_filter(explode(' ', $search)));
-	    //     foreach ($search as $key => $value) {
-	    //         $this->db->or_like('h_name', $value);
-	    //     }
-	    // } else if ($search != ''){
-	    //     $this->db->like('h_name', $search);
-	    // }
-	    // $query = $this->db->get('hotels', $limit, $offset);
-	    // return $query->result();
-
 		$query = $this->db->like('h_name', trim($search), 'both')->get('hotels');
 		return $query->result();
 	}
 
-	public function delete_category_query($id)
-	{
-				$this->db->where('cate_id',$id);
+	public function delete_category_query($id){
+		$this->db->where('cate_id',$id);
 		return  $this->db->delete('categories');
 	}
 
-	public function get_category_by_query($id)
-	{
+	public function get_category_by_query($id){
 		$this->db->select('*');
 		$this->db->from('categories');
 		$this->db->where('cate_id',$id);
@@ -80,13 +59,10 @@ class Crud_model extends CI_Model
 		return $query->result();
 	}
 
-	public function update_category_query($id,$data)
-	{
+	public function update_category_query($id,$data){
 		$this->db->where('cate_id',$id);
 		return  $this->db->update('categories',$data);
 	}
-
-
 
 	function getAllOrigin(){
         $query=$this->db->query("SELECT * FROM tbl_contacts");
@@ -94,11 +70,24 @@ class Crud_model extends CI_Model
         //returns from this string in the db, converts it into an array
     }
 
-     function getOrigin(){ 
+    function getOrigin(){ 
 	  $this->db->select("id,origin,photo,country");
 	  $this->db->from('tbl_origin');    
 	  $query = $this->db->get();  
 	  return $query->result();   
 	 }
 
+//update blocked
+	public function get_blocked_schedule_query($id){
+		$this->db->select('*');
+		$this->db->from('tbl_vehicle_schedule');
+		$this->db->where('id',$id);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function update_blocked_schedule_query($id,$data){
+		$this->db->where('id',$id);
+		return  $this->db->update('tbl_vehicle_schedule',$data);
+	}
 }

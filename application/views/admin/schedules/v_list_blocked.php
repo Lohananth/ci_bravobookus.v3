@@ -1,10 +1,10 @@
 <section role="main" class="content-body" style="margin-top: -30px;">
 	<header class="page-header">
 		<h2><i class="fa fa-home"></i> Advanced <?php echo $form_title;  ?></h2>
-	<div class="right-wrapper pull-left">
+		<div class="right-wrapper pull-left">
 			<ol class="breadcrumbs">
 				<li>
-					<a href="<?php echo site_url(); ?>dashboard.html">								
+					<a href="<?php echo site_url(); ?>dashboard.html">		
 					</a>
 				</li>								
 				<div class="btn btn-default" style="margin-right:10px; border-radius: 0px;">
@@ -19,7 +19,7 @@
 						List
 					</a>
 				</div>
-				<div class="btn btn-danger" style="border-radius: 0px;"> <a href="<?php echo site_url(); ?>schedules-blocked.html"> 
+				<div class="btn btn-danger" style="border-radius: 0px;"> <a href="<?php echo site_url(); ?>list-schedules-blocked.html"> 
 						<i class="fa fa-ban"></i>
 						Blocked
 					</a>
@@ -49,177 +49,74 @@
 			<h2 class="panel-title"><i class="fa fa-home"></i> <?php echo $form_title;  ?></h2>
 		</header>
 		<div class="panel-body">
-			<table class="table table-bordered table-striped mb-none" id="datatable-tabletools" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">
+			<table class="table table-bordered table-striped mb-none" id="datatable-tabletools" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">				
 				<thead>
 					<tr>
-						<th>#No</th>
-						<th>Comapny Name</th>
-						<th>Vechicle CODE</th>
-						<th>Vechicle Name</th>
-						<th class="hidden-phone">Driver Name</th>
-						<th class="hidden-phone">Tools</th>
+						<th style="width: 5%;">#No</th>
+						<th style="width: 10%;">Origin</th>
+						<th style="width: 10%;">Destination</th>
+						<th style="width: 10%;">Vechicle Name</th>
+						<th style="width: 10%;">Departure Time</th>
+						<th style="width: 10%;">Duration</th>
+						<th style="width: 10%;">Local Price</th>
+						<th style="width: 10%;">Foreign Price</th>
+						<th style="width: 20%;">Actions</th>
 					</tr>
 				</thead>
-				<tbody>
-										
+				<tbody>									
 					<?php 
 					$i=1;
-					foreach ($vechicles_list as $vch) {
-						?>
-						<tr class="gradeA">
+					foreach ($vschedule_list as $vch) {
+					?>
+						<tr class="gradeA" id="row-id-<?php echo $vch['id']; ?>">
 						<td><?php echo $i; ?></td>
-						<td><?php echo $vch['company_name']; ?></td>
-						<td><?php echo $vch['code']; ?></td>
+						<td ><?php echo $vch['origin']; ?></td>
+						<td ><?php echo $vch['destination']; ?></td>
 						<td><?php echo $vch['vehicle_name']; ?></td>
-						<td class="center hidden-phone"><?php echo $vch['drivers']; ?></td>
+						<td><?php echo $vch['departure_time']; ?></td>
+						<td><?php echo $vch['travel_duration'];?></td>
+						<td><?php echo $vch['local_price'];?></td>
+						<td><?php echo $vch['foreigner_price'];?></td>
 						<td class="center hidden-phone">
-							<a title="Edit <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-primary" role="button">
-							<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-
-							<a title="Delete <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-danger" role="button">
-							<i class="fa fa-trash-o" aria-hidden="true"></i></a>
-							<a title="Block <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-warning" role="button">
+							<a data-toggle="tooltip" title="Edit <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>edit-block-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-primary btn-sm" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							</a>
+							<a <?php echo $vch['id']; ?>" data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>view-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-success btn-sm" role="button">
+							<i class="fa fa-eye" aria-hidden="true"></i>
+							</a>
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $vch['id']; ?>" title="Block <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>blocked-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-warning btn-sm btn_blocked" role="button">
 							<i class="fa fa-ban"></i></a>
-
 						</td>
+						<input type="hidden" name="vs_id" value="<?php echo $vschedule_list[0]['id']  ?>">	
 					</tr>
-
 						<?php
 						$i++;
 					}
-
-					?>
-					
+					?>					
 				</tbody>
 			</table>
 		</div>
 	</section>						
 			<!-- end: page -->
 </section>
-
-<!-- Modal Add Category -->
-<div class="modal fade" id="myVechicleAdd" role="dialog">
-<div class="modal-dialog modal-lg">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">Add New Vechicle</h4>
-    </div>
-    <div class="modal-body">
-		<form class="form-horizontal " action="<?php echo site_url(); ?>Admin_dashboard/new_hotel/create" method="post">
-			<div class="form-group">
-				<label class="col-md-3 control-label">Company Name</label>
-				<div class="col-md-6">
-					<select data-plugin-selectTwo class="form-control populate" name="company_id">
-						<optgroup label="Select one Company">
-							<?php 
-							foreach ($companies as $company) {
-							?>
-								<option value='<?php echo $company['id']; ?>'><?php echo $company['company_name']; ?></option>
-							<?php
-							}
-							?>	
-						</optgroup>
-					</select>
-				</div>
-			</div>	
-			<div class="form-group">
-				<label class="col-md-3 control-label">Vechicle Code</label>
-				<div class="col-md-6">
-				<input type="text" name="vc_code" id="vc_code" class="form-control" value="" required="required">
-				</div>
-			</div>	
-			<div class="form-group">
-				<label class="col-md-3 control-label">Vechicle Name</label>
-				<div class="col-md-6">
-				<input type="text" name="vc_name" id="vc_name" class="form-control" value="" required="required">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-md-3 control-label">Vechicle Type</label>
-				<div class="col-md-6">
-					<select data-plugin-selectTwo class="form-control populate" name="vc_type" >
-						<optgroup label="Select one Company">
-						<?php 
-						foreach ($vehicle_type as $vc_type) {
-						?>
-						<option value='<?php echo $vc_type['id']; ?>'><?php echo $vc_type['vehicle_type']; ?></option>
-						<?php
-						}
-						?>	
-						</optgroup>
-					</select>
-				</div>
-			</div>	
-			<div class="form-group">
-				<label class="col-md-3 control-label">Driver Name</label>
-				<div class="col-md-6">
-					<select data-plugin-selectTwo class="form-control populate" name="driver_name" >
-						<optgroup label="Select one Company">
-						<?php 
-						foreach ($driver_names as $driver_name) {
-						?>
-						<option value='<?php echo $driver_name['id']; ?>'><?php echo $driver_name['driver_name']; ?></option>
-						<?php
-						}
-						?>	
-						</optgroup>
-					</select>
-				</div>
-			</div>				
-			<div class="form-group">
-				<label class="col-md-3 control-label">Choose Amennities</label>
-				<div class="col-md-6">
-					<select multiple data-plugin-selectTwo class="form-control populate" multiple="multiple" name="facilities[]">
-						<optgroup label="Select Facilities">
-							<?php 
-							foreach ($facilities as $facil) {
-								?>
-								<option value='<?php echo $facil['facil_icon']; ?>'><?php echo $facil['facil_name']; ?></option>
-								<?php
-							}
-
-							?>	
-						</optgroup>
-						
-					</select>
-				</div>
-			</div>	
-			<div class="form-group">
-				<label class="col-md-3 control-label">Status</label>
-				<div class="col-md-6">
-				     <div class="checkbox">
-				      <input type="checkbox" name="gender" id="gender" data-toggle="toggle" data-on="Active" data-off="DisActive" data-onstyle="success" data-offstyle="danger" checked />
-				    </div>
-				    <input type="hidden" name="hidden_gender" id="hidden_gender" value="0" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-md-3 control-label">Seat Layout</label>
-				<div class="col-md-6">
-					<select data-plugin-selectTwo class="form-control populate placeholder" data-plugin-options='{ "placeholder": "Select a State", "allowClear": true }' name="seat_type" >
-						<optgroup label="Select one Company">
-						<?php 
-						foreach ($seattypes as $seattype) {
-						?>
-						<option value='<?php echo $seattype['id']; ?>'><?php echo $seattype['seat_type']; ?></option>
-						<?php
-						}
-						?>	
-						</optgroup>
-					</select>
-				</div>
-			</div>
-			<div></div>		
-
-			<input type="submit" name="btnSave" class="btn btn-success" value="Save">						
-		</form>
-    </div>
-    <div class="modal-footer">
-</div>      
-    </div>
-  </div>
 </div>
+<!-- Modal Delete Category -->
+<div id="myModalBlock" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">Blocked Schedule</h2>
+      </div>
+      <div class="modal-body">
+      		<form id="frm-block-schedule">
+			</form>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-info" id="btn-blocked">Yes</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+      </div>
+    </div>
 
-
+  </div>
 </div>

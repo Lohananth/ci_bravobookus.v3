@@ -29,23 +29,56 @@
 		<script src="assets/javascripts/tables/examples.datatables.default.js"></script>
 		<script src="assets/javascripts/tables/examples.datatables.row.with.details.js"></script>
 		<script src="assets/javascripts/tables/examples.datatables.tabletools.js"></script>
-		
-
 		<script src="assets/js/bootstrap-toggle.min.js"></script>
 
 		<script type="text/javaScript">
-			$(document).ready(function(){				
-				 // $('.status').change(function(){
-				 // 	alert("Check or not check");
-				 //  if($(this).prop('checked'))
-				 //  {
-				 //   $('.status_hide').val('1');
-				 //  }
-				 //  else
-				 //  {
-				 //   $('.status_hide').val('0');
-				 //  }
-				 // });				 
+			$(document).ready(function(){
+				//get blocked schedule for update
+				$('.btn_blocked').on('click',function(e){
+				 	e.preventDefault();
+				 	var id = $(this).attr('dataid');
+		    		$.ajax({
+		    		url : "<?php echo base_url() ?>get_block_Schedule.html",
+		    		type: "POST",
+		    		data: {vs_id:id},
+		    		dataType: 'json',
+		    		success:function(data){
+		    			$('#frm-block-schedule').html(data);
+							$('#myModalBlock').data('id',id).modal('show');	    			
+		    		},
+		    		error: function(){
+		    			alert('Error...');
+		    		}
+		    	});	
+				});
+
+				//updated Blocked Schedule
+				$('#btn-blocked').on('click',function(e){
+				 	var id= $('#myModalBlock').data('id');
+			    	$.ajax({
+			    		url : "<?php echo base_url() ?>disactive_block_Schedule.html",
+			    		type: "POST",
+			    		data: $('#frm-block-schedule').serialize(),
+			    		dataType: 'json',
+			    		success:function(data){
+			    			alert('Blocked Schedule was Updated successfully...');
+			    			//Hide myModalDelete
+			    			$('#myModalBlock').modal('hide');
+			    		},
+			    		error: function(){
+			    			alert('Error...');
+			    			$('#myModalBlock').modal('hide');		    		
+			    	}
+		    	});	
+				});
+
+				$('#status').change(function(){
+				  if($(this).prop('checked')){
+				   $('#status_hide').val('1');
+				  }else{
+				   $('#status_hide').val('0');
+				  }
+				});					
 			});
 		</script>
 
