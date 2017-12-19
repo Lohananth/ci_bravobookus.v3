@@ -7,8 +7,7 @@ class M_User extends CI_Model {
 	}	
 	function login($email, $option = false)
     {
-		$query	= $this->db->query('SELECT users.*, user_groups.level FROM users LEFT JOIN user_groups
-											   ON users.gro_id = user_groups.id_group  WHERE users.status = 1 AND email = '."'".$email."'");
+		$query	= $this->db->query('SELECT users.*, user_groups.level,user_groups.controller_id,user_groups.group_name FROM users LEFT JOIN user_groups ON users.gro_id = user_groups.id_group  WHERE users.status = 1 AND email = '."'".$email."'");
 		
 		if($option == 'trace')
 			print_r($this->db->queries);		
@@ -23,6 +22,7 @@ class M_User extends CI_Model {
 		}
 		
     }
+
 	function login_fb($fb_id, $option = false)
     {
 		$query	= $this->db->query('SELECT users.*, user_groups.level FROM users LEFT JOIN user_groups
@@ -41,6 +41,7 @@ class M_User extends CI_Model {
 		}
 		
     }
+
 	public function check_user_exist($usr)
     {
 		

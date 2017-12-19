@@ -13,117 +13,41 @@
 						<div class="nano-content">
 							<nav id="menu" class="nav-main" role="navigation">
 								<ul class="nav nav-main">
-									<li class="nav-active">
-										<a href="<?php echo site_url(); ?>dashboard.html">
+									<!-- <li class="nav-active">
+										<a href="<?php  echo site_url(); ?>dashboard.html">
 											<i class="fa fa-home" aria-hidden="true"></i>
 											<span>Dashboard</span>
-										</a>
-									</li>
-									
-									<!-- Manage Booking -->
-									<li class="nav-parent">
-										<a>
-											<i class="fa fa-ticket" aria-hidden="true"></i>
-											<span>Manage Booking</span>
-										</a>
-										<ul class="nav nav-children">	
-											<li>
-												<a  href="<?php echo site_url(); ?>vechicle-add.html" data-toggle="modal" data-target="#myVechicleAdd">
-													
-													<i class="fa fa-plus-circle " aria-hidden="true"></i> 
-													 Add Booking
-												</a>
-											</li>								
-											<li>
-												<a href="<?php echo site_url(); ?>booking.html">
-													<i class="fa fa-list " aria-hidden="true"></i> Recent Booking
-												</a>
-											</li>
-											<li>
-												<a href="<?php echo site_url(); ?>booking.html/Confirmed">
-													<i class="fa fa-list" aria-hidden="true"></i> Confirmed Booking
-												</a>
-											</li>
-											<li>
-												<a href="<?php echo site_url(); ?>booking.html/Paid">
-													<i class="fa fa-list" aria-hidden="true"></i> Paid Booking
-												</a>
-											</li>
-
-											<li>
-												<a href="<?php echo site_url(); ?>booking.html/Canceled">
-													<i class="fa fa-ban" aria-hidden="true"></i>  Booking Canceled
-												</a>
-											</li>
-																					
-										
-										</ul>
-									</li>
-
-
-
-
-
-									<!-- Manage Vechicles -->
-									<li class="nav-parent">
-										<a>
-											<i class="fa fa-taxi" aria-hidden="true"></i>
-											<span>Manage Vehicles</span>
-										</a>
-										<ul class="nav nav-children">
-										<li>
-												<a href="<?php echo site_url(); ?>vehicles.html">
-													
-													<i class="fa fa-car" aria-hidden="true"></i> 
-													 Vehicles
-												</a>
-											</li>	
-											<li>
-												<a href="<?php echo site_url(); ?>add-vehicles.html">								
-													<i class="fa fa-plus-circle" aria-hidden="true"></i> 
-													 Add Vehicles
-												</a>
-											</li>								
-											<li>
-												<a href="<?php echo site_url(); ?>list-vehicles.html">
-													<i class="fa fa-list" aria-hidden="true"></i> Vehicles List
-												</a>
-											</li>
-
-											<li>
-												<a href="<?php echo site_url(); ?>vehicle-blocked.html">
-													<i class="fa fa-ban" aria-hidden="true"></i>  Vehicles Blocked
-												</a>
-											</li>
-																					
-										
-										</ul>
-									</li>
-
-									<!-- Guests -->
-									<li>
-										<a href="<?php echo site_url(); ?>guests.html">
-											<!-- <span class="pull-right label label-primary">182</span> -->
-											<i class="fa  fa-group " aria-hidden="true"></i>
-											<span>Guests</span>
-										</a>
-									</li>
-
-
-									<li>
-										<a href="<?php echo site_url(); ?>profile.html">						
-											<i class="fa fa-user" aria-hidden="true"></i>
-											<span>Profile Setting</span>
-										</a>
-									</li>
-									<!-- <li>
-										<a href="#list-hotels.html">						
-											<i class="fa fa-h-square" aria-hidden="true"></i>
-											<span>List Hotels</span>
 										</a>
 									</li> -->
 
 									
+									<?php 
+									foreach ($user_groups as $rows) {
+										$controller = explode(",", $rows['controller_id']);
+										foreach ($sidebar_menu as $sidebar) {
+											for($i=0;$i<count($controller);$i++){
+												if($sidebar['controller_id']==$controller[$i]){
+													?>
+<li class="nav-<?= ($this->uri->segment(1)===$sidebar['controller_action'])?'active':''?>">
+														<a href="<?php echo site_url(); ?><?php echo $sidebar['controller_action']; ?>">
+															<?php echo $sidebar['controller_icon']; ?>
+															<span><?php echo $sidebar['controller_name']; ?> </span>
+														</a>
+													</li>
+										<?php
+												}
+											}
+										}
+									}
+									?>
+
+				
+
+
+
+									
+									
+																
 
 
 

@@ -24,7 +24,10 @@ class Admin_dashboard extends CI_Controller {
      $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
 
       $uid=$this->session->userdata('uid');
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
     
 
 
@@ -33,7 +36,7 @@ class Admin_dashboard extends CI_Controller {
       $data['head']='admin/inc/v_dashboard_head';
       $data['footer']='admin/inc/v_dashboard_footer';
       $data['sidebar']='admin/inc/v_sidebar';
-        $data['sidebar_right']='admin/inc/v_sidebar_right';
+      $data['sidebar_right']='admin/inc/v_sidebar_right';
       
 
       $data['header']='admin/inc/v_header';
@@ -41,58 +44,7 @@ class Admin_dashboard extends CI_Controller {
       //load the view
       $this->load->view('admin/v_admin_template', $data);
   }
-  // Booking Bus
-  public function booking($param1='',$param2=''){      
-      $data=array();
-      $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-      $uid=$this->session->userdata('uid');
-      $gro_id=$this->session->userdata('gro_id');
-      $company_id=$this->session->userdata('company_id');
-      $data['company_id']=$company_id;
-      $data['uid']=$uid;
-      $data['gro_id']=$gro_id;
-      $data['currency_name']="$";
-      $today = date("Y-m-d"); 
-      $data['today']=$today;
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-      // v_ticket
-   
-      if($gro_id==1){
-        if($param1 !=''){
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
-        }else{
-
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-        }       
-
-      }else{       
-        if($param1 !=''){
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
-        }else{
-
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-
-            // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket where c_id=$company_id AND status='".$param1."'");
-        }  
-
-      }
-    
-// $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-      
-
-      $data['form_title']=$this->replaceAll($this->uri->segment(1));
-      $data['panel_title']='All Bookings';
-      $data['head']='admin/head/v_head_table';
-      $data['footer']='admin/footer/v_footer_table';
-      $data['sidebar']='admin/inc/v_sidebar';
-      $data['sidebar_right']='admin/inc/v_sidebar_right';
-      $data['header']='admin/inc/v_header';
-          // $data['main_content']='admin/booking/v_booking';
-      $data['main_content']='admin/booking/v_list';
-          //load the view
-      $this->load->view('admin/v_admin_template', $data);    
-          //echo "Admin Dashboard";
-  }
+ 
 
   // List Hotel
   public function list_hotels(){      
@@ -100,7 +52,12 @@ class Admin_dashboard extends CI_Controller {
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $uid=$this->session->userdata('uid');
       $gro_id=$this->session->userdata('gro_id');
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
 
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
       $data['panel_title']=$this->uri->segment(1);
@@ -119,8 +76,13 @@ class Admin_dashboard extends CI_Controller {
   public function list_vechicles(){      
       $data=array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-      $uid=$this->session->userdata('uid');
+     $uid=$this->session->userdata('uid');
       $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
 
       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
@@ -158,6 +120,11 @@ class Admin_dashboard extends CI_Controller {
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $uid=$this->session->userdata('uid');
       $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
 
       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
@@ -191,8 +158,13 @@ class Admin_dashboard extends CI_Controller {
       $data=array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));      
-      $uid=$this->session->userdata('uid');
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+     $uid=$this->session->userdata('uid');
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_form';
       $data['footer']='admin/footer/v_footer_table';
@@ -221,7 +193,12 @@ public function guests(){
     $data['form_title']=$this->replaceAll($this->uri->segment(1));
     $data['panel_title']='All Guests';
     $uid=$this->session->userdata('uid');
-    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid"); 
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
     $data['head']='admin/head/v_head_table';
     $data['footer']='admin/footer/v_footer_table';
     $data['sidebar']='admin/inc/v_sidebar';
@@ -239,7 +216,12 @@ public function profile(){
     $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
     $data['form_title']=$this->replaceAll($this->uri->segment(1));
     $uid=$this->session->userdata('uid');
-    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
     $data['panel_title']='User Profile';
     $data['head']='admin/head/v_head_table';
     $data['footer']='admin/footer/v_footer_table';
@@ -259,7 +241,12 @@ public function invoice_print(){
     $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
     $data['form_title']=$this->replaceAll($this->uri->segment(1));
     $uid=$this->session->userdata('uid');
-    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");    
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
     $data['panel_title']='User Profile';
     $data['head']='admin/head/v_head_table';
     $data['footer']='admin/footer/v_footer_table';
@@ -282,7 +269,12 @@ public function invoice_print(){
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));      
       $uid=$this->session->userdata('uid');
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_form';
       $data['footer']='admin/footer/v_footer_table';
@@ -298,44 +290,6 @@ public function invoice_print(){
   }
 
 
-     /****MANAGE HOTELs*****/
-  function new_hotel($param1 = '', $param2 = ''){
-        if ($param1 == 'create') {
-            $data['field1']         = $this->input->post('name1');
-            $data['field2'] = substr(implode('', $this->input->post('facilities')), 0);
-            $data['field3']   = $this->input->post('name3');
-            $this->db->insert('test_add', $data);
-
-            // $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-            redirect(base_url() . 'add-hotels.html', 'refresh');
-        }
-        if ($param1 == 'do_update') {
-            $data['name']         = $this->input->post('name');
-            $data['name_numeric'] = $this->input->post('name_numeric');
-            $data['teacher_id']   = $this->input->post('teacher_id');
-
-            $this->db->where('class_id', $param2);
-            $this->db->update('class', $data);
-            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'add-hotels.html', 'refresh');
-        } else if ($param1 == 'edit') {
-            $page_data['edit_data'] = $this->db->get_where('class', array(
-                'class_id' => $param2
-            ))->result_array();
-        }
-        if ($param1 == 'delete') {
-            $this->db->where('class_id', $param2);
-            $this->db->delete('class');
-            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
-            redirect(base_url() . 'index.php?admin/classes/', 'refresh');
-        }
-        // $page_data['classes']    = $this->db->get('class')->result_array();
-        // $page_data['page_name']  = 'class';
-        // $page_data['page_title'] = get_phrase('manage_class');
-        // $this->load->view('backend/index', $page_data);
-  }
-
-// End Hotel Management
 
   function replaceAll($text) { 
       $text = strtolower(htmlentities($text)); 

@@ -22,7 +22,11 @@ class Schedules extends CI_Controller {
      // Count Vehicles
      $data['vehicles_count']=$this->m_crud->get_by_sql("SELECT count(v_id) as vehicles_count FROM tbl_vehicle");
       $uid=$this->session->userdata('uid');
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");  
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
       $data['head']='admin/inc/v_dashboard_head';
       $data['footer']='admin/inc/v_dashboard_footer';
@@ -39,8 +43,12 @@ class Schedules extends CI_Controller {
     $data=array();
     $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
     $uid=$this->session->userdata('uid');
-    $gro_id=$this->session->userdata('gro_id');
-    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
     $data['form_title']=$this->replaceAll($this->uri->segment(1));
     $data['panel_title']=$this->uri->segment(1);
     $data['head']='admin/head/v_head_table';
@@ -83,7 +91,11 @@ class Schedules extends CI_Controller {
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $uid=$this->session->userdata('uid');
       $gro_id=$this->session->userdata('gro_id');
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
       $data['panel_title']=$this->uri->segment(1);
       $data['head']='admin/head/v_head_table';
@@ -117,7 +129,12 @@ class Schedules extends CI_Controller {
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));      
       $uid=$this->session->userdata('uid');
+      $gro_id=$this->session->userdata('gro_id');
      // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_form';
       $data['footer']='admin/footer/v_footer_table';
@@ -137,8 +154,13 @@ class Schedules extends CI_Controller {
       $data = array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));      
-      $uid=$this->session->userdata('uid');
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+     $uid=$this->session->userdata('uid');
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_form';
       $data['footer']='admin/footer/v_footer_form';
@@ -237,8 +259,13 @@ class Schedules extends CI_Controller {
       $data = array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));      
-      $uid=$this->session->userdata('uid');
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+     $uid=$this->session->userdata('uid');
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_form';
       $data['footer']='admin/footer/v_footer_form';
@@ -376,7 +403,12 @@ class Schedules extends CI_Controller {
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
       $uid=$this->session->userdata('uid');
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");    
+      $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+
+          
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_table';
       $data['footer']='admin/footer/v_footer_table';

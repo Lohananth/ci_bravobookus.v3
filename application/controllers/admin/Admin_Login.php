@@ -137,7 +137,10 @@ function signup()
 							'name' 				=> $result[0]['name'],
 							'email'     		=> $result[0]['email'],
 							'image'     		=> $result[0]['image'],
-							'company_id'     		=> $result[0]['company_id'],
+							'company_id'     	=> $result[0]['company_id'],
+							'controller_id'     	=> $result[0]['controller_id'],
+							'group_name'     	=> $result[0]['group_name'],
+
 							'is_logged_in' 		=> TRUE
 					   );
 				$this->session->set_userdata($newdata);
@@ -184,6 +187,8 @@ function signup()
 							'cus_id' 			=> '',
 							'name' 				=> '',
 							'email'     		=> '',
+							'controller_id'     => '',
+							'group_name'     	=> '',
 							'is_logged_in' 		=> FALSE
 					   );
 

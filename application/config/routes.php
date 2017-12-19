@@ -43,10 +43,14 @@ $route['admin/verifylogin'] = 'admin/Admin_Login/verifylogin';
 $route['admin/dashboard'] = 'admin/Admin_dashboard/index';
 $route['dashboard.html'] = 'admin/Admin_dashboard/index';
 
-$route['booking.html'] = 'admin/Admin_dashboard/booking';
+$route['booking.html'] = 'admin/booking/booking';
 // (:any)
-$route['booking.html/(:any)'] = 'admin/Admin_dashboard/booking/$1';
-$route['booking.html/(:any)/(:any)'] = 'admin/Admin_dashboard/booking/$1/$2';
+$route['booking.html/add'] = 'admin/booking/booking/add';
+
+$route['booking.html/(:any)'] = 'admin/booking/booking/$1';
+$route['booking.html/(:any)/(:any)'] = 'admin/booking/booking/$1/$2';
+
+
 $route['guests.html'] = 'admin/Admin_dashboard/guests';
 $route['profile.html'] = 'admin/Admin_dashboard/profile';
 $route['invoice-print.html'] = 'admin/Admin_dashboard/invoice_print';
