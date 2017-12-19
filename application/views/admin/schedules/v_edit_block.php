@@ -27,7 +27,7 @@
 						<h2 class="panel-title"><i class="fa fa-edit" aria-hidden="true"></i> Edit <?php echo $data_vehicles[0]['vehicle_name']; ?></h2>
 					</div>
 				</div>
-				<form  action="<?php echo site_url(); ?>active-block-schedules.html/<?php echo $data_vehicles[0]['id'] ?>" method="post" accept-charset="utf-8">
+				<form  action="<?php echo site_url(); ?>update-block-schedules.html/<?php echo $data_vehicles[0]['id'] ?>" method="post" accept-charset="utf-8">
 					<div class="panel-body">
 						<div class="row">
 							<div class="form-group"><!--Origin-->

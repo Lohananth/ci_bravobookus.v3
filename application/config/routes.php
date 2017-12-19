@@ -68,7 +68,7 @@ $route['edit-vehicles.html/(:any)'] = 'admin/vehicles/vehicles/edit/$1';
 $route['view-vehicles.html/(:any)'] = 'admin/vehicles/vehicles/view/$1';
 
 // Schedules Management
-// add-schedules.html
+// list-schedule
 $route['add-schedules.html']='admin/schedules/schedules/addForm'; //Form add
 $route['save-schedules.html']='admin/schedules/schedules/save/create'; //Save Schedule
 $route['edit-schedules.html/(:any)']='admin/schedules/schedules/editForm/$1'; //For edit
@@ -77,8 +77,13 @@ $route['view-schedules.html/(:any)']='admin/schedules/schedules/viewForm/$1'; //
 $route['get_block_Schedule.html']='admin/schedules/schedules/get_block_Schedule'; //get Block for edit
 $route['disactive_block_Schedule.html']='admin/schedules/schedules/update_block_Schedule'; //update Block
 
+//list-block
 $route['edit-block-schedules.html/(:any)']='admin/schedules/schedules/editBlock/$1'; //edit block
-$route['active-block-schedules.html/(:any)']='admin/schedules/schedules/save/update_block/$1'; //edit
+$route['update-block-schedules.html/(:any)']='admin/schedules/schedules/save/update_block/$1';
+
+$route['get-schedules-for-active.html']='admin/schedules/schedules/get_active_Schedule'; 
+$route['active-schedules.html']='admin/schedules/schedules/update_active_Schedule'; 
+
 $route['list-schedules.html'] = 'admin/schedules/schedules/list_schedules'; // for all list schedule
 $route['list-schedules-blocked.html'] = 'admin/schedules/schedules/list_schedules_blocked';//all list blocked schedule
 

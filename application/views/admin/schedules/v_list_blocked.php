@@ -83,8 +83,8 @@
 							<a <?php echo $vch['id']; ?>" data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>view-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-success btn-sm" role="button">
 							<i class="fa fa-eye" aria-hidden="true"></i>
 							</a>
-							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $vch['id']; ?>" title="Block <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>blocked-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-warning btn-sm btn_blocked" role="button">
-							<i class="fa fa-ban"></i></a>
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalActive" dataid="<?php echo $vch['id']; ?>" title="Block <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>get-schedules-for-active.html/<?php echo $vch['id']; ?>" class="btn btn-warning btn-sm btn_getActive" role="button">
+							<i class="fa fa-check-square-o"></i></a>
 						</td>
 						<input type="hidden" name="vs_id" value="<?php echo $vschedule_list[0]['id']  ?>">	
 					</tr>
@@ -100,8 +100,8 @@
 </section>
 </div>
 <!-- Modal Delete Category -->
-<div id="myModalBlock" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
+<div id="myModalActive" class="modal fade" role="dialog">
+  <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -109,11 +109,11 @@
         <h2 class="modal-title">Blocked Schedule</h2>
       </div>
       <div class="modal-body">
-      		<form id="frm-block-schedule">
+      		<form id="frm-active-schedule">
 			</form>
       </div>
       <div class="modal-footer">
-      	<button type="button" class="btn btn-info" id="btn-blocked">Yes</button>
+      	<button type="button" class="btn btn-info" id="btn-Active">Yes</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
       </div>
     </div>

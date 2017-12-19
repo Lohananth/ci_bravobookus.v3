@@ -77,7 +77,7 @@ class Crud_model extends CI_Model
 	  return $query->result();   
 	 }
 
-//update blocked
+//To blocked Schedule
 	public function get_blocked_schedule_query($id){
 		$this->db->select('*');
 		$this->db->from('tbl_vehicle_schedule');
@@ -90,4 +90,18 @@ class Crud_model extends CI_Model
 		$this->db->where('id',$id);
 		return  $this->db->update('tbl_vehicle_schedule',$data);
 	}
+
+//To Activate Schedule
+	public function get_active_schedule_query($id){
+		$this->db->select('*');
+		$this->db->from('tbl_vehicle_schedule');
+		$this->db->where('id',$id);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function update_active_schedule_query($id,$data){
+		$this->db->where('id',$id);
+		return  $this->db->update('tbl_vehicle_schedule',$data);
+	}	
 }

@@ -47,20 +47,31 @@ class Schedules extends CI_Controller {
     $data['footer']='admin/footer/v_footer_table';
     $data['sidebar']='admin/inc/v_sidebar';
     $data['sidebar_right']='admin/inc/v_sidebar_right';
-    $data['header']='admin/inc/v_header';    
-    
-      $sql_vechicles_com="SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
-                        vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
-                        vs.travel_duration AS travel_duration, vs.local_price AS local_price,
-                        vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
-                        FROM
-                        tbl_vehicle_schedule AS vs 
-                        JOIN tbl_origin AS ori ON (ori.id = vs.origin)
-                        JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
-                        JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
-                        JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
-                        WHERE vs.status=1";
-      $data['vschedule_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
+    $data['header']='admin/inc/v_header';   
+    $data['origins']=$this->m_crud->get_by_sql("SELECT * FROM tbl_origin");
+    $data['vehicles']=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle");
+    $data['dptimes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_departure_time");  
+    $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+        vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
+        vs.travel_duration AS travel_duration, vs.local_price AS local_price,
+        vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+        FROM
+        tbl_vehicle_schedule AS vs 
+        JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+        JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+        JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+        JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+        WHERE vs.status=1";
+      // $sql_vechicles_com="SELECT 
+      //                     vs.id AS id, ori.origin AS origin, ori1.origin AS destination, vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time, vs.travel_duration AS travel_duration, vs.local_price AS local_price, vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+      //                     FROM
+      //                     tbl_vehicle_schedule AS vs 
+      //                     JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+      //                     JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+      //                     JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+      //                     JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+      //                     WHERE vs.status=1";
+      $data['vschedule_list']=$this->m_crud->get_by_sql($vSQL);
       $data['main_content']='admin/schedules/v_list';
           //load the view
       $this->load->view('admin/v_admin_template', $data);
@@ -235,6 +246,33 @@ class Schedules extends CI_Controller {
         'status' =>$this->input->post('status'),
       );
     $update_cate = $this->m_crud->update_blocked_schedule_query($vs_id,$data_update);
+    if($update_cate)
+      echo "1";
+    else
+      echo "0";
+  }
+
+  public function get_active_Schedule(){
+    $form = ''; 
+    $vs_id = $this->input->post('vs_id');
+    $vslist = $this->m_crud->get_active_schedule_query($vs_id);
+    if (count($vslist)>0){
+      foreach ($vslist as $vs){
+        $form .=' <input type="hidden" name="vs_id" id="vs_id" value="'.$vs->id.'">';
+        $form .=' <input type="hidden" name="status" id="status" value="1">';
+        $form .=' <h4>Are you sure, Do you want to Active this Schedule?</h4>';
+      }  
+          // End foreach
+      echo json_encode($form);    
+    }    
+  }
+
+  public function update_active_Schedule(){
+    $vs_id = $this->input->post('vs_id');
+    $data_update = array(
+        'status' =>$this->input->post('status'),
+      );
+    $update_cate = $this->m_crud->update_active_schedule_query($vs_id,$data_update);
     if($update_cate)
       echo "1";
     else

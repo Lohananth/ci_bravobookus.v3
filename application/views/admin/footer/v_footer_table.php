@@ -33,8 +33,8 @@
 
 		<script type="text/javaScript">
 			$(document).ready(function(){
-				//get blocked schedule for update
-				$('.btn_blocked').on('click',function(e){
+				//get schedule for Blocked
+				$('.btn_getBlocked').on('click',function(e){
 				 	e.preventDefault();
 				 	var id = $(this).attr('dataid');
 		    		$.ajax({
@@ -61,17 +61,62 @@
 			    		data: $('#frm-block-schedule').serialize(),
 			    		dataType: 'json',
 			    		success:function(data){
-			    			alert('Blocked Schedule was Updated successfully...');
+			    			alert('Schedule was Blocked successfully...');
 			    			//Hide myModalDelete
 			    			$('#myModalBlock').modal('hide');
 			    		},
 			    		error: function(){
 			    			alert('Error...');
 			    			$('#myModalBlock').modal('hide');		    		
-			    	}
+			    		}
+		    		});	
+				});
+//====================================================//
+				//get block Schedule for Active
+				$('.btn_getActive').on('click',function(e){
+				 	e.preventDefault();
+				 	var id = $(this).attr('dataid');
+		    		$.ajax({
+		    		url : "<?php echo base_url() ?>get-schedules-for-active.html",
+		    		type: "POST",
+		    		data: {vs_id:id},
+		    		dataType: 'json',
+		    		success:function(data){
+		    			$('#frm-active-schedule').html(data);
+							$('#myModalActive').data('id',id).modal('show');	    			
+		    		},
+		    		error: function(){
+		    			alert('Error...');
+		    		}
 		    	});	
 				});
 
+				//updated Active Schedule
+				$('#btn-Active').on('click',function(e){
+				 	var id= $('#myModalActive').data('id');
+			    	$.ajax({
+			    		url : "<?php echo base_url() ?>active-schedules.html",
+			    		type: "POST",
+			    		data: $('#frm-active-schedule').serialize(),
+			    		dataType: 'json',
+			    		success:function(data){
+			    			alert('Schedule was Actived successfully...');
+			    			//Hide myModalDelete
+			    			$('#myModalActive').modal('hide');
+			    		},
+			    		error: function(){
+			    			alert('Error...');
+			    			$('#myModalBlock').modal('hide');		    		
+			    		}
+		    		});	
+				});				
+//====================================================//
+				$('.btn-view-schedule').on('click',function(e){
+					e.preventDefault();
+					$('#myModalView').modal('show');
+				});
+
+//====================================================//
 				$('#status').change(function(){
 				  if($(this).prop('checked')){
 				   $('#status_hide').val('1');
