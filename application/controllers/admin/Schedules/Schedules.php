@@ -147,7 +147,7 @@ class Schedules extends CI_Controller {
       $data['header']='admin/inc/v_header';
       $data['origins']=$this->m_crud->get_by_sql("SELECT * FROM tbl_origin");
       $data['vehicles']=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle");
-      $data['dptimes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_departure_time");    
+      $data['dptimes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_departure_time");
       $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
               vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
               vs.travel_duration AS travel_duration, vs.local_price AS local_price,
@@ -163,35 +163,76 @@ class Schedules extends CI_Controller {
       $data['main_content']='admin/schedules/v_edit';
       //load the view
       $this->load->view('admin/v_admin_template', $data);
-      // echo "Admin Dashboard";
   }
 
-  public function viewForm($id=''){      
-      $data=array();
-      $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-      $data['form_title']=$this->replaceAll($this->uri->segment(1));      
-      $uid=$this->session->userdata('uid');
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-      $data['panel_title']='User Profile';
-      $data['head']='admin/head/v_head_form';
-      $data['footer']='admin/footer/v_footer_table';
-      $data['sidebar']='admin/inc/v_sidebar';
-      $data['sidebar_right']='admin/inc/v_sidebar_right';
-      $data['header']='admin/inc/v_header';
-      $data['companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company");
-      $data['vehicle_type']=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle_type");
-      $data['driver_names']=$this->m_crud->get_by_sql("SELECT * FROM tbl_driver");
-      $data['seattypes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_seat_type");
-      $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
-      // tbl_amenity
-      $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
-      // $data['showfacil']=$this->m_crud->get_by_sql("SELECT * FROM test_add where id=15 ");
-      $data['main_content']='admin/schedules/v_add';
-      //load the view
-      $this->load->view('admin/v_admin_template', $data);
-      // echo "Admin Dashboard";
+  public function viewForm(){      
+    $form = ''; 
+    $vs_id = $this->input->post('vs_id');
+    $vsview = $this->m_crud->getView($vs_id);
+    if (count($vsview)>0){
+    foreach ($vsview as $vs){
+      $form .='<div class="row">';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="origin">Origin(From)<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="origin" id="origin" class="form-control" disabled="true">';
+      $form .='<option value="'.$vs->id.'">'.$vs->origin.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="destination">Destination(To)<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="destination" id="destination" class="form-control" disabled="true">';
+      $form .='<option value="'.$vs->id.'">'.$vs->destination.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='</div>';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-12">';
+      $form .='<label for="Destination">Vehicle Name<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="v_id" id="v_id" class="form-control" disabled="true">';
+      $form .='<option value="'.$vs->id.'">'.$vs->vehicle_name.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='</div>';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-4">';
+      $form .='<label for="local_price">Local Price<span><b>*</b></span></label>';
+      $form .='<input type="text" name="local_price" id="local_price" class="form-control" value="'.$vs->local_price.'" disabled="true">';
+      $form .='</div>';
+      $form .='<div class="col-md-4">';
+      $form .='<label for="foreigner_price">Foreign Price<span><b>*</b></span></label>';
+      $form .='<input type="text" name="foreigner_price" id="foreigner_price" class="form-control" value="'.$vs->foreigner_price.'" disabled="true">';
+      $form .='</div>';
+      $form .='<div class="col-md-4">';
+      $form .='<label for="departure_time">Departure Time<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="departure_time" id="departure_time" class="form-control" disabled="true">';
+      $form .='<option value="'.$vs->id.'">'.$vs->departure_time.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='</div>';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="travel_duration">Travel Duration<span><b>*</b></span></label>';
+      $form .='<input type="text" name="travel_duration" id="travel_duration" class="form-control" value="'.$vs->travel_duration.'" disabled="true">';
+      $form .='</div>';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="origin">Active/Block&nbsp;</label>';
+      if($vs->status==1){
+      $form .='<input type="text" name="status" value="Active" class="form-control" disabled="true">';
+      // $form .='<input type="checkbox" name="status" id="status" data-toggle="toggle" data-on="Active" data-off="Block" data-onstyle="success" data-offstyle="danger" disabled="true" checked />';
+      // $form .='<input type="hidden" name="status_hide" id="status_hide" value="1" disabled="true"/>';
+      } else {
+      $form .='<input type="text" name="status" value="DisActive" class="form-control" disabled="true">';
+      // $form .='<input type="checkbox" name="status" id="status" data-toggle="toggle" data-on="Active" data-off="Block" data-onstyle="success" data-offstyle="danger" disabled="true"/>';
+      // $form .='<input type="hidden" name="status_hide" id="status_hide" value="0" disabled="true"/>';
+      }
+      $form .='</div>';
+      $form .='</div>';
+      $form .='</div>';         
+    }  
+    echo json_encode($form);   
   }
-
+}
   public function editBlock($id=''){      
       $data = array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");

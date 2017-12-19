@@ -70,7 +70,7 @@ class Crud_model extends CI_Model
         //returns from this string in the db, converts it into an array
     }
 
-    function getOrigin(){ 
+  function getOrigin(){ 
 	  $this->db->select("id,origin,photo,country");
 	  $this->db->from('tbl_origin');    
 	  $query = $this->db->get();  
@@ -104,4 +104,21 @@ class Crud_model extends CI_Model
 		$this->db->where('id',$id);
 		return  $this->db->update('tbl_vehicle_schedule',$data);
 	}	
+
+	public function getView($id){
+    $vSQL = "vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+              vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
+              vs.travel_duration AS travel_duration, vs.local_price AS local_price,
+              vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+              FROM
+              tbl_vehicle_schedule AS vs 
+              JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+              JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+              JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+              JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+              WHERE vs.id=$id AND vs.status=1";
+    $this->db->select($vSQL);
+    $query = $this->db->get();
+		return $query->result();
+	}
 }

@@ -1,5 +1,3 @@
-
-
 <!-- Vendor -->
 		<script src="assets/vendor/jquery/jquery.js"></script>
 		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
@@ -77,18 +75,18 @@
 				 	e.preventDefault();
 				 	var id = $(this).attr('dataid');
 		    		$.ajax({
-		    		url : "<?php echo base_url() ?>get-schedules-for-active.html",
-		    		type: "POST",
-		    		data: {vs_id:id},
-		    		dataType: 'json',
-		    		success:function(data){
-		    			$('#frm-active-schedule').html(data);
-							$('#myModalActive').data('id',id).modal('show');	    			
-		    		},
-		    		error: function(){
-		    			alert('Error...');
-		    		}
-		    	});	
+			    		url : "<?php echo base_url() ?>get-schedules-for-active.html",
+			    		type: "POST",
+			    		data: {vs_id:id},
+			    		dataType: 'json',
+			    		success:function(data){
+			    			$('#frm-active-schedule').html(data);
+								$('#myModalActive').data('id',id).modal('show');	    			
+			    		},
+			    		error: function(){
+			    			alert('Error...');
+			    		}
+		    		});	
 				});
 
 				//updated Active Schedule
@@ -113,7 +111,20 @@
 //====================================================//
 				$('.btn-view-schedule').on('click',function(e){
 					e.preventDefault();
-					$('#myModalView').modal('show');
+				 	var id = $(this).attr('dataid');
+		    		$.ajax({
+			    		url : "<?php echo base_url() ?>viewForm-schedules.html",
+			    		type: "POST",
+			    		data: {vs_id:id},
+			    		dataType: 'json',
+			    		success:function(data){
+			    			$('#frm-view-schedule').html(data);
+								$('#myModalView').data('id',id).modal('show');	    			
+			    		},
+			    		error: function(){
+			    			alert('Error...');
+			    		}
+		    		});	
 				});
 
 //====================================================//

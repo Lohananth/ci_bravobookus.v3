@@ -74,7 +74,7 @@
 							</div>	
 							<div class="form-group"><!--Vehicle Name-->
 								<div class="col-md-12">
-									<label for="Destination">Vehicle Name<span><b>*</b></span></label>
+									<label for="vehicle_name">Vehicle Name<span><b>*</b></span></label>
 									<select data-plugin-selectTwo name="v_id" id="v_id" class="form-control">
 										<?php
 										$vsname = $data_vehicles[0]['vehicle_name'];
