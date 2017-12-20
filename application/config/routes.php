@@ -91,6 +91,7 @@ $route['active-schedules.html']='admin/schedules/schedules/update_active_Schedul
 $route['list-schedules.html'] = 'admin/schedules/schedules/list_schedules'; // for all list schedule
 $route['list-schedules-blocked.html'] = 'admin/schedules/schedules/list_schedules_blocked';//all list blocked schedule
 $route['viewForm-schedules.html'] = 'admin/schedules/schedules/viewForm';
+$route['viewBlock-schedules.html'] = 'admin/schedules/schedules/viewBlock';
 
 // Logout
 $route['logout'] = 'admin/Admin_Login/logout';

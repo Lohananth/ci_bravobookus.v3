@@ -70,7 +70,7 @@ class Crud_model extends CI_Model
         //returns from this string in the db, converts it into an array
     }
 
-  function getOrigin(){ 
+  	function getOrigin(){ 
 	  $this->db->select("id,origin,photo,country");
 	  $this->db->from('tbl_origin');    
 	  $query = $this->db->get();  
@@ -79,11 +79,25 @@ class Crud_model extends CI_Model
 
 //To blocked Schedule
 	public function get_blocked_schedule_query($id){
-		$this->db->select('*');
-		$this->db->from('tbl_vehicle_schedule');
-		$this->db->where('id',$id);
-		$query = $this->db->get();
-		return $query->result();
+    $vSQL =    "vhs.id AS id,ori.origin AS origin,
+				dest.origin AS destination,vh.vehicle_name AS vehicle_name,
+				vhs.local_price AS local_price,vhs.foreigner_price AS foreigner_price,
+				dpt.departure_time AS departure_time,vhs.`status` AS `status`
+				FROM
+				tbl_vehicle_schedule AS vhs
+				INNER JOIN tbl_origin AS ori ON (ori.id = vhs.origin)
+				INNER JOIN tbl_origin AS dest ON (dest.id = vhs.destination)
+				INNER JOIN tbl_vehicle AS vh ON (vh.v_id = vhs.v_id)
+				INNER JOIN tbl_departure_time AS dpt ON (dpt.id = vhs.departure_time)
+				WHERE
+					vhs.id = $id
+				AND vhs.`status` = 1";
+    $this->db->select($vSQL);		
+	// $this->db->select('*');
+	// $this->db->from('tbl_vehicle_schedule');
+	// $this->db->where('id',$id);
+	$query = $this->db->get();
+	return $query->result();
 	}
 
 	public function update_blocked_schedule_query($id,$data){
@@ -106,7 +120,7 @@ class Crud_model extends CI_Model
 	}	
 
 	public function getView($id){
-    $vSQL = "vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+    	$vSQL = " vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
               vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
               vs.travel_duration AS travel_duration, vs.local_price AS local_price,
               vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
@@ -117,8 +131,25 @@ class Crud_model extends CI_Model
               JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
               JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
               WHERE vs.id=$id AND vs.status=1";
-    $this->db->select($vSQL);
-    $query = $this->db->get();
+	    $this->db->select($vSQL);
+	    $query = $this->db->get();
+		return $query->result();
+	}
+
+	public function getBlock($id){
+    $vSQL = " vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+              vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
+              vs.travel_duration AS travel_duration, vs.local_price AS local_price,
+              vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+              FROM
+              tbl_vehicle_schedule AS vs 
+              JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+              JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+              JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+              JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+              WHERE vs.id=$id AND vs.status=0";
+	  $this->db->select($vSQL);
+	  $query = $this->db->get();
 		return $query->result();
 	}
 }

@@ -43,12 +43,10 @@ class Schedules extends CI_Controller {
     $data=array();
     $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
     $uid=$this->session->userdata('uid');
-      $gro_id=$this->session->userdata('gro_id');
+    $gro_id=$this->session->userdata('gro_id');
      // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
        $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
        $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-
-
     $data['form_title']=$this->replaceAll($this->uri->segment(1));
     $data['panel_title']=$this->uri->segment(1);
     $data['head']='admin/head/v_head_table';
@@ -70,20 +68,10 @@ class Schedules extends CI_Controller {
         JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
         JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
         WHERE vs.status=1";
-      // $sql_vechicles_com="SELECT 
-      //                     vs.id AS id, ori.origin AS origin, ori1.origin AS destination, vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time, vs.travel_duration AS travel_duration, vs.local_price AS local_price, vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
-      //                     FROM
-      //                     tbl_vehicle_schedule AS vs 
-      //                     JOIN tbl_origin AS ori ON (ori.id = vs.origin)
-      //                     JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
-      //                     JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
-      //                     JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
-      //                     WHERE vs.status=1";
       $data['vschedule_list']=$this->m_crud->get_by_sql($vSQL);
       $data['main_content']='admin/schedules/v_list';
           //load the view
       $this->load->view('admin/v_admin_template', $data);
-         // echo "Admin Dashboard";
   }
   // Blocked schedules
   public function list_schedules_blocked(){      
@@ -133,8 +121,6 @@ class Schedules extends CI_Controller {
      // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
        $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
        $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-
-
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_form';
       $data['footer']='admin/footer/v_footer_table';
@@ -159,8 +145,6 @@ class Schedules extends CI_Controller {
      // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
        $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
        $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-
-
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_form';
       $data['footer']='admin/footer/v_footer_form';
@@ -252,9 +236,10 @@ class Schedules extends CI_Controller {
       $form .='</div>';
       $form .='</div>';         
     }  
-    echo json_encode($form);   
+      echo json_encode($form);   
+    }
   }
-}
+ 
   public function editBlock($id=''){      
       $data = array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
@@ -308,6 +293,74 @@ class Schedules extends CI_Controller {
     }    
   }
 
+  public function viewBlock(){      
+    $form = ''; 
+    $vs_id = $this->input->post('vs_id');
+    $vsview = $this->m_crud->getBlock($vs_id);
+    if (count($vsview)>0){
+    foreach ($vsview as $vs){
+      $form .='<div class="row">';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="origin">Origin(From)<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="origin" id="origin" class="form-control" disabled="true">';
+      $form .='<option value="'.$vs->id.'">'.$vs->origin.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="destination">Destination(To)<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="destination" id="destination" class="form-control" disabled="true">';
+      $form .='<option value="'.$vs->id.'">'.$vs->destination.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='</div>';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-12">';
+      $form .='<label for="Destination">Vehicle Name<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="v_id" id="v_id" class="form-control" disabled="true">';
+      $form .='<option value="'.$vs->id.'">'.$vs->vehicle_name.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='</div>';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-4">';
+      $form .='<label for="local_price">Local Price<span><b>*</b></span></label>';
+      $form .='<input type="text" name="local_price" id="local_price" class="form-control" value="'.$vs->local_price.'" disabled="true">';
+      $form .='</div>';
+      $form .='<div class="col-md-4">';
+      $form .='<label for="foreigner_price">Foreign Price<span><b>*</b></span></label>';
+      $form .='<input type="text" name="foreigner_price" id="foreigner_price" class="form-control" value="'.$vs->foreigner_price.'" disabled="true">';
+      $form .='</div>';
+      $form .='<div class="col-md-4">';
+      $form .='<label for="departure_time">Departure Time<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="departure_time" id="departure_time" class="form-control" disabled="true">';
+      $form .='<option value="'.$vs->id.'">'.$vs->departure_time.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='</div>';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="travel_duration">Travel Duration<span><b>*</b></span></label>';
+      $form .='<input type="text" name="travel_duration" id="travel_duration" class="form-control" value="'.$vs->travel_duration.'" disabled="true">';
+      $form .='</div>';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="origin">Active/Block&nbsp;</label>';
+      if($vs->status==1){
+      $form .='<input type="text" name="status" value="Active" class="form-control" disabled="true">';
+      // $form .='<input type="checkbox" name="status" id="status" data-toggle="toggle" data-on="Active" data-off="Block" data-onstyle="success" data-offstyle="danger" disabled="true" checked />';
+      // $form .='<input type="hidden" name="status_hide" id="status_hide" value="1" disabled="true"/>';
+      } else {
+      $form .='<input type="text" name="status" value="DisActive" class="form-control" disabled="true">';
+      // $form .='<input type="checkbox" name="status" id="status" data-toggle="toggle" data-on="Active" data-off="Block" data-onstyle="success" data-offstyle="danger" disabled="true"/>';
+      // $form .='<input type="hidden" name="status_hide" id="status_hide" value="0" disabled="true"/>';
+      }
+      $form .='</div>';
+      $form .='</div>';
+      $form .='</div>';         
+    }  
+      echo json_encode($form);   
+    }
+  }
   public function update_block_Schedule(){
     $vs_id = $this->input->post('vs_id');
     $data_update = array(

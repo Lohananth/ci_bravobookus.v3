@@ -63,7 +63,7 @@
 						<th style="width: 20%;">Actions</th>
 					</tr>
 				</thead>
-				<tbody>									
+				<tbody id="list-block-schedule">									
 					<?php 
 					$i=1;
 					foreach ($vschedule_list as $vch) {
@@ -80,7 +80,7 @@
 						<td class="center hidden-phone">
 							<a data-toggle="tooltip" title="Edit <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>edit-block-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-primary btn-sm" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 							</a>
-							<a <?php echo $vch['id']; ?>" data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>view-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-success btn-sm" role="button">
+							<a data-toggle="tooltip" data-toggle="modal" ata-target="#myBlockView" dataid="<?php echo $vch['id']; ?>" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>viewBlock-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-success btn-sm btn-block-view" role="button">
 							<i class="fa fa-eye" aria-hidden="true"></i>
 							</a>
 							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalActive" dataid="<?php echo $vch['id']; ?>" title="Block <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>get-schedules-for-active.html/<?php echo $vch['id']; ?>" class="btn btn-warning btn-sm btn_getActive" role="button">
@@ -106,7 +106,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Blocked Schedule</h2>
+        <h2 class="modal-title">Active Schedule</h2>
       </div>
       <div class="modal-body">
       		<form id="frm-active-schedule">
@@ -118,5 +118,25 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- Modal Delete Category -->
+<div id="myBlockView" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">View Schedule</h2>
+      </div>
+      <div class="modal-body">
+      	<form id="frm-view-block">
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
