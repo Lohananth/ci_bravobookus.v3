@@ -1,7 +1,7 @@
 
 				<section role="main" class="content-body">
 					<header class="page-header">
-						<h2><?php echo $form_title; ?></h2>
+						<h2><i class="fa fa-taxi"></i> <?php echo $form_title; ?></h2>
 					
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">
@@ -20,152 +20,87 @@
 
 <div class="row">
 						
-						<div class="col-md-6 col-lg-12 col-xl-6">
-							<div class="row">
-								
-									<div class="col-md-12 col-lg-6 col-xl-6">
-									<section class="panel panel-featured-left panel-featured-primary">
+						
+																
+														
+								<div class="col-md-3 col-lg-3 col-xl-3">
+									<section class="panel panel-featured-left panel-featured-quartenary">
+										<a  href="<?php echo site_url(); ?>vehicles.html/add">
 										<div class="panel-body">
-											<div class="widget-summary">
+											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
-													<a href="<?php echo site_url(); ?>add-vehicles.html">
-													<div class="summary-icon bg-primary">
-														<i class="fa fa-plus"></i>
+													<div class="summary-icon bg-quartenary">
+														<i class="fa fa-envelope-o"></i>
 													</div>
-												</a>
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
-														<h4 class="title">Add New Vehicles</h4>
+														<h4 class="title">Add</h4>
 														<div class="info">
-															<strong class="amount">1281</strong>
-															<span class="text-primary">(Currents)</span>
+															<strong class="amount">Vehicle </strong><span class="text-primary">(New)</span>
 														</div>
 													</div>
-													<div class="summary-footer">
-														<!-- <a class="text-muted text-uppercase"> -->
-															<a class="btn btn-info" href="<?php echo site_url(); ?>add-vehicles.html">
-
-														Add New</a>
-													</div>
+													
 												</div>
 											</div>
 										</div>
+									</a>
 									</section>
 								</div>
-							
-								
-								<div class="col-md-12 col-lg-6 col-xl-6">
-									<section class="panel panel-featured-left panel-featured-secondary">
+								<div class="col-md-3 col-lg-3 col-xl-3">
+									<section class="panel panel-featured-left panel-featured-primary">
+										<a  href="<?php echo site_url(); ?>vehicles.html/list/active">
 										<div class="panel-body">
-											<div class="widget-summary">
+											<div class="widget-summary widget-summary-sm">
+												<div class="widget-summary-col widget-summary-col-icon">
+													<div class="summary-icon bg-primary">
+														<i class="fa fa-taxi"></i>
+													</div>
+												</div>
+												<div class="widget-summary-col">
+													<div class="summary">
+														<h4 class="title">Vehicle</h4>
+														<div class="info">
+															<strong class="amount">Active </strong><span class="text-primary">(200)</span>
+														</div>
+													</div>
+													
+												</div>
+											</div>
+										</div>
+									</a>
+									</section>
+								</div>
+
+								<div class="col-md-3 col-lg-3 col-xl-3">
+									<section class="panel panel-featured-left panel-featured-secondary">
+										<a  href="<?php echo site_url(); ?>vehicles.html/list/blocked">
+										<div class="panel-body">
+											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-secondary">
-														<i class="fa fa-th-list"></i>
+														<i class="fa fa-taxi"></i>
 													</div>
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
-														<h4 class="title">List Vehicles</h4>
+														<h4 class="title">Vehickes</h4>
 														<div class="info">
-															<strong class="amount">3000 </strong><span class="text-primary">(Vehicles)</span>
+															<strong class="amount">Blocked </strong><span class="text-primary">(120)</span>
 														</div>
 													</div>
-													<div class="summary-footer">
-														<a class="btn btn-info" href="<?php echo site_url(); ?>list-vehicles.html">
-
-														Show..</a>
-													</div>
+													
 												</div>
 											</div>
 										</div>
+									</a>
 									</section>
 								</div>
-								
-								<div class="col-md-6 col-lg-4 col-xl-4">
-									<section class="panel panel-featured-left panel-featured-tertiary">
-										<div class="panel-body">
-											<div class="widget-summary">
-												<div class="widget-summary-col widget-summary-col-icon">
-													<div class="summary-icon bg-tertiary">
-														<i class="fa fa-car"></i>
-													</div>
-												</div>
-												<div class="widget-summary-col">
-													<div class="summary">
-														<h4 class="title">Vehicles Type</h4>
-														<div class="info">
-															<strong class="amount">38</strong><span class="text-primary">(Vehicles)</span>
-														</div>
-													</div>
-													<div class="summary-footer">
-														<a class="btn btn-info" href="<?php echo site_url(); ?>add-vehicles.html">
-
-														Show</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
-								
-								<div class="col-md-6 col-lg-4 col-xl-4">
+								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
+										<a  href="<?php echo site_url(); ?>booking.html/booking/Paid">
 										<div class="panel-body">
-											<div class="widget-summary">
-												<div class="widget-summary-col widget-summary-col-icon">
-													<div class="summary-icon bg-tertiary">
-														<i class="fa fa-car"></i>
-													</div>
-												</div>
-												<div class="widget-summary-col">
-													<div class="summary">
-														<h4 class="title">Add Vehicle Type</h4>
-														<div class="info">
-															<strong class="amount">12 </strong><span class="text-primary">(Vehicles)</span>
-														</div>
-													</div>
-													<div class="summary-footer">
-														<a class="btn btn-info" href="<?php echo site_url(); ?>add-vehicles.html">
-
-														Add now..</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
-								<div class="col-md-6 col-lg-4 col-xl-4">
-									<section class="panel panel-featured-left panel-featured-quartenary">
-										<div class="panel-body">
-											<div class="widget-summary">
-												<div class="widget-summary-col widget-summary-col-icon">
-													<div class="summary-icon bg-tertiary">
-														<i class="fa fa-car"></i>
-													</div>
-												</div>
-												<div class="widget-summary-col">
-													<div class="summary">
-														<h4 class="title">Block Vehicle Type </h4>
-														<div class="info">
-															<strong class="amount">3765</strong><span class="text-primary">(Vehicles)</span>
-														</div>
-													</div>
-													<div class="summary-footer">
-														<a class="btn btn-danger" href="<?php echo site_url(); ?>add-vehicles.html">
-														Block Now</a>
-
-													</div>
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
-								
-								<div class="col-md-6 col-lg-4 col-xl-4">
-									<section class="panel panel-featured-left panel-featured-quartenary">
-										<div class="panel-body">
-											<div class="widget-summary">
+											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-quartenary">
 														<i class="fa fa-calendar"></i>
@@ -173,26 +108,23 @@
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
-														<h4 class="title">Manage Schedules</h4>
+														<h4 class="title">Add</h4>
 														<div class="info">
-															<strong class="amount">3765 </strong><span class="text-primary">(Vehicles)</span>
+															<strong class="amount">Vehicle </strong><span class="text-primary">(type)</span>
 														</div>
 													</div>
-													<div class="summary-footer">
-														<a class="btn btn-info" href="<?php echo site_url(); ?>list-schedules.html">
-
-														Show</a>
-													</div>
+													
 												</div>
 											</div>
 										</div>
+									</a>
 									</section>
 								</div>
-
-								<div class="col-md-6 col-lg-4 col-xl-4">
+								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
+										<a  href="<?php echo site_url(); ?>booking.html/booking/Unpaid">
 										<div class="panel-body">
-											<div class="widget-summary">
+											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-quartenary">
 														<i class="fa fa-calendar"></i>
@@ -200,25 +132,23 @@
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
-														<h4 class="title">Add Schedules</h4>
+														<h4 class="title">Vehicle Type</h4>
 														<div class="info">
-															<strong class="amount">3765 </strong><span class="text-primary">(Vehicles)</span>
+															<strong class="amount">Active </strong><span class="text-primary">(200)</span>
 														</div>
 													</div>
-													<div class="summary-footer">
-														<a class="btn btn-info" href="<?php echo site_url(); ?>add-schedules.html">
-														Add Now..</a>
-													</div>
+													
 												</div>
 											</div>
 										</div>
+									</a>
 									</section>
 								</div>
-								
-								<div class="col-md-6 col-lg-4 col-xl-4">
+								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
+										<a  href="<?php echo site_url(); ?>booking.html/booking/Pending">
 										<div class="panel-body">
-											<div class="widget-summary">
+											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-quartenary">
 														<i class="fa fa-calendar"></i>
@@ -226,22 +156,20 @@
 												</div>
 												<div class="widget-summary-col">
 													<div class="summary">
-														<h4 class="title">Block Schedules</h4>
+														<h4 class="title">Vehicle Type</h4>
 														<div class="info">
-															<strong class="amount">3765</strong>
+															<strong class="amount">Blocked </strong><span class="text-primary">(21)</span>
 														</div>
 													</div>
-													<div class="summary-footer">
-														<a class="btn btn-danger" href="<?php echo site_url(); ?>list-blocked.html">
-
-														See Blocked Now..</a>
-													</div>
+													
 												</div>
 											</div>
 										</div>
+									</a>
 									</section>
 								</div>
-								
+
+
 								
 
 

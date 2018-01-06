@@ -28,7 +28,7 @@
 						<a href="#" class="fa fa-times"></a>
 					</div>
 
-					<h2 class="panel-title"><i class="fa fa-edit" aria-hidden="true"></i> Edit <?php echo $tbl_vehicle[0]['vehicle_name']; ?></h2>
+					<h2 class="panel-title"><i class="fa fa-eye" aria-hidden="true"></i> View <?php echo $tbl_vehicle[0]['vehicle_name']; ?></h2>
 				</div>
 			</div>
 
@@ -47,11 +47,20 @@
 							<optgroup label="Select one Company">
 								
 								<?php 
+								$comp=$tbl_vehicle[0]['company_name'];
 
 								foreach ($companies as $company) {
-								?>
-									<option value='<?php echo $company['id']; ?>'><?php echo $company['company_name']; ?></option>
+									if($comp==$company['company_name']){
+										echo $company['company_name'];
+										?>
+										<option selected="selected" value='<?php echo $company['id']; ?>'><?php echo $company['company_name']; ?></option>
+										<?php
+									}else{
+										?>
+									<option value='<?php echo $company['id']; ?>'>
+									<?php echo $company['company_name']; ?></option>
 								<?php
+									}								
 								}
 								?>	
 							</optgroup>
@@ -64,46 +73,66 @@
 					</div>
 
 					<div class="col-md-3 form-group">
-								<input type="text" placeholder="PP-2A-0004" class="form-control">
-					</div>
-					<!-- Vehicle Name -->
+								<input type="text" placeholder="PP-2A-0004" class="form-control" value="<?php echo $tbl_vehicle[0]['code']; ?>">
 
-					<div class="col-md-2 form-group">
-						Vehicle Name <span>(*)</span>
 					</div>
-					<div class="col-md-5 form-group">
-						<input type="text" name="vc_name" id="vc_name" class="form-control" placeholder="Vehicle Name" value="" required="required">
-					</div>
-
 					<!-- Vehicle Type -->
 					<div class="col-md-2 form-group">
 						Vehicle Type <span>(*)</span>
 					</div>
-					<div class="col-md-3 form-group">
+					<div class="col-md-5 form-group">
 						<select data-plugin-selectTwo class="form-control populate" name="vc_type" >
 									<optgroup label="Select one Company">
 									<?php 
+									$vType=$tbl_vehicle[0]['vehicle_type'];
 									foreach ($vehicle_type as $vc_type) {
-									?>
-									<option value='<?php echo $vc_type['id']; ?>'><?php echo $vc_type['vehicle_type']; ?></option>
+										if($vType==$vc_type['vt_id']){
+											?>
+											<option selected="selected" value='<?php echo $vc_type['vt_id']; ?>'><?php echo $vc_type['vehicle_type']; ?></option>
+											<?php
+										}else{
+											?>
+									<option value='<?php echo $vc_type['vt_id']; ?>'><?php echo $vc_type['vehicle_type']; ?></option>
 									<?php
+										}									
 									}
 									?>	
 									</optgroup>
 								</select>
 					</div>
+
+					<!-- Vehicle Name -->
+
+					<div class="col-md-2 form-group">
+						Vehicle Name <span>(*)</span>
+					</div>
+					<div class="col-md-3 form-group">
+						<input type="text" name="vc_name" id="vc_name" class="form-control" placeholder="Vehicle Name" value="<?php echo $tbl_vehicle[0]['vehicle_name']; ?>" required="required">
+					</div>
+
+					
 					<!-- Driver Name -->
 					<div class="col-md-2 form-group">
-						Driver Name <span>(*)</span>
+						Driver Name <span>(*)<?php echo $tbl_vehicle[0]['drivers'];?></span>
 					</div>
 					<div class="col-md-3 form-group">
 						<select data-plugin-selectTwo class="form-control populate" name="driver_name" >
 									<optgroup label="Select one Company">
 									<?php 
+									$driver=$tbl_vehicle[0]['drivers'];
+									echo $driver;
 									foreach ($driver_names as $driver_name) {
-									?>
+										if($driver==$driver_name['id']){
+											echo $driver_name['driver_name'];
+											?>
+										<option selected="selected" value='<?php echo $driver_name['id']; ?>'><?php echo $driver_name['driver_name']; ?></option>
+									<?php
+
+										}else{
+											?>
 									<option value='<?php echo $driver_name['id']; ?>'><?php echo $driver_name['driver_name']; ?></option>
 									<?php
+										}
 									}
 									?>	
 									</optgroup>
@@ -116,14 +145,26 @@
 					<div class="col-md-5 form-group">
 						<select multiple data-plugin-selectTwo class="form-control populate" multiple="multiple" name="amenities[]" placeholder="Click here to select">
 									<optgroup label="Select Facilities">
+										<?php $bus_amenities = explode(",", $tbl_vehicle[0]['amenities']) ?>
 										<?php 
-										foreach ($amenities as $facil) {
+										foreach ($amenities as $amenity) {
 											?>
-											<option value='<?php echo $facil['id']; ?>'><?php echo $facil['amenity']; ?></option>
-											<?php
+											<?php for($i=0; $i<count($bus_amenities); $i++){
+												if($amenity['id']==$bus_amenities[$i]){?>
+													<option selected="selected" value='<?php echo $amenity['id']; ?>'><?php echo $amenity['amenity']; ?></option>
+												<?php }
+												else{
+													?>
+													<option  value='<?php echo $amenity['id']; ?>'>
+														<?php 
+													echo $amenity['amenity']; ?></option>
+													<?php
+												} 
+											}
 										}
 
 										?>	
+				
 									</optgroup>
 						</select>
 					</div>

@@ -58,7 +58,7 @@ $route['invoice-print.html'] = 'admin/Admin_dashboard/invoice_print';
 // Vechicles Management
 // list_vechicles
 $route['vehicles.html'] = 'admin/vehicles/vehicles';
-$route['list-vehicles.html'] = 'admin/vehicles/vehicles/list_vehicles';
+$route['vehicles.html/list/(:any)'] = 'admin/vehicles/vehicles/vehicle/$1';
 
 // list_vechicles_blocked
 $route['vehicle-blocked.html'] = 'admin/vehicles/vehicles/list_vehicles_blocked';
@@ -67,9 +67,9 @@ $route['vehicle-report.html']='admin/vehicles/vehicles/vehicle_report';
 
 // $route['list-vechicles.html'] = 'admin/Admin_dashboard/show_vechicles';
 
-$route['add-vehicles.html'] = 'admin/vehicles/vehicles/add';
-$route['edit-vehicles.html/(:any)'] = 'admin/vehicles/vehicles/edit/$1';
-$route['view-vehicles.html/(:any)'] = 'admin/vehicles/vehicles/view/$1';
+$route['vehicles.html/add'] = 'admin/vehicles/vehicles/add';
+$route['vehicles.html/edit/(:any)'] = 'admin/vehicles/vehicles/edit/$1';
+$route['vehicles.html/view/(:any)'] = 'admin/vehicles/vehicles/view/$1';
 
 // Schedules Management
 // list-schedule

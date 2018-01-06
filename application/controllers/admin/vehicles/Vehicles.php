@@ -41,58 +41,8 @@ class Vehicles extends CI_Controller {
       $this->load->view('admin/v_admin_template', $data);
   }
   // Booking Bus
-  public function booking($param1='',$param2=''){      
-      $data=array();
-      $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-      $uid=$this->session->userdata('uid');
-      $gro_id=$this->session->userdata('gro_id');
-     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
-       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-
-
-      $company_id=$this->session->userdata('company_id');
-      $data['company_id']=$company_id;
-      $data['uid']=$uid;
-      $data['gro_id']=$gro_id;
-      $data['currency_name']="$";
-      $today = date("Y-m-d"); 
-      $data['today']=$today;
-      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-      // v_ticket   
-      if($gro_id==1){
-        if($param1 !=''){
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
-        }else{
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-        }
-      }else{       
-        if($param1 !=''){
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
-        }else{
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-            // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket where c_id=$company_id AND status='".$param1."'");
-        }  
-      }    
-      // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-      $data['form_title']=$this->replaceAll($this->uri->segment(1));
-      $data['panel_title']='All Bookings';
-      $data['head']='admin/head/v_head_table';
-      $data['footer']='admin/footer/v_footer_table';
-      $data['sidebar']='admin/inc/v_sidebar';
-      $data['sidebar_right']='admin/inc/v_sidebar_right';
-      $data['header']='admin/inc/v_header';
-          // $data['main_content']='admin/booking/v_booking';
-      $data['main_content']='admin/booking/v_list';
-          //load the view
-      $this->load->view('admin/v_admin_template', $data);    
-          //echo "Admin Dashboard";
-  }
-
-  
-  // Manage Vechicles
-  public function list_vehicles(){      
-      $data=array();
+  public function vehicle($param1='',$param2=''){      
+       $data=array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
      $uid=$this->session->userdata('uid');
       $gro_id=$this->session->userdata('gro_id');
@@ -117,75 +67,46 @@ class Vehicles extends CI_Controller {
       // tbl_amenity
       $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
 
-         
-     
-     if($gro_id ==1){
-       $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
-         INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
-       WHERE v.status=1";
-     }else{
-       $sql_vechicles_com="SELECT v.status,p.company_id,dr.driver_name,dr.phone,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p 
-       INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id 
-       INNER JOIN users as u ON p.company_id=u.company_id 
-       INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
-       ORDER BY v.company_id";
-     }
-      $data['vechicles_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
+     if($param1=='active'){
+      $data['status']=1;
 
+          if($gro_id ==1){
+           $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
+             INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+           WHERE v.status=1";
+         }else{
+           $sql_vechicles_com="SELECT v.status,p.company_id,dr.driver_name,dr.phone,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p 
+           INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id 
+           INNER JOIN users as u ON p.company_id=u.company_id 
+           INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+           WHERE v.status=1
+           ORDER BY v.company_id";
+         }
+     }else{
+      $data['status']=0;
+        if($gro_id ==1){
+           $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
+             INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+           WHERE v.status=0";
+         }else{
+           $sql_vechicles_com="SELECT v.status,p.company_id,dr.driver_name,dr.phone,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p 
+           INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id 
+           INNER JOIN users as u ON p.company_id=u.company_id 
+           INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+           WHERE v.status=0
+           ORDER BY v.company_id";
+         }    
+     }
+
+      $data['vechicles_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
       $data['main_content']='admin/vehicles/v_list';
           //load the view
       $this->load->view('admin/v_admin_template', $data);
          // echo "Admin Dashboard";
+
+
   }
-  // Blocked Vechicles
-  public function list_vehicles_blocked(){      
-      $data=array();
-      $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-     $uid=$this->session->userdata('uid');
-      $gro_id=$this->session->userdata('gro_id');
-     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
-       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
 
-
-      $data['form_title']=$this->replaceAll($this->uri->segment(1));
-      $data['panel_title']=$this->uri->segment(1);
-      $data['head']='admin/head/v_head_table';
-      $data['footer']='admin/footer/v_footer_table';
-      $data['sidebar']='admin/inc/v_sidebar';
-      $data['sidebar_right']='admin/inc/v_sidebar_right';
-      $data['header']='admin/inc/v_header';
-      $data['companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company");
-      $data['vehicle_type']=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle_type");
-      $data['driver_names']=$this->m_crud->get_by_sql("SELECT * FROM tbl_driver");
-      $data['seattypes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_seat_type");
-      $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
-      
-
-
-          
-      
-     if($gro_id ==1){
-       $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
-         INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
-       WHERE v.status=0";
-     }else{
-       $sql_vechicles_com="SELECT v.status,p.company_id,dr.driver_name,dr.phone,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p 
-       INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id 
-       INNER JOIN users as u ON p.company_id=u.company_id 
-       INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
-       ORDER BY v.company_id
-       WHERE v.status=0
-       ";
-     }
-
-      $data['vechicles_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
-
-      $data['main_content']='admin/vehicles/v_list';
-          //load the view
-      $this->load->view('admin/v_admin_template', $data);
-         // echo "Admin Dashboard";
-  }
   
   public function add(){      
       $data=array();
@@ -253,7 +174,8 @@ class Vehicles extends CI_Controller {
             FROM tbl_vehicle as v INNER JOIN tbl_company as c
             WHERE v.v_id=$id";
       $data['tbl_vehicle']=$this->m_crud->get_by_sql( $vSQL);
-      print_r($data['tbl_vehicle']);exit();
+     
+     // print_r($data['tbl_vehicle']);exit();
       
       $data['main_content']='admin/vehicles/v_edit';
       //load the view
@@ -286,10 +208,33 @@ class Vehicles extends CI_Controller {
       // tbl_amenity
       $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
    
-      $data['main_content']='admin/vehicles/v_add';
+    $vSQL="SELECT v.*,c.company_name
+            FROM tbl_vehicle as v INNER JOIN tbl_company as c
+            ON v.company_id=c.company_id
+            WHERE v.v_id=$id";
+      $data['tbl_vehicle']=$this->m_crud->get_by_sql( $vSQL);
+      
+      $data['main_content']='admin/vehicles/v_view';
       //load the view
       $this->load->view('admin/v_admin_template', $data);
       // echo "Admin Dashboard";
+  }
+
+
+// Blocked
+  public function get_block_Vehicle(){
+    $form = ''; 
+    $vs_id = $this->input->post('vs_id');
+    $vslist = $this->m_crud->get_blocked_schedule_query($vs_id);
+    if (count($vslist)>0){
+      foreach ($vslist as $vs){
+        $form .=' <input type="hidden" name="vs_id" id="vs_id" value="'.$vs->id.'">';
+        $form .=' <input type="hidden" name="status" id="status" value="0">';
+        $form .=' <h4>Are you sure, Do you want to Blocked this Schedule?</h4>';
+      }  
+          // End foreach
+      echo json_encode($form);    
+    }    
   }
 
 // End Manage Vechickes 

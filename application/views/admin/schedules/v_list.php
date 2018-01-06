@@ -99,6 +99,8 @@
 			<!-- end: page -->
 </section>
 </div>
+
+
 <!-- Modal Delete Category -->
 <div id="myModalBlock" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -132,7 +134,7 @@
       <div class="modal-body">
       	<form id="frm-view-schedule">
 
-				</form>
+		</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
