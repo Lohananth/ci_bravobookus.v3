@@ -28,8 +28,8 @@
 											for($i=0;$i<count($controller);$i++){
 												if($sidebar['controller_id']==$controller[$i]){
 													?>
-<li class="nav-<?= ($this->uri->segment(1)===$sidebar['controller_action'])?'active':''?>">
-														<a href="<?php echo site_url(); ?><?php echo $sidebar['controller_action']; ?>">
+<li class="nav-<?= ($this->uri->segment(2)===$sidebar['controller_action'])?'active':''?>">
+														<a href="<?php echo site_url(); ?>admin/<?php echo $sidebar['controller_action']; ?>">
 															<?php echo $sidebar['controller_icon']; ?>
 															<span><?php echo $sidebar['controller_name']; ?> </span>
 														</a>

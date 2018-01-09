@@ -54,7 +54,7 @@ class Vehicles extends CI_Controller {
       $data['form_title']=$this->replaceAll($this->uri->segment(1));
       $data['panel_title']=$this->uri->segment(1);
       $data['head']='admin/head/v_head_table';
-      $data['footer']='admin/footer/v_footer_table';
+      $data['footer']='admin/footer/v_footer_table_vehicle';
       $data['sidebar']='admin/inc/v_sidebar';
       $data['sidebar_right']='admin/inc/v_sidebar_right';
       $data['header']='admin/inc/v_header';
@@ -121,7 +121,7 @@ class Vehicles extends CI_Controller {
 
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_form';
-      $data['footer']='admin/footer/v_footer_table';
+      $data['footer']='admin/footer/v_footer_table_vehicle';
       $data['sidebar']='admin/inc/v_sidebar';
       $data['sidebar_right']='admin/inc/v_sidebar_right';
       $data['header']='admin/inc/v_header';
@@ -196,7 +196,7 @@ class Vehicles extends CI_Controller {
        
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_form';
-      $data['footer']='admin/footer/v_footer_table';
+      $data['footer']='admin/footer/v_footer_table_vehicle';
       $data['sidebar']='admin/inc/v_sidebar';
       $data['sidebar_right']='admin/inc/v_sidebar_right';
       $data['header']='admin/inc/v_header';
@@ -230,7 +230,7 @@ class Vehicles extends CI_Controller {
       foreach ($vslist as $vs){
         $form .=' <input type="hidden" name="vs_id" id="vs_id" value="'.$vs->id.'">';
         $form .=' <input type="hidden" name="status" id="status" value="0">';
-        $form .=' <h4>Are you sure, Do you want to Blocked this Schedule?</h4>';
+        $form .=' <h4> Do you want to Blocked this Vehicle?</h4>';
       }  
           // End foreach
       echo json_encode($form);    
@@ -249,7 +249,7 @@ public function invoice_print($id=''){
     $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");    
     $data['panel_title']='User Profile';
     $data['head']='admin/head/v_head_table';
-    $data['footer']='admin/footer/v_footer_table';
+    $data['footer']='admin/footer/v_footer_table_vehicle';
       // $data['sidebar']='admin/inc/v_sidebar';
     $data['sidebar']=null;
       $data['sidebar_right']='admin/inc/v_sidebar_right';

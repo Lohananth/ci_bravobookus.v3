@@ -105,6 +105,14 @@ class Crud_model extends CI_Model
 		return  $this->db->update('tbl_vehicle_schedule',$data);
 	}
 
+// Set to Block general
+	public function blocked_process($field_id,$id,$table,$data){
+		$this->db->where($field_id,$id);
+		return  $this->db->update($table,$data);
+	}
+
+
+
 //To Activate Schedule
 	public function get_active_schedule_query($id){
 		$this->db->select('*');

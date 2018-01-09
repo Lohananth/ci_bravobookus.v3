@@ -41,35 +41,37 @@ $route['admin/verifylogin'] = 'admin/Admin_Login/verifylogin';
 
 // After Login Success
 $route['admin/dashboard'] = 'admin/Admin_dashboard/index';
-$route['dashboard.html'] = 'admin/Admin_dashboard/index';
+$route['admin/dashboard.html'] = 'admin/Admin_dashboard/index';
 
-$route['booking.html'] = 'admin/booking/booking';
+$route['admin/booking.html'] = 'admin/booking/booking';
 // (:any)
-$route['booking.html/add'] = 'admin/booking/booking/add';
+$route['admin/booking.html/add'] = 'admin/booking/booking/add';
 
-$route['booking.html/(:any)'] = 'admin/booking/booking/$1';
-$route['booking.html/(:any)/(:any)'] = 'admin/booking/booking/$1/$2';
+$route['admin/booking.html/(:any)'] = 'admin/booking/booking/$1';
+$route['admin/booking.html/(:any)/(:any)'] = 'admin/booking/booking/$1/$2';
 
 
-$route['guests.html'] = 'admin/Admin_dashboard/guests';
-$route['profile.html'] = 'admin/Admin_dashboard/profile';
-$route['invoice-print.html'] = 'admin/Admin_dashboard/invoice_print';
+$route['admin/guests.html'] = 'admin/Admin_dashboard/guests';
+$route['admin/profile.html'] = 'admin/Admin_dashboard/profile';
+$route['admin/invoice-print.html'] = 'admin/Admin_dashboard/invoice_print';
 
 // Vechicles Management
 // list_vechicles
-$route['vehicles.html'] = 'admin/vehicles/vehicles';
-$route['vehicles.html/list/(:any)'] = 'admin/vehicles/vehicles/vehicle/$1';
+$route['admin/vehicles.html'] = 'admin/vehicles/vehicles';
+$route['admin/vehicles.html/list/(:any)'] = 'admin/vehicles/vehicles/vehicle/$1';
 
 // list_vechicles_blocked
-$route['vehicle-blocked.html'] = 'admin/vehicles/vehicles/list_vehicles_blocked';
-$route['vehicle-report.html']='admin/vehicles/vehicles/vehicle_report';
+$route['admin/vehicle-blocked.html'] = 'admin/vehicles/vehicles/list_vehicles_blocked';
+$route['admin/vehicle-report.html']='admin/vehicles/vehicles/vehicle_report';
 //show_vechicles
 
 // $route['list-vechicles.html'] = 'admin/Admin_dashboard/show_vechicles';
 
-$route['vehicles.html/add'] = 'admin/vehicles/vehicles/add';
-$route['vehicles.html/edit/(:any)'] = 'admin/vehicles/vehicles/edit/$1';
-$route['vehicles.html/view/(:any)'] = 'admin/vehicles/vehicles/view/$1';
+$route['admin/vehicles.html/add'] = 'admin/vehicles/vehicles/add';
+$route['admin/vehicles.html/edit/(:any)'] = 'admin/vehicles/vehicles/edit/$1';
+$route['admin/vehicles.html/view/(:any)'] = 'admin/vehicles/vehicles/view/$1';
+
+$route['admin/vehicles.html/get_block_Vehicle']='admin/vehicles/vehicles/get_block_Vehicle';
 
 // Schedules Management
 // list-schedule
@@ -88,10 +90,10 @@ $route['update-block-schedules.html/(:any)']='admin/schedules/schedules/save/upd
 $route['get-schedules-for-active.html']='admin/schedules/schedules/get_active_Schedule'; 
 $route['active-schedules.html']='admin/schedules/schedules/update_active_Schedule'; 
 
-$route['list-schedules.html'] = 'admin/schedules/schedules/list_schedules'; // for all list schedule
-$route['list-schedules-blocked.html'] = 'admin/schedules/schedules/list_schedules_blocked';//all list blocked schedule
-$route['viewForm-schedules.html'] = 'admin/schedules/schedules/viewForm';
-$route['viewBlock-schedules.html'] = 'admin/schedules/schedules/viewBlock';
+$route['admin/list-schedules.html'] = 'admin/schedules/schedules/list_schedules'; // for all list schedule
+$route['admin/list-schedules-blocked.html'] = 'admin/schedules/schedules/list_schedules_blocked';//all list blocked schedule
+$route['admin/viewForm-schedules.html'] = 'admin/schedules/schedules/viewForm';
+$route['admin/viewBlock-schedules.html'] = 'admin/schedules/schedules/viewBlock';
 
 // Logout
 $route['logout'] = 'admin/Admin_Login/logout';

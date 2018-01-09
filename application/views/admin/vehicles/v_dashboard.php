@@ -25,7 +25,7 @@
 														
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
-										<a  href="<?php echo site_url(); ?>vehicles.html/add">
+										<a  href="<?php echo site_url(); ?>admin/vehicles.html/add">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -49,7 +49,7 @@
 								</div>
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-primary">
-										<a  href="<?php echo site_url(); ?>vehicles.html/list/active">
+										<a  href="<?php echo site_url(); ?>admin/vehicles.html/list/active">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -74,7 +74,7 @@
 
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-secondary">
-										<a  href="<?php echo site_url(); ?>vehicles.html/list/blocked">
+										<a  href="<?php echo site_url(); ?>admin/vehicles.html/list/blocked">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -122,7 +122,7 @@
 								</div>
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
-										<a  href="<?php echo site_url(); ?>booking.html/booking/Unpaid">
+										<a  href="<?php echo site_url(); ?>admin/booking.html/booking/Unpaid">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -146,7 +146,7 @@
 								</div>
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
-										<a  href="<?php echo site_url(); ?>booking.html/booking/Pending">
+										<a  href="<?php echo site_url(); ?>admin/booking.html/booking/Pending">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">

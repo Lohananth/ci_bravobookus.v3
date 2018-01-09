@@ -61,7 +61,7 @@
 						<th class="hidden-phone">Tools</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="list-vehicle-row">
 										
 					<?php 
 					$i=1;
@@ -92,6 +92,11 @@
 								?>
 								<a data-toggle="tooltip" title="Block <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-danger" role="button">
 							<i class="fa fa-ban"></i></a>
+
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $vch['v_id']; ?>" data_controller_link="admin/vehicles.html/get_block_Vehicle" title="Block <?php echo $vch['vehicle_name']; ?>" href="#" class="btn btn-warning btn-sm btn_getBlocked" role="button">
+							<i class="fa fa-ban"></i>
+						</a>
+
 
 								<?php
 							}else{
@@ -152,4 +157,47 @@ foreach ($vechicles_list as $vch) {
 </div>
 <?php } ?>
 
+</div>
+
+
+<!-- Modal Delete Category -->
+<div id="myModalBlock" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">Blocked Vehicle</h2>
+      </div>
+      <div class="modal-body">
+      		<form id="frm-block">
+			</form>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-info" id="btn-blocked">Yes</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete Category -->
+<div id="myModalView" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">View Vehicle</h2>
+      </div>
+      <div class="modal-body">
+      	<form id="frm-view">
+
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
