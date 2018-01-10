@@ -400,7 +400,7 @@ class Schedules extends CI_Controller {
       echo "0";
   }
 
-// End Manage Vechickes 
+
 
 // Save
   function save($param1 = '', $param2 = ''){

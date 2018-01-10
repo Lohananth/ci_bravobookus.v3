@@ -28,6 +28,7 @@
 <script type="text/javaScript">
 	$(document).ready(function(){
 		//get schedule for Blocked
+
 		$('#list-vehicle-row').on('click','.btn_getBlocked',function(e){
 		 	e.preventDefault();
 		 	var id = $(this).attr('dataid');
@@ -35,10 +36,10 @@
     		$.ajax({
     		url : "<?php echo base_url() ?>"+ control_link,
     		type: "POST",
-    		data: {vs_id:id},
+    		data: {vid:id},
     		dataType: 'json',
     		success:function(data){
-  				$('#frm-block').html(data);
+  				$('#frmBlock').html(data);
 				$('#myModalBlock').data('id',id).modal('show');
     		},
     		error: function(){
@@ -47,16 +48,19 @@
     	});	
 		});
 
-		//updated Blocked Schedule
+
+		//updated Blocked 
 		$('#btn-blocked').on('click',function(e){
-		 	var id= $('#myModalBlock').data('id');
+		 	var id= $('#myModalBlock').data('vid');
+		 	// var control_link=$(this).attr('data_controller_link');
+
 	    	$.ajax({
-	    		url : "<?php echo base_url() ?>disactive_block_Schedule.html",
+	    		url : "<?php echo base_url() ?>admin/vehicles.html/disactive_Vehicle",
 	    		type: "POST",
-	    		data: $('#frm-block').serialize(),
+	    		data: $('#frmBlock').serialize(),
 	    		dataType: 'json',
 	    		success:function(data){
-	    			alert('Schedule was Blocked successfully...');
+	    			// alert('Vehicle was Blocked successfully...');
 	    			location.reload();
 	    			//Hide myModalDelete
 	    			$('#myModalBlock').modal('hide');
@@ -68,36 +72,19 @@
     		});	
 		});
 
-		//view the schecule by id
-		$('#list-vehicle-row').on('click','.btn-view-schedule',function(e){
-			e.preventDefault();
-		 	var id = $(this).attr('dataid');
-    		$.ajax({
-	    		url : "<?php echo base_url() ?>viewForm-schedules.html",
-	    		type: "POST",
-	    		data: {vs_id:id},
-	    		dataType: 'json',
-	    		success:function(data){
-	    			$('#frm-view-schedule').html(data);
-						$('#myModalView').data('id',id).modal('show');	    			
-	    		},
-	    		error: function(){
-	    			alert('Error...');
-	    		}
-    		});	
-		});
-//====================================================//
+		
+//======================== Active ============================//
 		//get block Schedule for Active
-		$('#list-block').on('click','.btn_getActive',function(e){
+		$('#list-vehicle-row').on('click','.btn_getActive',function(e){
 		 	e.preventDefault();
 		 	var id = $(this).attr('dataid');
     		$.ajax({
-	    		url : "<?php echo base_url() ?>get-schedules-for-active.html",
+	    		url : "<?php echo base_url() ?>admin/vehicles/vehicles/get_active_Vehicle",
 	    		type: "POST",
-	    		data: {vs_id:id},
+	    		data: {vid:id},
 	    		dataType: 'json',
 	    		success:function(data){
-	    			$('#frm-active-schedule').html(data);
+	    			$('#frm-active').html(data);
 						$('#myModalActive').data('id',id).modal('show');	    			
 	    		},
 	    		error: function(){
@@ -110,12 +97,14 @@
 		$('#btn-Active').on('click',function(e){
 		 	var id= $('#myModalActive').data('id');
 	    	$.ajax({
-	    		url : "<?php echo base_url() ?>active-schedules.html",
+	    		url : "<?php echo base_url() ?>admin/vehicles/vehicles/update_active_Vehicle",
 	    		type: "POST",
-	    		data: $('#frm-active-schedule').serialize(),
+	    		data: $('#frm-active').serialize(),
 	    		dataType: 'json',
 	    		success:function(data){
-	    			alert('Schedule was Actived successfully...');
+	    			// alert('Vehicle was Actived successfully...');
+	    			// $("#myAlert").alert("close");
+	    			
 	    			location.reload();
 	    			//Hide myModalDelete
 	    			$('#myModalActive').modal('hide');
@@ -134,7 +123,7 @@
 		 		$.ajax({
 	    		url : "<?php echo base_url() ?>viewBlock-schedules.html",
 	    		type: "POST",
-	    		data: {vs_id:id},
+	    		data: {vid:id},
 	    		dataType: 'json',
 	    		success:function(data){
 	    			$('#frm-view-block').html(data);

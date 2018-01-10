@@ -187,7 +187,7 @@ Theme Version: 	1.3.0
 	/*
 	Flot: Basic
 	*/
-	var flotDashBasic = $.plot('#flotDashBasic', flotDashBasicData, {
+	var flotDashBasic = $.plot('#flotDashBasic', flotDashBasic5Data, {
 		series: {
 			lines: {
 				show: true,

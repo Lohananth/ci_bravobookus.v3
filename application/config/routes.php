@@ -72,6 +72,8 @@ $route['admin/vehicles.html/edit/(:any)'] = 'admin/vehicles/vehicles/edit/$1';
 $route['admin/vehicles.html/view/(:any)'] = 'admin/vehicles/vehicles/view/$1';
 
 $route['admin/vehicles.html/get_block_Vehicle']='admin/vehicles/vehicles/get_block_Vehicle';
+$route['admin/vehicles.html/disactive_Vehicle']='admin/vehicles/vehicles/update_block_Vehicle'; //update Block
+
 
 // Schedules Management
 // list-schedule

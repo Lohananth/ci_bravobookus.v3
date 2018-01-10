@@ -47,6 +47,7 @@
 									</a>
 									</section>
 								</div>
+
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-primary">
 										<a  href="<?php echo site_url(); ?>admin/vehicles.html/list/active">
@@ -144,6 +145,7 @@
 									</a>
 									</section>
 								</div>
+								
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
 										<a  href="<?php echo site_url(); ?>admin/booking.html/booking/Pending">

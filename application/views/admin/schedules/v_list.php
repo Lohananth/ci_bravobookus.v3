@@ -4,22 +4,22 @@
 		<div class="right-wrapper pull-left">
 			<ol class="breadcrumbs">
 				<li>
-					<a href="<?php echo site_url(); ?>dashboard.html">		
+					<a href="<?php echo site_url(); ?>admin/dashboard.html">		
 					</a>
 				</li>								
 				<div class="btn btn-default" style="margin-right:10px; border-radius: 0px;">
-					<a href="<?php  $this->uri->segment(1); ?><?php echo site_url(); ?>add-schedules.html"> 
+					<a href="<?php  $this->uri->segment(1); ?><?php echo site_url(); ?>admin/add-schedules.html"> 
 						<i class="fa fa-plus"></i>
 						Add
 					</a>
 				</div>
 				<div class="btn btn-success" style="margin-right:10px;border-radius: 0px;">
-					<a href="<?php echo site_url(); ?>list-schedules.html"> 
+					<a href="<?php echo site_url(); ?>admin/list-schedules.html"> 
 						<i class="fa fa-list" aria-hidden="true"></i>
 						List
 					</a>
 				</div>
-				<div class="btn btn-danger" style="border-radius: 0px;"> <a href="<?php echo site_url(); ?>list-schedules-blocked.html"> 
+				<div class="btn btn-danger" style="border-radius: 0px;"> <a href="<?php echo site_url(); ?>admin/list-schedules-blocked.html"> 
 						<i class="fa fa-ban"></i>
 						Blocked
 					</a>

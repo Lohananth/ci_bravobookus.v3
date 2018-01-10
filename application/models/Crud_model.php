@@ -77,6 +77,54 @@ class Crud_model extends CI_Model
 	  return $query->result();   
 	 }
 
+// Manage Vehicle =========================================================
+	// To Block Vehicles
+	public function get_blocked_vehicle_query($id){
+    // $vSQL =    "vhs.id AS id,ori.origin AS origin,
+				// dest.origin AS destination,vh.vehicle_name AS vehicle_name,
+				// vhs.local_price AS local_price,vhs.foreigner_price AS foreigner_price,
+				// dpt.departure_time AS departure_time,vhs.`status` AS `status`
+				// FROM
+				// tbl_vehicle_schedule AS vhs
+				// INNER JOIN tbl_origin AS ori ON (ori.id = vhs.origin)
+				// INNER JOIN tbl_origin AS dest ON (dest.id = vhs.destination)
+				// INNER JOIN tbl_vehicle AS vh ON (vh.v_id = vhs.v_id)
+				// INNER JOIN tbl_departure_time AS dpt ON (dpt.id = vhs.departure_time)
+				// WHERE
+				// 	vhs.id = $id
+				// AND vhs.`status` = 1";
+		// $vSQL="SELECT * FROM tbl_vehicle WHERE v_id=$id";
+    // $this->db->select("SELECT * FROM tbl_vehicle WHERE v_id=$id");		
+	$this->db->select('*');
+	$this->db->from('tbl_vehicle');
+	$this->db->where('v_id',$id);
+	$query = $this->db->get();
+	return $query->result();
+	}
+public function update_blocked_vehicle_query($id,$data){
+		$this->db->where('v_id',$id);
+		return  $this->db->update('tbl_vehicle',$data);
+	}
+
+// Active Vehicle--------------------------
+	public function get_active_vehicle_query($id){
+		$this->db->select('*');
+		$this->db->from('tbl_vehicle');
+		$this->db->where('v_id',$id);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function update_active_vehicle_query($id,$data){
+		$this->db->where('v_id',$id);
+		return  $this->db->update('tbl_vehicle',$data);
+	}
+
+
+	// End Vehicle ==================================================================
+
+//============== Manage Schedules ====================================
+
 //To blocked Schedule
 	public function get_blocked_schedule_query($id){
     $vSQL =    "vhs.id AS id,ori.origin AS origin,
@@ -105,11 +153,6 @@ class Crud_model extends CI_Model
 		return  $this->db->update('tbl_vehicle_schedule',$data);
 	}
 
-// Set to Block general
-	public function blocked_process($field_id,$id,$table,$data){
-		$this->db->where($field_id,$id);
-		return  $this->db->update($table,$data);
-	}
 
 
 
@@ -160,4 +203,8 @@ class Crud_model extends CI_Model
 	  $query = $this->db->get();
 		return $query->result();
 	}
+
+//============== End Manage Schedules ====================================
+
+
 }

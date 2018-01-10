@@ -30,7 +30,7 @@ class Vehicles extends CI_Controller {
        $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
 
 
-      $data['form_title']=$this->replaceAll($this->uri->segment(1));
+      $data['form_title']=$this->replaceAll($this->uri->segment(2));
       $data['head']='admin/inc/v_dashboard_head';
       $data['footer']='admin/inc/v_dashboard_footer';
       $data['sidebar']='admin/inc/v_sidebar';
@@ -51,8 +51,8 @@ class Vehicles extends CI_Controller {
        $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
 
 
-      $data['form_title']=$this->replaceAll($this->uri->segment(1));
-      $data['panel_title']=$this->uri->segment(1);
+      $data['form_title']=$this->replaceAll($this->uri->segment(2));
+      $data['panel_title']=$this->uri->segment(2);
       $data['head']='admin/head/v_head_table';
       $data['footer']='admin/footer/v_footer_table_vehicle';
       $data['sidebar']='admin/inc/v_sidebar';
@@ -223,18 +223,58 @@ class Vehicles extends CI_Controller {
 
 // Blocked
   public function get_block_Vehicle(){
-    $form = ''; 
-    $vs_id = $this->input->post('vs_id');
-    $vslist = $this->m_crud->get_blocked_schedule_query($vs_id);
+   $form = ''; 
+    $vid = $this->input->post('vid');
+    $vslist = $this->m_crud->get_blocked_vehicle_query($vid);
     if (count($vslist)>0){
       foreach ($vslist as $vs){
-        $form .=' <input type="hidden" name="vs_id" id="vs_id" value="'.$vs->id.'">';
+        $form .=' <input type="hidden" name="vid" id="vid" value="'.$vs->v_id.'">';
         $form .=' <input type="hidden" name="status" id="status" value="0">';
-        $form .=' <h4> Do you want to Blocked this Vehicle?</h4>';
+        $form .='<center> <h4>Do you want to Blocked Vehicle ?<h4><h3 style="color:red;">'.$vs->v_id.' '.$vs->vehicle_name. '</h3></center>';
+      }  
+          // End foreach
+      // echo $form;
+      echo json_encode($form);    
+    }    
+  }
+
+  public function update_block_Vehicle(){
+    $vid = $this->input->post('vid');
+    $data_update = array(
+        'status' =>$this->input->post('status'),
+      );
+    $update_cate = $this->m_crud->update_blocked_vehicle_query($vid,$data_update);
+    if($update_cate)
+      echo "1";
+    else
+      echo "0";
+  }
+
+public function get_active_Vehicle(){
+    $form = ''; 
+    $vid = $this->input->post('vid');
+    $vslist = $this->m_crud->get_active_vehicle_query($vid);
+    if (count($vslist)>0){
+      foreach ($vslist as $vs){
+        $form .=' <input type="hidden" name="vid" id="vid" value="'.$vs->v_id.'">';
+        $form .=' <input type="hidden" name="status" id="status" value="1">';
+        $form .=' <center> <h4>Do you want to Active Vehicle ?<h4><h3 style="color:green;">'.$vs->v_id.' '.$vs->vehicle_name. '</h3></center>';
       }  
           // End foreach
       echo json_encode($form);    
     }    
+  }
+
+  public function update_active_Vehicle(){
+    $vid = $this->input->post('vid');
+    $data_update = array(
+        'status' =>$this->input->post('status'),
+      );
+    $update_cate = $this->m_crud->update_active_vehicle_query($vid,$data_update);
+    if($update_cate)
+      echo "1";
+    else
+      echo "0";
   }
 
 // End Manage Vechickes 
