@@ -13,6 +13,7 @@ class Schedules extends CI_Controller {
      // $this->starOrder=4;
       $this->load->model('Crud_model','m_crud',True); 
       $this->load->model('M_Upload','welcome'); 
+      $this->load->library('pdf_library');
       date_default_timezone_set('Asia/Phnom_Penh');
   }
   
@@ -38,6 +39,28 @@ class Schedules extends CI_Controller {
       $this->load->view('admin/v_admin_template', $data);
   }
   
+  public function pdf_report(){
+    $data=array();
+    $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+        vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
+        vs.travel_duration AS travel_duration, vs.local_price AS local_price,
+        vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+        FROM
+        tbl_vehicle_schedule AS vs 
+        JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+        JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+        JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+        JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+        WHERE vs.status=1 limit 100";
+    $data['vschedule_list']=$this->m_crud->get_by_sql($vSQL);
+          //load the view
+    // $this->load->view('admin/schedules/pdfreport_view', $data);
+    $html = $this->load->view('admin/schedules/pdfreport_view', $data,true);
+    $filename = 'report_'.time();
+    $this->pdf_library->pdf_creator($html, $filename, true, 'A4', 'landscape');
+
+  }
+
   // Manage Vechicles
   public function list_schedules(){      
     $data=array();
@@ -399,7 +422,6 @@ class Schedules extends CI_Controller {
     else
       echo "0";
   }
-
 
 
 // Save

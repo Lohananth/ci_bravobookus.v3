@@ -24,6 +24,12 @@
 						Blocked
 					</a>
 				</div>
+				<div class="btn btn-info" style="border-radius: 0px;"> 
+					<a href="<?php echo site_url(); ?>admin/Schedules/Schedules/pdf_report"> 
+						<i class="fa fa-ban"></i>
+						Blocked
+					</a>
+				</div>				
 			</ol>				
 		</div>					
 		<div class="right-wrapper pull-right">
@@ -98,8 +104,6 @@
 	</section>						
 			<!-- end: page -->
 </section>
-</div>
-
 
 <!-- Modal Delete Category -->
 <div id="myModalBlock" class="modal fade" role="dialog">

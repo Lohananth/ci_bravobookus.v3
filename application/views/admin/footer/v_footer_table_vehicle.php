@@ -28,7 +28,6 @@
 <script type="text/javaScript">
 	$(document).ready(function(){
 		//get schedule for Blocked
-
 		$('#list-vehicle-row').on('click','.btn_getBlocked',function(e){
 		 	e.preventDefault();
 		 	var id = $(this).attr('dataid');
