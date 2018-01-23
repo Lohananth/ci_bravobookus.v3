@@ -92,8 +92,7 @@
 
 							<?php 
 							if($status==1){
-								?>
-								
+								?>							
 
 							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $vch['v_id']; ?>" data_controller_link="admin/vehicles.html/get_block_Vehicle" title="Block <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-danger btn-sm btn_getBlocked" role="button">
 							<i class="fa fa-ban"></i>
