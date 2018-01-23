@@ -29,6 +29,8 @@ $route['hotels/listhotel/(:any)/(:any)/(:any)/(:any)'] = "hotels/listhotel/$1/$2
 /*admin*/
 $route['admin'] = 'admin/Admin_Login/index';
 $route['signin.html'] = 'admin/Admin_Login/index';
+$route['select2.html'] = 'Select2_Controller/list_schedules';
+$route['pdf'] = 'Select2_Controller/generate_report';
 
 //User Signup
 $route['signup.html'] = 'admin/Admin_Login/signup';

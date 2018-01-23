@@ -90,25 +90,25 @@
 							<a <?php echo $vch['v_id']; ?>" data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>admin/vehicles.html/view/<?php echo $vch['v_id']; ?>" class="btn btn-success btn-sm" role="button">
 							<i class="fa fa-eye" aria-hidden="true"></i></a>
 
+<<<<<<< HEAD
 							<?php 
 							if($status==1){
 								?>							
 
+=======
+						<?php 
+							if($status==1){ ?>
+>>>>>>> fb5b0e85cc4cc45ebdbd2ee95b1fb6de7cef3acf
 							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $vch['v_id']; ?>" data_controller_link="admin/vehicles.html/get_block_Vehicle" title="Block <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-danger btn-sm btn_getBlocked" role="button">
 							<i class="fa fa-ban"></i>
-						</a>
-
-
-								<?php
-							}else{
-								?>
-								
+							</a>
+						<?php
+							} else {?>								
 							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalActive" dataid="<?php echo $vch['v_id']; ?>" title="Active <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>#<?php echo $vch['v_id']; ?>" class="btn btn-success btn-sm btn_getActive" role="button">
 							<i class="fa fa-check"></i></a>
-
-								<?php
+						<?php
 							}
-							?>
+						?>
 						</td>
 					
 
@@ -127,8 +127,6 @@
 </section>
 
 <!-- Modal Views-->
-
-
 <!-- Modal Block Category -->
 <div id="myModalBlock" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -149,7 +147,6 @@
     </div>
   </div>
 </div>
-
 <!-- Active -->
 <div id="myModalActive" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -172,7 +169,6 @@
   </div>
 </div>
 <!-- End Active -->
-
 <!-- Modal Delete Category -->
 <div id="myModalView" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">

@@ -20,93 +20,82 @@ class Vehicles extends CI_Controller {
   
   public function index(){    
     $data=array();      
-     $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-     // Count Vehicles
-     $data['vehicles_count']=$this->m_crud->get_by_sql("SELECT count(v_id) as vehicles_count FROM tbl_vehicle");
-      $uid=$this->session->userdata('uid');
-      $gro_id=$this->session->userdata('gro_id');
-     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
-       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-
-
-      $data['form_title']=$this->replaceAll($this->uri->segment(2));
-      $data['head']='admin/inc/v_dashboard_head';
-      $data['footer']='admin/inc/v_dashboard_footer';
-      $data['sidebar']='admin/inc/v_sidebar';
-      $data['sidebar_right']='admin/inc/v_sidebar_right';
-      $data['header']='admin/inc/v_header';
-      $data['main_content']='admin/vehicles/v_dashboard';
-      //load the view
-      $this->load->view('admin/v_admin_template', $data);
+    $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
+    // Count Vehicles
+    $data['vehicles_count']=$this->m_crud->get_by_sql("SELECT count(v_id) as vehicles_count FROM tbl_vehicle");
+    $uid=$this->session->userdata('uid');
+    $gro_id=$this->session->userdata('gro_id');
+   // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+    $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+    $data['form_title']=$this->replaceAll($this->uri->segment(2));
+    $data['head']='admin/inc/v_dashboard_head';
+    $data['footer']='admin/inc/v_dashboard_footer';
+    $data['sidebar']='admin/inc/v_sidebar';
+    $data['sidebar_right']='admin/inc/v_sidebar_right';
+    $data['header']='admin/inc/v_header';
+    $data['main_content']='admin/vehicles/v_dashboard';
+    //load the view
+    $this->load->view('admin/v_admin_template', $data);
   }
-  // Booking Bus
+  
+// Booking Bus
   public function vehicle($param1='',$param2=''){      
-       $data=array();
-      $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-     $uid=$this->session->userdata('uid');
-      $gro_id=$this->session->userdata('gro_id');
-     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
-       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-
-
-      $data['form_title']=$this->replaceAll($this->uri->segment(2));
-      $data['panel_title']=$this->uri->segment(2);
-      $data['head']='admin/head/v_head_table';
-      $data['footer']='admin/footer/v_footer_table_vehicle';
-      $data['sidebar']='admin/inc/v_sidebar';
-      $data['sidebar_right']='admin/inc/v_sidebar_right';
-      $data['header']='admin/inc/v_header';
-      $data['companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company");
-      $data['vehicle_type']=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle_type");
-      $data['driver_names']=$this->m_crud->get_by_sql("SELECT * FROM tbl_driver");
-      $data['seattypes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_seat_type");
-      $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
-
-      // tbl_amenity
-      $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
-
-     if($param1=='active'){
-      $data['status']=1;
-
-          if($gro_id ==1){
-           $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
-             INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
-           WHERE v.status=1";
-         }else{
-           $sql_vechicles_com="SELECT v.status,p.company_id,dr.driver_name,dr.phone,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p 
-           INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id 
-           INNER JOIN users as u ON p.company_id=u.company_id 
-           INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
-           WHERE v.status=1
-           ORDER BY v.company_id";
-         }
-     }else{
+    $data=array();
+    $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
+    $uid=$this->session->userdata('uid');
+    $gro_id=$this->session->userdata('gro_id');
+   // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+    $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+    $data['form_title']=$this->replaceAll($this->uri->segment(2));
+    $data['panel_title']=$this->uri->segment(2);
+    $data['head']='admin/head/v_head_table';
+    $data['footer']='admin/footer/v_footer_table_vehicle';
+    $data['sidebar']='admin/inc/v_sidebar';
+    $data['sidebar_right']='admin/inc/v_sidebar_right';
+    $data['header']='admin/inc/v_header';
+    $data['companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company");
+    $data['vehicle_type']=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle_type");
+    $data['driver_names']=$this->m_crud->get_by_sql("SELECT * FROM tbl_driver");
+    $data['seattypes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_seat_type");
+    $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
+    // tbl_amenity
+    $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
+    if($param1=='active'){
+    $data['status']=1;
+      if($gro_id ==1){
+       $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
+         INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+       WHERE v.status=1";
+      } else {
+       $sql_vechicles_com="SELECT v.status,p.company_id,dr.driver_name,dr.phone,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p 
+       INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id 
+       INNER JOIN users as u ON p.company_id=u.company_id 
+       INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+       WHERE v.status=1
+       ORDER BY v.company_id";
+      }
+    } else {
       $data['status']=0;
-        if($gro_id ==1){
-           $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
-             INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
-           WHERE v.status=0";
-         }else{
-           $sql_vechicles_com="SELECT v.status,p.company_id,dr.driver_name,dr.phone,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p 
-           INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id 
-           INNER JOIN users as u ON p.company_id=u.company_id 
-           INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
-           WHERE v.status=0
-           ORDER BY v.company_id";
-         }    
-     }
-
+      if($gro_id ==1){
+      $sql_vechicles_com="SELECT dr.driver_name,dr.phone,p.company_name,p.logo,v.* from tbl_vehicle as v INNER JOIN tbl_company as p ON p.company_id=v.company_id 
+       INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+      WHERE v.status=0";
+      } else {
+      $sql_vechicles_com="SELECT v.status,p.company_id,dr.driver_name,dr.phone,p.company_name,p.logo,v.v_id,v.code,v.vehicle_name,v.drivers, u.uid, u.name FROM tbl_company as p 
+       INNER JOIN  tbl_vehicle as v ON p.company_id=v.company_id 
+       INNER JOIN users as u ON p.company_id=u.company_id 
+       INNER JOIN tbl_driver as dr ON dr.company_id=p.company_id
+       WHERE v.status=0
+       ORDER BY v.company_id";
+      }    
+    }
       $data['vechicles_list']=$this->m_crud->get_by_sql($sql_vechicles_com);
       $data['main_content']='admin/vehicles/v_list';
           //load the view
-      $this->load->view('admin/v_admin_template', $data);
-         // echo "Admin Dashboard";
-
-
+      $this->load->view('admin/v_admin_template', $data);// echo "Admin Dashboard";
   }
-
   
   public function add(){      
       $data=array();
@@ -187,13 +176,11 @@ class Vehicles extends CI_Controller {
       $data=array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));      
-     $uid=$this->session->userdata('uid');
+      $uid=$this->session->userdata('uid');
       $gro_id=$this->session->userdata('gro_id');
      // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
-       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-
-       
+      $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+      $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");       
       $data['panel_title']='User Profile';
       $data['head']='admin/head/v_head_form';
       $data['footer']='admin/footer/v_footer_table_vehicle';
@@ -206,9 +193,8 @@ class Vehicles extends CI_Controller {
       $data['seattypes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_seat_type");
       $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
       // tbl_amenity
-      $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
-   
-    $vSQL="SELECT v.*,c.company_name
+      $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");   
+      $vSQL="SELECT v.*,c.company_name
             FROM tbl_vehicle as v INNER JOIN tbl_company as c
             ON v.company_id=c.company_id
             WHERE v.v_id=$id";
@@ -218,12 +204,12 @@ class Vehicles extends CI_Controller {
       //load the view
       $this->load->view('admin/v_admin_template', $data);
       // echo "Admin Dashboard";
-  }
 
+  }
 
 // Blocked
   public function get_block_Vehicle(){
-   $form = ''; 
+    $form = ''; 
     $vid = $this->input->post('vid');
     $vslist = $this->m_crud->get_blocked_vehicle_query($vid);
     if (count($vslist)>0){
@@ -250,19 +236,20 @@ class Vehicles extends CI_Controller {
       echo "0";
   }
 
-public function get_active_Vehicle(){
-    $form = ''; 
-    $vid = $this->input->post('vid');
-    $vslist = $this->m_crud->get_active_vehicle_query($vid);
-    if (count($vslist)>0){
-      foreach ($vslist as $vs){
-        $form .=' <input type="hidden" name="vid" id="vid" value="'.$vs->v_id.'">';
-        $form .=' <input type="hidden" name="status" id="status" value="1">';
-        $form .=' <center> <h4>Do you want to Active Vehicle ?<h4><h3 style="color:green;">'.$vs->v_id.' '.$vs->vehicle_name. '</h3></center>';
-      }  
-          // End foreach
-      echo json_encode($form);    
-    }    
+  public function get_active_Vehicle(){
+      $form = ''; 
+      $vid = $this->input->post('vid');
+      $vslist = $this->m_crud->get_active_vehicle_query($vid);
+      if (count($vslist)>0){
+        foreach ($vslist as $vs){
+          $form .=' <input type="hidden" name="vid" id="vid" value="'.$vs->v_id.'">';
+          $form .=' <input type="hidden" name="status" id="status" value="1">';
+          $form .=' <center> <h4>Do you want to Active Vehicle ?<h4><h3 style="color:green;">'.$vs->v_id.' '.$vs->vehicle_name. '</h3></center>';
+        }  
+            // End foreach
+        echo json_encode($form);    
+      }    
+
   }
 
   public function update_active_Vehicle(){
@@ -278,7 +265,6 @@ public function get_active_Vehicle(){
   }
 
 // End Manage Vechickes 
-
 
 // Invoice Print
 public function invoice_print($id=''){
@@ -299,32 +285,25 @@ public function invoice_print($id=''){
     $this->load->view('admin/v_admin_template', $data);
     // echo "Admin Dashboard";
 }
-// End Invoice Print
-    
+// End Invoice Print    
 
-     // Save
+// Save
   function save($param1 = '', $param2 = ''){
         if ($param1 == 'create') {
-
             $data['company_id']   = $this->input->post('company_id');
             $data['code']         = $this->input->post('code');
             $data['vehicle_name'] = $this->input->post('vehicle_name');
             $data['vehicle_type'] = $this->input->post('vehicle_type');
             $data['drivers']      = $this->input->post('drivers');
-            // $data['inspectors']= $this->input->post('inspectors');
-            
+            // $data['inspectors']= $this->input->post('inspectors');            
             $data['amenities'] = substr(implode(',', $this->input->post('amenities')), 0);
             if(!empty($this->input->post('status'))){
               // $data['status']         = $this->input->post('status');
                $data['status']         = 1;
             }else{
                $data['status']         = 0;
-            }
-           
-            $data['seats']   = $this->input->post('seats');          
-
-           
-
+            }           
+            $data['seats']   = $this->input->post('seats');
              // Upload Image to Galleries
               $files = $_FILES;
               $count = count($_FILES['userfile']['name']);
@@ -445,37 +424,35 @@ public function invoice_print($id=''){
           $fileName = implode(',',$images);
         }
 
-
   // File Upload
   public function file_upload(){
-              $files = $_FILES;
-              $count = count($_FILES['userfile']['name']);
-              for($i=0; $i<$count; $i++)
-                {
-                $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
-                $_FILES['userfile']['type']= $files['userfile']['type'][$i];
-                $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
-                $_FILES['userfile']['error']= $files['userfile']['error'][$i];
-                $_FILES['userfile']['size']= $files['userfile']['size'][$i];
-                $config['upload_path'] = './uploads/';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
-                $config['max_size'] = '2000000';
-                $config['remove_spaces'] = true;
-                $config['overwrite'] = false;
-                $config['max_width'] = '';
-                $config['max_height'] = '';
-                
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                $this->upload->do_upload();
-                $fileName = $_FILES['userfile']['name'];
-                $images[] = $fileName;
-        }
-          $fileName = implode(',',$images);
-          // $this->welcome->upload_image($this->input->post(),$fileName);
-          $this->welcome->upload_vehicles_gallery($this->input->post(),$fileName);
-          redirect('add-vehicles.html');
-        }
+    $files = $_FILES;
+    $count = count($_FILES['userfile']['name']);
+    for($i=0; $i<$count; $i++){
+    $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
+    $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+    $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+    $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+    $_FILES['userfile']['size']= $files['userfile']['size'][$i];
+    $config['upload_path'] = './uploads/';
+    $config['allowed_types'] = 'gif|jpg|png|jpeg';
+    $config['max_size'] = '2000000';
+    $config['remove_spaces'] = true;
+    $config['overwrite'] = false;
+    $config['max_width'] = '';
+    $config['max_height'] = '';
+    
+    $this->load->library('upload', $config);
+    $this->upload->initialize($config);
+    $this->upload->do_upload();
+    $fileName = $_FILES['userfile']['name'];
+    $images[] = $fileName;
+    }
+      $fileName = implode(',',$images);
+      // $this->welcome->upload_image($this->input->post(),$fileName);
+      $this->welcome->upload_vehicles_gallery($this->input->post(),$fileName);
+      redirect('add-vehicles.html');
+    }
 
   public function deleteimage(){
       $deleteid  = $this->input->post('image_id');
@@ -483,41 +460,39 @@ public function invoice_print($id=''){
       $verify = $this->db->affected_rows();
       echo $verify;
 
+  }
+
+  public function edit_file_upload(){
+    $files = $_FILES;
+    if(!empty($files['userfile']['name'][0])){
+    $count = count($_FILES['userfile']['name']);
+    $user_id = $this->input->post('user_id');
+    for($i=0; $i<$count; $i++){
+      $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
+      $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+      $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+      $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+      $_FILES['userfile']['size']= $files['userfile']['size'][$i];
+      $config['upload_path'] = './uploads/';
+      $config['allowed_types'] = 'gif|jpg|png|jpeg';
+      $config['max_size'] = '2000000';
+      $config['remove_spaces'] = true;
+      $config['overwrite'] = false;
+      $config['max_width'] = '';
+      $config['max_height'] = '';
+      $this->load->library('upload', $config);
+      $this->upload->initialize($config);
+      $this->upload->do_upload();
+      $fileName = $_FILES['userfile']['name'];
+      $images[] = $fileName;
     }
-
-
-     public function edit_file_upload(){
-              $files = $_FILES;
-              if(!empty($files['userfile']['name'][0])){
-              $count = count($_FILES['userfile']['name']);
-              $user_id = $this->input->post('user_id');
-              for($i=0; $i<$count; $i++)
-                {
-                $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
-                $_FILES['userfile']['type']= $files['userfile']['type'][$i];
-                $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
-                $_FILES['userfile']['error']= $files['userfile']['error'][$i];
-                $_FILES['userfile']['size']= $files['userfile']['size'][$i];
-                $config['upload_path'] = './uploads/';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
-                $config['max_size'] = '2000000';
-                $config['remove_spaces'] = true;
-                $config['overwrite'] = false;
-                $config['max_width'] = '';
-                $config['max_height'] = '';
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                $this->upload->do_upload();
-                $fileName = $_FILES['userfile']['name'];
-                $images[] = $fileName;
-        }
-          $fileName = implode(',',$images);
-          $this->welcome->edit_upload_image($user_id,$this->input->post(),$fileName);
-        }else
-        {
-        $user_id = $this->input->post('user_id');
-        $this->welcome->edit_upload_image($user_id,$this->input->post());
-        }
-        redirect('welcome/view');
-        }
+    $fileName = implode(',',$images);
+    $this->welcome->edit_upload_image($user_id,$this->input->post(),$fileName);
+    }else
+    {
+    $user_id = $this->input->post('user_id');
+    $this->welcome->edit_upload_image($user_id,$this->input->post());
+    }
+    redirect('welcome/view');
+    }
   }
