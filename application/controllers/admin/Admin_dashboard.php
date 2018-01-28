@@ -17,24 +17,36 @@ class Admin_dashboard extends CI_Controller {
       date_default_timezone_set('Asia/Phnom_Penh');
   }
   
-  public function index(){
+  public function index($param1='',$param2=''){
     
     $data=array();
       
      $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
+    $uid=$this->session->userdata('uid');
+    $gro_id=$this->session->userdata('gro_id');
 
-      $uid=$this->session->userdata('uid');
-      $gro_id=$this->session->userdata('gro_id');
+if ($gro_id=="")
+{
+     redirect('/admin/', 'refresh');
+}
+
      // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
-       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-    
+    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+    $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+    $company_id=$this->session->userdata('company_id');
+    $data['company_id']=$company_id;
+    $data['uid']=$uid;
+    $data['gro_id']=$gro_id;
+    $data['currency_name']="$";
+    $today = date("Y-m-d"); 
+    $data['today']=$today;
 
 
    $data['form_title']=$this->replaceAll($this->uri->segment(1));
 
       $data['head']='admin/inc/v_dashboard_head';
       $data['footer']='admin/inc/v_dashboard_footer';
+   
       $data['sidebar']='admin/inc/v_sidebar';
       $data['sidebar_right']='admin/inc/v_sidebar_right';
       

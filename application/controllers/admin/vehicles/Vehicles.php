@@ -18,22 +18,49 @@ class Vehicles extends CI_Controller {
       date_default_timezone_set('Asia/Phnom_Penh');
   }
   
-  public function index(){    
-    $data=array();      
+  public function index($param1='',$param2=''){    
+   $data=array();
     $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-    // Count Vehicles
-    $data['vehicles_count']=$this->m_crud->get_by_sql("SELECT count(v_id) as vehicles_count FROM tbl_vehicle");
     $uid=$this->session->userdata('uid');
     $gro_id=$this->session->userdata('gro_id');
-   // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+
+    if ($gro_id=="")
+{
+     redirect('/admin/', 'refresh');
+}
+
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
     $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
     $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-    $data['form_title']=$this->replaceAll($this->uri->segment(2));
-    $data['head']='admin/inc/v_dashboard_head';
-    $data['footer']='admin/inc/v_dashboard_footer';
+    $company_id=$this->session->userdata('company_id');
+    $data['company_id']=$company_id;
+    $data['uid']=$uid;
+    $data['gro_id']=$gro_id;
+    $data['currency_name']="$";
+    $today = date("Y-m-d"); 
+    $data['today']=$today;      
+      // v_ticket   
+      if($gro_id==1){
+        if($param1 !=''){
+           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
+        }else{
+           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
+        }
+      }else{       
+        if($param1 !=''){
+           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
+        }else{
+           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
+        }
+      }
+    $data['form_title']=$this->replaceAll($this->uri->segment(1));
+    $data['panel_title']='All Bookings';
+    $data['head']='admin/head/v_head_table';
+    $data['footer']='admin/footer/v_footer_table';
     $data['sidebar']='admin/inc/v_sidebar';
     $data['sidebar_right']='admin/inc/v_sidebar_right';
     $data['header']='admin/inc/v_header';
+
     $data['main_content']='admin/vehicles/v_dashboard';
     //load the view
     $this->load->view('admin/v_admin_template', $data);

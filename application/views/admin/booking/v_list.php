@@ -95,12 +95,12 @@
 												</span>
 												</td>
 											<td class="center hidden-phone">
-													<a data-toggle="tooltip" title="Edit <?php echo $tk['passenger_name']; ?>" href="#<?php echo $tk['booking_code']; ?>" class="btn btn-primary" role="button">
+													<a data-toggle="tooltip" title="Edit <?php echo $tk['passenger_name']; ?>" href="#<?php echo $tk['booking_code']; ?>" class="btn btn-primary btn-sm" role="button">
 													<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 
-													<a data-toggle="tooltip" title="Delete <?php echo $tk['passenger_name']; ?>" href="#<?php echo $tk['booking_code']; ?>" class="btn btn-danger" role="button">
+													<a data-toggle="tooltip" title="Delete <?php echo $tk['passenger_name']; ?>" href="#<?php echo $tk['booking_code']; ?>" class="btn btn-danger btn-sm" role="button">
 													<i class="fa fa-trash-o" aria-hidden="true"></i></a>
-													<a data-toggle="tooltip" title="Block <?php echo $tk['passenger_name']; ?>" href="#<?php echo $tk['booking_code']; ?>" class="btn btn-warning" role="button">
+													<a data-toggle="tooltip" title="Block <?php echo $tk['passenger_name']; ?>" href="#<?php echo $tk['booking_code']; ?>" class="btn btn-warning btn-sm" role="button">
 													<i class="fa fa-ban"></i></a>
 
 												</td>

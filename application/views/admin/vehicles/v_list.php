@@ -85,36 +85,33 @@
 						<td><?php echo $vch['vehicle_name']; ?></td>
 						<td class="center hidden-phone" data-toggle="tooltip" title="Phone : <?php echo $vch['phone']; ?>"><?php echo $vch['driver_name']; ?></td>
 						<td class="center hidden-phone">
+
 							<a data-toggle="tooltip" title="Edit <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>admin/vehicles.html/edit/<?php echo $vch['v_id']; ?>" class="btn btn-primary btn-sm" role="button">
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 							<a <?php echo $vch['v_id']; ?>" data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>admin/vehicles.html/view/<?php echo $vch['v_id']; ?>" class="btn btn-success btn-sm" role="button">
 							<i class="fa fa-eye" aria-hidden="true"></i></a>
 
-<<<<<<< HEAD
-							<?php 
-							if($status==1){
-								?>							
-
-=======
+								
 						<?php 
-							if($status==1){ ?>
->>>>>>> fb5b0e85cc4cc45ebdbd2ee95b1fb6de7cef3acf
+							if($status==1){ 
+								?>
 							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $vch['v_id']; ?>" data_controller_link="admin/vehicles.html/get_block_Vehicle" title="Block <?php echo $vch['vehicle_name']; ?>" href="#<?php echo $vch['v_id']; ?>" class="btn btn-danger btn-sm btn_getBlocked" role="button">
 							<i class="fa fa-ban"></i>
 							</a>
 						<?php
-							} else {?>								
+							}else{
+								?>								
 							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalActive" dataid="<?php echo $vch['v_id']; ?>" title="Active <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>#<?php echo $vch['v_id']; ?>" class="btn btn-success btn-sm btn_getActive" role="button">
 							<i class="fa fa-check"></i></a>
 						<?php
 							}
 						?>
+
 						</td>
 					
 
 					</tr>
-
-						<?php
+						<?php						
 						$i++;
 					}
 					?>
@@ -188,4 +185,3 @@
       </div>
     </div>
   </div>
-</div>

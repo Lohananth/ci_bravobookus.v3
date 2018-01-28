@@ -49,7 +49,7 @@
 								</div>
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-primary">
-										<a  href="<?php echo site_url(); ?>booking.html/booking/Confirmed">
+										<a  href="<?php echo site_url(); ?>admin/booking.html/booking/Confirmed">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -74,7 +74,7 @@
 
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-secondary">
-										<a  href="<?php echo site_url(); ?>booking.html/booking">
+										<a  href="<?php echo site_url(); ?>admin/booking.html/booking">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -98,7 +98,7 @@
 								</div>
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
-										<a  href="<?php echo site_url(); ?>booking.html/booking/Paid">
+										<a  href="<?php echo site_url(); ?>admin/booking.html/booking/Paid">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -122,7 +122,7 @@
 								</div>
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
-										<a  href="<?php echo site_url(); ?>booking.html/booking/Unpaid">
+										<a  href="<?php echo site_url(); ?>admin/booking.html/booking/Unpaid">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -146,7 +146,7 @@
 								</div>
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
-										<a  href="<?php echo site_url(); ?>booking.html/booking/Pending">
+										<a  href="<?php echo site_url(); ?>admin/booking.html/booking/Pending">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -168,6 +168,9 @@
 									</a>
 									</section>
 								</div>
+
+
+								
 
 
 								

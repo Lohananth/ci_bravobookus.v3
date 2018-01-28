@@ -1,7 +1,7 @@
 
 				<section role="main" class="content-body">
 					<header class="page-header">
-						<h2><i class="fa fa-taxi"></i> <?php echo $form_title; ?></h2>
+						<h2><?php echo $form_title; ?></h2>
 					
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">
@@ -172,8 +172,7 @@
 								</div>
 
 
-								
-
+	
 
 							</div>
 						</div>
