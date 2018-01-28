@@ -10,6 +10,7 @@ class Tickets extends CI_Controller {
         $this->load->database();
         // $this->load->library('Ajax_pagination');
         // $this->perPage = 2;
+        //$this->load->library('session');
         $this->load->helper('url');
     }
     
@@ -52,17 +53,18 @@ class Tickets extends CI_Controller {
       $vehicle_schedule = $_GET['route_schedule_vehicle_id'];
       $data['vehicle_schedule_data'] = $this->db->query("
           SELECT
+            vt.vt_id,
             vt.seats_map,
             vt.`columns`,
             vt.vehicle_type,
             c.company_name,
+            c.id AS cid,
             c.description,
             c.id,
             o.origin AS origin,
             d.origin AS destination,
             o.id AS oid,
             d.id AS did,
-            c.id AS cid,
             t.departure_time,
             vs.local_price,
             vs.foreigner_price,
@@ -80,8 +82,9 @@ class Tickets extends CI_Controller {
             vs.id = $vehicle_schedule
             LIMIT 1
         ")->row();
-
+        $data['vehicle_schedule_id'] = $vehicle_schedule;
         $departure_date = $_GET['on_date'];
+        $data['departure_date'] = $departure_date;
         $data['seats_booked'] = $this->m_crud->get_by_sql("
           SELECT
             * 
@@ -93,4 +96,97 @@ class Tickets extends CI_Controller {
         ");
         $this->load->view('front/v_template_seats',$data);
     }
+
+    public function storeTicket(){
+      //$post = $this->input->post();
+      //var_dump($post);exit();
+      $company_id = $this->input->post('c_id');
+      $vehicle_schedule_id = $this->input->post('vsid');
+      $departure_date = $this->input->post('departure_date');
+      $origin = $this->input->post('origin');
+      $destination = $this->input->post('destination');
+      $departure_time = $this->input->post('departure_time');
+      $vehicle_type_id = $this->input->post('v_type');
+      $seats_number = $this->input->post('booking_seat_array'); 
+      $total_seats = $this->input->post('txtTotalSeats');
+      $price = $this->input->post('price');
+      $total_price = floatval($price*$total_seats);
+      $nationality = $this->input->post('nationality');
+      $title = $this->input->post('title');
+      $passenger_name = $this->input->post('f_name');
+      $email = $this->input->post('email');
+      $phone = $this->input->post('phoneNumber');
+      $pick_up = $this->input->post('accommodation_name')." ".$this->input->post('full_address');
+      $booking_date = date('Y-m-d');
+      $booking_time = date('H:i');
+
+      $data = array(
+        'c_id' => $company_id,
+        'vs_id' => $vehicle_schedule_id,
+        'departure_date' => $departure_date,
+        'seat_number' => $seats_number,
+        'title' => $title,
+        'passenger_name' => $passenger_name,
+        'nationality' => $nationality,
+        'email' => $email,
+        'phone' => $phone,
+        'price' => $total_price,
+        'status' => 'pending',
+        'pickup' => $pick_up,
+        'booking_date' => date('Y-m-d'),
+        'booking_time' => date('H:i'),
+        'u_id' => '0'
+      );
+      $this->db->insert('tbl_ticket', $data);
+      $_SESSION['booking_code'] = $this->db->insert_id();
+     redirect(base_url() . 'tickets/payment', 'refresh');
+    }
+
+    public function paymentGetway(){
+      $data['footer']="inc/v_footer";
+      $data['script_footer_home']="inc/v_script_footer_home";
+      $data['services']=$this->m_crud->get_by_sql("SELECT * FROM services");
+      $data['all_contacts'] = $this->m_crud->getAllOrigin();
+      $data['origin']=$this->m_crud->get_by_sql("SELECT * FROM tbl_contacts");
+      $data['title']="Welcome to BravoBookus.com | Book bus, boat and private taxi in Cambodia";
+      $data['seo_description']="Travelling or planning your trip across Cambodia, Laos, Vietnam and Thailand? Find the best deals on bus, taxi and ferry tickets on BravoBookus.com. Book now!";
+      $data['seo_image']="front/images/standard_bookmebus-home-page-cover-limited.png";
+      $data['seo_url']="https://bravobookus.com";
+      $data['twitter_creator']="@BravoBookus";
+      $data['seo_keywords']="book bus tickets online in cambodia, bus tickets, buy bus tickets online phnompenh to siemreap, angkor, bus angkorwat temple,cambodia bus travel, bus phnom penh schedule, siemreap transportation, bus tickets, bus in phnompenh";
+
+      $booking_code = $_SESSION['booking_code'];
+
+      $this->db->select('*');
+      $this->db->from('tbl_ticket');
+      $this->db->where('booking_code', $booking_code);
+      $data['booking_detail'] = $this->db->query("
+        SELECT
+          t.*, o.origin AS origin,
+          d.origin AS destination,
+          vt.vehicle_type
+          FROM
+          tbl_ticket AS t
+        INNER JOIN tbl_vehicle_schedule AS vs ON t.vs_id = vs.id
+        INNER JOIN tbl_origin AS o ON vs.origin = o.id
+        INNER JOIN tbl_origin AS d ON vs.destination = d.id
+        INNER JOIN tbl_vehicle AS v ON vs.v_id = v.v_id
+        INNER JOIN tbl_vehicle_type AS vt ON v.vehicle_type = vt.vt_id
+        WHERE
+          t.booking_code = $booking_code
+        ")->row();
+
+      $this->load->view('front/v_payment', $data);
+    }
+
+
+  public function getResponePayment(){
+    $booking_code = $_SESSION['booking_code'];
+    $data = array('status'=>'paid');
+    $this->db->where('booking_code', $booking_code);
+    $this->db->update('tbl_ticket', $data);
+
+    redirect(base_url(), 'refresh');
+  }
+
 }

@@ -7,8 +7,14 @@ $route['default_controller'] = 'front/home';
 /* Searching Bus */
 $route['search']='buses/search';
 
+/* Payment Gateway */
+$route['payment/do'] = 'payment_gateway/VPCPaymentConnection/doPayment';
+$route['payment/respone'] = 'payment_gateway/VPCPaymentConnection/getResponePyament';
+
 /* Booking Ticket */
 $route['tickets']='buses/tickets';
+$route['tickets/add']='buses/tickets/storeTicket';
+$route['tickets/payment']='buses/tickets/paymentGetway';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

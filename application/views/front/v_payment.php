@@ -79,10 +79,128 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
 <!--  Search Result -->
 
 <div class="container">
-  <hr>
-  <?php
-    include_once('v_select_seat.php');
-  ?>
+  <ol class="breadcrumb">
+						<li>You are here: </li>
+						<li><a href="/">Home</a></li>
+						<li class="active">Payment</li>
+					</ol>
+					<div class="article">
+						<div class="row">
+							<div class="col-sm-6 col-md-8">
+								<img src="<?php echo base_url(); ?>front/images/promotion.jpg" width="100%" alt="Wing offer 10%">
+								<div class="panel panel-danger">
+									<div class="panel-heading">
+										<h3 class="panel-title">Payment Methods</h3>
+									</div>
+									<div class="panel-body">
+										<div class="well well-sm text-center">
+											<h2 class="text-danger">Warning!</h2>
+
+											<h3>Do not close your browser until payment completed<br/> 
+												and please wait until your can see your ticket.</h3>
+											</div>
+
+											<p class="text-danger bg-warning">Local Payment (Cambodia)</p>
+											<div>
+												<div class="row">
+													<div class="col-xs-3 col-md-2">
+														<?php //include_once 'include/ipg/sml.php'; ?>
+													</div>
+													<div class="col-xs-3 col-md-2">
+														<?php //include_once("include/functions.php") ?>
+														<form action="include/wing/send-data.php" method="post">
+															<input type="hidden" name="item" value="<?php //echo Encrypt('mykey', $invoice_no); ?>">
+															<input type="hidden" name="amount" value="<?php //echo Encrypt('mykey', $amount); ?>">
+															<input type="hidden" name="passenger_name" value="<?php //echo Encrypt('mykey', $passenger_name); ?>">
+														 	<button type="submit" name="a" id="a"><img src="<?php echo base_url(); ?>front/images/payment-logo/wing.png" width="100" alt=""></button>
+														</form>
+													</div>
+												</div>
+												
+												
+											</div>
+											<p class="text-danger bg-warning">International Payment Methods</p>
+											<div>
+												<form action="<?php echo base_url(); ?>payment/do" method="post" accept-charset="UTF-8">
+													<input type="hidden" name="Title" value="<?php echo 'PHP VPC 3 Party Transacion'; ?>">
+													<input type="hidden" name="virtualPaymentClientURL" size="63" value="<?php echo 'https://migs.mastercard.com.au/vpcpay'; ?>">
+													<input type="hidden" name="vpc_Version" value="<?php echo '1'; ?>" size="20" maxlength="8">
+													<input type="hidden" name="vpc_Command" value="<?php echo 'pay'; ?>" size="20" maxlength="16">
+													<input type="hidden" name="vpc_AccessCode" value="<?php echo '81FF5EF1'; ?>">
+													<input type="hidden" name="vpc_MerchTxnRef" value="<?php echo $booking_detail->booking_code; ?>">
+													<input type="hidden" name="vpc_Merchant" value="<?php echo 'VCUTRAVEL'; ?>">
+													<input type="hidden" name="vpc_OrderInfo" value="<?php echo $booking_detail->passenger_name; ?>">
+													<input type="hidden" name="vpc_Amount" value="<?php echo '100'; ?>">
+													<input type="hidden" name="vpc_Locale" value="<?php echo 'en'; ?>" size="20" maxlength="5">
+
+													<input type="hidden" name="vpc_ReturnURL" size="63" value="<?php echo base_url(); ?>">
+													<button type="submit" name="SubButL"><img src="<?php echo base_url(); ?>front/images/payment-logo/payment_visa.png" /> <img src="<?php echo base_url(); ?>front/images/payment-logo/payment_master.png" /></button>
+												</form>
+											</div>
+											<p class="text-danger bg-warning">Direct talk here!</p>
+											<p>No any of the payment methods above? No problem! Click on the icon below to talk with us now!</p>
+											<p class="text-center"><button id="button-talk-chat"><img src="<?php echo base_url(); ?>front/images/chat.png" alt="" width="80"></button></p>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-4">
+									<div class="well well-sm text-center">
+										<strong class="panel-title">Booking Infomaiton</strong>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>Generated Date:</td>
+												<td><?php echo date('Y-m-d'); ?></td>
+											</tr>
+											<tr>
+												<td>Invoice No.:</td>
+												<td>#<?php echo str_pad($booking_detail->booking_code, 6, '0', STR_PAD_LEFT); ?></td>
+											</tr>
+											<tr>
+												<td>Passenger Name:</td>
+												<td><?php echo $booking_detail->passenger_name ?>  <?php  ?></td>
+											</tr>
+											<tr>
+												<td>Seats Number:</td>
+												<td><?php //for($i=0; $i<count($seats); $i++): echo $seats[$i].", "; endfor; ?></td>
+											</tr>
+											<tr>
+												<td>Email:</td>
+												<td><?php echo $booking_detail->email ?></td>
+											</tr>
+											<tr>
+												<td>Phone Number:</td>
+												<td><?php echo $booking_detail->phone ?></td>
+											</tr>
+											<tr>
+												<td>Bus Type</td>
+												<td><?php //echo $booking_detail->bus_type ?></td>
+											</tr>
+											<tr>
+												<td>Destination</td>
+												<td><?php echo $booking_detail->origin ?> &#10140; <?php echo $booking_detail->destination ?></td>
+											</tr>
+											<tr>
+												<td>Amount pay ($):</td>
+												<td>$ <?php //echo $amount ?></td>
+											</tr>
+											<tr>
+												<td>Tax ($):</td>
+												<td>$ 0</td>
+											</tr>
+											<tr>
+												<td>Total pay ($):</td>
+												<td><span class="text-danger"><strong>$ <?php //echo $amount ?></strong></span></td>
+											</tr>
+
+										</tbody>
+									</table>
+									<img src="/images/promotion/wing_10_off.jpg" width="100%" alt="Wing offer 10%">
+								</div>
+							</div>
+						</div>
+  
 </div>
 
 <!-- End Search Result -->

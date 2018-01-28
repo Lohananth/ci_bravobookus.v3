@@ -6,21 +6,20 @@
 		</ol>
 		<div class="row">
 			<div class="col-md-8">
-				<form action="/include/busbooking-handle.php" id="booking_seat_form" class="form-horizontal booking-seat" method="post"> 
+				<form action="<?php echo base_url(); ?>tickets/add" id="booking_seat_form" class="form-horizontal booking-seat" method="post"> 
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">1. Seat Selection</h3>
 						</div>
 						<div class="panel-body">
-							<input type="hidden" name="vsid" id="vsid" value="" />
-							<input type="hidden" name="c_id" id="c_id" value="" />
-							<input type="hidden" name="departure_date" id="dep" value="" />
-							<input type="hidden" name="origin" id="origin" value="" />
-							<input type="hidden" name="destination" id="destination" value="" />
-							<input type="hidden" name="operator" id="operator" value="" />
-							<input type="hidden" name="departure_time" id="departure_time" value="" />
-							<input type="hidden" name="v_type" id="v_type" value="" />
-							<input type="hidden" name="local_price" id="local_price" value="" />
+							<input type="hidden" name="vsid" id="vsid" value="<?php echo $vehicle_schedule_id ?>" />
+							<input type="hidden" name="c_id" id="c_id" value="<?php echo $vehicle_schedule_data->cid; ?>" />
+							<input type="hidden" name="departure_date" id="dep" value="<?php echo $departure_date ?>" />
+							<input type="hidden" name="origin" id="origin" value="<?php echo $vehicle_schedule_data->oid ?>" />
+							<input type="hidden" name="destination" id="destination" value="<?php echo $vehicle_schedule_data->did ?>" />
+							<input type="hidden" name="departure_time" id="departure_time" value="<?php echo $vehicle_schedule_data->departure_time ?>" />
+							<input type="hidden" name="v_type" id="v_type" value="<?php echo $vehicle_schedule_data->vt_id ?>" />
+							<input type="hidden" name="price" id="price" value="<?php echo $vehicle_schedule_data->local_price ?>" />
 							<div class="row">
 								<div class="col-md-8">
 									<div class="table-responsive">
@@ -512,35 +511,6 @@ $('#sub_seat_booking').click(function(){
 
 </script>
 
-<script>
-  function save_booking(){
-    var fullname = document.getElementById("f_name").value;
-    var title = document.getElementById("title").value;
-    var email = document.getElementById("email").value;
-    var mobile = document.getElementById("output_phone").value;
-    var vsid = document.getElementById("vsid").value;
-    var dep = document.getElementById("dep").value;
-    var nationality = document.getElementById("nationality").value;
-    var count = $("div[aria-checked^='true']").length;
-    var arr = $("div[aria-checked^='true']");
-    var seats = [];
-    for(i=0; i<count; i++){
-      seats.push(arr.eq(i).text());
-    }
-    var dataString = 'fullname='+fullname + '&title='+title + '&seats='+seats + '&email='+email +'&mobile='+mobile + '&vsid='+vsid + '&dep='+dep + '&nationality='+nationality;
-    $.ajax({
-      type: "POST",
-      url: "save_booking.php",
-      data: dataString,
-      cache: false,
-      success: function(result){
-        alert('Thanks you for using our services!\nPlease check your email for verify.');
-        location.reload();
-      }
-    });
-    return false;
-  }
-</script>
 
 <script type="text/javascript">
   $("#sub_seat_booking").click(function(event) {
