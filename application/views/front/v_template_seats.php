@@ -15,7 +15,7 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Seat Map -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>front/assets/plugins/jsc/seat_styles.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>front/assets//css/validate.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>front/assets/css/validate.css">
   <!-- // Seat Map -->
   <script src="<?php echo base_url(); ?>front/assets/js/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>front/assets/js/bootstrap.min.js"></script>  

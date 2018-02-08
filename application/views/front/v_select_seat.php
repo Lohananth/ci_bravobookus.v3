@@ -393,29 +393,7 @@
         $('#booking_seat_form').formValidation('resetForm', true);
       });
     });
-$('#sub_seat_booking').click(function(){
-  if($("#counter").val() <= '0'){
-    Command: toastr["error"]("Please Select at least 1 seat.", "Seat Error!");
-    $('html, body').animate({ scrollTop: $(".panel-heading").offset().top}, 500);
-  }
-  else if( !$('#nationality').val() ){
-    Command: toastr["error"]("Please chose nationality", "Nationality Empty !");
-    $('html, body').animate({ scrollTop: $("#nationality").offset().top}, 500);
-  }
-  else if( !$('#title').val() ){
-    Command: toastr["error"]("Please chose title", "Title Empty !");
-    $('html, body').animate({ scrollTop: $("#title").offset().top}, 500);
-  }
-  else if( !$('#f_name').val() ){
-    Command: toastr["error"]("Please fill your full name.", "Name Empty !");
-    $('html, body').animate({ scrollTop: $("#f_name").offset().top}, 500);
-  }
-  else if( !$('#phoneNumber').val() ){
-    Command: toastr["error"]("Please give us your phone number.", "Phone Empty !");
-    $('html, body').animate({ scrollTop: $("#phoneNumber").offset().top}, 500);
-  }
-  toastr.options = {"closeButton": true, "debug": false, "newestOnTop": false, "progressBar": true, "positionClass": "toast-top-right", "preventDuplicates": false, "onclick": null, "showDuration": "300", "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut"}
-});
+
 </script>
 
 <script>
@@ -498,7 +476,7 @@ $('#sub_seat_booking').click(function(){
     $('#selected-seats').on('click', '.cancel-cart-item', function () {
       sc.get($(this).parents('li:first').data('seatId')).click();
     });
-    sc.get([<?php foreach($seats_booked as $row): echo "'".$row['seat_number']."',"; endforeach ?>]).status('unavailable');
+    sc.get([<?php for($i=0; $i<count($seats_booked); $i++): echo "'".$seats_booked[$i]."',"; endfor ?>]).status('unavailable');
 
     function recalculateTotal(sc) {
       var total = 0;
@@ -510,7 +488,6 @@ $('#sub_seat_booking').click(function(){
   });
 
 </script>
-
 
 <script type="text/javascript">
   $("#sub_seat_booking").click(function(event) {

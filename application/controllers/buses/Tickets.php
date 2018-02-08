@@ -10,7 +10,7 @@ class Tickets extends CI_Controller {
         $this->load->database();
         // $this->load->library('Ajax_pagination');
         // $this->perPage = 2;
-        //$this->load->library('session');
+        $this->load->library('session');
         $this->load->helper('url');
     }
     
@@ -85,21 +85,26 @@ class Tickets extends CI_Controller {
         $data['vehicle_schedule_id'] = $vehicle_schedule;
         $departure_date = $_GET['on_date'];
         $data['departure_date'] = $departure_date;
-        $data['seats_booked'] = $this->m_crud->get_by_sql("
+        $seats_number = $this->m_crud->get_by_sql("
           SELECT
-            * 
+            seat_number
           FROM
             tbl_ticket 
           WHERE
             vs_id = $vehicle_schedule
             AND departure_date = '$departure_date'
         ");
+        $booked_seat_array="";
+        foreach($seats_number as $seat){
+          $booked_seat_array .= $seat['seat_number'].",";
+        }
+        $booked_seat_array = rtrim($booked_seat_array, ',');
+        $data['seats_booked'] = explode(',', $booked_seat_array);
         $this->load->view('front/v_template_seats',$data);
     }
 
     public function storeTicket(){
-      //$post = $this->input->post();
-      //var_dump($post);exit();
+      $post = $this->input->post();
       $company_id = $this->input->post('c_id');
       $vehicle_schedule_id = $this->input->post('vsid');
       $departure_date = $this->input->post('departure_date');
@@ -107,7 +112,8 @@ class Tickets extends CI_Controller {
       $destination = $this->input->post('destination');
       $departure_time = $this->input->post('departure_time');
       $vehicle_type_id = $this->input->post('v_type');
-      $seats_number = $this->input->post('booking_seat_array'); 
+      $seats_number_array = $this->input->post('booking_seat_array'); 
+      $seats_number = rtrim($seats_number_array,",");
       $total_seats = $this->input->post('txtTotalSeats');
       $price = $this->input->post('price');
       $total_price = floatval($price*$total_seats);
@@ -138,8 +144,9 @@ class Tickets extends CI_Controller {
         'u_id' => '0'
       );
       $this->db->insert('tbl_ticket', $data);
-      $_SESSION['booking_code'] = $this->db->insert_id();
+      $this->session->set_userdata('booking_code', $this->db->insert_id());
      redirect(base_url() . 'tickets/payment', 'refresh');
+
     }
 
     public function paymentGetway(){
@@ -155,7 +162,7 @@ class Tickets extends CI_Controller {
       $data['twitter_creator']="@BravoBookus";
       $data['seo_keywords']="book bus tickets online in cambodia, bus tickets, buy bus tickets online phnompenh to siemreap, angkor, bus angkorwat temple,cambodia bus travel, bus phnom penh schedule, siemreap transportation, bus tickets, bus in phnompenh";
 
-      $booking_code = $_SESSION['booking_code'];
+      $booking_code = $this->session->userdata('booking_code');
 
       $this->db->select('*');
       $this->db->from('tbl_ticket');
@@ -179,14 +186,10 @@ class Tickets extends CI_Controller {
       $this->load->view('front/v_payment', $data);
     }
 
+    public function getTicket(){
+      
+      $this->load->view("front/v_get_ticket", $data);
+    }
 
-  public function getResponePayment(){
-    $booking_code = $_SESSION['booking_code'];
-    $data = array('status'=>'paid');
-    $this->db->where('booking_code', $booking_code);
-    $this->db->update('tbl_ticket', $data);
-
-    redirect(base_url(), 'refresh');
-  }
 
 }

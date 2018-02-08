@@ -130,10 +130,10 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
 													<input type="hidden" name="vpc_MerchTxnRef" value="<?php echo $booking_detail->booking_code; ?>">
 													<input type="hidden" name="vpc_Merchant" value="<?php echo 'VCUTRAVEL'; ?>">
 													<input type="hidden" name="vpc_OrderInfo" value="<?php echo $booking_detail->passenger_name; ?>">
-													<input type="hidden" name="vpc_Amount" value="<?php echo '100'; ?>">
+													<input type="hidden" name="vpc_Amount" value="<?php echo '1'; //($booking_detail->price*100); ?>">
 													<input type="hidden" name="vpc_Locale" value="<?php echo 'en'; ?>" size="20" maxlength="5">
 
-													<input type="hidden" name="vpc_ReturnURL" size="63" value="<?php echo base_url(); ?>">
+													<input type="hidden" name="vpc_ReturnURL" size="63" value="<?php echo base_url(); ?>payment/respone">
 													<button type="submit" name="SubButL"><img src="<?php echo base_url(); ?>front/images/payment-logo/payment_visa.png" /> <img src="<?php echo base_url(); ?>front/images/payment-logo/payment_master.png" /></button>
 												</form>
 											</div>
@@ -163,7 +163,7 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
 											</tr>
 											<tr>
 												<td>Seats Number:</td>
-												<td><?php //for($i=0; $i<count($seats); $i++): echo $seats[$i].", "; endfor; ?></td>
+												<td><?php echo $booking_detail->seat_number ?></td>
 											</tr>
 											<tr>
 												<td>Email:</td>
@@ -175,7 +175,7 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
 											</tr>
 											<tr>
 												<td>Bus Type</td>
-												<td><?php //echo $booking_detail->bus_type ?></td>
+												<td><?php echo $booking_detail->vehicle_type ?></td>
 											</tr>
 											<tr>
 												<td>Destination</td>
@@ -183,7 +183,7 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
 											</tr>
 											<tr>
 												<td>Amount pay ($):</td>
-												<td>$ <?php //echo $amount ?></td>
+												<td>$ <?php echo $booking_detail->price ?></td>
 											</tr>
 											<tr>
 												<td>Tax ($):</td>
@@ -191,7 +191,7 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
 											</tr>
 											<tr>
 												<td>Total pay ($):</td>
-												<td><span class="text-danger"><strong>$ <?php //echo $amount ?></strong></span></td>
+												<td><span class="text-danger"><strong>$ <?php echo $booking_detail->price ?></strong></span></td>
 											</tr>
 
 										</tbody>

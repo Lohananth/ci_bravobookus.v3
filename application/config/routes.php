@@ -9,12 +9,14 @@ $route['search']='buses/search';
 
 /* Payment Gateway */
 $route['payment/do'] = 'payment_gateway/VPCPaymentConnection/doPayment';
-$route['payment/respone'] = 'payment_gateway/VPCPaymentConnection/getResponePyament';
+$route['payment/respone'] = 'payment_gateway/VPCPaymentConnection/getPaymentRespone';
+$route['payment/unsuccess'] = 'payment_gateway/VPCPaymentConnection/unsuccessPayment';
 
 /* Booking Ticket */
 $route['tickets']='buses/tickets';
 $route['tickets/add']='buses/tickets/storeTicket';
 $route['tickets/payment']='buses/tickets/paymentGetway';
+$route['ticket/get'] = "buses/tickets/getTicket";
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
