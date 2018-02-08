@@ -188,7 +188,7 @@ class Tickets extends CI_Controller {
 
     public function getTicket(){
       
-      $this->load->view("front/v_get_ticket", $data);
+      $this->load->view("front/v_get_ticket");
     }
 
 
