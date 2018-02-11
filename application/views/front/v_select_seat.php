@@ -140,7 +140,7 @@
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-10">
-										<button type="submit" name="btnBuy" value="1" id="sub_seat_booking" class="btn btn-info rippler rippler-default">Buy Now</button> &nbsp;
+										<button type="submit" name="btnBuy" value="1" id="sub_seat_booking" class="btn btn-info rippler rippler-default"><?php echo $this->lang->line('btn_buy_now'); ?></button> &nbsp;
 										<button type="reset" id="button_reset" class="btn btn-defaul rippler rippler-bs-danger">Reset</button>
 										<p id="msg"></p>	
 									</div>

@@ -48,7 +48,8 @@
             </div>
           </div>
           <div class="col-md-1 col-sm-12">
-            <a class="btn btn-swap" id="btnBusSwap"><i class="fa fa-exchange"></i></a>
+            <a class="btn btn-swap" id="btnBusSwap" style="background-color:  #0079c1
+;"><i class="fa fa-exchange"></i></a>
           </div>
           <div class="col-md-3 col-sm-12 subject">
             <div class="input-group destination-box">
@@ -72,7 +73,7 @@
             </div>
           </div>
           <div class="col-md-2 col-sm-12">
-            <button type="submit" class="btn btn-success btn-lg btn-block" id="btnBusFind" style="background-color:  #009900
+            <button type="submit" class="btn btn-success btn-lg btn-block" id="btnBusFind" style="background-color:  #0079c1
 ;"><i class="fa fa-search"></i> Find Tickets</button>
           </div>
         </div>

@@ -12,23 +12,85 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="<?php echo site_url(); ?>#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-        <li><a href="<?php echo site_url(); ?>#"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
-        <li><a href="<?php echo site_url(); ?>#"><i class="fa fa-users" aria-hidden="true"></i> Customers Serivces</a></li>
-         <li><a href="<?php echo site_url(); ?>#">Forums</a></li>
-        <li><a href="<?php echo site_url(); ?>#">Contact</a></li>
+        <li class="active"><a href="<?php echo site_url(); ?>#"><i class="fa fa-home" aria-hidden="true"></i> <?php echo $this->lang->line('menu_home'); ?></a></li>
+        <li><a href="<?php echo site_url(); ?>#"><i class="fa fa-info-circle" aria-hidden="true"></i> <?php echo $this->lang->line('menu_about'); ?></a></li>
+        <li><a href="<?php echo site_url(); ?>#"><i class="fa fa-users" aria-hidden="true"></i> <?php echo $this->lang->line('menu_services'); ?></a></li>
+         <li><a href="<?php echo site_url(); ?>#"><?php echo $this->lang->line('menu_contact'); ?></a></li>
+        <li><a href="<?php echo site_url(); ?>#"><?php echo $this->lang->line('menu_forums'); ?></a>
+        	
+
+        </li>
       </ul>
+      <div class="dropdown">
+		<ul class="dropdown-menu"> LANG
+			    <li>
+			    	<a  href="<?php echo site_url();?>#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+			    </li>
+			     <li>
+			     	<a href="<?php echo site_url();?>#"><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</a>
+			     </li>
+
+		</ul>
+      </div>
+      <ul class="nav navbar-nav navbar-right">      
+	     <div class="dropdown">
+			  <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" style="padding-top:0px; padding-bottom: 0px;">
+			  	<div class="chip">			        
+			          <user>LANG</user>
+			    </div> 
+			  <span class="caret"></span></button>
+			  <ul class="dropdown-menu">
+			    <li>
+			    	<a  href="<?php echo site_url(); ?>/LanguageSwitcher/switchLang/khmer">Khmer</a>
+			    </li>
+			     <li>
+			     	<a href="<?php echo site_url(); ?>/LanguageSwitcher/switchLang/english">English</a>
+			     </li>
+			     <li>
+			     	<a href="<?php echo site_url(); ?>/LanguageSwitcher/switchLang/french">French</a>
+			     </li>
+
+
+			  </ul>
+			</div>
+       
+  
+         
+
+      </ul>
+
+
       
       <ul class="nav navbar-nav navbar-right">      
-      <div class="chip">
+	     <div class="dropdown">
+			  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding-top:0px; padding-bottom: 0px;"><div class="chip">
 
-        <img src="<?php echo base_url(); ?>front/images/logo1.jpg" alt="Person" width="96" height="96">
-          <user> John Doe</user>
-      </div> 
+			        <img src="<?php echo base_url(); ?>front/images/logo1.jpg" alt="Person" width="96" height="96">
+			          <user> John Doe</user>
+			      </div> 
+			  <span class="caret"></span></button>
+			  <ul class="dropdown-menu">
+			    <li>
+			    	<a  href="<?php echo site_url();?>#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+			    </li>
+			     <li>
+			     	<a href="<?php echo site_url();?>#"><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</a>
+			     </li>
+
+			  </ul>
+
+
+
+			</div>
        
-        <li><a  href="#" data-toggle="modal" data-target="#myLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-         <li><a href="#" data-toggle="modal" data-target="#mySignup"><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</a></li>
+       <!--  <li><a  href="#" data-toggle="modal" data-target="#myLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         <li><a href="#" data-toggle="modal" data-target="#mySignup"><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</a></li> -->
+          
+         
+
       </ul>
+      
     </div>
+    
   </div>
 </nav>

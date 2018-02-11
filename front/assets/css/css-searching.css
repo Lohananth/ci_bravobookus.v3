@@ -12,17 +12,17 @@
         /*margin-top: 50px;*/
     }
     #Buses {
-      background-color:#2874A6; height: 140px;
+      background-color:#010B50; height: 140px;
       margin-top: 50px;
     }
     /* PrivateTaxi */
      #PrivateTaxi{
-      background-color:#2874A6; height: 140px;
+      background-color:#010B50; height: 140px;
       margin-top: 50px;
     }
     /* Hotels */
        #Hotels{
-      background-color:#2874A6; height: 140px;
+      background-color:#010B50; height: 140px;
       margin-top: 50px;
     }
 
@@ -42,11 +42,11 @@
       width: 100%;
   }
    #Buses {
-      background-color:#2874A6; height: 150px;
+      background-color:#010B50; height: 150px;
     }
     /* PrivateTaxi */
      #PrivateTaxi {
-      background-color:#2874A6; height: 150px;
+      background-color:#010B50; height: 150px;
     }
     /* Hotels */
     #Hotels {
@@ -59,7 +59,7 @@
     width: 100%;
 }
  #Buses {
-      background-color:#2874A6; height: 460px;
+      background-color:#010B50; height: 460px;
     }
     /* PrivateTaxi */
      #PrivateTaxi{
