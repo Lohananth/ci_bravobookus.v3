@@ -7,7 +7,7 @@ $lang['menu_services'] = 'Services';
 $lang['menu_forums'] = 'Forums';
 
 /* Button */
-$lang['btn_buy_now'] = Buy Now';
+//$lang['btn_buy_now'] = Buy Now';
 
 
 $lang['language_key'] = 'The actual message to be shown';

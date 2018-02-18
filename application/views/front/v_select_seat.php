@@ -357,18 +357,6 @@
               stringLength: {
                 max: 512,
                 message: 'Cannot exceed 512 characters'
-              },
-              remote: {
-                type: 'GET',
-                url: 'https://api.mailgun.net/v2/address/validate?callback=?',
-                crossDomain: true,
-                name: 'address',
-                data: {
-                  api_key: 'pubkey-83a6-sl6j2m3daneyobi87b3-ksx3q29'
-                },
-                dataType: 'jsonp',
-                validKey: 'is_valid',
-                message: 'The email is not valid'
               }
             }
           }
