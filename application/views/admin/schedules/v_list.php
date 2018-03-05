@@ -84,12 +84,12 @@
 						<td><?php echo $vch['local_price'];?></td>
 						<td><?php echo $vch['foreigner_price'];?></td>
 						<td class="center hidden-phone">
-							<a data-toggle="tooltip" title="Edit <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>edit-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-primary btn-sm" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							<a data-toggle="tooltip" title="Edit <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>admin/edit-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-primary btn-sm" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 							</a>
 							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalView" dataid="<?php echo $vch['id']; ?>" title="View <?php echo $vch['vehicle_name']; ?>" href="#" class="btn btn-success btn-sm btn-view-schedule" role="button">
 							<i class="fa fa-eye" aria-hidden="true"></i>
 							</a>
-							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $vch['id']; ?>" title="Block <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>blocked-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-warning btn-sm btn_getBlocked" role="button">
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $vch['id']; ?>" title="Block <?php echo $vch['vehicle_name']; ?>" href="<?php echo site_url(); ?>admin/blocked-schedules.html/<?php echo $vch['id']; ?>" class="btn btn-warning btn-sm btn_getBlocked" role="button">
 							<i class="fa fa-ban"></i></a>
 						</td>
 						<input type="hidden" name="vs_id" value="<?php echo $vschedule_list[0]['id']  ?>">	

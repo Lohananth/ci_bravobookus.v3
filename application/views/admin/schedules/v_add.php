@@ -114,7 +114,7 @@
 						<div style="padding-bottom: 15px;"></div>
 						<div class="col-md-12 form-group">
 							<button type="submit" name="btnSave" class="btn btn-primary pull-right" value="Save"><span class="fa fa-save"></span> Save</button> 
-							<a class="btn btn-danger pull-right" style="margin-right: 15px;" href="<?php echo site_url(); ?>list-schedules.html"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
+							<a class="btn btn-danger pull-right" style="margin-right: 15px;" href="<?php echo site_url(); ?>admin/list-schedules.html"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
 						</div>												
 					</div>
 				</div>

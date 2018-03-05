@@ -58,6 +58,9 @@ class Schedules extends CI_Controller {
     $html = $this->load->view('admin/schedules/pdfreport_view', $data,true);
     $filename = 'report_'.time();
     $this->pdf_library->pdf_creator($html, $filename, true, 'A4', 'landscape');
+    // $this->pdf_library->generate($html, $filename, true, 'A4', 'landscape');
+    // $this->pdf_library->output($filename,'I',true);
+
 
   }
 
