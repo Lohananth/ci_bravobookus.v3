@@ -5,7 +5,10 @@ $lang['menu_about'] = 'អំពីយើង';
 $lang['menu_contact'] = 'ទំនាក់​ទំនង​';
 $lang['menu_services'] = 'សេវាកម្ម​';
 $lang['menu_forums'] = 'វេទិការ​';
-
+/* breadcrumb */
+$lang['breadcrumb_here'] = 'អ្នក​នៅ​ទី​នេះ :';
+$lang['breadcrumb_home'] = 'ទំព័រដើម';
+/* end breadcrumb */
 /* Button */
 $lang['btn_buy_now'] = 'ទិញឥលូវ';
 

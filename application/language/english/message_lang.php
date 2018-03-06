@@ -8,6 +8,12 @@ $lang['menu_forums'] = 'Forums';
 
 /* Button */
 
+/* breadcrumb */
+$lang['breadcrumb_here'] = 'You here :';
+$lang['breadcrumb_home'] = 'Home';
+/* end breadcrumb */
+
+
 $lang['btn_buy_now'] = 'Buy Now';
 
 //$lang['btn_buy_now'] = Buy Now';

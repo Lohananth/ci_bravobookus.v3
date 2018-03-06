@@ -6,6 +6,11 @@ $lang['menu_services'] = 'Services';
 $lang['menu_contact'] = 'Contact';
 $lang['menu_forums'] = 'Forums';
 
+/* breadcrumb */
+$lang['breadcrumb_here'] = 'Vous ici :';
+$lang['breadcrumb_home'] = 'Accueil';
+/* end breadcrumb */
+
 /* Button */
 $lang['btn_buy_now'] = 'Acheter maintenant';
 
