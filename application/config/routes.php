@@ -94,6 +94,7 @@ $route['admin/vehicles.html/disactive_Vehicle']='admin/vehicles/vehicles/update_
 
 // Schedules Management
 // list-schedule
+$route['admin/schedules-dashboard.html']='admin/schedules/schedules';
 $route['admin/add-schedules.html']='admin/schedules/schedules/addForm'; //Form add
 $route['admin/save-schedules.html']='admin/schedules/schedules/save/create'; //Save Schedule
 $route['admin/edit-schedules.html/(:any)']='admin/schedules/schedules/editForm/$1'; //For edit

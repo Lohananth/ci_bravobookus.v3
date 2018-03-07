@@ -28,13 +28,13 @@ class Schedules extends CI_Controller {
        $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
        $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
 
-      $data['form_title']=$this->replaceAll($this->uri->segment(1));
+      $data['form_title']=$this->replaceAll($this->uri->segment(4));
       $data['head']='admin/inc/v_dashboard_head';
       $data['footer']='admin/inc/v_dashboard_footer';
       $data['sidebar']='admin/inc/v_sidebar';
         $data['sidebar_right']='admin/inc/v_sidebar_right';
       $data['header']='admin/inc/v_header';
-      $data['main_content']='admin/vehicles/v_dashboard';
+      $data['main_content']='admin/schedules/v_dashboard';
       //load the view
       $this->load->view('admin/v_admin_template', $data);
   }
@@ -62,6 +62,118 @@ class Schedules extends CI_Controller {
     // $this->pdf_library->output($filename,'I',true);
 
 
+  }
+// Manage Vechicles
+  public function lists($param1='',$param2=''){      
+    $data=array();
+    $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
+    $uid=$this->session->userdata('uid');
+    $gro_id=$this->session->userdata('gro_id');
+     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+       $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+       $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+    $data['form_title']=$this->replaceAll($this->uri->segment(1));
+    $data['panel_title']=$this->uri->segment(1);
+    $data['head']='admin/head/v_head_table';
+    $data['footer']='admin/footer/v_footer_table';
+    $data['sidebar']='admin/inc/v_sidebar';
+    $data['sidebar_right']='admin/inc/v_sidebar_right';
+    $data['header']='admin/inc/v_header';   
+    $data['origins']=$this->m_crud->get_by_sql("SELECT * FROM tbl_origin");
+    $data['vehicles']=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle");
+    $data['dptimes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_departure_time");  
+    
+        if($gro_id==1){
+          if($param1 !=''){
+            if($param1=='active'){                            
+                $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+              vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
+              vs.travel_duration AS travel_duration, vs.local_price AS local_price,
+              vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+              FROM
+              tbl_vehicle_schedule AS vs 
+              JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+              JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+              JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+              JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+              WHERE vs.status=1";
+            }else{
+              $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+              vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
+              vs.travel_duration AS travel_duration, vs.local_price AS local_price,
+              vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+              FROM
+              tbl_vehicle_schedule AS vs 
+              JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+              JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+              JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+              JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+              WHERE vs.status=0";
+            }           
+
+          }else{
+             $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+          vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
+          vs.travel_duration AS travel_duration, vs.local_price AS local_price,
+          vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+          FROM
+          tbl_vehicle_schedule AS vs 
+          JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+          JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+          JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+          JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+          WHERE vs.status=1";
+          }
+      }else{       // Other Users
+        if($param1 !=''){
+           // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
+          if($param1=='active'){
+                    $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+                vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
+                vs.travel_duration AS travel_duration, vs.local_price AS local_price,
+                vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+                FROM
+                tbl_vehicle_schedule AS vs 
+                JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+                JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+                JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+                JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+                WHERE vs.status=1 AND ";
+              }else{ // for blocked schedules
+                $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+                vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
+                vs.travel_duration AS travel_duration, vs.local_price AS local_price,
+                vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+                FROM
+                tbl_vehicle_schedule AS vs 
+                JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+                JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+                JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+                JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+                WHERE vs.status=0";
+              }         
+
+        }else{
+           // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
+            $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
+          vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
+          vs.travel_duration AS travel_duration, vs.local_price AS local_price,
+          vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
+          FROM
+          tbl_vehicle_schedule AS vs 
+          JOIN tbl_origin AS ori ON (ori.id = vs.origin)
+          JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
+          JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
+          JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
+          WHERE vs.status=1";            
+        }  
+      } 
+
+
+      $data['vschedule_list']=$this->m_crud->get_by_sql($vSQL);
+      $data['main_content']='admin/schedules/v_list';
+          //load the view
+      $this->load->view('admin/v_admin_template', $data);
   }
 
   // Manage Vechicles

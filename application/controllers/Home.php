@@ -197,9 +197,17 @@ $data['last_minute_deals']="home/v_last_minute_deals";
         $data['twitter_creator']="@BravoBookus";
         $data['seo_keywords']="book bus tickets online in cambodia, bus tickets, buy bus tickets online phnompenh to siemreap, angkor, bus angkorwat temple,cambodia bus travel, bus phnom penh schedule, siemreap transportation, bus tickets, bus in phnompenh";
         $lang=$this->session->userdata('site_lang');
-        $data['page']=$page;
-        $data['langs']=$lang;
-        $data['page_detail']=$this->m_crud->get_by_sql("SELECT * FROM tbl_pages WHERE page_name='". $page ."' and lang='". $lang ."'");
+
+        $data['page']=$page;  
+
+        if($lang!=''){
+            $data['langs']=$lang;        
+            $data['page_detail']=$this->m_crud->get_by_sql("SELECT * FROM tbl_pages WHERE page_name='". $page ."' and lang='". $lang ."'");
+            }else{
+                $lang='english';
+                $data['langs']=$lang;        
+                $data['page_detail']=$this->m_crud->get_by_sql("SELECT * FROM tbl_pages WHERE page_name='". $page ."' and lang='". $lang ."'");
+            }
 
 
         $this->load->view('front/v_pages',$data);
