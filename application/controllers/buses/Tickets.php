@@ -187,8 +187,31 @@ class Tickets extends CI_Controller {
     }
 
     public function getTicket(){
-      
-      $this->load->view("front/v_get_ticket");
+      $booking_code = $this->session->userdata('booking_code');
+      $this->db->select('*');
+      $this->db->from('tbl_ticket');
+      $this->db->where('booking_code', $booking_code);
+      $data['booking_detail'] = $this->db->query("
+SELECT
+  t.*, o.origin AS origin,
+  d.origin AS destination,
+  vt.vehicle_type,
+  c.company_name,
+  c.logo AS logo,
+  dep.departure_time
+FROM
+  tbl_ticket AS t
+INNER JOIN tbl_vehicle_schedule AS vs ON t.vs_id = vs.id
+INNER JOIN tbl_origin AS o ON vs.origin = o.id
+INNER JOIN tbl_origin AS d ON vs.destination = d.id
+INNER JOIN tbl_vehicle AS v ON vs.v_id = v.v_id
+INNER JOIN tbl_vehicle_type AS vt ON v.vehicle_type = vt.vt_id
+INNER JOIN tbl_company AS c ON v.company_id=c.id
+INNER JOIN tbl_departure_time AS dep ON vs.departure_time=dep.id
+WHERE
+  t.booking_code = $booking_code
+        ")->row();
+      $this->load->view("front/v_get_ticket", $data);
     }
 
 
