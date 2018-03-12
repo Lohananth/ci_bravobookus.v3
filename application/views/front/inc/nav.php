@@ -50,8 +50,6 @@
 			     <li>
 			     	<a href="<?php echo site_url(); ?>/LanguageSwitcher/switchLang/french">French</a>
 			     </li>
-
-
 			  </ul>
 			</div>
        

@@ -117,5 +117,15 @@ $route['admin/list-schedules-blocked.html'] = 'admin/schedules/schedules/list_sc
 $route['admin/viewForm-schedules.html'] = 'admin/schedules/schedules/viewForm';
 $route['admin/viewBlock-schedules.html'] = 'admin/schedules/schedules/viewBlock';
 
+
+//================User Controlling===========
+$route['admin/users.html'] = 'admin/users/users';
+// (:any)
+$route['admin/users.html/add-company'] = 'admin/users/users/add_company';
+$route['admin/users.html/(:any)/(:any)'] = 'admin/users/users/$1/$2';
+
+$route['admin/booking.html/(:any)'] = 'admin/booking/booking/$1';
+
+
 // Logout
 $route['logout'] = 'admin/Admin_Login/logout';
