@@ -51,7 +51,7 @@
 								
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-primary">
-										<a  href="<?php echo site_url(); ?>admin/users.html/companies/1">
+										<a  href="<?php echo site_url(); ?>admin/companies.html/1">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -76,7 +76,7 @@
 
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-secondary">
-										<a  href="<?php echo site_url(); ?>admin/users.html/companies/0">
+										<a  href="<?php echo site_url(); ?>admin/companies.html/0">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">

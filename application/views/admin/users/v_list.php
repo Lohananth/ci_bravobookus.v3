@@ -1,6 +1,6 @@
 <section role="main" class="content-body" style="margin-top: -30px;">
 					<header class="page-header">
-						<h2><i class="fa fa-home"></i> Manage <?php echo ucfirst(substr($this->uri->segment(3), 0 ));  ?></h2>
+						<h2><i class="fa fa-home"></i> Manage <?php echo ucfirst(substr($this->uri->segment(2), 0,-5 ));  ?></h2>
 
 					<div class="right-wrapper pull-left">
 							<ol class="breadcrumbs">
@@ -15,12 +15,12 @@
 									</a>
 								</div>
 								<div class="btn btn-success" style="margin-right:10px;">
-									<a href="<?php echo site_url(); ?><?php echo $this->uri->segment(1)."/".$this->uri->segment(2)."/".$this->uri->segment(3); ?>/1"> 
+									<a href="<?php echo site_url(); ?><?php echo $this->uri->segment(1)."/".$this->uri->segment(2)."/"; ?>1"> 
 										<i class="fa fa-list" aria-hidden="true"></i>
 										Active
 									</a>
 								</div>
-								<div class="btn btn-danger"> <a href="<?php echo site_url(); ?><?php echo $this->uri->segment(1)."/".$this->uri->segment(2)."/".$this->uri->segment(3); ?>/0"> 
+								<div class="btn btn-danger"> <a href="<?php echo site_url(); ?><?php echo $this->uri->segment(1)."/".$this->uri->segment(2)."/"; ?>0"> 
 										<i class="fa fa-ban"></i>
 										Blocked
 									</a>

@@ -59,7 +59,7 @@ class Users extends CI_Controller {
           //load the view
     $this->load->view('admin/v_admin_template', $data);
   }    
-  // Booking Bus
+  // Companies
   public function companies($param1='',$param2=''){      
     $data=array();
     $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
@@ -80,13 +80,13 @@ class Users extends CI_Controller {
         if($param1 !=''){
            $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE status='".$param1."'");
         }else{
-           $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE booking_date='". $today ."' order by booking_code DESC");
+           $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company");
         }
       }else{       
         if($param1 !=''){
            $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE status='".$param1."'");
         }else{
-           $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE booking_date='". $today ."' order by booking_code DESC");         
+           $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company");       
         }  
       }    
       
@@ -131,6 +131,48 @@ class Users extends CI_Controller {
     $data['main_content']='admin/users/v_add_company';
     $this->load->view('admin/v_admin_template', $data);
   }
+
+  // Companies
+  public function manage_users($param1='',$param2=''){      
+    $data=array();
+    $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
+    $uid=$this->session->userdata('uid');
+    $gro_id=$this->session->userdata('gro_id');
+   // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
+    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
+    $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
+    $company_id=$this->session->userdata('company_id');
+    $data['company_id']=$company_id;
+    $data['uid']=$uid;
+    $data['gro_id']=$gro_id;
+    $data['currency_name']="$";
+    $today = date("Y-m-d"); 
+    $data['today']=$today;
+       
+      if($gro_id==1){
+        if($param1 !=''){
+           $data['v_users']=$this->m_crud->get_by_sql("SELECT * FROM users WHERE status='".$param1."'");
+        }
+      }else{       
+        if($param1 !=''){
+           $data['v_users']=$this->m_crud->get_by_sql("SELECT * FROM users WHERE status='".$param1."'");
+        }
+      }    
+      
+      $data['form_title']=$this->replaceAll($this->uri->segment(1));
+      $data['panel_title']='All Users';
+      $data['head']='admin/head/v_head_table';
+      $data['footer']='admin/footer/v_footer_table';
+      $data['sidebar']='admin/inc/v_sidebar';
+      $data['sidebar_right']='admin/inc/v_sidebar_right';
+      $data['header']='admin/inc/v_header';
+          // $data['main_content']='admin/booking/v_booking';
+      $data['main_content']='admin/users/v_list';
+          //load the view
+      $this->load->view('admin/v_admin_template', $data);    
+          //echo "Admin Dashboard";
+  }
+
 
   public function edit($id=''){      
     $data=array();

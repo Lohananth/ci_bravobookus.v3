@@ -122,7 +122,9 @@ $route['admin/viewBlock-schedules.html'] = 'admin/schedules/schedules/viewBlock'
 $route['admin/users.html'] = 'admin/users/users';
 // (:any)
 $route['admin/users.html/add-company'] = 'admin/users/users/add_company';
-$route['admin/users.html/(:any)/(:any)'] = 'admin/users/users/$1/$2';
+$route['admin/companies.html/(:any)'] = 'admin/users/users/companies/$1';
+//Manage User
+$route['admin/manage-users.html/(:any)/(:any)'] = 'admin/users/users/manage_users/$1/$2';
 
 $route['admin/booking.html/(:any)'] = 'admin/booking/booking/$1';
 
