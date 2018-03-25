@@ -25,7 +25,7 @@ class Admin_Login extends CI_Controller {
 		// if($this->session->userdata('name'))
 		// 	redirect(site_url().'c_main', 'location', 302);	
 		// 	$this->load->view('v_login');
-		  $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
+		$data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
 
 		if($this->session->userdata('is_logged_in')){
 			redirect('admin/dashboard', 'location', 302);
@@ -130,6 +130,9 @@ function signup()
 				// user authentication details are correct
 				//return $result;
 				//add all data to session
+				$company_detail=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE company_id=".$result[0]['company_id']);
+
+
 				 $newdata = array(
 							'gro_id'			=> $result[0]['gro_id'],
 							'group_level'		=> $result[0]['level'],
@@ -138,7 +141,12 @@ function signup()
 							'email'     		=> $result[0]['email'],
 							'image'     		=> $result[0]['image'],
 							'company_id'     	=> $result[0]['company_id'],
-							'controller_id'     	=> $result[0]['controller_id'],
+							'company_name'		=> $company_detail[0]['company_name'],
+							'company_logo'		=> $company_detail[0]['logo'],
+							'company_address'		=> $company_detail[0]['address'],
+							'company_website'		=> $company_detail[0]['website'],
+							'company_notice'		=> $company_detail[0]['notice'],
+							'controller_id'     => $result[0]['controller_id'],
 							'group_name'     	=> $result[0]['group_name'],
 
 							'is_logged_in' 		=> TRUE
@@ -184,9 +192,10 @@ function signup()
 		$newdata = array(	'gro_id'			=> '',
 							'group_level'		=> '',
 							'uid' 				=> '',
-							'cus_id' 			=> '',
 							'name' 				=> '',
 							'email'     		=> '',
+							'image'     		=> '',
+							'company_id'     	=> '',
 							'controller_id'     => '',
 							'group_name'     	=> '',
 							'is_logged_in' 		=> FALSE
