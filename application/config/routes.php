@@ -129,5 +129,10 @@ $route['admin/manage-users.html/(:any)/(:any)'] = 'admin/users/users/manage_user
 $route['admin/booking.html/(:any)'] = 'admin/booking/booking/$1';
 
 
+//Companies
+$route['admin/companies'] = "admin/users/companies/index/dashboard"; 
+$route['admin/companies/(:any)'] = "admin/users/companies/index/$1"; 
+$route['admin/companies/(:any)/(:any)'] = "admin/users/companies/index/$1/$2"; 
+
 // Logout
 $route['logout'] = 'admin/Admin_Login/logout';
