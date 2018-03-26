@@ -24,7 +24,7 @@
 							<section class="panel">
 								<div class="panel-body">
 									<div class="thumb-info mb-md">
-										<img src="<?php echo base_url(); ?>uploads/profiles/<?php echo $this->session->userdata('image'); ?>" class="rounded img-responsive" alt="John Doe">
+										<img src="<?php echo base_url(); ?>uploads/vechicle/<?php echo $this->session->userdata('image'); ?>" class="rounded img-responsive" alt="John Doe">
 										<div class="thumb-info-title">
 											<span class="thumb-info-inner"><?php echo $this->session->userdata('name'); ?></span>
 											<span class="thumb-info-type"><?php echo $this->session->userdata('group_name'); ?></span>

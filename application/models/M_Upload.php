@@ -43,6 +43,47 @@ class M_Upload extends CI_Model
 	  }
 	}
 
+	// Insert Company
+	  public function upload_company($inputdata,$filename)
+	{
+	  $this->db->insert('tbl_company', $inputdata); 
+	  $insert_id = $this->db->insert_id();
+
+	  // Create User login
+	  
+	  $user_data = array(
+		  'gro_id' => 2, // Number 2 is Admin
+		  'unique_id' => md5($insert_id),
+		  'name' => $inputdata['company_name'],
+		  'email' => $inputdata['email'],
+		  'user_name' => $insert_id,
+		  'encrypted_password' => md5($insert_id), //Password is Company ID
+		  'status' => 1,
+		  'image' => $inputdata['logo'],		  
+		  'company_id' => $insert_id
+		  );
+
+	  $this->db->insert('users', $user_data);
+
+
+	  // Upload files to tbl_company_gallery
+	  if($filename!='' ){
+	  $filename1 = explode(',',$filename);
+		  foreach($filename1 as $file){
+		  $file_data = array(
+		  'Thumbnail' => $file,
+		  'Large_Image' => $file,
+		  'Caption' => $inputdata['company_name'],
+		  'company_id' => $insert_id
+		  );
+		  $this->db->insert('tbl_company_gallery', $file_data);
+		  }
+	  }
+	}
+
+
+
+
 
 	public function view_data(){
         $query=$this->db->query("SELECT ud.*

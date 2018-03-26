@@ -188,7 +188,7 @@
 					<div id="userbox" class="userbox">
 						<a href="#" data-toggle="dropdown">
 							<figure class="profile-picture">
-								<img src="<?php echo base_url(); ?>uploads/profiles/<?php echo $this->session->userdata('image')?>" alt="<?php echo $this->session->userdata('name'); ?>" class="img-circle" data-lock-picture="<?php echo base_url(); ?>uploads/profiles/<?php echo $this->session->userdata('image'); ?>" />
+								<img src="<?php echo base_url(); ?>uploads/vechicle/<?php echo $this->session->userdata('image')?>" alt="<?php echo $this->session->userdata('name'); ?>" class="img-circle" data-lock-picture="<?php echo base_url(); ?>uploads/profiles/<?php echo $this->session->userdata('image'); ?>" />
 							</figure>
 							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
 								<span class="name"><?php echo $this->session->userdata('name'); ?></span>
