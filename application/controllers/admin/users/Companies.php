@@ -25,6 +25,9 @@ class Companies extends CI_Controller {
     $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
     $uid=$this->session->userdata('uid');
     $gro_id=$this->session->userdata('gro_id');
+    if ($gro_id=='') {
+      redirect('admin');
+    }
      // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
     $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
     $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
@@ -97,6 +100,9 @@ class Companies extends CI_Controller {
     $data['form_title']=$this->replaceAll($this->uri->segment(1));      
     $uid=$this->session->userdata('uid');
     $gro_id=$this->session->userdata('gro_id');
+     if ($gro_id=='') {
+      redirect('admin');
+    }
      // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
     $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
     $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
