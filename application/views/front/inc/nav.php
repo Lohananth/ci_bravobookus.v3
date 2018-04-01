@@ -12,7 +12,11 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li <?php if($this->uri->segment(1)==""){echo 'class="active"';}?>><a href="<?php echo site_url(); ?>"><i class="fa fa-home" aria-hidden="true"></i> <?php echo $this->lang->line('menu_home'); ?></a></li>
+        <li <?php if($this->uri->segment(1)==""){echo 'class="active"';}?>>
+        	<a href="<?php echo site_url(); ?>">
+        		<i class="fa fa-home" aria-hidden="true"></i> 
+        		<?php echo $this->lang->line('menu_home'); ?></a>
+    	</li>
 <li <?php if($this->uri->segment(1)=="about.html"){echo 'class="active"';}?>><a href="<?php echo site_url(); ?>about.html"><i class="fa fa-users" aria-hidden="true"></i> <?php echo $this->lang->line('menu_about'); ?></a></li>
                 
         <li <?php if($this->uri->segment(1)=="services.html"){echo 'class="active"';}?>><a href="<?php echo site_url(); ?>services.html"><i class="fa fa-users" aria-hidden="true"></i> <?php echo $this->lang->line('menu_services'); ?></a></li>
