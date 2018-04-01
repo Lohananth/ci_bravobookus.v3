@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Booking extends CI_Controller {
+class Companies extends CI_Controller {
     
   function __construct() {
       parent::__construct();
@@ -18,13 +18,15 @@ class Booking extends CI_Controller {
       date_default_timezone_set('Asia/Phnom_Penh');
   }
   
-  public function index($param1='',$param2=''){    
+  public function index($param1='dashboard',$param2=''){    
+    //$param1 : is for list/add/edit/delete
+    //$param2 : is for condition
     $data=array();
     $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
     $uid=$this->session->userdata('uid');
     $gro_id=$this->session->userdata('gro_id');
     if ($gro_id=='') {
-      redirect('admin','refresh');
+      redirect('admin');
     }
      // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
     $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
@@ -36,106 +38,61 @@ class Booking extends CI_Controller {
     $data['currency_name']="$";
     $today = date("Y-m-d"); 
     $data['today']=$today;      
-      // v_ticket   
-      if($gro_id==1){
-        if($param1 !=''){
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
-        }else{
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-        }
-      }else{       
-        if($param1 !=''){
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
-        }else{
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-        }
-      }
-    $data['form_title']=$this->replaceAll($this->uri->segment(1));
+      
+    $data['form_title']=$this->replaceAll($this->uri->segment(3));
     $data['panel_title']='All Bookings';
     $data['head']='admin/head/v_head_table';
     $data['footer']='admin/footer/v_footer_table';
     $data['sidebar']='admin/inc/v_sidebar';
     $data['sidebar_right']='admin/inc/v_sidebar_right';
     $data['header']='admin/inc/v_header';
+
+    if($gro_id==1){
+        if ($param1=='add') {
+          $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE status=1");
+          $data['service_type']=$this->m_crud->get_by_sql("SELECT * FROM tbl_service_types");
+          $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
+        }
+
+        if ($param1=='list') {
+          if ($param2=='active') { //Status=1 for active
+            $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE status=1");            
+          }else{ //Status =0
+            $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE status=0");
+          }
+          
+
+        }
+        if ($param1=='edit') {
+           $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE id='". $param2 ."'");
+           $data['service_type']=$this->m_crud->get_by_sql("SELECT * FROM tbl_service_types");
+           $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");          
+        }
+        if ($param1=='view') {
+           $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE id='". $param2 ."'");
+           $data['service_type']=$this->m_crud->get_by_sql("SELECT * FROM tbl_service_types");
+           $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");          
+        }
+
+        if ($param1=='print') {
+           $data['v_companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company WHERE status=1");
+        }       
+
+      }else{       
+        
+         
+      }    
+
     // $data['main_content']='admin/booking/v_booking';
-    $data['main_content']='admin/booking/v_dashboard';
+    //$data['main_content']='admin/users/v_dashboard';
+    $data['main_content']='admin/companies/'. $param1;
           //load the view
     $this->load->view('admin/v_admin_template', $data);
   }    
-  // Booking Bus
-  public function booking($param1='',$param2=''){      
-    $data=array();
-    $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-    $uid=$this->session->userdata('uid');
-    $gro_id=$this->session->userdata('gro_id');
-   // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
-    $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-    $company_id=$this->session->userdata('company_id');
-    $data['company_id']=$company_id;
-    $data['uid']=$uid;
-    $data['gro_id']=$gro_id;
-    $data['currency_name']="$";
-    $today = date("Y-m-d"); 
-    $data['today']=$today;
-      //$data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-      // v_ticket   
-      if($gro_id==1){
-        if($param1 !=''){
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
-        }else{
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-        }
-      }else{       
-        if($param1 !=''){
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE status='".$param1."'");
-        }else{
-           $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-            // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket where c_id=$company_id AND status='".$param1."'");
-        }  
-      }    
-      // $data['v_ticket']=$this->m_crud->get_by_sql("SELECT * FROM tbl_ticket WHERE booking_date='". $today ."' order by booking_code DESC");
-      $data['form_title']=$this->replaceAll($this->uri->segment(1));
-      $data['panel_title']='All Bookings';
-      $data['head']='admin/head/v_head_table';
-      $data['footer']='admin/footer/v_footer_table';
-      $data['sidebar']='admin/inc/v_sidebar';
-      $data['sidebar_right']='admin/inc/v_sidebar_right';
-      $data['header']='admin/inc/v_header';
-          // $data['main_content']='admin/booking/v_booking';
-      $data['main_content']='admin/booking/v_list';
-          //load the view
-      $this->load->view('admin/v_admin_template', $data);    
-          //echo "Admin Dashboard";
-  }
+  
  
-  public function add(){      
-    $data=array();
-    $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-    $data['form_title']=$this->replaceAll($this->uri->segment(1));      
-    $uid=$this->session->userdata('uid');
-    $gro_id=$this->session->userdata('gro_id');
-     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
-    $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
-    $data['panel_title']='User Profile';
-    $data['head']='admin/head/v_head_form';
-    $data['footer']='admin/footer/v_footer_table';
-    $data['sidebar']='admin/inc/v_sidebar';
-    $data['sidebar_right']='admin/inc/v_sidebar_right';
-    $data['header']='admin/inc/v_header';
-    $data['companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company");
-    $data['vehicle_type']=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle_type");
-    $data['driver_names']=$this->m_crud->get_by_sql("SELECT * FROM tbl_driver");
-    $data['seattypes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_seat_type");
-    $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
-    // tbl_amenity
-    $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
-    // tbl_inspector
-    $data['tbl_inspector']=$this->m_crud->get_by_sql("SELECT * FROM tbl_inspector"); 
-    $data['main_content']='admin/vehicles/v_add';
-    $this->load->view('admin/v_admin_template', $data);
-  }
+  
+
 
   public function edit($id=''){      
     $data=array();
@@ -143,6 +100,9 @@ class Booking extends CI_Controller {
     $data['form_title']=$this->replaceAll($this->uri->segment(1));      
     $uid=$this->session->userdata('uid');
     $gro_id=$this->session->userdata('gro_id');
+     if ($gro_id=='') {
+      redirect('admin');
+    }
      // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
     $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
     $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");
@@ -163,41 +123,16 @@ class Booking extends CI_Controller {
           FROM tbl_vehicle as v INNER JOIN tbl_company as c
           WHERE v.v_id=$id";
     $data['tbl_vehicle']=$this->m_crud->get_by_sql( $vSQL);
-    print_r($data['tbl_vehicle']);exit();    
+    print_r($data['tbl_vehicle']);
+    exit();    
     $data['main_content']='admin/vehicles/v_edit';
     //load the view
     $this->load->view('admin/v_admin_template', $data);
       // echo "Admin Dashboard";
   }
 
-  public function view($id=''){      
-    $data=array();
-    $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
-    $data['form_title']=$this->replaceAll($this->uri->segment(1));      
-    $uid=$this->session->userdata('uid');
-    $gro_id=$this->session->userdata('gro_id');
-     // $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers where uid=$uid");
-    $data['sidebar_menu']=$this->m_crud->get_by_sql("SELECT * FROM tbl_controllers");
-    $data['user_groups']=$this->m_crud->get_by_sql("SELECT * FROM user_groups WHERE id_group=$gro_id");       
-    $data['panel_title']='User Profile';
-    $data['head']='admin/head/v_head_form';
-    $data['footer']='admin/footer/v_footer_table';
-    $data['sidebar']='admin/inc/v_sidebar';
-    $data['sidebar_right']='admin/inc/v_sidebar_right';
-    $data['header']='admin/inc/v_header';
-    $data['companies']=$this->m_crud->get_by_sql("SELECT * FROM tbl_company");
-    $data['vehicle_type']=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle_type");
-    $data['driver_names']=$this->m_crud->get_by_sql("SELECT * FROM tbl_driver");
-    $data['seattypes']=$this->m_crud->get_by_sql("SELECT * FROM tbl_seat_type");
-    $data['facilities']=$this->m_crud->get_by_sql("SELECT * FROM facilities");
-    // tbl_amenity
-    $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");   
-    $data['main_content']='admin/vehicles/v_add';
-    //load the view
-    $this->load->view('admin/v_admin_template', $data);
-  }
+  
 
-// End Manage Vechickes 
 
 // Invoice Print
   public function invoice_print($id=''){
@@ -225,14 +160,25 @@ class Booking extends CI_Controller {
   function save($param1 = '', $param2 = ''){
         if ($param1 == 'create') {
 
-            $data['company_id']   = $this->input->post('company_id');
-            $data['code']         = $this->input->post('code');
-            $data['vehicle_name'] = $this->input->post('vehicle_name');
-            $data['vehicle_type'] = $this->input->post('vehicle_type');
-            $data['drivers']      = $this->input->post('drivers');
+            $data['User_ID']   = 1;//$this->input->post('User_ID');
+            $data['company_name']         = $this->input->post('company_name');
+            $data['phone'] = $this->input->post('phone');
+            $data['email'] = $this->input->post('email');
+            $data['address']      = $this->input->post('address');
+            $data['page_name']      = $this->input->post('page_name');
+            $data['website']      = $this->input->post('website');
+            $data['description']      = $this->input->post('description');
+            $data['notice']      = $this->input->post('notice');
+            $data['cancellation_policy']      = $this->input->post('cancellation_policy');
+
+            $data['map']      = $this->input->post('map');
+            $data['service_type']      = $this->input->post('service_type');
+           // $data['service_detail']      = $this->input->post('service_detail');
+           
+
             // $data['inspectors']= $this->input->post('inspectors');
             
-            $data['amenities'] = substr(implode(',', $this->input->post('amenities')), 0);
+            $data['service_detail'] = substr(implode(',', $this->input->post('service_detail')), 0);
             if(!empty($this->input->post('status'))){
               // $data['status']         = $this->input->post('status');
                $data['status']         = 1;
@@ -240,7 +186,7 @@ class Booking extends CI_Controller {
                $data['status']         = 0;
             }
            
-            $data['seats']   = $this->input->post('seats');          
+          //  $data['seats']   = $this->input->post('seats');          
 
            
 
@@ -249,45 +195,46 @@ class Booking extends CI_Controller {
               $count = count($_FILES['userfile']['name']);
               for($i=0; $i<$count; $i++)
                 {
-                $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
-                $_FILES['userfile']['type']= $files['userfile']['type'][$i];
-                $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
-                $_FILES['userfile']['error']= $files['userfile']['error'][$i];
-                $_FILES['userfile']['size']= $files['userfile']['size'][$i];
-                $config['upload_path'] = './uploads/vehicles/galleries';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
-                $config['max_size'] = '2000000';
-                $config['remove_spaces'] = true;
-                $config['overwrite'] = false;
-                $config['max_width'] = '';
-                $config['max_height'] = '';
-                
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                $this->upload->do_upload();
-                $fileName = $_FILES['userfile']['name'];
-                $images[] = $fileName;
-        }
-          $fileName = implode(',',$images);
+                  $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
+                  $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+                  $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+                  $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+                  $_FILES['userfile']['size']= $files['userfile']['size'][$i];
+                  $config['upload_path'] = './uploads/vechicle'; //path for upload image
+                  $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                  $config['max_size'] = '2000000';
+                  $config['remove_spaces'] = true;
+                  $config['overwrite'] = false;
+                  $config['max_width'] = '';
+                  $config['max_height'] = '';
+                  
+                  $this->load->library('upload', $config);
+                  $this->upload->initialize($config);
+                  $this->upload->do_upload();
+                  $fileName = $_FILES['userfile']['name'];
+                  $images[] = $fileName;
+                }
+                  $fileName = implode(',',$images);
 
-           $fileFeature = explode(',',$fileName);
-           $i=1;
-           foreach ($fileFeature as $file_feature) {
-              if($i==1){
-                $data['feature_image']   = $file_feature;
-              }
-              $i++;
-           }        
+                 $fileFeature = explode(',',$fileName);
+                 $i=1;
+                 foreach ($fileFeature as $file_feature) {
+                    if($i==1){
+                      $data['logo']   = $file_feature; // logo is field in table
+                    }
+                    $i++;
+                 }        
 
           // $this->welcome->upload_image($this->input->post(),$fileName);
-          $this->welcome->upload_vehicles_gallery($data,$fileName);
+          $this->welcome->upload_company($data,$fileName);
 
 
-           // $this->db->insert('tbl_vehicle', $data);
+           // $this->db->insert('tbl_company', $data);
 
             // $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-           redirect(base_url() . 'add-vehicles.html', 'refresh');
+            // redirect('admin/users/companies', 'refresh');
             // redirect('add-vehicles.html');
+          redirect('admin/companies');
         }
 
         if ($param1 == 'do_update') {

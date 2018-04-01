@@ -130,7 +130,7 @@ $title="Welcome to Bravobookus.com, the best booking trip online";
 													<input type="hidden" name="vpc_MerchTxnRef" value="<?php echo $booking_detail->booking_code; ?>">
 													<input type="hidden" name="vpc_Merchant" value="<?php echo 'VCUTRAVEL'; ?>">
 													<input type="hidden" name="vpc_OrderInfo" value="<?php echo $booking_detail->passenger_name; ?>">
-													<input type="hidden" name="vpc_Amount" value="<?php echo '1'; //($booking_detail->price*100); ?>">
+													<input type="hidden" name="vpc_Amount" value="<?php echo ($booking_detail->price*100); ?>">
 													<input type="hidden" name="vpc_Locale" value="<?php echo 'en'; ?>" size="20" maxlength="5">
 
 													<input type="hidden" name="vpc_ReturnURL" size="63" value="<?php echo base_url(); ?>payment/respone">
