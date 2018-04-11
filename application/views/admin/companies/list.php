@@ -114,13 +114,13 @@
 						<?php 
 							if($rows['status']==1){ 
 								?>
-							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $rows['id']; ?>" data_controller_link="admin/<?php echo $this->uri->segment(2) ?>/get_block_Vehicle" title="Block <?php echo $rows['company_name']; ?>" href="#<?php echo $rows['id']; ?>" class="btn btn-danger btn-sm btn_getBlocked" role="button">
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $rows['id']; ?>" data_controller_link="<?php echo site_url(); ?>admin/<?php echo $this->uri->segment(2) ?>/get_block_Vehicle" title="Block <?php echo $rows['company_name']; ?>" href="<?php echo site_url(); ?>admin/<?php echo $this->uri->segment(2) ?>/#<?php echo $rows['id']; ?>" class="btn btn-danger btn-sm btn_getBlocked" role="button">
 							<i class="fa fa-ban"></i>
 							</a>
 						<?php
 							}else{
 								?>								
-							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalActive" dataid="<?php echo $rows['id']; ?>" title="Active <?php echo $rows['company_name']; ?>" href="<?php echo site_url(); ?>#<?php echo $rows['id']; ?>" class="btn btn-success btn-sm btn_getActive" role="button">
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalActive" dataid="<?php echo $rows['id']; ?>" title="Active <?php echo $rows['company_name']; ?>" href="<?php echo site_url(); ?>admin/<?php echo $this->uri->segment(2) ?>/#<?php echo $rows['id']; ?>" class="btn btn-success btn-sm btn_getActive" role="button">
 							<i class="fa fa-check"></i></a>
 						<?php
 							}

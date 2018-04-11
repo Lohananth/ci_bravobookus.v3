@@ -380,4 +380,66 @@ class Companies extends CI_Controller {
     }
       redirect('welcome/view');
     }
+
+
+
+
+
+
+    // Blocked
+  public function get_block_Vehicle(){
+    $form = ''; 
+    $vid = $this->input->post('vid');
+    $vslist = $this->m_crud->get_blocked_vehicle_query($vid);
+    if (count($vslist)>0){
+      foreach ($vslist as $vs){
+        $form .=' <input type="hidden" name="vid" id="vid" value="'.$vs->v_id.'">';
+        $form .=' <input type="hidden" name="status" id="status" value="0">';
+        $form .='<center> <h4>Do you want to Blocked Vehicle ?<h4><h3 style="color:red;">'.$vs->v_id.' '.$vs->vehicle_name. '</h3></center>';
+      }  
+          // End foreach
+      // echo $form;
+      echo json_encode($form);    
+    }    
+  }
+
+  public function update_block_Vehicle(){
+    $vid = $this->input->post('vid');
+    $data_update = array(
+        'status' =>$this->input->post('status'),
+      );
+    $update_cate = $this->m_crud->update_blocked_vehicle_query($vid,$data_update);
+    if($update_cate)
+      echo "1";
+    else
+      echo "0";
+  }
+
+  public function get_active_Vehicle(){
+      $form = ''; 
+      $vid = $this->input->post('vid');
+      $vslist = $this->m_crud->get_active_vehicle_query($vid);
+      if (count($vslist)>0){
+        foreach ($vslist as $vs){
+          $form .=' <input type="hidden" name="vid" id="vid" value="'.$vs->v_id.'">';
+          $form .=' <input type="hidden" name="status" id="status" value="1">';
+          $form .=' <center> <h4>Do you want to Active Vehicle ?<h4><h3 style="color:green;">'.$vs->v_id.' '.$vs->vehicle_name. '</h3></center>';
+        }  
+            // End foreach
+        echo json_encode($form);    
+      }    
+
+  }
+
+  public function update_active_Vehicle(){
+    $vid = $this->input->post('vid');
+    $data_update = array(
+        'status' =>$this->input->post('status'),
+      );
+    $update_cate = $this->m_crud->update_active_vehicle_query($vid,$data_update);
+    if($update_cate)
+      echo "1";
+    else
+      echo "0";
+  }
   }

@@ -21,7 +21,7 @@
 <div class="row">							
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-secondary">
-										<a  href="<?php echo site_url(); ?>admin/list-schedules.html">
+										<a  href="<?php echo site_url(); ?>admin/schedules.html/list/active">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">
@@ -46,7 +46,7 @@
 
 								<div class="col-md-3 col-lg-3 col-xl-3">
 									<section class="panel panel-featured-left panel-featured-quartenary">
-										<a  href="<?php echo site_url(); ?>admin/list-schedules-blocked.html">
+										<a  href="<?php echo site_url(); ?>admin/schedules.html/list/blocked">
 										<div class="panel-body">
 											<div class="widget-summary widget-summary-sm">
 												<div class="widget-summary-col widget-summary-col-icon">

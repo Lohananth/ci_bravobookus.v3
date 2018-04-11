@@ -185,3 +185,76 @@
       </div>
     </div>
   </div>
+
+<script type="text/javaScript">
+	$(document).ready(function(){
+		//get schedule for Blocked
+		$('#list-vehicle-row').on('click','.btn_getBlocked',function(e){
+		 	e.preventDefault();
+		 	var id = $(this).attr('dataid');
+    		$.ajax({
+    		url : "<?php echo base_url() ?>get_block_Schedule.html",
+    		type: "POST",
+    		data: {vs_id:id},
+    		dataType: 'json',
+    		success:function(data){
+  				$('#frm-block-schedule').html(data);
+				$('#myModalBlock').data('id',id).modal('show');
+    		},
+    		error: function(){
+    			alert('Error...');
+    		}
+    	});	
+		});
+
+		//updated Blocked Schedule
+		$('#btn-blocked').on('click',function(e){
+		 	var id= $('#myModalBlock').data('id');
+	    	$.ajax({
+	    		url : "<?php echo base_url() ?>disactive_block_Schedule.html",
+	    		type: "POST",
+	    		data: $('#frm-block-schedule').serialize(),
+	    		dataType: 'json',
+	    		success:function(data){
+	    			alert('Schedule was Blocked successfully...');
+	    			location.reload();
+	    			//Hide myModalDelete
+	    			$('#myModalBlock').modal('hide');
+	    		},
+	    		error: function(){
+	    			alert('Error...');
+	    			$('#myModalBlock').modal('hide');		    		
+	    		}
+    		});	
+		});
+
+		//view the schecule by id
+		$('#list-vehicle-row').on('click','.btn-view-schedule',function(e){
+			e.preventDefault();
+		 	var id = $(this).attr('dataid');
+    		$.ajax({
+	    		url : "<?php echo base_url() ?>viewForm-schedules.html",
+	    		type: "POST",
+	    		data: {vs_id:id},
+	    		dataType: 'json',
+	    		success:function(data){
+	    			$('#frm-view-schedule').html(data);
+						$('#myModalView').data('id',id).modal('show');	    			
+	    		},
+	    		error: function(){
+	    			alert('Error...');
+	    		}
+    		});	
+		});
+		
+
+//====================================================//
+		$('#status').change(function(){
+		  if($(this).prop('checked')){
+		   $('#status_hide').val('1');
+		  }else{
+		   $('#status_hide').val('0');
+		  }
+		});					
+	});
+</script>

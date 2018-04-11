@@ -93,6 +93,25 @@ $route['admin/vehicles.html/disactive_Vehicle']='admin/vehicles/vehicles/update_
 
 
 // Schedules Management
+// 
+$route['admin/schedules.html'] = 'admin/schedules/schedules';
+$route['admin/schedules.html/list/(:any)'] = 'admin/schedules/schedules/schedule/$1';
+
+// list_vechicles_blocked
+$route['admin/schedule-blocked.html'] = 'admin/schedules/schedules/list_vehicles_blocked';
+$route['admin/schedule-report.html']='admin/schedules/schedules/vehicle_report';
+//show_vechicles
+
+// $route['list-vechicles.html'] = 'admin/Admin_dashboard/show_vechicles';
+
+$route['admin/schedules.html/add'] = 'admin/schedules/schedules/add';
+$route['admin/schedules.html/edit/(:any)'] = 'admin/schedules/schedules/edit/$1';
+$route['admin/schedules.html/view/(:any)'] = 'admin/schedules/schedules/view/$1';
+
+$route['admin/schedules.html/get_block_Vehicle']='admin/schedules/schedules/get_block_Vehicle';
+$route['admin/schedules.html/disactive_Vehicle']='admin/schedules/schedules/update_block_Vehicle'; //update Block
+
+/*
 // list-schedule
 $route['admin/schedules-dashboard.html']='admin/schedules/schedules';
 $route['admin/add-schedules.html']='admin/schedules/schedules/addForm'; //Form add
@@ -110,14 +129,14 @@ $route['admin/update-block-schedules.html/(:any)']='admin/schedules/schedules/sa
 $route['admin/get-schedules-for-active.html']='admin/schedules/schedules/get_active_Schedule'; 
 $route['admin/active-schedules.html']='admin/schedules/schedules/update_active_Schedule'; 
 
-$route['admin/list-schedules.html'] = 'admin/schedules/schedules/list_schedules'; // for all list schedule
+$route['admin/list-schedules.html'] = 'admin/schedules/schedules/lists'; // for all list schedule
 $route['admin/schedules-report.html'] = 'admin/schedules/schedules/pdf_report'; // for all list schedule
 
 $route['admin/list-schedules-blocked.html'] = 'admin/schedules/schedules/list_schedules_blocked';//all list blocked schedule
 $route['admin/viewForm-schedules.html'] = 'admin/schedules/schedules/viewForm';
 $route['admin/viewBlock-schedules.html'] = 'admin/schedules/schedules/viewBlock';
 
-
+*/
 //================User Controlling===========
 $route['admin/users.html'] = 'admin/users/users';
 // (:any)
