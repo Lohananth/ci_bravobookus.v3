@@ -77,11 +77,11 @@
 
 						<tr class="gradeA">
 						<td> 
-							<a data-toggle="tooltip" title="View Company" href="<?php echo site_url(); ?>admin/vehicles.html/list/active" data-toggle="modal" data-target="#myVechicleView<?php echo $rows['id'];?>" >
+							<a data-toggle="tooltip" title="View Schedule" href="<?php echo site_url(); ?>admin/vehicles.html/list/active" data-toggle="modal" data-target="#myVechicleView<?php echo $rows['id'];?>" >
 								<i class="fa fa-eye" aria-hidden="true"></i>   <?php echo $i; ?> </a> 
 						</td>
 						<td >
-							<a  data-toggle="tooltip" title="View <?php echo $rows['origin']; ?>"  href="<?php echo site_url(); ?>admin/vehicles.html/list/active">						
+							<div  data-toggle="tooltip" title="View <?php echo $rows['origin']; ?>"> <?php echo $rows['origin']; ?></div>						
 
 						</td>
 						<td ><?php echo $rows['destination']; ?></td>
