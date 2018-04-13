@@ -401,11 +401,11 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
     }
   }
   public function update_block_Schedule(){
-    $vs_id = $this->input->post('vs_id');
+    $id = $this->input->post('id');
     $data_update = array(
         'status' =>$this->input->post('status'),
       );
-    $update_cate = $this->m_crud->update_blocked_schedule_query($vs_id,$data_update);
+    $update_cate = $this->m_crud->update_blocked_schedule_query($id,$data_update);
     if($update_cate)
       echo "1";
     else
@@ -414,11 +414,11 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
 
   public function get_active_Schedule(){
     $form = ''; 
-    $vs_id = $this->input->post('vs_id');
-    $vslist = $this->m_crud->get_active_schedule_query($vs_id);
+    $id = $this->input->post('id');
+    $vslist = $this->m_crud->get_active_schedule_query($id);
     if (count($vslist)>0){
       foreach ($vslist as $vs){
-        $form .=' <input type="hidden" name="vs_id" id="vs_id" value="'.$vs->id.'">';
+        $form .=' <input type="hidden" name="id" id="id" value="'.$vs->id.'">';
         $form .=' <input type="hidden" name="status" id="status" value="1">';
         $form .=' <h4>Are you sure, Do you want to Active this Schedule?</h4>';
       }  
@@ -428,11 +428,11 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
   }
 
   public function update_active_Schedule(){
-    $vs_id = $this->input->post('vs_id');
+    $id = $this->input->post('id');
     $data_update = array(
         'status' =>$this->input->post('status'),
       );
-    $update_cate = $this->m_crud->update_active_schedule_query($vs_id,$data_update);
+    $update_cate = $this->m_crud->update_active_schedule_query($id,$data_update);
     if($update_cate)
       echo "1";
     else
