@@ -28,14 +28,15 @@
 <script type="text/javaScript">
 	$(document).ready(function(){
 		//get schedule for Blocked
-		$('#list-vehicle-row').on('click','.btn_getBlocked',function(e){
+		$('#list-row').on('click','.btn_getBlocked',function(e){
 		 	e.preventDefault();
 		 	var id = $(this).attr('dataid');
 		 	var control_link=$(this).attr('data_controller_link');
     		$.ajax({
-    		url : "<?php echo base_url() ?>"+ control_link,
+    		
+    		url:"<?php echo base_url(); ?>admin/schedules/schedules/get_block_Schedule",
     		type: "POST",
-    		data: {vid:id},
+    		data: {id:id},
     		dataType: 'json',
     		success:function(data){
   				$('#frmBlock').html(data);
@@ -50,11 +51,11 @@
 
 		//updated Blocked 
 		$('#btn-blocked').on('click',function(e){
-		 	var id= $('#myModalBlock').data('vid');
+		 	var id= $('#myModalBlock').data('id');
 		 	// var control_link=$(this).attr('data_controller_link');
 
 	    	$.ajax({
-	    		url : "<?php echo base_url() ?>admin/vehicles.html/disactive_Vehicle",
+	    		url : "<?php echo base_url() ?>admin/schedules.html/disactive_Schedule",
 	    		type: "POST",
 	    		data: $('#frmBlock').serialize(),
 	    		dataType: 'json',
@@ -65,7 +66,7 @@
 	    			$('#myModalBlock').modal('hide');
 	    		},
 	    		error: function(){
-	    			alert('Error...');
+	    			alert('Error...Actived');
 	    			$('#myModalBlock').modal('hide');		    		
 	    		}
     		});	
@@ -74,20 +75,20 @@
 		
 //======================== Active ============================//
 		//get block Schedule for Active
-		$('#list-vehicle-row').on('click','.btn_getActive',function(e){
+		$('#list-row').on('click','.btn_getActive',function(e){
 		 	e.preventDefault();
 		 	var id = $(this).attr('dataid');
     		$.ajax({
-	    		url : "<?php echo base_url() ?>admin/vehicles/vehicles/get_active_Vehicle",
+	    		url : "<?php echo base_url() ?>admin/schedules/schedules/get_active_Schedule",
 	    		type: "POST",
-	    		data: {vid:id},
+	    		data: {id:id},
 	    		dataType: 'json',
 	    		success:function(data){
-	    			$('#frm-active').html(data);
+	    			$('#frmActive').html(data);
 						$('#myModalActive').data('id',id).modal('show');	    			
 	    		},
 	    		error: function(){
-	    			alert('Error...');
+	    			alert('Error... Blocked');
 	    		}
     		});	
 		});
@@ -96,9 +97,9 @@
 		$('#btn-Active').on('click',function(e){
 		 	var id= $('#myModalActive').data('id');
 	    	$.ajax({
-	    		url : "<?php echo base_url() ?>admin/vehicles/vehicles/update_active_Vehicle",
+	    		url : "<?php echo base_url() ?>admin/schedules/schedules/update_active_Schedule",
 	    		type: "POST",
-	    		data: $('#frm-active').serialize(),
+	    		data: $('#frmActive').serialize(),
 	    		dataType: 'json',
 	    		success:function(data){
 	    			// alert('Vehicle was Actived successfully...');

@@ -66,7 +66,7 @@
 						<th style="width: 20%;">Actions</th>
 					</tr>
 				</thead>
-				<tbody id="list-vehicle-row">
+				<tbody id="list-row">
 										
 					<?php 
 					$i=1;
@@ -95,22 +95,22 @@
 
 						<td class="center hidden-phone">
 
-							<a data-toggle="tooltip" title="Edit <?php echo $rows['local_price']; ?>" href="<?php echo site_url(); ?>admin/vehicles.html/edit/<?php echo $rows['id']; ?>" class="btn btn-primary btn-sm" role="button">
+							<a data-toggle="tooltip" title="Edit " href="<?php echo site_url(); ?>admin/schedules.html/edit/<?php echo $rows['id']; ?>" class="btn btn-primary btn-sm" role="button">
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-							<a <?php echo $rows['id']; ?>" data-toggle="tooltip" title="View <?php echo $rows['local_price']; ?>" href="<?php echo site_url(); ?>admin/vehicles.html/view/<?php echo $rows['id']; ?>" class="btn btn-success btn-sm" role="button">
+							<a <?php echo $rows['id']; ?>" data-toggle="tooltip" title="View <?php echo $rows['vehicle_name']; ?>" href="<?php echo site_url(); ?>admin/schedules.html/view/<?php echo $rows['id']; ?>" class="btn btn-success btn-sm" role="button">
 							<i class="fa fa-eye" aria-hidden="true"></i></a>
 
 								
 						<?php 
 							if($status==1){ 
 								?>
-							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $rows['id']; ?>" data_controller_link="<?php echo site_url(); ?>admin/schedules.html/get_block_Vehicle" title="Block <?php echo $rows['vehicle_name']; ?>" href="#<?php echo $rows['id']; ?>" class="btn btn-danger btn-sm btn_getBlocked" role="button">
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $rows['id']; ?>" data_controller_link="admin/schedules.html/get_block_Schedule" title="Block <?php echo $rows['vehicle_name']; ?>" href="#<?php echo $rows['id']; ?>" class="btn btn-danger btn-sm btn_getBlocked" role="button">
 							<i class="fa fa-ban"></i>
 							</a>
 						<?php
 							}else{
 								?>								
-							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalActive" dataid="<?php echo $rows['id']; ?>" title="Active <?php echo $rows['vehicle_name']; ?>" href="<?php echo site_url(); ?>#<?php echo $rows['id']; ?>" class="btn btn-success btn-sm btn_getActive" role="button">
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalActive" dataid="<?php echo $rows['id']; ?>" title="Active <?php echo $rows['vehicle_name']; ?>" href="<?php echo site_url(); ?>admin/schedules.html/<?php echo $rows['id']; ?>" class="btn btn-success btn-sm btn_getActive" role="button">
 							<i class="fa fa-check"></i></a>
 						<?php
 							}
@@ -140,7 +140,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Blocked Vehicle</h2>
+        <h2 class="modal-title">Blocked Schedule</h2>
       </div>
       <div class="modal-body">
       		<form id="frmBlock">
@@ -163,7 +163,7 @@
         <h2 class="modal-title">Active Schedule</h2>
       </div>
       <div class="modal-body">
-      		<form id="frm-active">
+      		<form id="frmActive">
 			</form>
       </div>
       <div class="modal-footer">
@@ -182,10 +182,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">View Vehicle</h2>
+        <h2 class="modal-title">View Schedule</h2>
       </div>
       <div class="modal-body">
-      	<form id="frm-view">
+      	<form id="frmView">
 
 		</form>
       </div>
@@ -194,76 +194,3 @@
       </div>
     </div>
   </div>
-
-<script type="text/javaScript">
-	$(document).ready(function(){
-		//get schedule for Blocked
-		$('#list-vehicle-row').on('click','.btn_getBlocked',function(e){
-		 	e.preventDefault();
-		 	var id = $(this).attr('dataid');
-    		$.ajax({
-    		url : "<?php echo base_url() ?>admin/get_block_Schedule.html",
-    		type: "POST",
-    		data: {vs_id:id},
-    		dataType: 'json',
-    		success:function(data){
-  				$('#frm-block-schedule').html(data);
-				$('#myModalBlock').data('id',id).modal('show');
-    		},
-    		error: function(){
-    			alert('Error...');
-    		}
-    	});	
-		});
-
-		//updated Blocked Schedule
-		$('#btn-blocked').on('click',function(e){
-		 	var id= $('#myModalBlock').data('id');
-	    	$.ajax({
-	    		url : "<?php echo base_url() ?>admin/disactive_block_Schedule.html",
-	    		type: "POST",
-	    		data: $('#frm-block-schedule').serialize(),
-	    		dataType: 'json',
-	    		success:function(data){
-	    			alert('Schedule was Blocked successfully...');
-	    			location.reload();
-	    			//Hide myModalDelete
-	    			$('#myModalBlock').modal('hide');
-	    		},
-	    		error: function(){
-	    			alert('Error...');
-	    			$('#myModalBlock').modal('hide');		    		
-	    		}
-    		});	
-		});
-
-		//view the schecule by id
-		$('#list-vehicle-row').on('click','.btn-view-schedule',function(e){
-			e.preventDefault();
-		 	var id = $(this).attr('dataid');
-    		$.ajax({
-	    		url : "<?php echo base_url() ?>admin/viewForm-schedules.html",
-	    		type: "POST",
-	    		data: {vs_id:id},
-	    		dataType: 'json',
-	    		success:function(data){
-	    			$('#frm-view-schedule').html(data);
-						$('#myModalView').data('id',id).modal('show');	    			
-	    		},
-	    		error: function(){
-	    			alert('Error...');
-	    		}
-    		});	
-		});
-		
-
-//====================================================//
-		$('#status').change(function(){
-		  if($(this).prop('checked')){
-		   $('#status_hide').val('1');
-		  }else{
-		   $('#status_hide').val('0');
-		  }
-		});					
-	});
-</script>

@@ -108,8 +108,8 @@ $route['admin/schedules.html/add'] = 'admin/schedules/schedules/add';
 $route['admin/schedules.html/edit/(:any)'] = 'admin/schedules/schedules/edit/$1';
 $route['admin/schedules.html/view/(:any)'] = 'admin/schedules/schedules/view/$1';
 
-$route['admin/schedules.html/get_block_Vehicle']='admin/schedules/schedules/get_block_Vehicle';
-$route['admin/schedules.html/disactive_Vehicle']='admin/schedules/schedules/update_block_Vehicle'; //update Block
+$route['admin/schedules.html/get_block_Schedule']='admin/schedules/schedules/get_block_Schedule';
+$route['admin/schedules.html/disactive_Schedule']='admin/schedules/schedules/update_block_Schedule'; //update Block
 
 /*
 // list-schedule

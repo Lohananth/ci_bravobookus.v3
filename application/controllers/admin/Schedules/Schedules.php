@@ -78,7 +78,7 @@ class Schedules extends CI_Controller {
     $data['form_title']=$this->replaceAll($this->uri->segment(2));
     $data['panel_title']=$this->uri->segment(2);
     $data['head']='admin/head/v_head_table';
-    $data['footer']='admin/footer/v_footer_table_vehicle';
+    $data['footer']='admin/footer/v_footer_table_schedule';
     $data['sidebar']='admin/inc/v_sidebar';
     $data['sidebar_right']='admin/inc/v_sidebar_right';
     $data['header']='admin/inc/v_header';
@@ -319,7 +319,7 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
 
   public function get_block_Schedule(){
     $form = ''; 
-    $vs_id = $this->input->post('vs_id');
+    $vs_id = $this->input->post('id');
     $vslist = $this->m_crud->get_blocked_schedule_query($vs_id);
     if (count($vslist)>0){
       foreach ($vslist as $vs){
@@ -334,7 +334,7 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
 
   public function viewBlock(){      
     $form = ''; 
-    $vs_id = $this->input->post('vs_id');
+    $vs_id = $this->input->post('id');
     $vsview = $this->m_crud->getBlock($vs_id);
     if (count($vsview)>0){
     foreach ($vsview as $vs){
