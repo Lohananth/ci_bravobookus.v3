@@ -42,7 +42,7 @@ class Companies extends CI_Controller {
     $data['form_title']=$this->replaceAll($this->uri->segment(3));
     $data['panel_title']='All Bookings';
     $data['head']='admin/head/v_head_table';
-    $data['footer']='admin/footer/v_footer_table';
+    $data['footer']='admin/footer/v_footer_table_company';
     $data['sidebar']='admin/inc/v_sidebar';
     $data['sidebar_right']='admin/inc/v_sidebar_right';
     $data['header']='admin/inc/v_header';
@@ -387,15 +387,18 @@ class Companies extends CI_Controller {
 
 
     // Blocked
-  public function get_block_Vehicle(){
+  public function get_block_Company(){
     $form = ''; 
-    $vid = $this->input->post('vid');
-    $vslist = $this->m_crud->get_blocked_vehicle_query($vid);
-    if (count($vslist)>0){
-      foreach ($vslist as $vs){
-        $form .=' <input type="hidden" name="vid" id="vid" value="'.$vs->v_id.'">';
+  //  $id =2;
+    $id = $this->input->post('id');
+    $file_condition='id'; // is a field primary key in table
+    $table_name='tbl_company';
+    $listData = $this->m_crud->get_blocked_query($id,$file_condition,$table_name);
+    if (count($listData)>0){
+      foreach ($listData as $row){
+        $form .=' <input type="hidden" name="id" id="id" value="'.$row->id.'">';
         $form .=' <input type="hidden" name="status" id="status" value="0">';
-        $form .='<center> <h4>Do you want to Blocked Vehicle ?<h4><h3 style="color:red;">'.$vs->v_id.' '.$vs->vehicle_name. '</h3></center>';
+        $form .='<center> <h4>Do you want to Blocked Company ?<h4><h3 style="color:red;">'.$row->company_name. '</h3></center>';
       }  
           // End foreach
       // echo $form;
@@ -403,27 +406,35 @@ class Companies extends CI_Controller {
     }    
   }
 
-  public function update_block_Vehicle(){
-    $vid = $this->input->post('vid');
+  public function update_block_Company(){
+    $id = $this->input->post('id');
+    //$id =5;// $this->input->post('id');
+    $file_condition='id'; // is a field primary key in table
+    $table_name='tbl_company';
+
     $data_update = array(
         'status' =>$this->input->post('status'),
       );
-    $update_cate = $this->m_crud->update_blocked_vehicle_query($vid,$data_update);
+    $update_cate = $this->m_crud->update_blocked_query($id,$file_condition,$table_name,$data_update);
     if($update_cate)
       echo "1";
     else
       echo "0";
   }
 
-  public function get_active_Vehicle(){
+  public function get_active_Company(){
       $form = ''; 
-      $vid = $this->input->post('vid');
-      $vslist = $this->m_crud->get_active_vehicle_query($vid);
-      if (count($vslist)>0){
-        foreach ($vslist as $vs){
-          $form .=' <input type="hidden" name="vid" id="vid" value="'.$vs->v_id.'">';
+      // $id = 3;
+      $id = $this->input->post('id');
+      $file_condition='id'; // is a field primary key in table
+      $table_name='tbl_company';
+
+      $listData = $this->m_crud->get_active_query($id,$file_condition,$table_name);
+      if (count($listData)>0){
+        foreach ($listData as $row){
+          $form .=' <input type="hidden" name="id" id="id" value="'.$row->id.'">';
           $form .=' <input type="hidden" name="status" id="status" value="1">';
-          $form .=' <center> <h4>Do you want to Active Vehicle ?<h4><h3 style="color:green;">'.$vs->v_id.' '.$vs->vehicle_name. '</h3></center>';
+          $form .=' <center> <h4>Do you want to Active Company ?<h4><h3 style="color:green;">'.$row->company_name .'</h3></center>';
         }  
             // End foreach
         echo json_encode($form);    
@@ -431,15 +442,94 @@ class Companies extends CI_Controller {
 
   }
 
-  public function update_active_Vehicle(){
-    $vid = $this->input->post('vid');
+  public function update_active_Company(){
+    $id = $this->input->post('id');
+     $file_condition='id'; // is a field primary key in table
+     $table_name='tbl_company';
     $data_update = array(
         'status' =>$this->input->post('status'),
       );
-    $update_cate = $this->m_crud->update_active_vehicle_query($vid,$data_update);
+    $update_cate = $this->m_crud->update_active_query($id,$file_condition,$table_name,$data_update);
     if($update_cate)
       echo "1";
     else
       echo "0";
   }
+
+
+// View data popup form
+  public function viewForm(){      
+    $form = ''; 
+    $id=3;
+    //$id = $this->input->post('id');
+    $file_condition='id';
+    $table_name='tbl_company';
+    $listData = $this->m_crud->get_view_query($id,$file_condition,$table_name);
+    if (count($listData)>0){
+    foreach ($listData as $row){
+     $form .='<div class="row">';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="origin">Origin(From)<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="origin" id="origin" class="form-control" disabled="true">';
+      $form .='<option value="'.$row->company_name.'">'.$row->company_name.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="destination">Destination(To)<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="destination" id="destination" class="form-control" disabled="true">';
+      $form .='<option value="'.$row->phone.'">'.$row->phone.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='</div>';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-12">';
+      $form .='<label for="Destination">Vehicle Name<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="v_id" id="v_id" class="form-control" disabled="true">';
+      $form .='<option value="'.$row->email.'">'.$row->email.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='</div>';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-4">';
+      $form .='<label for="address">Local Price<span><b>*</b></span></label>';
+      $form .='<input type="text" name="address" id="address" class="form-control" value="'.$row->address.'" disabled="true">';
+      $form .='</div>';
+      $form .='<div class="col-md-4">';
+      $form .='<label for="page_name">Foreign Price<span><b>*</b></span></label>';
+      $form .='<input type="text" name="page_name" id="page_name" class="form-control" value="'.$row->page_name.'" disabled="true">';
+      $form .='</div>';
+      $form .='<div class="col-md-4">';
+      $form .='<label for="website">website<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="website" id="website" class="form-control" disabled="true">';
+      $form .='<option value="'.$row->website.'">'.$row->website.'</option>';
+      $form .='</select>';
+      $form .='</div>';
+      $form .='</div>';
+      $form .='<div class="form-group">';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="description">description <span><b>*</b></span></label>';
+      $form .='<input type="text" name="description" id="description" class="form-control" value="'.$row->description.'" disabled="true">';
+      $form .='</div>';
+      $form .='<div class="col-md-6">';
+      $form .='<label for="origin">Active/Block&nbsp;</label>';
+      if($row->status==1){
+      $form .='<input type="text" name="status" value="Active" class="form-control" disabled="true">';
+      // $form .='<input type="checkbox" name="status" id="status" data-toggle="toggle" data-on="Active" data-off="Block" data-onstyle="success" data-offstyle="danger" disabled="true" checked />';
+      // $form .='<input type="hidden" name="status_hide" id="status_hide" value="1" disabled="true"/>';
+      } else {
+      $form .='<input type="text" name="status" value="DisActive" class="form-control" disabled="true">';
+      // $form .='<input type="checkbox" name="status" id="status" data-toggle="toggle" data-on="Active" data-off="Block" data-onstyle="success" data-offstyle="danger" disabled="true"/>';
+      // $form .='<input type="hidden" name="status_hide" id="status_hide" value="0" disabled="true"/>';
+      }
+      $form .='</div>';
+      $form .='</div>';
+      $form .='</div>';        
+    }  
+      echo json_encode($form);   
+    }
+  }
+
+
+
   }

@@ -64,7 +64,7 @@
 						<th class="hidden-phone">Tools</th>
 					</tr>
 				</thead>
-				<tbody id="list-vehicle-row">
+				<tbody id="list-row">
 										
 					<?php 
 					$i=1;
@@ -73,7 +73,7 @@
 						<tr class="gradeA">
 						<td> 
 
-							<a data-toggle="tooltip" title="View Company" href="<?php echo site_url(); ?>admin/vehicles.html/list/active" data-toggle="modal" data-target="#myVechicleView<?php echo $rows['id'];?>" >
+							<a data-toggle="tooltip" title="View Company" href="<?php echo site_url(); ?>admin/comapnies/list/active" data-toggle="modal" data-target="#myVechicleView<?php echo $rows['id'];?>" >
 								<i class="fa fa-eye" aria-hidden="true"></i>   <?php echo $i; ?> </a> 
 						</td>
 						<td >
@@ -114,17 +114,21 @@
 						<?php 
 							if($rows['status']==1){ 
 								?>
-							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $rows['id']; ?>" data_controller_link="<?php echo site_url(); ?>admin/<?php echo $this->uri->segment(2) ?>/get_block_Vehicle" title="Block <?php echo $rows['company_name']; ?>" href="<?php echo site_url(); ?>admin/<?php echo $this->uri->segment(2) ?>/#<?php echo $rows['id']; ?>" class="btn btn-danger btn-sm btn_getBlocked" role="button">
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $rows['id']; ?>" data_controller_link="admin/users/companies/get_block_Company" title="Block <?php echo $rows['company_name']; ?>" href="<?php echo site_url(); ?>admin/<?php echo $this->uri->segment(2) ?>/#<?php echo $rows['id']; ?>" class="btn btn-danger btn-sm btn_getBlocked" role="button">
 							<i class="fa fa-ban"></i>
 							</a>
 						<?php
 							}else{
 								?>								
-							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalActive" dataid="<?php echo $rows['id']; ?>" title="Active <?php echo $rows['company_name']; ?>" href="<?php echo site_url(); ?>admin/<?php echo $this->uri->segment(2) ?>/#<?php echo $rows['id']; ?>" class="btn btn-success btn-sm btn_getActive" role="button">
+							<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalActive" dataid="<?php echo $rows['id']; ?>" data_controller_link="admin/users/companies/get_active_Company" title="Active <?php echo $rows['company_name']; ?>" href="<?php echo site_url(); ?>admin/<?php echo $this->uri->segment(2) ?>/#<?php echo $rows['id']; ?>" class="btn btn-success btn-sm btn_getActive" role="button">
 							<i class="fa fa-check"></i></a>
 						<?php
 							}
+
 						?>
+						<a data-toggle="tooltip" data-toggle="modal" data-target="#myModalBlock" dataid="<?php echo $rows['id']; ?>" data_controller_link="admin/users/companies/get_block_Company" title="Block <?php echo $rows['company_name']; ?>" href="<?php echo site_url(); ?>admin/<?php echo $this->uri->segment(2) ?>/#<?php echo $rows['id']; ?>" class="btn btn-default btn-sm btn_getView" role="button">
+							<i class="fa fa-ban"></i>
+							</a>
 
 						</td>
 					
@@ -150,7 +154,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Blocked Vehicle</h2>
+        <h2 class="modal-title">Blocked Company</h2>
       </div>
       <div class="modal-body">
       		<form id="frmBlock">
@@ -170,7 +174,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Active Schedule</h2>
+        <h2 class="modal-title">Active Company</h2>
       </div>
       <div class="modal-body">
       		<form id="frm-active">
@@ -192,10 +196,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">View Vehicle</h2>
+        <h2 class="modal-title">View Comany</h2>
       </div>
       <div class="modal-body">
-      	<form id="frm-view">
+      	<form id="frm_View" >
 
 		</form>
       </div>

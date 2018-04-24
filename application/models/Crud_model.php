@@ -77,6 +77,43 @@ class Crud_model extends CI_Model
 	  return $query->result();   
 	 }
 
+// ****************** General GetBlocked ********************************
+public function get_blocked_query($id,$file_condition,$table_name){
+    		
+	$this->db->select('*');
+	$this->db->from($table_name);
+	$this->db->where($file_condition,$id);
+	// $this->db->where(array('id' => ,$id ););
+	$query = $this->db->get();
+	return $query->result();
+	}
+
+public function update_blocked_query($id,$file_condition,$table_name,$data){
+		$this->db->where($file_condition,$id);
+		return  $this->db->update($table_name,$data);
+	}
+
+	public function get_active_query($id,$file_condition,$table_name){
+    		
+	$this->db->select('*');
+	$this->db->from($table_name);
+	$this->db->where($file_condition,$id);
+	// $this->db->where(array('id' => ,$id ););
+	$query = $this->db->get();
+	return $query->result();
+	}
+
+	public function update_active_query($id,$file_condition,$table_name,$data){
+		$this->db->where($file_condition,$id);
+		return  $this->db->update($table_name,$data);
+	}
+
+// ****************** End General GetBlocked ****************************
+
+
+
+
+
 // Manage Vehicle =========================================================
 	// To Block Vehicles
 	public function get_blocked_vehicle_query($id){
@@ -186,6 +223,18 @@ public function update_blocked_vehicle_query($id,$data){
 	    $query = $this->db->get();
 		return $query->result();
 	}
+
+	public function get_view_query($id,$file_condition,$table_name){
+    		
+	$this->db->select('*');
+	$this->db->from($table_name);
+	$this->db->where($file_condition,$id);
+	// $this->db->where(array('id' => ,$id ););
+	$query = $this->db->get();
+	return $query->result();
+	}
+
+
 
 	public function getBlock($id){
     $vSQL = " vs.id AS id, ori.origin AS origin, ori1.origin AS destination,

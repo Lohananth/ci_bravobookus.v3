@@ -146,6 +146,9 @@ $route['admin/users.html'] = 'admin/users/users';
 // (:any)
 $route['admin/users.html/add-company'] = 'admin/users/users/add_company';
 $route['admin/companies.html/(:any)'] = 'admin/users/users/companies/$1';
+
+
+
 //Manage User
 $route['admin/manage-users.html/(:any)/(:any)'] = 'admin/users/users/manage_users/$1/$2';
 
@@ -159,6 +162,12 @@ $route['admin/companies/(:any)/(:any)'] = "admin/users/companies/index/$1/$2";
 
 $route['admin/companies/save/create'] = "admin/users/companies/save/create"; 
 $route['admin/companies/save/(:any)/(:any)'] = "admin/users/companies/save/$1/$2"; 
+
+// $route['admin/companies/get_blocked_Company']='admin/users/companies/get_block_Company';
+// $route['admin/companies/disactive_Company']='admin/users/companies/disactive_Company';
+
+// $route['admin/companies/get_active_query']='admin/users/companies/get_active_query';
+// $route['admin/companies/update_active_Company']='admin/users/companies/update_active_Company';
 
 
 // Logout
