@@ -27,7 +27,7 @@
 					<h2 class="panel-title"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Schedule</h2>
 				</div>
 			</div>
-			<form  action="<?php echo site_url(); ?>save-schedules.html" method="post" enctype='multipart/form-data' accept-charset="utf-8">
+			<form  action="<?php echo site_url(); ?>admin/save-schedules.html" method="post" enctype='multipart/form-data' accept-charset="utf-8">
 				<div class="panel-body">
 					<div class="row">
 						<div class="form-group"><!--Origin-->

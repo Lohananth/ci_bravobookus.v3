@@ -8,7 +8,7 @@
 					</a>
 				</li>								
 				<div class="btn btn-default" style="margin-right:10px; border-radius: 0px;">
-					<a href="<?php  $this->uri->segment(1); ?><?php echo site_url(); ?>admin/vehicles.html/add"> 
+					<a href="<?php  $this->uri->segment(1); ?><?php echo site_url(); ?>admin/schedules.html/add"> 
 						<i class="fa fa-plus"></i>
 						Add
 					</a>

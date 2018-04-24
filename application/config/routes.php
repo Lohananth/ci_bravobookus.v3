@@ -105,8 +105,12 @@ $route['admin/schedule-report.html']='admin/schedules/schedules/vehicle_report';
 // $route['list-vechicles.html'] = 'admin/Admin_dashboard/show_vechicles';
 
 $route['admin/schedules.html/add'] = 'admin/schedules/schedules/add';
+$route['admin/save-schedules.html']='admin/schedules/schedules/save/create'; //Save Schedule
+$route['admin/update-schedules.html/(:any)']='admin/schedules/schedules/save/do_update/$1'; //Update Schedule
+
 $route['admin/schedules.html/edit/(:any)'] = 'admin/schedules/schedules/edit/$1';
 $route['admin/schedules.html/view/(:any)'] = 'admin/schedules/schedules/view/$1';
+
 
 $route['admin/schedules.html/get_block_Schedule']='admin/schedules/schedules/get_block_Schedule';
 $route['admin/schedules.html/disactive_Schedule']='admin/schedules/schedules/update_block_Schedule'; //update Block

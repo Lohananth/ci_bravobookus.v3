@@ -189,9 +189,9 @@ class Vehicles extends CI_Controller {
       // tbl_amenity
       $data['amenities']=$this->m_crud->get_by_sql("SELECT * FROM tbl_amenity");
     
-      $vSQL="SELECT v.*,c.company_name
-            FROM tbl_vehicle as v INNER JOIN tbl_company as c
-            WHERE v.v_id=$id";
+      $vSQL="SELECT v.*,c.*
+        FROM tbl_vehicle as v INNER JOIN tbl_company as c on v.company_id=c.company_id
+        WHERE v.v_id=$id";
       $data['tbl_vehicle']=$this->m_crud->get_by_sql( $vSQL);
      
      // print_r($data['tbl_vehicle']);exit();
@@ -339,25 +339,25 @@ public function invoice_print($id=''){
               $count = count($_FILES['userfile']['name']);
               for($i=0; $i<$count; $i++)
                 {
-                $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
-                $_FILES['userfile']['type']= $files['userfile']['type'][$i];
-                $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
-                $_FILES['userfile']['error']= $files['userfile']['error'][$i];
-                $_FILES['userfile']['size']= $files['userfile']['size'][$i];
-                $config['upload_path'] = './uploads/vehicles/galleries';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
-                $config['max_size'] = '2000000';
-                $config['remove_spaces'] = true;
-                $config['overwrite'] = false;
-                $config['max_width'] = '';
-                $config['max_height'] = '';
-                
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                $this->upload->do_upload();
-                $fileName = $_FILES['userfile']['name'];
-                $images[] = $fileName;
-        }
+                  $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
+                  $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+                  $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+                  $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+                  $_FILES['userfile']['size']= $files['userfile']['size'][$i];
+                  $config['upload_path'] = './uploads/vehicles/galleries';
+                  $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                  $config['max_size'] = '2000000';
+                  $config['remove_spaces'] = true;
+                  $config['overwrite'] = false;
+                  $config['max_width'] = '';
+                  $config['max_height'] = '';
+                  
+                  $this->load->library('upload', $config);
+                  $this->upload->initialize($config);
+                  $this->upload->do_upload();
+                  $fileName = $_FILES['userfile']['name'];
+                  $images[] = $fileName;
+              }
           $fileName = implode(',',$images);
 
            $fileFeature = explode(',',$fileName);
@@ -376,20 +376,75 @@ public function invoice_print($id=''){
            // $this->db->insert('tbl_vehicle', $data);
 
             // $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-           redirect(base_url() . 'add-vehicles.html', 'refresh');
+           redirect(base_url() . 'admin/vehicles.html/list/active', 'refresh');
             // redirect('add-vehicles.html');
         }
 
         if ($param1 == 'do_update') {
-            $data['name']         = $this->input->post('name');
-            $data['name_numeric'] = $this->input->post('name_numeric');
-            $data['teacher_id']   = $this->input->post('teacher_id');
+            
+            $data['company_id']   = $this->input->post('company_id');
+            $data['code']         = $this->input->post('code');
+            $data['vehicle_name'] = $this->input->post('vehicle_name');
+            $data['vehicle_type'] = $this->input->post('vehicle_type');
+            $data['drivers']      = $this->input->post('driver_name');
+            // $data['inspectors']= $this->input->post('inspectors');            
+            $data['amenities'] = substr(implode(',', $this->input->post('amenities')), 0);
+            if(!empty($this->input->post('status'))){
+              // $data['status']         = $this->input->post('status');
+               $data['status']         = 1;
+            }else{
+               $data['status']         = 0;
+            }           
+            $data['seats']   = $this->input->post('seat_type');
+          //    // Upload Image to Galleries
+          //     $files = $_FILES;
+          //     $count = count($_FILES['userfile']['name']);
+          //     for($i=0; $i<$count; $i++)
+          //       {
+          //         $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
+          //         $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+          //         $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+          //         $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+          //         $_FILES['userfile']['size']= $files['userfile']['size'][$i];
+          //         $config['upload_path'] = './uploads/vehicles/galleries';
+          //         $config['allowed_types'] = 'gif|jpg|png|jpeg';
+          //         $config['max_size'] = '2000000';
+          //         $config['remove_spaces'] = true;
+          //         $config['overwrite'] = false;
+          //         $config['max_width'] = '';
+          //         $config['max_height'] = '';
+                  
+          //         $this->load->library('upload', $config);
+          //         $this->upload->initialize($config);
+          //         $this->upload->do_upload();
+          //         $fileName = $_FILES['userfile']['name'];
+          //         $images[] = $fileName;
+          //     }
+          // $fileName = implode(',',$images);
 
-            $this->db->where('class_id', $param2);
-            $this->db->update('class', $data);
-            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'add-hotels.html', 'refresh');
-        } else if ($param1 == 'edit') {
+          //  $fileFeature = explode(',',$fileName);
+          //  $i=1;
+          //  foreach ($fileFeature as $file_feature) {
+          //     if($i==1){
+          //       $data['feature_image']   = $file_feature;
+          //     }
+          //     $i++;
+          //  }        
+
+          // // $this->welcome->upload_image($this->input->post(),$fileName);
+          // $this->welcome->upload_vehicles_gallery($data,$fileName);
+
+            $this->db->where('v_id', $param2);
+            $this->db->update('tbl_vehicle', $data);
+
+
+
+
+
+            // $this->session->set_flashdata('flash_message' , "Data Updated!");
+            redirect(base_url() . 'admin/vehicles.html/edit/'.$param2, 'refresh');
+        } 
+        if ($param1 == 'edit') {
             $page_data['edit_data'] = $this->db->get_where('class', array(
                 'class_id' => $param2
             ))->result_array();
@@ -397,7 +452,7 @@ public function invoice_print($id=''){
         if ($param1 == 'delete') {
             $this->db->where('class_id', $param2);
             $this->db->delete('class');
-            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            // $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
             redirect(base_url() . 'index.php?admin/classes/', 'refresh');
         }
         // $page_data['classes']    = $this->db->get('class')->result_array();

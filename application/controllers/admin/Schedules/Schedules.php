@@ -279,7 +279,7 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
     }
   }
  
-  public function editBlock($id=''){      
+  public function edit($id=''){      
       $data = array();
       $data['settings']=$this->m_crud->get_by_sql("SELECT * FROM settings");
       $data['form_title']=$this->replaceAll($this->uri->segment(1));      
@@ -303,15 +303,15 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
               vh.vehicle_name AS vehicle_name,dpt.departure_time AS departure_time,
               vs.travel_duration AS travel_duration, vs.local_price AS local_price,
               vs.foreigner_price AS foreigner_price, vs.`status` AS `status`
-              FROM
-              tbl_vehicle_schedule AS vs 
+              FROM tbl_vehicle_schedule AS vs 
               JOIN tbl_origin AS ori ON (ori.id = vs.origin)
               JOIN tbl_origin AS ori1 ON (ori1.id = vs.destination)
               JOIN tbl_vehicle AS vh ON (vh.v_id = vs.v_id)
               JOIN tbl_departure_time AS dpt ON (dpt.id = vs.departure_time)
-              WHERE vs.id=$id AND vs.status=0";
+              WHERE vs.id=$id";
       $data['data_vehicles'] = $this->m_crud->get_by_sql($vSQL);
-      $data['main_content']='admin/schedules/v_edit_block';
+      // $data['main_content']='admin/schedules/v_edit_block';
+       $data['main_content']='admin/schedules/v_edit';
       //load the view
       $this->load->view('admin/v_admin_template', $data);
       // echo "Admin Dashboard";
@@ -452,7 +452,7 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
             $data['travel_duration']  = $this->input->post('travel_duration');
             $data['status']           = $this->input->post('status_hide');   
             $this->db->insert('tbl_vehicle_schedule', $data);            
-            redirect(base_url() . 'add-schedules.html', 'refresh');
+            redirect(base_url() . 'admin/schedules.html', 'refresh');
         }
         if ($param1 == 'do_update') {
             $data['origin']       = $this->input->post('origin');
@@ -465,8 +465,8 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
             $data['status']           = $this->input->post('status_hide'); 
             $this->db->where('id', $param2);
             $this->db->update('tbl_vehicle_schedule', $data);
-            // $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'list-schedules.html', 'refresh');
+            $this->session->set_flashdata('flash_message' , "Data Saved");
+            redirect(base_url() . 'admin/schedules.html/list/active', 'refresh');
         } else if ($param1 == 'edit') {
             $page_data['edit_data'] = $this->db->get_where('class', array(
                 'class_id' => $param2
@@ -483,7 +483,7 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
             $data['status']           = $this->input->post('status_hide'); 
             $this->db->where('id', $param2);
             $this->db->update('tbl_vehicle_schedule', $data);
-            // $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            $this->session->set_flashdata('flash_message' , "Updated Data");
             redirect(base_url() . 'list-schedules-blocked.html', 'refresh');
         }
   }

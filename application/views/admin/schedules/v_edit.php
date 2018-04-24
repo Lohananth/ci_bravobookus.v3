@@ -1,6 +1,6 @@
 <section role="main" class="content-body">
 	<header class="page-header">
-		<h2>Advanced Forms</h2>					
+		<h2>Advanced Forms </h2>					
 		<div class="right-wrapper pull-right">
 			<ol class="breadcrumbs">
 				<li>
@@ -27,7 +27,7 @@
 						<h2 class="panel-title"><i class="fa fa-edit" aria-hidden="true"></i> Edit <?php echo $data_vehicles[0]['vehicle_name']; ?></h2>
 					</div>
 				</div>
-				<form  action="<?php echo site_url(); ?>admin/schedules/schedules/save/do_update/<?php echo $data_vehicles[0]['id'] ?>" method="post" accept-charset="utf-8">
+				<form  action="<?php echo site_url(); ?>admin/update-schedules.html/<?php echo $data_vehicles[0]['id'] ?>" method="post" accept-charset="utf-8">
 					<div class="panel-body">
 						<div class="row">
 							<div class="form-group"><!--Origin-->
@@ -74,7 +74,7 @@
 							</div>	
 							<div class="form-group"><!--Vehicle Name-->
 								<div class="col-md-12">
-									<label for="vehicle_name">Vehicle Name<span><b>*</b></span></label>
+									<label for="Destination">Vehicle Name<span><b>*</b></span></label>
 									<select data-plugin-selectTwo name="v_id" id="v_id" class="form-control">
 										<?php
 										$vsname = $data_vehicles[0]['vehicle_name'];
@@ -146,7 +146,7 @@
 							<div style="padding-bottom: 15px;"></div>
 							<div class="col-md-12 form-group">
 								<button type="submit" name="btnSave" class="btn btn-success pull-right" value="Save"><span class="fa fa-save"></span> Save</button>
-								<a class="btn btn-danger pull-right" style="margin-right: 15px;" href="<?php echo site_url(); ?>admin/list-schedules.html"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
+								<a class="btn btn-danger pull-right" style="margin-right: 15px;" href="<?php echo site_url(); ?>admin/schedules.html/list/active"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
 							</div>										
 						</div>
 					</div>

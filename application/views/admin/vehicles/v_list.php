@@ -73,7 +73,7 @@
 						<tr class="gradeA">
 						<td> 
 							<a data-toggle="tooltip" title="View Company" href="<?php echo site_url(); ?>admin/vehicles.html/list/active" data-toggle="modal" data-target="#myVechicleView<?php echo $vch['v_id'];?>" >
-								<i class="fa fa-eye" aria-hidden="true"></i>   <?php echo $i; ?> </a> 
+								<i class="fa fa-eye" aria-hidden="true"></i>  <?php echo $vch['v_id'];?></a> 
 						</td>
 						<td >
 							<a  data-toggle="tooltip" title="View <?php echo $vch['vehicle_name']; ?>"  href="<?php echo site_url(); ?>admin/vehicles.html/list/active">

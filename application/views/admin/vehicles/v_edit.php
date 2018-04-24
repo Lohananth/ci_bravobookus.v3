@@ -33,7 +33,7 @@
 			</div>
 
 			<!-- <form action="v_edit_submit" method="get" accept-charset="utf-8"> -->
-			<form  action="<?php echo site_url(); ?>Admin_dashboard/new_hotel/create" method="post" accept-charset="utf-8">
+			<form  action="<?php echo site_url(); ?>admin/vehicles/vehicles/save/do_update/<?php echo $tbl_vehicle[0]['v_id']; ?>" method="post" accept-charset="utf-8">
 			<div class="panel-body">
 
 				<div class="row">	
@@ -43,19 +43,26 @@
 					</div>
 
 					<div class="col-md-5 form-group">
-						<select data-plugin-selectTwo class="form-control populate" name="company_id">
-							<optgroup label="Select one Company">
-								
-								<?php 
+						
+				<select data-plugin-selectTwo name="company_id" id="company_id" class="form-control">
+				<?php
+					$com_id = $tbl_vehicle[0]['company_id'];
+					foreach($companies as $rows){
+						if ($rows['company_id']==$com_id){
+							print_r($rows['company_name']);
+							?>
+							<option value="<?php echo $rows['id'];  ?>" selected="selected"><?php echo $rows['company_name'];  ?></option>
+							<?php
+						} else {
+							?>
+							<option value="<?php echo $rows['id'];  ?>"><?php echo $rows['company_name'];  ?></option>
+							<?php
+						}
+					}
+				?>										
+			</select>
 
-								foreach ($companies as $company) {
-								?>
-									<option value='<?php echo $company['id']; ?>'><?php echo $company['company_name']; ?></option>
-								<?php
-								}
-								?>	
-							</optgroup>
-						</select>
+
 					</div>
 
 
@@ -64,50 +71,72 @@
 					</div>
 
 					<div class="col-md-3 form-group">
-								<input type="text" placeholder="PP-2A-0004" class="form-control">
+						<input type="text" name="code" placeholder="PP-2A-0004" class="form-control" value="<?php echo $tbl_vehicle[0]['code']; ?>">
 					</div>
 					<!-- Vehicle Name -->
 
 					<div class="col-md-2 form-group">
 						Vehicle Name <span>(*)</span>
 					</div>
-					<div class="col-md-5 form-group">
-						<input type="text" name="vc_name" id="vc_name" class="form-control" placeholder="Vehicle Name" value="" required="required">
+					<div class="col-md-3 form-group">
+						<input type="text" name="vehicle_name" id="vehicle_name" class="form-control" placeholder="Vehicle Name" value="<?php echo $tbl_vehicle[0]['vehicle_name']; ?>" required="required">
 					</div>
 
 					<!-- Vehicle Type -->
 					<div class="col-md-2 form-group">
 						Vehicle Type <span>(*)</span>
 					</div>
-					<div class="col-md-3 form-group">
-						<select data-plugin-selectTwo class="form-control populate" name="vc_type" >
-									<optgroup label="Select one Company">
-									<?php 
-									foreach ($vehicle_type as $vc_type) {
-									?>
-									<option value='<?php echo $vc_type['id']; ?>'><?php echo $vc_type['vehicle_type']; ?></option>
-									<?php
-									}
-									?>	
-									</optgroup>
-								</select>
+					<div class="col-md-5 form-group">
+						
+			<select data-plugin-selectTwo name="vehicle_type" id="vehicle_type" class="form-control">
+				<?php
+					$vh_id = $tbl_vehicle[0]['vehicle_type'];
+					foreach($vehicle_type as $rows){
+						if ($rows['vt_id']==$vh_id){
+							print_r($rows['vehicle_type']);
+							?>
+							<option value="<?php echo $rows['vt_id'];  ?>" selected="selected"><?php echo $rows['vehicle_type'];  ?></option>
+							<?php
+						} else {
+							?>
+							<option value="<?php echo $rows['vt_id'];  ?>"><?php echo $rows['vehicle_type'];  ?></option>
+							<?php
+						}
+					}
+				?>										
+			</select>
+
+
+
+
 					</div>
 					<!-- Driver Name -->
 					<div class="col-md-2 form-group">
 						Driver Name <span>(*)</span>
 					</div>
 					<div class="col-md-3 form-group">
-						<select data-plugin-selectTwo class="form-control populate" name="driver_name" >
-									<optgroup label="Select one Company">
-									<?php 
-									foreach ($driver_names as $driver_name) {
-									?>
-									<option value='<?php echo $driver_name['id']; ?>'><?php echo $driver_name['driver_name']; ?></option>
-									<?php
-									}
-									?>	
-									</optgroup>
-								</select>
+					
+			<select data-plugin-selectTwo name="driver_name" id="driver_name" class="form-control">
+				<?php
+					$drivers = $tbl_vehicle[0]['drivers'];
+					foreach($driver_names as $rows){
+						if ($rows['id']==$drivers){
+							print_r($rows['driver_name']);
+							?>
+							<option value="<?php echo $rows['id'];  ?>" selected="selected"><?php echo $rows['driver_name'];  ?></option>
+							<?php
+						} else {
+							?>
+							<option value="<?php echo $rows['id'];  ?>"><?php echo $rows['driver_name'];  ?></option>
+							<?php
+						}
+					}
+				?>										
+			</select>
+
+
+
+
 					</div>	
 					<!-- Amenities -->
 					<div class="col-md-2 form-group">
@@ -115,16 +144,29 @@
 					</div>
 					<div class="col-md-5 form-group">
 						<select multiple data-plugin-selectTwo class="form-control populate" multiple="multiple" name="amenities[]" placeholder="Click here to select">
-									<optgroup label="Select Facilities">
-										<?php 
-										foreach ($amenities as $facil) {
-											?>
-											<option value='<?php echo $facil['id']; ?>'><?php echo $facil['amenity']; ?></option>
-											<?php
-										}
+									
+						<optgroup label="Select Facilities">
+							<?php $vh_amenities = explode(",", $tbl_vehicle[0]['amenities']) ?>
+							<?php 
+							foreach ($amenities as $amenity) {
+								?>
+								<?php for($i=0; $i<count($vh_amenities); $i++){
+									if($amenity['id']==$vh_amenities[$i]){?>
+										<option selected="selected" value='<?php echo $amenity['id']; ?>'><?php echo $amenity['amenity']; ?></option>
+									<?php }
+									else{
+										?>
+										<option  value='<?php echo $amenity['id']; ?>'>
+											<?php 
+										echo $amenity['amenity']; ?></option>
+										<?php
+									} 
+								}
+							}
 
-										?>	
-									</optgroup>
+							?>	
+	
+						</optgroup>
 						</select>
 					</div>
 
@@ -133,6 +175,7 @@
 					</div>
 
 					<div class="col-md-5 form-group">
+						
 						<select data-plugin-selectTwo class="form-control populate placeholder" data-plugin-options='{ "placeholder": "Select a State", "allowClear": true }' name="seat_type" >
 									<optgroup label="Select one Company">
 									<?php 
@@ -143,7 +186,12 @@
 									}
 									?>	
 									</optgroup>
-								</select>
+						</select>
+
+
+
+
+
 					</div>
 					<!-- Status -->
 					<div class="col-md-2 form-group">
@@ -151,37 +199,25 @@
 					</div>
 
 					<div class="col-md-3 form-group" style="padding-top: 0px; margin-top:-10px;">
-						<input  type="checkbox" name="gender" id="gender" data-toggle="toggle" data-on="Active" data-off="DisActive" data-onstyle="success" data-offstyle="danger" checked />
-									    </div>
-									    <input type="hidden" name="hidden_gender" id="hidden_gender" value="0" />
+						<input  type="checkbox" name="status" id="status" data-toggle="toggle" data-on="Active" data-off="DisActive" data-onstyle="success" data-offstyle="danger" checked />
 					</div>
-					<div class="col-md-2 form-group">
-						Feature Image
+						 <input type="hidden" name="status_hide" id="status_hide" value="1" />
 					</div>
-					<div class="col-md-5 form-group">					
-												
-						<!-- <div class="col-md-6"> -->
-							<div class="fileupload fileupload-new" data-provides="fileupload">
-								<div class="input-append">
-									<div class="uneditable-input">
-										<i class="fa fa-file fileupload-exists"></i>
-										<span class="fileupload-preview"></span>
-									</div>
-									<span class="btn btn-default btn-file">
-										<span class="fileupload-exists">Change</span>
-										<span class="fileupload-new">Select file</span>
-										<input type="file" />
-									</span>
-									<a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
-								</div>
-							<!-- </div> -->
-							</div>										
-					</div>
-					<div class="col-md-2 form-group">
-						Galleries Image
-					</div>
-					<div class="col-md-2 form-group">
-						<input type="file" name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif" multiple>
+					
+
+					<div class="col-md-12 form-group">
+						<?php 
+						$gallery=$this->m_crud->get_by_sql("SELECT * FROM tbl_vehicle_photo_gallery where v_id=".$tbl_vehicle[0]['v_id']);
+						foreach ($gallery as $rows) {
+							//echo $rows['Thumbnail'];
+							?>
+							<img style="width: 50px;" src="<?php echo base_url(); ?>uploads/vehicles/galleries/<?php echo $rows['Thumbnail']; ?>" alt="<?php echo $rows['Thumbnail']; ?>" >
+
+							<?php
+						}
+
+						?>
+						
 					</div>
 
 						<div style="padding-bottom: 15px;"></div>
