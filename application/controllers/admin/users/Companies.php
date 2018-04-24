@@ -460,8 +460,8 @@ class Companies extends CI_Controller {
 // View data popup form
   public function viewForm(){      
     $form = ''; 
-    $id=3;
-    //$id = $this->input->post('id');
+    // $id=3;
+    $id = $this->input->post('id');
     $file_condition='id';
     $table_name='tbl_company';
     $listData = $this->m_crud->get_view_query($id,$file_condition,$table_name);
@@ -470,37 +470,37 @@ class Companies extends CI_Controller {
      $form .='<div class="row">';
       $form .='<div class="form-group">';
       $form .='<div class="col-md-6">';
-      $form .='<label for="origin">Origin(From)<span><b>*</b></span></label>';
-      $form .='<select data-plugin-selectTwo name="origin" id="origin" class="form-control" disabled="true">';
+      $form .='<label for="Company">Company Name<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="Company" id="Company" class="form-control" disabled="true">';
       $form .='<option value="'.$row->company_name.'">'.$row->company_name.'</option>';
       $form .='</select>';
       $form .='</div>';
       $form .='<div class="col-md-6">';
-      $form .='<label for="destination">Destination(To)<span><b>*</b></span></label>';
-      $form .='<select data-plugin-selectTwo name="destination" id="destination" class="form-control" disabled="true">';
+      $form .='<label for="phone">Phone <span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="phone" id="phone" class="form-control" disabled="true">';
       $form .='<option value="'.$row->phone.'">'.$row->phone.'</option>';
       $form .='</select>';
       $form .='</div>';
       $form .='</div>';
       $form .='<div class="form-group">';
       $form .='<div class="col-md-12">';
-      $form .='<label for="Destination">Vehicle Name<span><b>*</b></span></label>';
-      $form .='<select data-plugin-selectTwo name="v_id" id="v_id" class="form-control" disabled="true">';
+      $form .='<label for="Email">Email<span><b>*</b></span></label>';
+      $form .='<select data-plugin-selectTwo name="Email" id="Email" class="form-control" disabled="true">';
       $form .='<option value="'.$row->email.'">'.$row->email.'</option>';
       $form .='</select>';
       $form .='</div>';
       $form .='</div>';
       $form .='<div class="form-group">';
       $form .='<div class="col-md-4">';
-      $form .='<label for="address">Local Price<span><b>*</b></span></label>';
+      $form .='<label for="address">Address<span><b>*</b></span></label>';
       $form .='<input type="text" name="address" id="address" class="form-control" value="'.$row->address.'" disabled="true">';
       $form .='</div>';
       $form .='<div class="col-md-4">';
-      $form .='<label for="page_name">Foreign Price<span><b>*</b></span></label>';
+      $form .='<label for="page_name">Page Name<span><b>*</b></span></label>';
       $form .='<input type="text" name="page_name" id="page_name" class="form-control" value="'.$row->page_name.'" disabled="true">';
       $form .='</div>';
       $form .='<div class="col-md-4">';
-      $form .='<label for="website">website<span><b>*</b></span></label>';
+      $form .='<label for="website">Website <span><b>*</b></span></label>';
       $form .='<select data-plugin-selectTwo name="website" id="website" class="form-control" disabled="true">';
       $form .='<option value="'.$row->website.'">'.$row->website.'</option>';
       $form .='</select>';
@@ -508,7 +508,7 @@ class Companies extends CI_Controller {
       $form .='</div>';
       $form .='<div class="form-group">';
       $form .='<div class="col-md-6">';
-      $form .='<label for="description">description <span><b>*</b></span></label>';
+      $form .='<label for="description">Description <span><b>*</b></span></label>';
       $form .='<input type="text" name="description" id="description" class="form-control" value="'.$row->description.'" disabled="true">';
       $form .='</div>';
       $form .='<div class="col-md-6">';
@@ -529,6 +529,8 @@ class Companies extends CI_Controller {
       echo json_encode($form);   
     }
   }
+
+
 
 
 
