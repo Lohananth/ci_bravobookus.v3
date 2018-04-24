@@ -39,6 +39,7 @@
     		data: {id:id},
     		dataType: 'json',
     		success:function(data){
+    			// alert('Hello...');
   				$('#frmBlock').html(data);
 				$('#myModalBlock').data('id',id).modal('show');
     		},
@@ -55,12 +56,12 @@
 		 	// var control_link=$(this).attr('data_controller_link');
 
 	    	$.ajax({
-	    		url : "<?php echo base_url() ?>admin/schedules.html/disactive_Schedule",
+	    		url : "<?php echo base_url() ?>admin/schedules/schedules/update_block_Schedule",
 	    		type: "POST",
 	    		data: $('#frmBlock').serialize(),
 	    		dataType: 'json',
 	    		success:function(data){
-	    			// alert('Vehicle was Blocked successfully...');
+	    			// alert('Vehicle was Blocked successfully...'+ id );
 	    			location.reload();
 	    			//Hide myModalDelete
 	    			$('#myModalBlock').modal('hide');

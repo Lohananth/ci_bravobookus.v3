@@ -317,20 +317,7 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
       // echo "Admin Dashboard";
   }
 
-  public function get_block_Schedule(){
-    $form = ''; 
-    $vs_id = $this->input->post('id');
-    $vslist = $this->m_crud->get_blocked_schedule_query($vs_id);
-    if (count($vslist)>0){
-      foreach ($vslist as $vs){
-        $form .=' <input type="hidden" name="vs_id" id="vs_id" value="'.$vs->id.'">';
-        $form .=' <input type="hidden" name="status" id="status" value="0">';
-        $form .=' <h4>Are you sure, Do you want to Blocked this Schedule?</h4>';
-      }  
-          // End foreach
-      echo json_encode($form);    
-    }    
-  }
+  
 
   public function viewBlock(){      
     $form = ''; 
@@ -400,11 +387,25 @@ $vSQL = "SELECT vs.id AS id, ori.origin AS origin, ori1.origin AS destination,
       echo json_encode($form);   
     }
   }
+
+  public function get_block_Schedule(){
+    $form = ''; 
+    $vs_id = $this->input->post('id');
+    $vslist = $this->m_crud->get_blocked_schedule_query($vs_id);
+    if (count($vslist)>0){
+      foreach ($vslist as $vs){
+        $form .=' <input type="hidden" name="id" id="id" value="'.$vs->id.'">';
+        $form .=' <input type="hidden" name="status" id="status" value="0">';
+        $form .=' <h4>Are you sure, Do you want to Blocked this Schedule?</h4>';
+      }  
+          // End foreach
+      echo json_encode($form);    
+    }    
+  }
+
   public function update_block_Schedule(){
     $id = $this->input->post('id');
-    $data_update = array(
-        'status' =>$this->input->post('status'),
-      );
+    $data_update = array('status' =>$this->input->post('status'));
     $update_cate = $this->m_crud->update_blocked_schedule_query($id,$data_update);
     if($update_cate)
       echo "1";
