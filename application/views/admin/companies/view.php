@@ -70,29 +70,29 @@
 																<h4>
 																	Service Detail :
 																<select multiple data-plugin-selectTwo class="form-control populate" multiple="multiple" name="amenities[]" placeholder="Click here to select">
-																		<optgroup label="Select Facilities">
-																			<?php $bus_amenities = explode(",", $v_companies[0]['service_detail']) ?>
-																			<?php 
-																			foreach ($amenities as $amenity) {
-																				?>
-																				<?php for($i=0; $i<count($bus_amenities); $i++){
-																					if($amenity['id']==$bus_amenities[$i]){?>
-																						<option selected="selected" value='<?php echo $amenity['id']; ?>'><?php echo $amenity['amenity']; ?></option>
-																					<?php }
-																					else{
-																						?>
-																						<option  value='<?php echo $amenity['id']; ?>'>
-																							<?php 
-																						echo $amenity['amenity']; ?></option>
-																						<?php
-																					} 
-																				}
-																			}
+						<optgroup label="Select Facilities">
+							<?php $bus_amenities = explode(",", $v_companies[0]['service_detail']) ?>
+							<?php 
+							foreach ($amenities as $amenity) {
+								?>
+								<?php for($i=0; $i<count($bus_amenities); $i++){
+									if($amenity['id']==$bus_amenities[$i]){?>
+										<option selected="selected" value='<?php echo $amenity['id']; ?>'><?php echo $amenity['amenity']; ?></option>
+									<?php }
+									else{
+										?>
+										<option  value='<?php echo $amenity['id']; ?>'>
+											<?php 
+										echo $amenity['amenity']; ?></option>
+										<?php
+									} 
+								}
+							}
 
-																			?>	
-													
-																		</optgroup>
-															</select>
+							?>	
+	
+						</optgroup>
+						</select>
 																</h4>
 
 															</div>

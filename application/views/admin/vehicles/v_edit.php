@@ -142,23 +142,35 @@
 					<div class="col-md-2 form-group">
 						Amenities <span>(*)</span>
 					</div>
+					<?php 
+							$vh_amenities = explode(",", $tbl_vehicle[0]['amenities']);
+							 for($i=0; $i<count($vh_amenities); $i++){
+							 	echo $vh_amenities[$i];
+							 }
+
+					?>
 					<div class="col-md-5 form-group">
 						<select multiple data-plugin-selectTwo class="form-control populate" multiple="multiple" name="amenities[]" placeholder="Click here to select">
 									
 						<optgroup label="Select Facilities">
-							<?php $vh_amenities = explode(",", $tbl_vehicle[0]['amenities']) ?>
-							<?php 
-							foreach ($amenities as $amenity) {
-								?>
-								<?php for($i=0; $i<count($vh_amenities); $i++){
-									if($amenity['id']==$vh_amenities[$i]){?>
-										<option selected="selected" value='<?php echo $amenity['id']; ?>'><?php echo $amenity['amenity']; ?></option>
+
+							<?php 					
+							
+								for($i=0; $i<count($vh_amenities); $i++){
+									foreach ($amenities as $amenity) {
+									if($amenity['id']==$vh_amenities[$i]){
+										?>
+										<option selected="selected" 
+										value='<?php echo $amenity['id']; ?>'>
+										<?php echo $amenity['amenity']; ?>	
+										</option>
 									<?php }
 									else{
 										?>
 										<option  value='<?php echo $amenity['id']; ?>'>
 											<?php 
-										echo $amenity['amenity']; ?></option>
+										echo $amenity['amenity']; ?>
+										</option>
 										<?php
 									} 
 								}
